@@ -3,271 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandarin Session 2 — Famille & Bâtiment</title>
+<title>Cours de Chinois débutant</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Source+Sans+3:ital,wght@0,300;0,600;1,300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap');
 
   :root {
-    --rouge: #c0392b;
-    --or: #d4a017;
+    --bg-base: #faf7f2;
+    --bg-card: #ffffff;
+    --bg-deep: #14110e;
+    --rouge: #8b1d20;
+    --rouge-soft: #b54146;
+    --or: #c9a467;
+    --or-light: #e8d3a3;
     --encre: #1a1a1a;
-    --gris: #666;
-    --gris-clair: #f5f5f5;
-    --bordure: #ddd;
+    --gris-fonce: #2d2d2d;
+    --gris: #6b6b6b;
+    --gris-clair: #d8d3ca;
+    --bordure: rgba(26, 20, 16, 0.08);
+    --shadow-sm: 0 2px 10px rgba(26, 20, 16, 0.04);
+    --shadow-md: 0 10px 40px rgba(26, 20, 16, 0.08);
+    --shadow-lg: 0 24px 70px rgba(26, 20, 16, 0.14);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: #fafafa;
-    color: var(--encre);
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    background: var(--encre);
-    color: white;
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: 0.5px; }
-  .header .sous-titre { font-size: 13px; color: #aaa; margin-top: 4px; }
-  .header .badge {
-    background: var(--rouge);
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  /* ── NAV BLOCS ── */
-  .nav-blocs {
-    background: white;
-    border-bottom: 1px solid var(--bordure);
-    display: flex;
-    overflow-x: auto;
-    padding: 0 40px;
-    gap: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .nav-blocs a {
-    padding: 14px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--gris);
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-  .nav-blocs a:hover { color: var(--rouge); border-bottom-color: var(--rouge); }
-
-  /* ── LAYOUT ── */
-  .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
-
-  /* ── SECTION BLOC ── */
-  .bloc {
-    margin-bottom: 60px;
-    border: 1px solid var(--bordure);
-    border-radius: 8px;
-    overflow: hidden;
-    background: white;
-  }
-  .bloc-header {
-    background: var(--encre);
-    color: white;
-    padding: 18px 28px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .bloc-numero {
-    background: var(--rouge);
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 600; font-size: 14px;
-    flex-shrink: 0;
-  }
-  .bloc-titre { font-size: 16px; font-weight: 600; }
-  .bloc-duree { margin-left: auto; font-size: 12px; color: #888; background: rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 12px; }
-
-  /* ── ONGLETS LIVRABLES ── */
-  .tabs { display: flex; border-bottom: 1px solid var(--bordure); background: var(--gris-clair); }
-  .tab {
-    padding: 10px 22px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--gris);
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: all 0.15s;
-    user-select: none;
-  }
-  .tab:hover { color: var(--encre); }
-  .tab.active { color: var(--rouge); border-bottom-color: var(--rouge); background: white; }
-
-  .livrable { display: none; padding: 28px; }
-  .livrable.active { display: block; }
-
-  /* ── CARTES DIAPO ── */
-  .diapositives { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 680px) { .diapositives { grid-template-columns: 1fr; } }
-
-  .diapo {
-    border: 1px solid var(--bordure);
-    border-radius: 6px;
-    padding: 18px;
-    background: white;
-  }
-  .diapo-num { font-size: 11px; color: var(--gris); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .diapo-titre { font-size: 13px; font-weight: 600; color: var(--gris); margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
-  .hanzi { font-size: 28px; font-weight: 700; color: var(--rouge); line-height: 1.3; margin-bottom: 4px; font-family: 'Noto Serif SC', serif; }
-  .pinyin { font-size: 15px; font-style: italic; color: #444; margin-bottom: 3px; }
-  .traduction { font-size: 13px; color: var(--gris); }
-  .note-formateur {
-    font-size: 12px;
-    color: #999;
-    background: #fafafa;
-    border-left: 3px solid #e0e0e0;
-    padding: 8px 10px;
-    margin-top: 12px;
-    border-radius: 0 4px 4px 0;
-  }
-
-  /* ── TABLEAU VOCABULAIRE ── */
-  .vocab-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-  .vocab-table th {
-    background: var(--encre);
-    color: white;
-    padding: 8px 12px;
-    font-size: 12px;
-    text-align: left;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .vocab-table td { padding: 9px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
-  .vocab-table tr:last-child td { border-bottom: none; }
-  .vocab-table tr:hover td { background: var(--gris-clair); }
-  .vocab-table .td-hanzi { font-size: 20px; font-weight: 700; color: var(--rouge); font-family: 'Noto Serif SC', serif; }
-  .vocab-table .td-pinyin { font-style: italic; color: #444; }
-
-  /* ── MANUEL WORD ── */
-  .manuel h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: var(--encre); }
-  .manuel h3:first-child { margin-top: 0; }
-  .manuel p { margin-bottom: 10px; font-size: 14px; color: #333; }
-  .manuel .regle {
-    background: #fff8e1;
-    border-left: 4px solid var(--or);
-    padding: 10px 14px;
-    border-radius: 0 4px 4px 0;
-    font-size: 14px;
-    margin: 12px 0;
-  }
-  .manuel .memo {
-    background: #fce4e4;
-    border-left: 4px solid var(--rouge);
-    padding: 10px 14px;
-    border-radius: 0 4px 4px 0;
-    font-size: 14px;
-    margin: 12px 0;
-  }
-  .manuel .notes-perso {
-    border: 1px dashed #ccc;
-    border-radius: 6px;
-    padding: 14px;
-    margin-top: 16px;
-    color: #bbb;
-    font-size: 13px;
-    min-height: 60px;
-  }
-
-  /* ── EXERCICES ── */
-  .exercice {
-    border: 1px solid var(--bordure);
-    border-radius: 6px;
-    margin-bottom: 18px;
-    overflow: hidden;
-  }
-  .exercice-header {
-    background: var(--gris-clair);
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  .exercice-type {
-    background: var(--encre);
-    color: white;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .exercice-body { padding: 16px; font-size: 14px; line-height: 1.8; }
-  .exercice-body .role { font-weight: 600; color: var(--rouge); }
-  .corrige {
-    background: #f0faf0;
-    border: 1px solid #b2dfb2;
-    border-radius: 6px;
-    padding: 16px;
-    margin-top: 20px;
-  }
-  .corrige h4 { font-size: 13px; font-weight: 600; color: #2e7d32; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .corrige p, .corrige li { font-size: 13px; color: #333; margin-bottom: 4px; }
-  .corrige ul { padding-left: 18px; }
-
-  /* ── SEPARATEUR ── */
-  .sep { border: none; border-top: 2px dashed #eee; margin: 40px 0; }
-
-  /* ── MOMENT LUDIQUE ── */
-  .ludique {
-    background: linear-gradient(135deg, #fff8e1, #fff3cd);
-    border: 2px solid var(--or);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin: 16px 0;
-    font-size: 14px;
-  }
-  .ludique::before { content: "🎮 "; }
-
-  /* ── PRINT ── */
-  @media print {
-    .nav-blocs, .tabs, .tab, .ppt-arrow, .ppt-progress { display: none !important; }
-    .livrable { display: block !important; }
-    .bloc { break-inside: avoid; page-break-after: always; }
-    html, body { overflow: auto !important; height: auto !important; }
-    .slide {
-      position: relative !important;
-      opacity: 1 !important;
-      transform: none !important;
-      height: auto !important;
-      display: block !important;
-      page-break-after: always;
-    }
-  }
-
-  /* ══════════════════════════════════════════════════ */
-  /* ── MODE PPT (présentation plein écran) ── */
-  /* ══════════════════════════════════════════════════ */
   html, body { height: 100%; overflow: hidden; }
-  body { background: #0a0a0a; }
 
-  .slides-viewport {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0a;
+    color: var(--encre);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -281,10 +53,10 @@
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    background: #fafafa;
+    background: var(--bg-base);
     opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+    transform: translateX(60px);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
     pointer-events: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -295,279 +67,971 @@
   }
   .slide.prev {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(-60px);
   }
 
-  .slide-content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 44px 40px 120px;
+  /* ── Slide indicator (top-right) ── */
+  .slide-num {
+    position: absolute;
+    top: 26px;
+    right: 32px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gris);
+    font-weight: 500;
+    z-index: 5;
+    font-variant-numeric: tabular-nums;
   }
-  .slide .bloc { margin-bottom: 0; }
+  .slide-num strong {
+    color: var(--rouge);
+    font-weight: 600;
+    margin-right: 2px;
+  }
+  .slide-cover .slide-num,
+  .slide-section .slide-num,
+  .slide-bilan .slide-num {
+    color: rgba(255,255,255,0.32);
+  }
+  .slide-cover .slide-num strong,
+  .slide-section .slide-num strong,
+  .slide-bilan .slide-num strong {
+    color: var(--or);
+  }
 
-  /* ── Slide de titre ── */
-  .slide-title {
-    background: linear-gradient(135deg, #1a1a1a 0%, #3d1a1a 55%, #6b1e1e 100%);
+  /* ── COVER ── */
+  .slide-cover {
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(139, 29, 32, 0.20), transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(201, 164, 103, 0.10), transparent 55%),
+      linear-gradient(135deg, #0f0a08 0%, #1a1410 100%);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 60px;
     text-align: center;
   }
-  .slide-title .title-inner { max-width: 900px; }
-  .slide-title h1 {
-    font-size: 52px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 18px;
-    line-height: 1.2;
+  .cover-inner { max-width: 920px; }
+  .cover-mark {
+    color: var(--or);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 24px;
+    padding-left: 24px;
+    margin-bottom: 38px;
+    opacity: 0.9;
   }
-  .slide-title .sous-titre {
-    font-size: 18px;
-    color: #ddd;
-    line-height: 1.7;
-    max-width: 720px;
-    margin: 0 auto;
+  .cover-inner h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 84px;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    color: #faf7f2;
   }
-  .slide-title .badge-big {
-    margin-top: 36px;
-    display: inline-block;
-    background: var(--rouge);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 2px;
+  .cover-inner h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--or-light);
+  }
+  .cover-subtitle {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 5px;
     text-transform: uppercase;
+    margin-bottom: 60px;
   }
-  .slide-title .hint {
-    margin-top: 56px;
-    color: #aaa;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-  }
-  .slide-title .hint kbd {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin: 0 3px;
-    font-family: inherit;
+  .cover-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--or);
     font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .cover-meta::before, .cover-meta::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--or);
+    opacity: 0.5;
+  }
+  .cover-hint {
+    margin-top: 70px;
+    color: rgba(255,255,255,0.30);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+  .cover-hint kbd {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin: 0 2px;
+    font-family: inherit;
+    font-size: 10px;
   }
 
-  /* ── Slide bilan ── */
-  .slide-bilan {
-    background: #0f0f0f;
+  /* ── SECTION DIVIDER ── */
+  .slide-section {
+    background:
+      radial-gradient(ellipse at center, rgba(139, 29, 32, 0.08), transparent 70%),
+      var(--bg-deep);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 60px;
+    text-align: center;
   }
-  .slide-bilan .bilan-inner { max-width: 900px; width: 100%; }
+  .section-inner { max-width: 900px; }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    font-weight: 400;
+    line-height: 0.9;
+    color: var(--or);
+    margin-bottom: 18px;
+    letter-spacing: -10px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.40);
+    margin-bottom: 22px;
+  }
+  .slide-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #faf7f2;
+    margin-bottom: 18px;
+    line-height: 1.1;
+  }
+  .section-desc {
+    color: rgba(255,255,255,0.55);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .section-rule {
+    width: 50px;
+    height: 1px;
+    background: var(--or);
+    margin: 28px auto 0;
+    opacity: 0.5;
+  }
 
-  /* Cache la vieille nav */
-  .nav-blocs { display: none !important; }
+  /* ── CARD SLIDE (each diapo) ── */
+  .slide-card {
+    background: var(--bg-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    text-align: center;
+  }
+  .card-inner { max-width: 900px; width: 100%; }
+  .card-meta {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rouge);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--encre);
+    margin-bottom: 56px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+  .hanzi-big {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 130px;
+    font-weight: 700;
+    color: var(--encre);
+    line-height: 1.1;
+    margin-bottom: 26px;
+    letter-spacing: 6px;
+  }
+  .hanzi-medium {
+    font-size: 90px;
+    letter-spacing: 4px;
+  }
+  .hanzi-small {
+    font-size: 64px;
+    letter-spacing: 2px;
+  }
+  .hanzi-stroke {
+    font-size: 200px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--rouge);
+  }
+  .pinyin-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--gris-fonce);
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+  .traduction-big {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--gris);
+    letter-spacing: 0.3px;
+  }
+  .note-formateur {
+    max-width: 720px;
+    margin: 50px auto 0;
+    background: white;
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--or);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    font-size: 13px;
+    color: var(--gris);
+    text-align: left;
+    line-height: 1.65;
+    box-shadow: var(--shadow-sm);
+  }
+  .activity-text {
+    max-width: 720px;
+    margin: 30px auto 0;
+    font-size: 15px;
+    color: var(--gris-fonce);
+    line-height: 1.7;
+    text-align: left;
+    background: white;
+    padding: 20px 24px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+  }
 
-  /* ── Flèches latérales ── */
-  .ppt-arrow {
+  /* ── MANUEL & EXERCICES SLIDES ── */
+  .slide-manuel, .slide-exercices {
+    background: var(--bg-base);
+    padding: 80px 60px 120px;
+  }
+  .doc-inner { max-width: 920px; margin: 0 auto; }
+  .doc-meta {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rouge);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .doc-inner h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--encre);
+    margin-bottom: 44px;
+    letter-spacing: -0.3px;
+  }
+  .doc-inner h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--encre);
+    margin: 38px 0 14px;
+    letter-spacing: -0.2px;
+  }
+  .doc-inner h3:first-of-type { margin-top: 0; }
+  .doc-inner p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gris-fonce);
+    margin-bottom: 12px;
+  }
+
+  .vocab-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 18px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .vocab-table th {
+    background: var(--encre);
+    color: white;
+    padding: 14px 18px;
+    font-size: 10px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+  .vocab-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--bordure);
+    font-size: 15px;
+    color: var(--gris-fonce);
+  }
+  .vocab-table tr:last-child td { border-bottom: none; }
+  .vocab-table tr:hover td { background: rgba(139, 29, 32, 0.025); }
+  .vocab-table .td-hanzi {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--encre);
+  }
+  .vocab-table .td-pinyin {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gris-fonce);
+  }
+
+  .regle, .memo {
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 1.65;
+    box-shadow: var(--shadow-sm);
+  }
+  .regle {
+    background: linear-gradient(135deg, #fff8e8, #fff3d6);
+    border-left: 3px solid var(--or);
+    color: var(--gris-fonce);
+  }
+  .memo {
+    background: linear-gradient(135deg, #fdf0f0, #fae5e5);
+    border-left: 3px solid var(--rouge);
+    color: var(--gris-fonce);
+  }
+  .notes-perso {
+    border: 1px dashed var(--gris-clair);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 28px;
+    color: var(--gris);
+    font-size: 13px;
+    min-height: 70px;
+    background: rgba(255,255,255,0.4);
+  }
+
+  .exercice {
+    background: white;
+    border: 1px solid var(--bordure);
+    border-radius: 12px;
+    margin-bottom: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .exercice-header {
+    background: var(--bg-base);
+    border-bottom: 1px solid var(--bordure);
+    padding: 14px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--encre);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .exercice-type {
+    background: var(--encre);
+    color: white;
+    font-size: 9px;
+    padding: 4px 11px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .exercice-body {
+    padding: 22px 24px;
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--gris-fonce);
+  }
+  .exercice-body .role { font-weight: 600; color: var(--rouge); }
+  .corrige {
+    background: #f3f8f4;
+    border: 1px solid #c4dccd;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-top: 26px;
+  }
+  .corrige h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2e6b4f;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+  }
+  .corrige p { font-size: 14px; color: var(--gris-fonce); margin-bottom: 6px; }
+  .corrige strong { color: var(--encre); }
+
+  /* ── BILAN ── */
+  .slide-bilan {
+    background:
+      radial-gradient(ellipse at center, rgba(201, 164, 103, 0.08), transparent 70%),
+      var(--bg-deep);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+  }
+  .bilan-inner {
+    max-width: 920px;
+    width: 100%;
+    text-align: center;
+  }
+  .bilan-mark {
+    color: var(--or);
+    font-size: 28px;
+    margin-bottom: 22px;
+    opacity: 0.7;
+    letter-spacing: 18px;
+    padding-left: 18px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .slide-bilan h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 50px;
+    color: #faf7f2;
+  }
+  .recap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 44px;
+    text-align: left;
+  }
+  .recap-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 22px 26px;
+    border-radius: 12px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .recap-item .num {
+    color: var(--or);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .bilan-next {
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ARROWS ── */
+  .nav-arrow {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    width: 54px;
-    height: 54px;
-    background: rgba(26, 26, 26, 0.75);
+    width: 48px;
+    height: 48px;
+    background: rgba(26, 20, 16, 0.62);
     color: white;
-    border: none;
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 14px;
     cursor: pointer;
-    opacity: 0.55;
-    transition: opacity 0.2s, background 0.2s, transform 0.2s;
-    z-index: 1000;
+    opacity: 0.5;
+    transition: all 0.25s ease;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
-  .ppt-arrow:hover:not(:disabled) {
+  .nav-arrow:hover:not(:disabled) {
     opacity: 1;
     background: var(--rouge);
-    transform: translateY(-50%) scale(1.08);
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 8px 28px rgba(139, 29, 32, 0.4);
   }
-  .ppt-arrow:disabled { opacity: 0.15; cursor: not-allowed; }
-  .ppt-arrow.left { left: 24px; }
-  .ppt-arrow.right { right: 24px; }
+  .nav-arrow:disabled { opacity: 0.10; cursor: not-allowed; }
+  .nav-arrow.left { left: 28px; }
+  .nav-arrow.right { right: 28px; }
 
-  /* ── Barre de progression bas ── */
-  .ppt-progress {
+  /* ── BOTTOM PROGRESS ── */
+  .progress-bar {
     position: fixed;
-    bottom: 22px;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 14px;
-    background: rgba(26, 26, 26, 0.9);
+    gap: 18px;
+    background: rgba(20, 17, 14, 0.9);
     color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    font-size: 13px;
-    font-weight: 600;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    padding: 11px 22px;
+    border-radius: 100px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 100;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.06);
   }
-  .ppt-progress .counter {
-    min-width: 48px;
+  .progress-bar .counter {
+    min-width: 60px;
     text-align: center;
     font-variant-numeric: tabular-nums;
+    color: rgba(255,255,255,0.85);
   }
-  .ppt-progress .dots { display: flex; gap: 7px; }
-  .ppt-progress .dot {
-    width: 9px;
-    height: 9px;
+  .progress-bar .bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar .bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--or), var(--rouge-soft));
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .sec-dots { display: flex; gap: 7px; }
+  .sec-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255,255,255,0.18);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s;
     border: none;
     padding: 0;
   }
-  .ppt-progress .dot:hover { background: rgba(255, 255, 255, 0.6); }
-  .ppt-progress .dot.active {
-    background: var(--rouge);
-    transform: scale(1.4);
+  .sec-dot:hover { background: rgba(255,255,255,0.55); }
+  .sec-dot.active {
+    background: var(--or);
+    transform: scale(1.5);
+    box-shadow: 0 0 0 3px rgba(201, 164, 103, 0.18);
   }
 
-  /* ── Mobile ── */
+  /* ── SECTION MARKER (top center) ── */
+  .section-marker {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gris);
+    background: rgba(255,255,255,0.55);
+    padding: 7px 16px;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--bordure);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s, background 0.4s, color 0.4s;
+    font-weight: 500;
+  }
+  .section-marker.visible { opacity: 1; }
+  .section-marker.dark {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.55);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
-    .slide-content { padding: 30px 18px 110px; }
-    .slide-title h1 { font-size: 36px; }
-    .slide-title .sous-titre { font-size: 15px; }
-    .slide-title .hint { font-size: 11px; margin-top: 40px; }
-    .ppt-arrow { width: 44px; height: 44px; font-size: 18px; }
-    .ppt-arrow.left { left: 10px; }
-    .ppt-arrow.right { right: 10px; }
-    .ppt-progress { padding: 8px 14px; font-size: 12px; gap: 10px; }
-    .ppt-progress .dot { width: 7px; height: 7px; }
+    .slide-cover { padding: 30px 22px; }
+    .cover-mark { font-size: 22px; letter-spacing: 14px; padding-left: 14px; margin-bottom: 22px; }
+    .cover-inner h1 { font-size: 44px; }
+    .cover-subtitle { font-size: 11px; letter-spacing: 3px; margin-bottom: 38px; }
+    .cover-meta { font-size: 11px; gap: 12px; }
+    .cover-meta::before, .cover-meta::after { width: 26px; }
+
+    .slide-section { padding: 30px 22px; }
+    .section-num { font-size: 130px; letter-spacing: -6px; }
+    .slide-section h2 { font-size: 32px; }
+    .section-desc { font-size: 13px; }
+
+    .slide-card { padding: 30px 18px; }
+    .card-title { font-size: 22px; margin-bottom: 30px; }
+    .hanzi-big { font-size: 72px; letter-spacing: 4px; }
+    .hanzi-medium { font-size: 58px; }
+    .hanzi-small { font-size: 44px; }
+    .hanzi-stroke { font-size: 130px; }
+    .pinyin-big { font-size: 22px; }
+    .traduction-big { font-size: 15px; }
+
+    .slide-manuel, .slide-exercices { padding: 50px 18px 110px; }
+    .doc-inner h1 { font-size: 30px; margin-bottom: 28px; }
+    .doc-inner h3 { font-size: 18px; }
+
+    .slide-bilan { padding: 30px 22px; }
+    .slide-bilan h2 { font-size: 32px; margin-bottom: 32px; }
+    .recap-grid { grid-template-columns: 1fr; gap: 12px; }
+    .recap-item { font-size: 14px; padding: 16px 20px; }
+
+    .nav-arrow { width: 40px; height: 40px; font-size: 12px; }
+    .nav-arrow.left { left: 12px; }
+    .nav-arrow.right { right: 12px; }
+    .progress-bar { gap: 12px; padding: 9px 16px; }
+    .progress-bar .bar { width: 110px; }
+    .section-marker { font-size: 9px; padding: 5px 12px; top: 16px; }
+  }
+
+  @media print {
+    html, body { overflow: auto !important; height: auto !important; }
+    .slide {
+      position: relative !important;
+      opacity: 1 !important;
+      transform: none !important;
+      height: auto !important;
+      page-break-after: always;
+    }
+    .nav-arrow, .progress-bar, .section-marker { display: none !important; }
   }
 </style>
 </head>
 <body>
+<div class="deck">
 
-<div class="slides-viewport">
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- SLIDE 0 — TITRE -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide slide-title active">
-  <div class="title-inner">
-    <h1>🇨🇳 Mandarin — Session 2</h1>
-    <div class="sous-titre">Révision · Tons 3&4 · Métiers · XiaoHongShu · Bâtiment · Chiffres & Écriture</div>
-    <div class="badge-big">1 h 30</div>
-    <div class="hint">Utilise <kbd>←</kbd> <kbd>→</kbd> pour naviguer · <kbd>Espace</kbd> pour avancer</div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- BLOC 1 — PINYIN & TONS -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide">
-<div class="slide-content">
-<div class="bloc" id="bloc1">
-  <div class="bloc-header">
-    <div class="bloc-numero">1</div>
-    <div>
-      <div class="bloc-titre">Pinyin & Tons — Révision + tons 3 et 4</div>
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 01 · COVER -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-cover active" data-section="0">
+    <div class="cover-inner">
+      <div class="cover-mark">中 文</div>
+      <h1>Cours de Chinois<br><em>débutant</em></h1>
+      <div class="cover-subtitle">Chiffres · Tons · Famille · XiaoHongShu · Discussions</div>
+      <div class="cover-meta">Session 02 · 1 h 30</div>
+      <div class="cover-hint">Naviguez avec <kbd>←</kbd> <kbd>→</kbd> · <kbd>Espace</kbd> pour avancer</div>
     </div>
-    <div class="bloc-duree">18 min</div>
-  </div>
+  </section>
 
-  <div class="tabs">
-    <div class="tab active" data-bloc="b1" data-key="pres">📽 Présentation</div>
-    <div class="tab" data-bloc="b1" data-key="manuel">📄 Manuel</div>
-    <div class="tab" data-bloc="b1" data-key="exos">✏️ Exercices</div>
-  </div>
-
-  <!-- PRÉSENTATION -->
-  <div class="livrable active" id="b1-pres">
-    <div class="diapositives">
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 1</div>
-        <div class="diapo-titre">Les 4 tons : rappel visuel</div>
-        <div class="hanzi">mā &nbsp; má &nbsp; mǎ &nbsp; mà</div>
-        <div class="pinyin">ton 1 ¯ · ton 2 ´ · ton 3 ˇ · ton 4 `</div>
-        <div class="traduction">maman · chanvre · cheval · gronder</div>
-        <div class="note-formateur">🎙 Dessinez la courbe de chaque ton en l'air avec la main. Ton 1 = plat haut / Ton 2 = monte / Ton 3 = vallée / Ton 4 = chute.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 2</div>
-        <div class="diapo-titre">Révision — Ton 1 : haut et plat</div>
-        <div class="hanzi">你好 &nbsp; 中国</div>
-        <div class="pinyin">nǐ hǎo · Zhōngguó</div>
-        <div class="traduction">bonjour · Chine</div>
-        <div class="note-formateur">🎙 Ton 1 = tenir une note de chant longue et stable. Faites répéter en exagérant.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 3</div>
-        <div class="diapo-titre">Révision — Ton 2 : voix montante</div>
-        <div class="hanzi">吗 &nbsp; 谁</div>
-        <div class="pinyin">ma · shéi</div>
-        <div class="traduction">particule question · qui ?</div>
-        <div class="note-formateur">🎙 Comparez avec le "vraiment ?" français — même montée vocale.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 4</div>
-        <div class="diapo-titre">NOUVEAU — Ton 3 : la vallée</div>
-        <div class="hanzi">你 &nbsp; 我 &nbsp; 好</div>
-        <div class="pinyin">nǐ · wǒ · hǎo</div>
-        <div class="traduction">tu/vous · je/moi · bien</div>
-        <div class="note-formateur">🎙 La voix descend puis remonte. En conversation rapide, il descend sans remonter — c'est normal et correct.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 5</div>
-        <div class="diapo-titre">Astuce ton 3+3 → ton 2+3</div>
-        <div class="hanzi">你好</div>
-        <div class="pinyin">nǐ hǎo → se prononce ní hǎo</div>
-        <div class="traduction">Deux tons 3 qui se suivent : le 1er devient ton 2</div>
-        <div class="note-formateur">🎙 Dites-leur : "vous le faisiez déjà correctement sans le savoir !" C'est rassurant.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 6</div>
-        <div class="diapo-titre">NOUVEAU — Ton 4 : le coup de marteau</div>
-        <div class="hanzi">是 &nbsp; 不 &nbsp; 对 &nbsp; 停</div>
-        <div class="pinyin">shì · bù · duì · tíng</div>
-        <div class="traduction">c'est · non · correct · stop</div>
-        <div class="note-formateur">🎙 Ton 4 = court, sec, descendant. Comme "Non !" dit avec autorité. Idéal sur chantier !</div>
-      </div>
-
-      <div class="diapo" style="grid-column: 1 / -1;">
-        <div class="diapo-num">Diapo 7 — Moment ludique</div>
-        <div class="diapo-titre">🎮 Le chef de chantier crie les ordres</div>
-        <div class="hanzi">对！ &nbsp; 不对！ &nbsp; 停！ &nbsp; 去！</div>
-        <div class="pinyin">Duì! · Bú duì! · Tíng! · Qù!</div>
-        <div class="traduction">Correct ! · Pas correct ! · Stop ! · Vas-y !</div>
-        <div class="note-formateur">🎙 Un apprenant joue le chef. Il dit un mot en pinyin : les autres lèvent la main droite si le ton est bon (duì !), main gauche si faux (bù duì !). Chronométrez 2 minutes.</div>
-      </div>
-
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §1 · CHIFFRES & ÉCRITURE  (anciennement bloc 5) -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="1">
+    <div class="section-inner">
+      <div class="section-num">01</div>
+      <div class="section-label">Section un</div>
+      <h2>Les chiffres 六 à 十</h2>
+      <div class="section-desc">Écriture, codes culturels et premier outil de communication concret</div>
+      <div class="section-rule"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- MANUEL -->
-  <div class="livrable" id="b1-manuel">
-    <div class="manuel">
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 1</div>
+      <h2 class="card-title">Révision express — 一 à 五</h2>
+      <div class="hanzi-big">一 二 三 四 五</div>
+      <div class="pinyin-big">yī · èr · sān · sì · wǔ</div>
+      <div class="traduction-big">1 · 2 · 3 · 4 · 5</div>
+      <div class="note-formateur">🎙 Tour de table à l'oral en 30 secondes. Qui les retient tous ?</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 2</div>
+      <h2 class="card-title">六 — Comment écrire 6</h2>
+      <div class="hanzi-stroke">六</div>
+      <div class="pinyin-big">liù — ton 4</div>
+      <div class="traduction-big">6 · 4 traits</div>
+      <div class="note-formateur">🎙 Ordre des traits : 1. point en haut · 2. trait horizontal · 3. trait gauche descendant · 4. trait droit descendant. Faire écrire 3 fois chacun.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 3</div>
+      <h2 class="card-title">七 — Comment écrire 7</h2>
+      <div class="hanzi-stroke">七</div>
+      <div class="pinyin-big">qī — ton 1</div>
+      <div class="traduction-big">7 · 2 traits</div>
+      <div class="note-formateur">🎙 Ordre des traits : 1. trait horizontal · 2. trait vertical qui traverse. L'un des plus simples ! Ressemble visuellement au chiffre 7 occidental.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 4</div>
+      <h2 class="card-title">八 — Comment écrire 8 ⭐</h2>
+      <div class="hanzi-stroke">八</div>
+      <div class="pinyin-big">bā — ton 1</div>
+      <div class="traduction-big">8 · porte-bonheur · 2 traits</div>
+      <div class="note-formateur">🎙 Ordre des traits : 1. trait gauche (s'écarte vers la gauche) · 2. trait droit (s'écarte vers la droite). Comme deux jambes qui s'écartent. Le chiffre fétiche en Chine.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 5</div>
+      <h2 class="card-title">九 — Comment écrire 9</h2>
+      <div class="hanzi-stroke">九</div>
+      <div class="pinyin-big">jiǔ — ton 3</div>
+      <div class="traduction-big">9 · 2 traits</div>
+      <div class="note-formateur">🎙 Ordre des traits : 1. trait courbé de gauche à droite · 2. crochet vers le bas. Symbole de longévité (homonyme de 久 = longtemps).</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 6</div>
+      <h2 class="card-title">十 — Comment écrire 10</h2>
+      <div class="hanzi-stroke">十</div>
+      <div class="pinyin-big">shí — ton 2</div>
+      <div class="traduction-big">10 · 2 traits</div>
+      <div class="note-formateur">🎙 Ordre des traits : 1. trait horizontal · 2. trait vertical. C'est une croix ! Le plus simple de tous. Rassurant pour finir la série.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 7</div>
+      <h2 class="card-title">Code culturel — Les chiffres porte-bonheur</h2>
+      <div class="hanzi-big">八 &nbsp; 六 &nbsp; 九</div>
+      <div class="pinyin-big">bā · liù · jiǔ</div>
+      <div class="traduction-big">8 (richesse) · 6 (fluidité) · 9 (longévité)</div>
+      <div class="note-formateur">🎙 En Chine, ces 3 chiffres dans un numéro de téléphone, une adresse ou une chambre d'hôtel = valeur ajoutée. Vrai pour les affaires aussi : proposer un prix qui finit en 8 est bien vu.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 8</div>
+      <h2 class="card-title">Le chiffre à éviter — 四</h2>
+      <div class="hanzi-stroke">四</div>
+      <div class="pinyin-big">sì — ressemble à 死 (sǐ = mort)</div>
+      <div class="traduction-big">4 · chiffre néfaste en Chine</div>
+      <div class="note-formateur">🎙 Beaucoup d'immeubles en Chine n'ont pas de 4ème étage. Dans une négociation, évitez les prix ou quantités contenant 4. À l'inverse, les chiffres en 8 sont favorables.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner">
+      <div class="card-meta">Section 01 · Diapo 9 · Défi final</div>
+      <h2 class="card-title">🎮 Qui écrit les 10 chiffres le plus vite ?</h2>
+      <div class="hanzi-big">一 二 三 四 五 六 七 八 九 十</div>
+      <div class="pinyin-big">yī èr sān sì wǔ liù qī bā jiǔ shí</div>
+      <div class="traduction-big">1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 · 9 · 10</div>
+      <div class="note-formateur">🎙 Chacun écrit les 10 chiffres de mémoire sur une feuille. Chronométrez. Comparez les résultats. Correction collective à l'écran.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-manuel" data-section="1">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 01 · Manuel</div>
+      <h1>Chiffres 六 à 十 — Mémo</h1>
+
+      <h3>Guide d'écriture</h3>
+      <table class="vocab-table">
+        <tr><th>Caractère</th><th>Pinyin</th><th>Chiffre</th><th>Traits</th><th>Astuce mémoire</th></tr>
+        <tr><td class="td-hanzi">六</td><td class="td-pinyin">liù</td><td>6</td><td>4</td><td>Un chapeau pointu avec deux jambes</td></tr>
+        <tr><td class="td-hanzi">七</td><td class="td-pinyin">qī</td><td>7</td><td>2</td><td>Ressemble au 7 occidental coupé</td></tr>
+        <tr><td class="td-hanzi">八</td><td class="td-pinyin">bā</td><td>8</td><td>2</td><td>Deux traits qui s'écartent ⭐</td></tr>
+        <tr><td class="td-hanzi">九</td><td class="td-pinyin">jiǔ</td><td>9</td><td>2</td><td>Un crochet courbé</td></tr>
+        <tr><td class="td-hanzi">十</td><td class="td-pinyin">shí</td><td>10</td><td>2</td><td>Une croix +</td></tr>
+      </table>
+
+      <h3>Les chiffres porte-bonheur (et à éviter)</h3>
+      <div class="regle">⭐ Favorables : 八 (8) = richesse · 六 (6) = chance et fluidité · 九 (9) = longévité</div>
+      <div class="memo">⚠️ À éviter : 四 (4) — se prononce comme 死 (mort). Beaucoup d'immeubles n'ont pas de 4ème étage.</div>
+
+      <h3>Application concrète pour vos affaires</h3>
+      <p>En négociation, en restaurant, pour un cadeau ou un prix : évitez les montants contenant le chiffre 4. À l'inverse, proposer un montant qui se termine en 8 (188, 288, 888…) est un geste de bonne volonté culturelle toujours bien reçu.</p>
+
+      <h3>Récapitulatif des 10 chiffres</h3>
+      <table class="vocab-table">
+        <tr><th>Chinois</th><th>Pinyin</th><th>Chiffre</th></tr>
+        <tr><td class="td-hanzi">一</td><td class="td-pinyin">yī</td><td>1</td></tr>
+        <tr><td class="td-hanzi">二</td><td class="td-pinyin">èr</td><td>2</td></tr>
+        <tr><td class="td-hanzi">三</td><td class="td-pinyin">sān</td><td>3</td></tr>
+        <tr><td class="td-hanzi">四</td><td class="td-pinyin">sì</td><td>4 ⚠️</td></tr>
+        <tr><td class="td-hanzi">五</td><td class="td-pinyin">wǔ</td><td>5</td></tr>
+        <tr><td class="td-hanzi">六</td><td class="td-pinyin">liù</td><td>6 ⭐</td></tr>
+        <tr><td class="td-hanzi">七</td><td class="td-pinyin">qī</td><td>7</td></tr>
+        <tr><td class="td-hanzi">八</td><td class="td-pinyin">bā</td><td>8 ⭐⭐</td></tr>
+        <tr><td class="td-hanzi">九</td><td class="td-pinyin">jiǔ</td><td>9 ⭐</td></tr>
+        <tr><td class="td-hanzi">十</td><td class="td-pinyin">shí</td><td>10</td></tr>
+      </table>
+
+      <div class="notes-perso">Zone d'écriture — refais les caractères ici :<br><br><br></div>
+    </div>
+  </section>
+
+  <section class="slide slide-exercices" data-section="1">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 01 · Exercices</div>
+      <h1>Exercices — Chiffres</h1>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 1 — Codes culturels</div>
+        <div class="exercice-body">
+          <p>Vrai (V) ou Faux (F) ?</p>
+          <p>1. 八 (bā) est un chiffre porte-malheur en Chine. &nbsp;&nbsp; V / F<br>
+          2. Il vaut mieux éviter le chiffre 四 dans les affaires. &nbsp;&nbsp; V / F<br>
+          3. 九 (jiǔ) ressemble phonétiquement au mot "longtemps". &nbsp;&nbsp; V / F<br>
+          4. Pour un prix de vente, finir en 8 est mauvais signe. &nbsp;&nbsp; V / F</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Remise en ordre</span> Exercice 2 — Mets dans l'ordre croissant</div>
+        <div class="exercice-body">
+          <p>Remets ces chiffres dans l'ordre croissant :</p>
+          <p>九 · 六 · 十 · 七 · 八</p>
+          <p>Ordre : ___ · ___ · ___ · ___ · ___</p>
+          <p><em>(Écris aussi leur pinyin)</em></p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — La négociation au marché (2 joueurs)</div>
+        <div class="exercice-body">
+          <p><span class="role">Rôle A — Client français :</span> Tu veux acheter un produit. Tu proposes un prix entre 6 et 10 yuans en disant : 我要这个，___ 块？ <em>(je veux ceci, ___ yuans ?)</em></p>
+          <p><span class="role">Rôle B — Vendeur chinois :</span> Si le chiffre contient un 4, tu fais la grimace et tu proposes un autre chiffre en 8. Si c'est bon, tu dis 好的！(Hǎo de! = D'accord !)</p>
+          <p><em>Rejouez 3 fois avec des chiffres différents.</em></p>
+        </div>
+      </div>
+
+      <div class="corrige">
+        <h4>✅ Corrigé</h4>
+        <p><strong>Ex. 1 :</strong> 1. F (porte-bonheur) · 2. V · 3. V · 4. F (c'est un bon signe)</p>
+        <p><strong>Ex. 2 :</strong> 六 liù · 七 qī · 八 bā · 九 jiǔ · 十 shí</p>
+        <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier que les chiffres sont bien prononcés avec les bons tons.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §2 · PINYIN & TONS  (anciennement bloc 1) -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="2">
+    <div class="section-inner">
+      <div class="section-num">02</div>
+      <div class="section-label">Section deux</div>
+      <h2>Pinyin &amp; Tons</h2>
+      <div class="section-desc">Les 4 tons du mandarin — la mélodie qui change tout</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 1</div>
+      <h2 class="card-title">Les 4 tons — rappel visuel</h2>
+      <div class="hanzi-medium">mā &nbsp; má &nbsp; mǎ &nbsp; mà</div>
+      <div class="pinyin-big">ton 1 ¯ · ton 2 ´ · ton 3 ˇ · ton 4 `</div>
+      <div class="traduction-big">maman · chanvre · cheval · gronder</div>
+      <div class="note-formateur">🎙 Dessinez la courbe de chaque ton en l'air avec la main. Ton 1 = plat haut · Ton 2 = monte · Ton 3 = vallée · Ton 4 = chute.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 2</div>
+      <h2 class="card-title">Révision — Ton 1 : haut et plat</h2>
+      <div class="hanzi-big">你好 &nbsp; 中国</div>
+      <div class="pinyin-big">nǐ hǎo · Zhōngguó</div>
+      <div class="traduction-big">bonjour · Chine</div>
+      <div class="note-formateur">🎙 Ton 1 = tenir une note de chant longue et stable. Faites répéter en exagérant.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 3</div>
+      <h2 class="card-title">Révision — Ton 2 : voix montante</h2>
+      <div class="hanzi-big">吗 &nbsp; 谁</div>
+      <div class="pinyin-big">ma · shéi</div>
+      <div class="traduction-big">particule question · qui ?</div>
+      <div class="note-formateur">🎙 Comparez avec le « vraiment ? » français — même montée vocale.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 4</div>
+      <h2 class="card-title">Nouveau — Ton 3 : la vallée</h2>
+      <div class="hanzi-big">你 &nbsp; 我 &nbsp; 好</div>
+      <div class="pinyin-big">nǐ · wǒ · hǎo</div>
+      <div class="traduction-big">tu/vous · je/moi · bien</div>
+      <div class="note-formateur">🎙 La voix descend puis remonte. En conversation rapide, il descend sans remonter — c'est normal et correct.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 5</div>
+      <h2 class="card-title">Astuce ton 3+3 → ton 2+3</h2>
+      <div class="hanzi-big">你好</div>
+      <div class="pinyin-big">nǐ hǎo → se prononce ní hǎo</div>
+      <div class="traduction-big">Deux tons 3 qui se suivent : le 1<sup>er</sup> devient ton 2</div>
+      <div class="note-formateur">🎙 Dites-leur : « vous le faisiez déjà correctement sans le savoir ! » C'est rassurant.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 6</div>
+      <h2 class="card-title">Nouveau — Ton 4 : le coup de marteau</h2>
+      <div class="hanzi-big">是 &nbsp; 不 &nbsp; 对 &nbsp; 停</div>
+      <div class="pinyin-big">shì · bù · duì · tíng</div>
+      <div class="traduction-big">c'est · non · correct · stop</div>
+      <div class="note-formateur">🎙 Ton 4 = court, sec, descendant. Comme « Non ! » dit avec autorité.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner">
+      <div class="card-meta">Section 02 · Diapo 7 · Moment ludique</div>
+      <h2 class="card-title">🎮 Le coach prononciation</h2>
+      <div class="hanzi-big">对！ &nbsp; 不对！ &nbsp; 停！ &nbsp; 去！</div>
+      <div class="pinyin-big">Duì! · Bú duì! · Tíng! · Qù!</div>
+      <div class="traduction-big">Correct ! · Pas correct ! · Stop ! · Vas-y !</div>
+      <div class="note-formateur">🎙 Un apprenant joue le coach. Il dit un mot en pinyin : les autres lèvent la main droite si le ton est bon (duì !), main gauche si faux (bù duì !). Chronométrez 2 minutes.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-manuel" data-section="2">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 02 · Manuel</div>
+      <h1>Pinyin &amp; Tons — Mémo</h1>
+
       <h3>Ce qu'on révise</h3>
       <p><strong>Ton 1 ¯</strong> : haut et plat → <em>mā</em> (maman)<br>
       <strong>Ton 2 ´</strong> : montant → <em>má</em> (chanvre)</p>
@@ -580,177 +1044,161 @@
       </table>
 
       <div class="regle">⚡ Règle rapide : Ton 3 + Ton 3 → le premier devient Ton 2. C'est pour ça que 你好 se prononce <em>ní hǎo</em>.</div>
-      <div class="memo">🧱 Vocabulaire chantier utile — Ton 4 (ordres) : 对 duì (correct) · 不对 bú duì (faux) · 停 tíng (stop) · 去 qù (vas-y)</div>
+      <div class="memo">🎯 Vocabulaire utile — Ton 4 (réactions courtes) : 对 duì (correct) · 不对 bú duì (faux) · 停 tíng (stop) · 去 qù (vas-y)</div>
 
       <h3>Tableau récapitulatif des 4 tons</h3>
       <table class="vocab-table">
         <tr><th>Ton</th><th>Signe</th><th>Exemple</th><th>Image mentale</th></tr>
         <tr><td>1</td><td>¯</td><td>mā</td><td>Chanter une longue note</td></tr>
-        <tr><td>2</td><td>´</td><td>má</td><td>"Vraiment ?"</td></tr>
-        <tr><td>3</td><td>ˇ</td><td>mǎ</td><td>Hésiter : "euh..."</td></tr>
-        <tr><td>4</td><td>`</td><td>mà</td><td>Coup de marteau / "Non !"</td></tr>
+        <tr><td>2</td><td>´</td><td>má</td><td>« Vraiment ? »</td></tr>
+        <tr><td>3</td><td>ˇ</td><td>mǎ</td><td>Hésiter : « euh… »</td></tr>
+        <tr><td>4</td><td>`</td><td>mà</td><td>Coup de marteau / « Non ! »</td></tr>
       </table>
 
       <div class="notes-perso">Mes notes : _______________________________________________</div>
     </div>
-  </div>
+  </section>
 
-  <!-- EXERCICES -->
-  <div class="livrable" id="b1-exos">
+  <section class="slide slide-exercices" data-section="2">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 02 · Exercices</div>
+      <h1>Exercices — Pinyin &amp; Tons</h1>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Relie le ton à sa description</div>
-      <div class="exercice-body">
-        <p>Trace une ligne entre chaque ton et sa description :</p>
-        <p>Ton 1 ( ¯ ) &nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp; La voix chute brutalement<br>
-        Ton 2 ( ´ ) &nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp; La voix reste haute et plate<br>
-        Ton 3 ( ˇ ) &nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp; La voix monte<br>
-        Ton 4 ( ` ) &nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp; La voix descend puis remonte</p>
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Relie le ton à sa description</div>
+        <div class="exercice-body">
+          <p>Trace une ligne entre chaque ton et sa description :</p>
+          <p>Ton 1 ( ¯ ) &nbsp;&nbsp; • &nbsp;&nbsp; La voix chute brutalement<br>
+          Ton 2 ( ´ ) &nbsp;&nbsp; • &nbsp;&nbsp; La voix reste haute et plate<br>
+          Ton 3 ( ˇ ) &nbsp;&nbsp; • &nbsp;&nbsp; La voix monte<br>
+          Ton 4 ( ` ) &nbsp;&nbsp; • &nbsp;&nbsp; La voix descend puis remonte</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 2 — Le coach prononciation</div>
+        <div class="exercice-body">
+          <p>Complète avec : <strong>duì / bú duì / tíng / qù</strong></p>
+          <p>Le coach observe ses élèves :<br>
+          — Une réponse parfaite : « ________ ! » <em>(c'est bien)</em><br>
+          — Une erreur : « ________ ! » <em>(c'est faux)</em><br>
+          — Quelqu'un parle trop vite : « ________ ! » <em>(arrête !)</em><br>
+          — On enchaîne : « ________ ! » <em>(vas-y)</em></p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Contrôle qualité (2 joueurs)</div>
+        <div class="exercice-body">
+          <p><span class="role">Rôle A — Coach :</span> Dis ces mots à voix haute en essayant le bon ton : <strong>mā · nǐ · shì · hǎo · qù</strong></p>
+          <p><span class="role">Rôle B — Assistant :</span> Main droite levée si le ton est correct (duì !), main gauche si faux (bù duì !).</p>
+          <p>Puis inversez les rôles.</p>
+        </div>
+      </div>
+
+      <div class="corrige">
+        <h4>✅ Corrigé</h4>
+        <p><strong>Ex. 1 :</strong> Ton 1 → plate · Ton 2 → monte · Ton 3 → vallée · Ton 4 → chute</p>
+        <p><strong>Ex. 2 :</strong> duì · bú duì · tíng · qù</p>
+        <p><strong>Ex. 3 :</strong> mā = ton 1 ✓ · nǐ = ton 3 ✓ · shì = ton 4 ✓ · hǎo = ton 3 ✓ · qù = ton 4 ✓</p>
       </div>
     </div>
+  </section>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 2 — Le chef de chantier</div>
-      <div class="exercice-body">
-        <p>Complète avec : <strong>duì / bú duì / tíng / qù</strong></p>
-        <p>M. Chen inspecte le chantier :<br>
-        — Il voit un mur droit et dit : « ________ ! » <em>(c'est bien)</em><br>
-        — Il voit une erreur et crie : « ________ ! » <em>(c'est faux)</em><br>
-        — Une grue s'approche, il hurle : « ________ ! » <em>(arrête !)</em><br>
-        — Il envoie un ouvrier chercher du ciment : « ________ ! » <em>(vas-y)</em></p>
-      </div>
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §3 · SE PRÉSENTER  (anciennement bloc 2) -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="3">
+    <div class="section-inner">
+      <div class="section-num">03</div>
+      <div class="section-label">Section trois</div>
+      <h2>Se présenter</h2>
+      <div class="section-desc">Métier, famille, équipe — premières phrases qui ouvrent toutes les portes</div>
+      <div class="section-rule"></div>
     </div>
+  </section>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Contrôle qualité (2 joueurs)</div>
-      <div class="exercice-body">
-        <p><span class="role">Rôle A — Chef de chantier :</span> Dis ces mots à voix haute en essayant le bon ton : <strong>mā · nǐ · shì · hǎo · qù</strong></p>
-        <p><span class="role">Rôle B — Assistant :</span> Main droite levée si le ton est correct (duì !), main gauche si faux (bù duì !).</p>
-        <p>Puis inversez les rôles.</p>
-      </div>
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner">
+      <div class="card-meta">Section 03 · Diapo 1</div>
+      <h2 class="card-title">Révision express — Ce qu'on sait</h2>
+      <div class="hanzi-big">我叫___。我是法国人。</div>
+      <div class="pinyin-big">Wǒ jiào ___. Wǒ shì Fǎguó rén.</div>
+      <div class="traduction-big">Je m'appelle ___. Je suis français(e).</div>
+      <div class="note-formateur">🎙 Tour de table : chacun dit ses deux phrases. 1 minute chrono.</div>
     </div>
+  </section>
 
-    <div class="corrige">
-      <h4>✅ Corrigé</h4>
-      <p><strong>Ex. 1 :</strong> Ton 1 → plate · Ton 2 → monte · Ton 3 → vallée · Ton 4 → chute</p>
-      <p><strong>Ex. 2 :</strong> duì · bú duì · tíng · qù</p>
-      <p><strong>Ex. 3 :</strong> mā = ton 1 ✓ · nǐ = ton 3 ✓ · shì = ton 4 ✓ · hǎo = ton 3 ✓ · qù = ton 4 ✓</p>
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner">
+      <div class="card-meta">Section 03 · Diapo 2</div>
+      <h2 class="card-title">Dire son métier</h2>
+      <div class="hanzi-big">我是___。</div>
+      <div class="pinyin-big">Wǒ shì ___.</div>
+      <div class="traduction-big">Je suis [métier]. — Pas d'article en mandarin !</div>
+      <div class="note-formateur">🎙 Insistez : pas « un » ou « une ». C'est plus simple qu'en français.</div>
     </div>
+  </section>
 
-  </div>
-</div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- BLOC 2 — SE PRÉSENTER -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide">
-<div class="slide-content">
-<div class="bloc" id="bloc2">
-  <div class="bloc-header">
-    <div class="bloc-numero">2</div>
-    <div>
-      <div class="bloc-titre">Se présenter — Mon métier, ma famille, chiffres 6–10</div>
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner">
+      <div class="card-meta">Section 03 · Diapo 3</div>
+      <h2 class="card-title">Quelques métiers</h2>
+      <div class="hanzi-big">老师 &nbsp; 医生 &nbsp; 老板</div>
+      <div class="pinyin-big">lǎoshī · yīshēng · lǎobǎn</div>
+      <div class="traduction-big">professeur · médecin · patron / chef</div>
+      <div class="note-formateur">🎙 Chacun choisit le mot qui correspond à son vrai métier (ou à un métier rêvé). 老板 (lǎobǎn) est ULTRA utilisé : c'est aussi le mot qu'on lance au serveur ou au commerçant pour l'appeler poliment.</div>
     </div>
-    <div class="bloc-duree">18 min</div>
-  </div>
+  </section>
 
-  <div class="tabs">
-    <div class="tab active" data-bloc="b2" data-key="pres">📽 Présentation</div>
-    <div class="tab" data-bloc="b2" data-key="manuel">📄 Manuel</div>
-    <div class="tab" data-bloc="b2" data-key="exos">✏️ Exercices</div>
-  </div>
-
-  <div class="livrable active" id="b2-pres">
-    <div class="diapositives">
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 1</div>
-        <div class="diapo-titre">Révision express — Ce qu'on sait</div>
-        <div class="hanzi">我叫___。我是法国人。</div>
-        <div class="pinyin">Wǒ jiào ___. Wǒ shì Fǎguó rén.</div>
-        <div class="traduction">Je m'appelle ___. Je suis français(e).</div>
-        <div class="note-formateur">🎙 Tour de table : chacun dit ses deux phrases. 1 minute chrono.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 2</div>
-        <div class="diapo-titre">Dire son métier</div>
-        <div class="hanzi">我是___。</div>
-        <div class="pinyin">Wǒ shì ___.</div>
-        <div class="traduction">Je suis [métier]. — Pas d'article en mandarin !</div>
-        <div class="note-formateur">🎙 Insistez : pas "un" ou "une". C'est plus simple qu'en français.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 3</div>
-        <div class="diapo-titre">Les métiers du bâtiment</div>
-        <div class="hanzi">工人 &nbsp; 电工 &nbsp; 老板</div>
-        <div class="pinyin">gōngrén · diàngōng · lǎobǎn</div>
-        <div class="traduction">ouvrier · électricien · patron/chef</div>
-        <div class="note-formateur">🎙 Chaque membre de la famille pointe son mot. Moment de complicité.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 4</div>
-        <div class="diapo-titre">La famille — Aîné vs cadet</div>
-        <div class="hanzi">爸爸 &nbsp; 妈妈 &nbsp; 哥哥 &nbsp; 弟弟</div>
-        <div class="pinyin">bàba · māma · gēgē · dìdi</div>
-        <div class="traduction">papa · maman · grand frère · petit frère</div>
-        <div class="note-formateur">🎙 En Chine, pas de mot neutre pour "frère". L'aîné et le cadet ont des mots différents — signe du respect de la hiérarchie.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 5</div>
-        <div class="diapo-titre">Présenter quelqu'un</div>
-        <div class="hanzi">这是我爸爸。他是老板。</div>
-        <div class="pinyin">Zhè shì wǒ bàba. Tā shì lǎobǎn.</div>
-        <div class="traduction">Voici mon papa. Il est patron.</div>
-        <div class="note-formateur">🎙 这是 (zhè shì) = voici / c'est. Structure ultra-réutilisable.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 6</div>
-        <div class="diapo-titre">Chiffres 6, 7, 8</div>
-        <div class="hanzi">六 &nbsp; 七 &nbsp; 八</div>
-        <div class="pinyin">liù · qī · bā</div>
-        <div class="traduction">6 · 7 · 8 ⭐</div>
-        <div class="note-formateur">🎙 八 (bā) = chiffre porte-bonheur ! Les numéros contenant 8 se vendent plus cher en Chine.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 7</div>
-        <div class="diapo-titre">Chiffres 9 et 10</div>
-        <div class="hanzi">九 &nbsp; 十</div>
-        <div class="pinyin">jiǔ · shí</div>
-        <div class="traduction">9 · 10</div>
-        <div class="note-formateur">🎙 九 (jiǔ) ressemble à 久 (longtemps) — symbole de longévité. 十 (shí) ressemble à une croix +.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 8</div>
-        <div class="diapo-titre">Notre équipe en chiffres</div>
-        <div class="hanzi">我们有八个工人。</div>
-        <div class="pinyin">Wǒmen yǒu bā gè gōngrén.</div>
-        <div class="traduction">Nous avons 8 ouvriers.</div>
-        <div class="note-formateur">🎙 个 (gè) = classificateur pour les personnes. On l'utilisera souvent. Retenez juste que ça s'intercale entre le chiffre et le nom.</div>
-      </div>
-
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner">
+      <div class="card-meta">Section 03 · Diapo 4</div>
+      <h2 class="card-title">La famille — Aîné vs cadet</h2>
+      <div class="hanzi-big">爸爸 &nbsp; 妈妈 &nbsp; 哥哥 &nbsp; 弟弟</div>
+      <div class="pinyin-big">bàba · māma · gēgē · dìdi</div>
+      <div class="traduction-big">papa · maman · grand frère · petit frère</div>
+      <div class="note-formateur">🎙 En Chine, pas de mot neutre pour « frère ». L'aîné et le cadet ont des mots différents — signe du respect de la hiérarchie.</div>
     </div>
-  </div>
+  </section>
 
-  <div class="livrable" id="b2-manuel">
-    <div class="manuel">
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner">
+      <div class="card-meta">Section 03 · Diapo 5</div>
+      <h2 class="card-title">Présenter quelqu'un</h2>
+      <div class="hanzi-big">这是我爸爸。他是老板。</div>
+      <div class="pinyin-big">Zhè shì wǒ bàba. Tā shì lǎobǎn.</div>
+      <div class="traduction-big">Voici mon papa. Il est patron.</div>
+      <div class="note-formateur">🎙 这是 (zhè shì) = voici / c'est. Structure ultra-réutilisable : ça marche aussi pour présenter un collègue, une ville, un produit.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner">
+      <div class="card-meta">Section 03 · Diapo 6</div>
+      <h2 class="card-title">Notre équipe en chiffres</h2>
+      <div class="hanzi-big">我们有八个人。</div>
+      <div class="pinyin-big">Wǒmen yǒu bā gè rén.</div>
+      <div class="traduction-big">Nous sommes 8 personnes.</div>
+      <div class="note-formateur">🎙 个 (gè) = classificateur pour les personnes. On l'utilisera souvent. Retenez juste que ça s'intercale entre le chiffre et le nom : 八 + 个 + 人.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-manuel" data-section="3">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 03 · Manuel</div>
+      <h1>Se présenter — Mémo</h1>
+
       <h3>Structure de base</h3>
       <div class="regle">我是 (Wǒ shì) + métier = Je suis [métier] — sans article, sans accord.</div>
 
-      <h3>Métiers du bâtiment</h3>
+      <h3>Quelques métiers</h3>
       <table class="vocab-table">
         <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">工人</td><td class="td-pinyin">gōngrén</td><td>ouvrier</td></tr>
-        <tr><td class="td-hanzi">电工</td><td class="td-pinyin">diàngōng</td><td>électricien</td></tr>
+        <tr><td class="td-hanzi">老师</td><td class="td-pinyin">lǎoshī</td><td>professeur</td></tr>
+        <tr><td class="td-hanzi">医生</td><td class="td-pinyin">yīshēng</td><td>médecin</td></tr>
         <tr><td class="td-hanzi">老板</td><td class="td-pinyin">lǎobǎn</td><td>patron / chef</td></tr>
+        <tr><td class="td-hanzi">学生</td><td class="td-pinyin">xuéshēng</td><td>étudiant</td></tr>
         <tr><td class="td-hanzi">工程师</td><td class="td-pinyin">gōngchéngshī</td><td>ingénieur</td></tr>
       </table>
 
@@ -765,168 +1213,162 @@
         <tr><td class="td-hanzi">妹妹</td><td class="td-pinyin">mèimei</td><td>petite sœur</td></tr>
       </table>
 
-      <div class="memo">📖 Mémo culturel : en Chine, il n'existe pas de mot neutre pour "frère" ou "sœur". L'aîné et le cadet ont toujours des mots différents — reflet direct du respect de la hiérarchie familiale.</div>
-
-      <h3>Chiffres 6 à 10</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Chiffre</th></tr>
-        <tr><td class="td-hanzi">六</td><td class="td-pinyin">liù</td><td>6</td></tr>
-        <tr><td class="td-hanzi">七</td><td class="td-pinyin">qī</td><td>7</td></tr>
-        <tr><td class="td-hanzi">八</td><td class="td-pinyin">bā</td><td>8 ⭐ porte-bonheur</td></tr>
-        <tr><td class="td-hanzi">九</td><td class="td-pinyin">jiǔ</td><td>9</td></tr>
-        <tr><td class="td-hanzi">十</td><td class="td-pinyin">shí</td><td>10</td></tr>
-      </table>
+      <div class="memo">📖 Mémo culturel : en Chine, pas de mot neutre pour « frère » ou « sœur ». L'aîné et le cadet ont toujours des mots différents — reflet direct du respect de la hiérarchie familiale.</div>
 
       <h3>Modèle de présentation complète</h3>
       <div class="regle">
-        我叫___。我是___。我们有___个工人。<br>
-        <em>Wǒ jiào ___. Wǒ shì ___. Wǒmen yǒu ___ gè gōngrén.</em><br>
-        Je m'appelle ___. Je suis ___. Nous avons ___ ouvriers.
+        我叫___。我是___。我们有___个人。<br>
+        <em>Wǒ jiào ___. Wǒ shì ___. Wǒmen yǒu ___ gè rén.</em><br>
+        Je m'appelle ___. Je suis ___. Nous sommes ___ personnes.
       </div>
       <div class="notes-perso">Mes notes : _______________________________________________</div>
     </div>
-  </div>
+  </section>
 
-  <div class="livrable" id="b2-exos">
+  <section class="slide slide-exercices" data-section="3">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 03 · Exercices</div>
+      <h1>Exercices — Se présenter</h1>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 1 — L'entreprise familiale</div>
-      <div class="exercice-body">
-        <p>Dis si ces phrases sont vraies (V) ou fausses (F) selon ce que tu sais :</p>
-        <p>1. 我是老板 (Wǒ shì lǎobǎn) veut dire "je suis ouvrier". &nbsp; V / F<br>
-        2. 爸爸 (bàba) veut dire "maman". &nbsp; V / F<br>
-        3. En mandarin, on dit "我是工人", pas "我是一个工人". &nbsp; V / F<br>
-        4. 八 (bā) est le chiffre porte-bonheur en Chine. &nbsp; V / F</p>
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 1 — Présentation familiale</div>
+        <div class="exercice-body">
+          <p>Dis si ces phrases sont vraies (V) ou fausses (F) :</p>
+          <p>1. 我是老板 (Wǒ shì lǎobǎn) veut dire « je suis ouvrier ». &nbsp; V / F<br>
+          2. 爸爸 (bàba) veut dire « maman ». &nbsp; V / F<br>
+          3. En mandarin, on dit « 我是老师 », pas « 我是一个老师 ». &nbsp; V / F<br>
+          4. 八 (bā) est le chiffre porte-bonheur en Chine. &nbsp; V / F</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Mini-traduction</span> Exercice 2 — Présente ton équipe</div>
+        <div class="exercice-body">
+          <p>Traduis en mandarin (écris le pinyin) :</p>
+          <p>1. Je m'appelle Marc. Je suis patron.<br>
+          2. Voici mon papa. Il est médecin.<br>
+          3. Nous sommes six personnes.</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Première rencontre (2 joueurs)</div>
+        <div class="exercice-body">
+          <p><span class="role">Rôle A — Le Français :</span> Tu arrives à un événement business en Chine. Présente-toi : ton prénom, ton métier, et le nombre de personnes dans ton équipe.</p>
+          <p><span class="role">Rôle B — Le contact chinois :</span> Tu écoutes et tu répètes le prénom pour confirmer : « ___，对吗？» (___, duì ma ? = ___, c'est bien ça ?)</p>
+          <p>Inversez les rôles.</p>
+        </div>
+      </div>
+
+      <div class="corrige">
+        <h4>✅ Corrigé</h4>
+        <p><strong>Ex. 1 :</strong> 1. F (patron) · 2. F (papa) · 3. V · 4. V</p>
+        <p><strong>Ex. 2 :</strong><br>
+        1. Wǒ jiào Mǎkè. Wǒ shì lǎobǎn.<br>
+        2. Zhè shì wǒ bàba. Tā shì yīshēng.<br>
+        3. Wǒmen yǒu liù gè rén.</p>
+        <p><strong>Ex. 3 :</strong> Jeu de rôle — correction orale entre apprenants.</p>
       </div>
     </div>
+  </section>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Mini-traduction</span> Exercice 2 — Présente ton entreprise</div>
-      <div class="exercice-body">
-        <p>Traduis en mandarin (écris le pinyin) :</p>
-        <p>1. Je m'appelle Marc. Je suis patron.<br>
-        2. Voici mon papa. Il est électricien.<br>
-        3. Nous avons six ouvriers.</p>
-      </div>
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §4 · COMMUNIQUER EN CHINE — XIAOHONGSHU  (anciennement bloc 3) -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="4">
+    <div class="section-inner">
+      <div class="section-num">04</div>
+      <div class="section-label">Section quatre</div>
+      <h2>Communiquer en Chine</h2>
+      <div class="section-desc">XiaoHongShu, l'app pour découvrir la Chine actuelle — voyages, business, gastronomie</div>
+      <div class="section-rule"></div>
     </div>
+  </section>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Présentation sur le chantier (2 joueurs)</div>
-      <div class="exercice-body">
-        <p><span class="role">Rôle A — Le Français :</span> Tu arrives sur un chantier en Chine. Présente-toi : ton prénom, ton métier, et le nombre de personnes dans ton équipe (invente si besoin).</p>
-        <p><span class="role">Rôle B — Le client chinois :</span> Tu écoutes et tu répètes le prénom pour confirmer que tu as bien entendu : "___，对吗？" (___,duì ma ? = ___, c'est bien ça ?)</p>
-        <p>Inversez les rôles.</p>
-      </div>
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 1</div>
+      <h2 class="card-title">C'est quoi XiaoHongShu ?</h2>
+      <div class="hanzi-big">小红书</div>
+      <div class="pinyin-big">Xiǎo Hóng Shū</div>
+      <div class="traduction-big">Le « Petit Livre Rouge » — réseau social / moteur de recherche chinois</div>
+      <div class="note-formateur">🎙 Traduire littéralement : 小 = petit · 红 = rouge · 书 = livre. C'est le Pinterest + TikTok chinois. Très utilisé pour chercher tutoriels, produits, lieux.</div>
     </div>
+  </section>
 
-    <div class="corrige">
-      <h4>✅ Corrigé</h4>
-      <p><strong>Ex. 1 :</strong> 1. F (patron) · 2. F (papa) · 3. V · 4. V</p>
-      <p><strong>Ex. 2 :</strong><br>
-      1. Wǒ jiào Mǎkè. Wǒ shì lǎobǎn.<br>
-      2. Zhè shì wǒ bàba. Tā shì diàngōng.<br>
-      3. Wǒmen yǒu liù gè gōngrén.</p>
-      <p><strong>Ex. 3 :</strong> Jeu de rôle — correction orale entre apprenants.</p>
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 2</div>
+      <h2 class="card-title">Pourquoi c'est utile pour vous ?</h2>
+      <div class="hanzi-big">旅游攻略 &nbsp; 生意机会</div>
+      <div class="pinyin-big">lǚyóu gōnglüè · shēngyì jīhuì</div>
+      <div class="traduction-big">guides de voyage · opportunités business</div>
+      <div class="note-formateur">🎙 Tendances, fournisseurs, bonnes adresses, guides de villes, avis clients… Gratuit, sans VPN, accessible depuis la France avec l'app.</div>
     </div>
+  </section>
 
-  </div>
-</div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- BLOC 3 — XIAOHONGSHU -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide">
-<div class="slide-content">
-<div class="bloc" id="bloc3">
-  <div class="bloc-header">
-    <div class="bloc-numero">3</div>
-    <div>
-      <div class="bloc-titre">Communiquer en Chine — XiaoHongShu & recherches en ligne</div>
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 3</div>
+      <h2 class="card-title">Comment chercher — Mots-clés utiles</h2>
+      <div class="hanzi-big">公司 &nbsp; 旅游 &nbsp; 美食</div>
+      <div class="pinyin-big">gōngsī · lǚyóu · měishí</div>
+      <div class="traduction-big">entreprise · voyage · gastronomie</div>
+      <div class="note-formateur">🎙 Trois thèmes très recherchés sur XiaoHongShu. Faites taper un mot au choix sur téléphone et regardez les résultats — les images parlent d'elles-mêmes.</div>
     </div>
-    <div class="bloc-duree">18 min</div>
-  </div>
+  </section>
 
-  <div class="tabs">
-    <div class="tab active" data-bloc="b3" data-key="pres">📽 Présentation</div>
-    <div class="tab" data-bloc="b3" data-key="manuel">📄 Manuel</div>
-    <div class="tab" data-bloc="b3" data-key="exos">✏️ Exercices</div>
-  </div>
-
-  <div class="livrable active" id="b3-pres">
-    <div class="diapositives">
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 1</div>
-        <div class="diapo-titre">C'est quoi XiaoHongShu ?</div>
-        <div class="hanzi">小红书</div>
-        <div class="pinyin">Xiǎo Hóng Shū</div>
-        <div class="traduction">Le "Petit Livre Rouge" — réseau social / moteur de recherche chinois</div>
-        <div class="note-formateur">🎙 Traduire littéralement : 小 = petit · 红 = rouge · 书 = livre. C'est le Pinterest + TikTok chinois. Très utilisé pour chercher des tutoriels, produits, lieux.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 2</div>
-        <div class="diapo-titre">Pourquoi c'est utile pour vous ?</div>
-        <div class="hanzi">旅游攻略 &nbsp; 生意机会</div>
-        <div class="pinyin">lǚyóu gōnglüè · shēngyì jīhuì</div>
-        <div class="traduction">guides de voyage · opportunités business</div>
-        <div class="note-formateur">🎙 Tendances, fournisseurs, bonnes adresses, guides de villes, avis clients… Gratuit, sans VPN, accessible depuis la France avec l'app.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 3</div>
-        <div class="diapo-titre">Comment chercher — Mots-clés utiles</div>
-        <div class="hanzi">公司 &nbsp; 旅游 &nbsp; 美食</div>
-        <div class="pinyin">gōngsī · lǚyóu · měishí</div>
-        <div class="traduction">entreprise · voyage · gastronomie</div>
-        <div class="note-formateur">🎙 Trois thèmes très recherchés sur XiaoHongShu. Faites taper un mot au choix sur téléphone et regardez les résultats — les images parlent d'elles-mêmes.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 4</div>
-        <div class="diapo-titre">Décoder une vidéo sans parler chinois</div>
-        <div class="hanzi">看 &nbsp; 学 &nbsp; 试试</div>
-        <div class="pinyin">kàn · xué · shì shi</div>
-        <div class="traduction">regarder · apprendre · essayer</div>
-        <div class="note-formateur">🎙 Même sans comprendre les mots, les gestes techniques sont universels. Encouragez-les à regarder comme on regarde un tutoriel muet.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 5</div>
-        <div class="diapo-titre">Liker et enregistrer une vidéo</div>
-        <div class="hanzi">点赞 &nbsp; 收藏</div>
-        <div class="pinyin">diǎn zàn · shōucáng</div>
-        <div class="traduction">liker (cliquer j'aime) · enregistrer / mettre en favori</div>
-        <div class="note-formateur">🎙 Vocabulaire concret de l'interface. Montrez les icônes sur l'app. Les enfants reconnaissent instantanément les symboles ❤️ et ⭐.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 6</div>
-        <div class="diapo-titre">Commenter en mandarin (basique)</div>
-        <div class="hanzi">很好！ &nbsp; 谢谢！ &nbsp; 在哪里买？</div>
-        <div class="pinyin">Hěn hǎo! · Xièxie! · Zài nǎlǐ mǎi?</div>
-        <div class="traduction">Très bien ! · Merci ! · Où acheter ça ?</div>
-        <div class="note-formateur">🎙 Ces 3 phrases permettent d'interagir avec des vendeurs ou créateurs de contenu chinois. La dernière est particulièrement utile pour sourcer des matériaux.</div>
-      </div>
-
-      <div class="diapo" style="grid-column: 1 / -1;">
-        <div class="diapo-num">Diapo 7 — Activité</div>
-        <div class="diapo-titre">🎮 Chasse à la vidéo en Chine</div>
-        <div class="hanzi">找到了！</div>
-        <div class="pinyin">Zhǎo dào le!</div>
-        <div class="traduction">Je l'ai trouvé !</div>
-        <p style="font-size:14px; margin-top:10px;">Ouvrez XiaoHongShu · Chacun choisit un mot-clé (旅游, 美食, 公司, 上海…) · Montre ta vidéo préférée aux autres en 30 secondes.</p>
-        <div class="note-formateur">🎙 Activité très engageante. Prévoir 5 minutes. Chacun explique en français ce qu'il voit — objectif : s'immerger dans la Chine d'aujourd'hui.</div>
-      </div>
-
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 4</div>
+      <h2 class="card-title">Décoder une vidéo sans parler chinois</h2>
+      <div class="hanzi-big">看 &nbsp; 学 &nbsp; 试试</div>
+      <div class="pinyin-big">kàn · xué · shì shi</div>
+      <div class="traduction-big">regarder · apprendre · essayer</div>
+      <div class="note-formateur">🎙 Même sans comprendre les mots, les gestes et les images sont universels. Encouragez-les à regarder comme on regarde un tutoriel muet.</div>
     </div>
-  </div>
+  </section>
 
-  <div class="livrable" id="b3-manuel">
-    <div class="manuel">
-      <h3>XiaoHongShu — 小红书 (Xiǎo Hóng Shū)</h3>
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 5</div>
+      <h2 class="card-title">Liker et enregistrer une vidéo</h2>
+      <div class="hanzi-big">点赞 &nbsp; 收藏</div>
+      <div class="pinyin-big">diǎn zàn · shōucáng</div>
+      <div class="traduction-big">liker (cliquer j'aime) · enregistrer / favori</div>
+      <div class="note-formateur">🎙 Vocabulaire concret de l'interface. Montrez les icônes sur l'app. On reconnaît instantanément ❤️ et ⭐.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 6</div>
+      <h2 class="card-title">Commenter en mandarin (basique)</h2>
+      <div class="hanzi-big">很好！ &nbsp; 谢谢！ &nbsp; 在哪里买？</div>
+      <div class="pinyin-big">Hěn hǎo! · Xièxie! · Zài nǎlǐ mǎi?</div>
+      <div class="traduction-big">Très bien ! · Merci ! · Où acheter ça ?</div>
+      <div class="note-formateur">🎙 Ces 3 phrases permettent d'interagir avec des vendeurs ou créateurs chinois. La dernière est particulièrement utile pour sourcer un produit.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Diapo 7 · Activité</div>
+      <h2 class="card-title">🎮 Chasse à la vidéo en Chine</h2>
+      <div class="hanzi-big">找到了！</div>
+      <div class="pinyin-big">Zhǎo dào le!</div>
+      <div class="traduction-big">Je l'ai trouvé !</div>
+      <div class="activity-text">Ouvrez XiaoHongShu · Chacun choisit un mot-clé (旅游, 美食, 公司, 上海…) · Montre ta vidéo préférée aux autres en 30 secondes.</div>
+      <div class="note-formateur">🎙 Activité très engageante. Prévoir 5 minutes. Chacun explique en français ce qu'il voit — objectif : s'immerger dans la Chine d'aujourd'hui.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-manuel" data-section="4">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 04 · Manuel</div>
+      <h1>XiaoHongShu — Mémo</h1>
+
+      <h3>小红书 (Xiǎo Hóng Shū)</h3>
       <p>Réseau social chinois = Pinterest + TikTok. Utilisable depuis la France, sans VPN. L'app existe en anglais/chinois. Idéal pour découvrir la Chine actuelle : tendances, voyages, business, gastronomie, modes de vie.</p>
 
       <h3>Mots-clés utiles pour vos recherches</h3>
@@ -953,157 +1395,163 @@
 
       <div class="notes-perso">Mes notes : _______________________________________________</div>
     </div>
-  </div>
+  </section>
 
-  <div class="livrable" id="b3-exos">
+  <section class="slide slide-exercices" data-section="4">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 04 · Exercices</div>
+      <h1>Exercices — XiaoHongShu</h1>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Relie le mot à son usage</div>
-      <div class="exercice-body">
-        <p>Relie chaque expression à la situation correspondante :</p>
-        <p>在哪里买？ &nbsp;&nbsp; • &nbsp;&nbsp; Je veux garder cette vidéo pour plus tard<br>
-        收藏 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Je cherche des idées voyage<br>
-        旅游 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Je veux acheter ce produit<br>
-        很好！ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Je complimente une vidéo</p>
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Relie le mot à son usage</div>
+        <div class="exercice-body">
+          <p>Relie chaque expression à la situation correspondante :</p>
+          <p>在哪里买？ &nbsp;&nbsp; • &nbsp;&nbsp; Je veux garder cette vidéo pour plus tard<br>
+          收藏 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Je cherche des idées voyage<br>
+          旅游 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Je veux acheter ce produit<br>
+          很好！ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Je complimente une vidéo</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Remise en ordre</span> Exercice 2 — Recherche sur XiaoHongShu</div>
+        <div class="exercice-body">
+          <p>Remets ces étapes dans le bon ordre pour trouver une vidéo en Chine :</p>
+          <p>A. Tape 美食 (gastronomie) dans la barre de recherche<br>
+          B. Ouvre l'app XiaoHongShu<br>
+          C. Clique sur 收藏 pour garder la vidéo<br>
+          D. Choisis une vidéo qui t'intéresse<br>
+          E. Commente 很好！ si la vidéo te plaît</p>
+          <p>Ordre : ___ → ___ → ___ → ___ → ___</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Laisser un commentaire (2 joueurs)</div>
+        <div class="exercice-body">
+          <p><span class="role">Rôle A — Le voyageur français :</span> Tu vois une vidéo d'un produit ou d'un lieu qui t'intéresse. Tu laisses un commentaire avec : ton prénom + 在哪里买？</p>
+          <p><span class="role">Rôle B — Le créateur chinois :</span> Tu réponds avec le nom de ta ville (Shanghai, Pékin, Shenzhen…) + 谢谢！</p>
+          <p>Exemple de réponse A : « Je m'appelle Pierre, 在哪里买？ »</p>
+        </div>
+      </div>
+
+      <div class="corrige">
+        <h4>✅ Corrigé</h4>
+        <p><strong>Ex. 1 :</strong> 在哪里买？→ acheter · 收藏 → garder vidéo · 旅游 → idées voyage · 很好！→ complimenter</p>
+        <p><strong>Ex. 2 :</strong> B → A → D → C → E</p>
+        <p><strong>Ex. 3 :</strong> Correction orale — vérifier que 在哪里买 est bien prononcé avec les bons tons.</p>
       </div>
     </div>
+  </section>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Remise en ordre</span> Exercice 2 — Recherche sur XiaoHongShu</div>
-      <div class="exercice-body">
-        <p>Remets ces étapes dans le bon ordre pour trouver une vidéo en Chine :</p>
-        <p>A. Tape 美食 (gastronomie) dans la barre de recherche<br>
-        B. Ouvre l'app XiaoHongShu<br>
-        C. Clique sur 收藏 pour garder la vidéo<br>
-        D. Choisis une vidéo qui t'intéresse<br>
-        E. Commente 很好！ si la vidéo te plaît</p>
-        <p>Ordre : ___ → ___ → ___ → ___ → ___</p>
-      </div>
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §5 · DISCUSSIONS SUR PLACE  (anciennement bloc 4) -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="5">
+    <div class="section-inner">
+      <div class="section-num">05</div>
+      <div class="section-label">Section cinq</div>
+      <h2>Discussions sur place</h2>
+      <div class="section-desc">Restaurant, taxi, négociation, business — les phrases qui changent un voyage</div>
+      <div class="section-rule"></div>
     </div>
+  </section>
 
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Laisser un commentaire (2 joueurs)</div>
-      <div class="exercice-body">
-        <p><span class="role">Rôle A — Le voyageur français :</span> Tu vois une vidéo d'un produit ou d'un lieu qui t'intéresse. Tu laisses un commentaire avec : ton prénom + 在哪里买？</p>
-        <p><span class="role">Rôle B — Le créateur chinois :</span> Tu réponds avec le nom de ta ville (Shanghai, Pékin, Shenzhen…) + 谢谢！</p>
-        <p>Exemple de réponse A : "Je m'appelle Pierre, 在哪里买？"</p>
-      </div>
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 1</div>
+      <h2 class="card-title">Saluer &amp; engager la conversation</h2>
+      <div class="hanzi-big">你好！请问…</div>
+      <div class="pinyin-big">Nǐ hǎo! Qǐngwèn…</div>
+      <div class="traduction-big">Bonjour ! S'il vous plaît / Puis-je demander…</div>
+      <div class="note-formateur">🎙 请问 (qǐngwèn) = « puis-je demander » — entrée polie avant une question. Toujours bien reçu, aussi bien en taxi qu'en réunion d'affaires.</div>
     </div>
+  </section>
 
-    <div class="corrige">
-      <h4>✅ Corrigé</h4>
-      <p><strong>Ex. 1 :</strong> 在哪里买？→ acheter · 收藏 → garder vidéo · 旅游 → idées voyage · 很好！→ complimenter</p>
-      <p><strong>Ex. 2 :</strong> B → A → D → C → E</p>
-      <p><strong>Ex. 3 :</strong> Correction orale — vérifier que 在哪里买 est bien prononcé avec les bons tons.</p>
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 2</div>
+      <h2 class="card-title">LA phrase à connaître</h2>
+      <div class="hanzi-big">多少钱？</div>
+      <div class="pinyin-big">Duōshǎo qián?</div>
+      <div class="traduction-big">Combien ça coûte ?</div>
+      <div class="note-formateur">🎙 Restaurant, boutique, marché, taxi, livraison, Taobao… s'utilise partout. Duōshǎo = combien · qián = argent.</div>
     </div>
+  </section>
 
-  </div>
-</div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- BLOC 4 — VOCABULAIRE BÂTIMENT -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide">
-<div class="slide-content">
-<div class="bloc" id="bloc4">
-  <div class="bloc-header">
-    <div class="bloc-numero">4</div>
-    <div>
-      <div class="bloc-titre">Discussions sur place en Chine — Business & vie quotidienne</div>
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 3</div>
+      <h2 class="card-title">Au restaurant — Commander</h2>
+      <div class="hanzi-big">我要这个。好吃！</div>
+      <div class="pinyin-big">Wǒ yào zhège. Hǎo chī!</div>
+      <div class="traduction-big">Je veux celui-ci. · C'est bon !</div>
+      <div class="note-formateur">🎙 这个 (zhège) = « ceci ». Pointez sur le menu ou la photo : hyper efficace. 好吃 = compliment standard au cuisinier, toujours apprécié.</div>
     </div>
-    <div class="bloc-duree">18 min</div>
-  </div>
+  </section>
 
-  <div class="tabs">
-    <div class="tab active" data-bloc="b4" data-key="pres">📽 Présentation</div>
-    <div class="tab" data-bloc="b4" data-key="manuel">📄 Manuel</div>
-    <div class="tab" data-bloc="b4" data-key="exos">✏️ Exercices</div>
-  </div>
-
-  <div class="livrable active" id="b4-pres">
-    <div class="diapositives">
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 1</div>
-        <div class="diapo-titre">Saluer & engager la conversation</div>
-        <div class="hanzi">你好！请问…</div>
-        <div class="pinyin">Nǐ hǎo! Qǐngwèn…</div>
-        <div class="traduction">Bonjour ! S'il vous plaît / Puis-je demander…</div>
-        <div class="note-formateur">🎙 请问 (qǐngwèn) = "puis-je demander" — entrée polie avant une question. Toujours bien reçu, aussi bien en taxi qu'en réunion d'affaires.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 2</div>
-        <div class="diapo-titre">LA phrase à connaître</div>
-        <div class="hanzi">多少钱？</div>
-        <div class="pinyin">Duōshǎo qián?</div>
-        <div class="traduction">Combien ça coûte ?</div>
-        <div class="note-formateur">🎙 Restaurant, boutique, marché, taxi, livraison, Taobao… s'utilise partout. Duōshǎo = combien · qián = argent.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 3</div>
-        <div class="diapo-titre">Au restaurant — Commander</div>
-        <div class="hanzi">我要这个。好吃！</div>
-        <div class="pinyin">Wǒ yào zhège. Hǎo chī!</div>
-        <div class="traduction">Je veux celui-ci. · C'est bon !</div>
-        <div class="note-formateur">🎙 这个 (zhège) = "ceci". Pointez sur le menu ou la photo : hyper efficace. 好吃 = compliment standard au cuisinier, toujours apprécié.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 4</div>
-        <div class="diapo-titre">Négocier — "Trop cher !"</div>
-        <div class="hanzi">太贵了！便宜一点？</div>
-        <div class="pinyin">Tài guì le! Piányi yìdiǎn?</div>
-        <div class="traduction">C'est trop cher ! Un peu moins cher ?</div>
-        <div class="note-formateur">🎙 Au marché et avec les fournisseurs, négocier est normal et attendu. 便宜一点 ("un peu moins cher") est la formule magique. Souriez toujours.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 5</div>
-        <div class="diapo-titre">Prendre un taxi / Didi</div>
-        <div class="hanzi">去这里。到了！</div>
-        <div class="pinyin">Qù zhèlǐ. Dào le!</div>
-        <div class="traduction">Aller ici. · On est arrivé !</div>
-        <div class="note-formateur">🎙 去 (qù) = aller. Montrez l'adresse sur votre téléphone. 到了 = vous entendrez le chauffeur le dire : "on est arrivés". Didi = Uber chinois.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 6</div>
-        <div class="diapo-titre">Rencontre business</div>
-        <div class="hanzi">很高兴认识你。</div>
-        <div class="pinyin">Hěn gāoxìng rènshi nǐ.</div>
-        <div class="traduction">Enchanté de faire votre connaissance.</div>
-        <div class="note-formateur">🎙 Phrase clé en réunion. Ensuite : échange de cartes de visite à DEUX mains, avec une légère inclinaison — marque de respect essentielle.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 7</div>
-        <div class="diapo-titre">Échanger les contacts — WeChat</div>
-        <div class="hanzi">加我微信。</div>
-        <div class="pinyin">Jiā wǒ wēixìn.</div>
-        <div class="traduction">Ajoute-moi sur WeChat.</div>
-        <div class="note-formateur">🎙 微信 (WeChat) = WhatsApp + Instagram + PayPal chinois. INDISPENSABLE pour tout : paiement, contacts, business. Scannez le QR code juste après la poignée de main.</div>
-      </div>
-
-      <div class="diapo" style="grid-column: 1 / -1;">
-        <div class="diapo-num">Diapo 8 — Moment ludique</div>
-        <div class="diapo-titre">🎮 Jeu de rôle : au marché de Shanghai</div>
-        <div class="hanzi">多少钱？ 太贵了！ 便宜一点？</div>
-        <div class="pinyin">Duōshǎo qián? · Tài guì le! · Piányi yìdiǎn?</div>
-        <div class="traduction">Combien ? · Trop cher ! · Un peu moins cher ?</div>
-        <p style="font-size:14px; margin-top:10px;">A = vendeur (invente un prix en yuans, ex: 200 元) · B = client (réagit : 太贵了！便宜一点？) · A baisse le prix · B accepte ou continue. Changez les rôles après 3 échanges.</p>
-        <div class="note-formateur">🎙 Mise en situation concrète. Encouragez l'exagération — la négociation chinoise, c'est presque du théâtre. C'est le moment le plus fun de la session !</div>
-      </div>
-
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 4</div>
+      <h2 class="card-title">Négocier — « Trop cher ! »</h2>
+      <div class="hanzi-big">太贵了！便宜一点？</div>
+      <div class="pinyin-big">Tài guì le! Piányi yìdiǎn?</div>
+      <div class="traduction-big">C'est trop cher ! Un peu moins cher ?</div>
+      <div class="note-formateur">🎙 Au marché et avec les fournisseurs, négocier est normal et attendu. 便宜一点 (« un peu moins cher ») est la formule magique. Souriez toujours.</div>
     </div>
-  </div>
+  </section>
 
-  <div class="livrable" id="b4-manuel">
-    <div class="manuel">
-      <h3>Les phrases indispensables sur place</h3>
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 5</div>
+      <h2 class="card-title">Prendre un taxi / Didi</h2>
+      <div class="hanzi-big">去这里。到了！</div>
+      <div class="pinyin-big">Qù zhèlǐ. Dào le!</div>
+      <div class="traduction-big">Aller ici. · On est arrivé !</div>
+      <div class="note-formateur">🎙 去 (qù) = aller. Montrez l'adresse sur votre téléphone. 到了 = vous entendrez le chauffeur le dire : « on est arrivés ». Didi = Uber chinois.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 6</div>
+      <h2 class="card-title">Rencontre business</h2>
+      <div class="hanzi-big">很高兴认识你。</div>
+      <div class="pinyin-big">Hěn gāoxìng rènshi nǐ.</div>
+      <div class="traduction-big">Enchanté de faire votre connaissance.</div>
+      <div class="note-formateur">🎙 Phrase clé en réunion. Ensuite : échange de cartes de visite à DEUX mains, avec une légère inclinaison — marque de respect essentielle.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 7</div>
+      <h2 class="card-title">Échanger les contacts — WeChat</h2>
+      <div class="hanzi-big">加我微信。</div>
+      <div class="pinyin-big">Jiā wǒ wēixìn.</div>
+      <div class="traduction-big">Ajoute-moi sur WeChat.</div>
+      <div class="note-formateur">🎙 微信 (WeChat) = WhatsApp + Instagram + PayPal chinois. INDISPENSABLE pour tout : paiement, contacts, business. Scannez le QR code juste après la poignée de main.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Diapo 8 · Moment ludique</div>
+      <h2 class="card-title">🎮 Jeu de rôle : au marché de Shanghai</h2>
+      <div class="hanzi-big">多少钱？ 太贵了！ 便宜一点？</div>
+      <div class="pinyin-big">Duōshǎo qián? · Tài guì le! · Piányi yìdiǎn?</div>
+      <div class="traduction-big">Combien ? · Trop cher ! · Un peu moins cher ?</div>
+      <div class="activity-text">A = vendeur (invente un prix en yuans, ex : 200 元) · B = client (réagit : 太贵了！便宜一点？) · A baisse le prix · B accepte ou continue. Changez les rôles après 3 échanges.</div>
+      <div class="note-formateur">🎙 Encouragez l'exagération — la négociation chinoise, c'est presque du théâtre. C'est le moment le plus fun de la session !</div>
+    </div>
+  </section>
+
+  <section class="slide slide-manuel" data-section="5">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 05 · Manuel</div>
+      <h1>Discussions sur place — Mémo</h1>
+
+      <h3>Les phrases indispensables</h3>
       <table class="vocab-table">
         <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
         <tr><td class="td-hanzi">你好！</td><td class="td-pinyin">Nǐ hǎo!</td><td>Bonjour !</td></tr>
@@ -1121,7 +1569,7 @@
         <tr><td class="td-hanzi">买单</td><td class="td-pinyin">Mǎi dān</td><td>L'addition</td></tr>
       </table>
 
-      <h3>Transport & déplacement</h3>
+      <h3>Transport &amp; déplacement</h3>
       <div class="regle">
         去 ___ · Qù ___ = Aller à ___<br>
         到了 · Dào le = On est arrivé
@@ -1134,7 +1582,7 @@
         💰 好的 (Hǎo de) = D'accord — mot-clé pour conclure.
       </div>
 
-      <h3>Business & contacts</h3>
+      <h3>Business &amp; contacts</h3>
       <table class="vocab-table">
         <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
         <tr><td class="td-hanzi">很高兴认识你</td><td class="td-pinyin">Hěn gāoxìng rènshi nǐ</td><td>Enchanté</td></tr>
@@ -1147,315 +1595,133 @@
 
       <div class="notes-perso">Mes notes : _______________________________________________</div>
     </div>
+  </section>
+
+  <section class="slide slide-exercices" data-section="5">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 05 · Exercices</div>
+      <h1>Exercices — Discussions sur place</h1>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Quelle phrase dans quelle situation ?</div>
+        <div class="exercice-body">
+          <p>Relie chaque expression à la situation correspondante :</p>
+          <p>多少钱？ &nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu es arrivé à destination<br>
+          太贵了！ &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu félicites le cuisinier<br>
+          到了！ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu demandes un prix<br>
+          好吃！ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu veux négocier<br>
+          加我微信 &nbsp; • &nbsp;&nbsp; Tu échanges un contact pro</p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 2 — Au restaurant à Shanghai</div>
+        <div class="exercice-body">
+          <p>Complète avec les bons mots (duōshǎo qián / wǒ yào / hǎo chī / mǎi dān) :</p>
+          <p>Tu es dans un restaurant de nouilles :<br>
+          — Tu montres le menu : « ________ 这个 ! » <em>(Je veux ceci !)</em><br>
+          — Tu goûtes, tu souris : « ________ ! » <em>(C'est bon !)</em><br>
+          — Tu demandes le prix : « ________ ？» <em>(Combien ?)</em><br>
+          — Tu finis le repas : « ________ ! » <em>(L'addition !)</em></p>
+        </div>
+      </div>
+
+      <div class="exercice">
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Rencontre business (2 joueurs)</div>
+        <div class="exercice-body">
+          <p><span class="role">Rôle A — Entrepreneur français :</span> Tu rencontres un partenaire chinois. Dis : 你好！我叫 [prénom]。很高兴认识你。 Puis propose : 加我微信？</p>
+          <p><span class="role">Rôle B — Partenaire chinois :</span> Réponds : 你好！我也很高兴认识你。好的！ (Bonjour ! Moi aussi enchanté. D'accord !) et mime le scan du QR code.</p>
+          <p><em>Inversez les rôles.</em></p>
+        </div>
+      </div>
+
+      <div class="corrige">
+        <h4>✅ Corrigé</h4>
+        <p><strong>Ex. 1 :</strong> 多少钱？→ demander un prix · 太贵了！→ négocier · 到了！→ arrivé · 好吃！→ féliciter le cuisinier · 加我微信 → échanger un contact</p>
+        <p><strong>Ex. 2 :</strong> Wǒ yào 这个！ · Hǎo chī！ · Duōshǎo qián ？ · Mǎi dān！</p>
+        <p><strong>Ex. 3 :</strong> Correction orale — vérifier la politesse et la prononciation de 很高兴认识你.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- BILAN -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-bilan" data-section="6">
+    <div class="bilan-inner">
+      <div class="bilan-mark">完 成</div>
+      <h2>Bilan de la session</h2>
+      <div class="recap-grid">
+        <div class="recap-item"><span class="num">01</span><span>Chiffres 六 à 十 et codes culturels</span></div>
+        <div class="recap-item"><span class="num">02</span><span>Les 4 tons avec exemples concrets</span></div>
+        <div class="recap-item"><span class="num">03</span><span>Dire son métier et présenter sa famille</span></div>
+        <div class="recap-item"><span class="num">04</span><span>Utiliser XiaoHongShu pour découvrir la Chine</span></div>
+        <div class="recap-item"><span class="num">05</span><span>Discuter sur place : restaurant, taxi, business, WeChat</span></div>
+      </div>
+      <div class="bilan-next">Session 3 → Directions &amp; lieux · Questions pratiques · Paiement WeChat / Alipay · Premiers achats</div>
+    </div>
+  </section>
+
+</div><!-- /deck -->
+
+<!-- Section marker top -->
+<div class="section-marker" id="section-marker"></div>
+
+<!-- Side arrows -->
+<button class="nav-arrow left" id="prev" aria-label="Précédent">◀</button>
+<button class="nav-arrow right" id="next" aria-label="Suivant">▶</button>
+
+<!-- Bottom progress bar -->
+<div class="progress-bar">
+  <div class="sec-dots" id="sec-dots">
+    <button class="sec-dot active" data-sec="0" aria-label="Couverture"></button>
+    <button class="sec-dot" data-sec="1" aria-label="Section 1"></button>
+    <button class="sec-dot" data-sec="2" aria-label="Section 2"></button>
+    <button class="sec-dot" data-sec="3" aria-label="Section 3"></button>
+    <button class="sec-dot" data-sec="4" aria-label="Section 4"></button>
+    <button class="sec-dot" data-sec="5" aria-label="Section 5"></button>
+    <button class="sec-dot" data-sec="6" aria-label="Bilan"></button>
   </div>
-
-  <div class="livrable" id="b4-exos">
-
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Quelle phrase dans quelle situation ?</div>
-      <div class="exercice-body">
-        <p>Relie chaque expression à la situation correspondante :</p>
-        <p>多少钱？ &nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu es arrivé à destination<br>
-        太贵了！ &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu félicites le cuisinier<br>
-        到了！ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu demandes un prix<br>
-        好吃！ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp; Tu veux négocier<br>
-        加我微信 &nbsp; • &nbsp;&nbsp; Tu échanges un contact pro</p>
-      </div>
-    </div>
-
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 2 — Au restaurant à Shanghai</div>
-      <div class="exercice-body">
-        <p>Complète avec les bons mots (duōshǎo qián / wǒ yào / hǎo chī / mǎi dān) :</p>
-        <p>Tu es dans un restaurant de nouilles :<br>
-        — Tu montres le menu : « ________ 这个 ! » <em>(Je veux ceci !)</em><br>
-        — Tu goûtes, tu souris : « ________ ! » <em>(C'est bon !)</em><br>
-        — Tu demandes le prix : « ________ ？» <em>(Combien ?)</em><br>
-        — Tu finis le repas : « ________ ! » <em>(L'addition !)</em></p>
-      </div>
-    </div>
-
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Rencontre business (2 joueurs)</div>
-      <div class="exercice-body">
-        <p><span class="role">Rôle A — Entrepreneur français :</span> Tu rencontres un partenaire chinois. Dis : 你好！我叫 [prénom]。很高兴认识你。 Puis propose : 加我微信？</p>
-        <p><span class="role">Rôle B — Partenaire chinois :</span> Réponds : 你好！我也很高兴认识你。好的！ (Bonjour ! Moi aussi enchanté. D'accord !) et mime le scan du QR code.</p>
-        <p><em>Inversez les rôles.</em></p>
-      </div>
-    </div>
-
-    <div class="corrige">
-      <h4>✅ Corrigé</h4>
-      <p><strong>Ex. 1 :</strong> 多少钱？→ demander un prix · 太贵了！→ négocier · 到了！→ arrivé · 好吃！→ féliciter le cuisinier · 加我微信 → échanger un contact</p>
-      <p><strong>Ex. 2 :</strong> Wǒ yào 这个！ · Hǎo chī！ · Duōshǎo qián ？ · Mǎi dān！</p>
-      <p><strong>Ex. 3 :</strong> Correction orale — vérifier la politesse et la prononciation de 很高兴认识你.</p>
-    </div>
-
-  </div>
-</div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- BLOC 5 — CODES CULTURELS + ÉCRITURE 六→十 -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide">
-<div class="slide-content">
-<div class="bloc" id="bloc5">
-  <div class="bloc-header">
-    <div class="bloc-numero">5</div>
-    <div>
-      <div class="bloc-titre">Codes culturels & Écriture — Les nombres 六 à 十</div>
-    </div>
-    <div class="bloc-duree">18 min</div>
-  </div>
-
-  <div class="tabs">
-    <div class="tab active" data-bloc="b5" data-key="pres">📽 Présentation</div>
-    <div class="tab" data-bloc="b5" data-key="manuel">📄 Manuel</div>
-    <div class="tab" data-bloc="b5" data-key="exos">✏️ Exercices</div>
-  </div>
-
-  <div class="livrable active" id="b5-pres">
-    <div class="diapositives">
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 1</div>
-        <div class="diapo-titre">Révision express — 一 à 五</div>
-        <div class="hanzi">一 二 三 四 五</div>
-        <div class="pinyin">yī · èr · sān · sì · wǔ</div>
-        <div class="traduction">1 · 2 · 3 · 4 · 5</div>
-        <div class="note-formateur">🎙 Tour de table à l'oral en 30 secondes. Qui les retient tous ?</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 2</div>
-        <div class="diapo-titre">六 — Comment écrire 6</div>
-        <div class="hanzi" style="font-size:60px;">六</div>
-        <div class="pinyin">liù — ton 4</div>
-        <div class="traduction">6</div>
-        <div class="note-formateur">🎙 Ordre des traits : 1. point en haut · 2. trait horizontal · 3. trait gauche descendant · 4. trait droit descendant. 4 traits. Faire écrire 3 fois chacun.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 3</div>
-        <div class="diapo-titre">七 — Comment écrire 7</div>
-        <div class="hanzi" style="font-size:60px;">七</div>
-        <div class="pinyin">qī — ton 1</div>
-        <div class="traduction">7</div>
-        <div class="note-formateur">🎙 Ordre des traits : 1. trait horizontal · 2. trait vertical qui traverse. 2 traits seulement — l'un des plus simples ! Ressemble visuellement au chiffre 7 occidental.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 4</div>
-        <div class="diapo-titre">八 — Comment écrire 8</div>
-        <div class="hanzi" style="font-size:60px;">八</div>
-        <div class="pinyin">bā — ton 1</div>
-        <div class="traduction">8 ⭐ porte-bonheur</div>
-        <div class="note-formateur">🎙 Ordre des traits : 1. trait gauche (s'écarte vers la gauche) · 2. trait droit (s'écarte vers la droite). 2 traits. Comme deux jambes qui s'écartent. Très simple !</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 5</div>
-        <div class="diapo-titre">九 — Comment écrire 9</div>
-        <div class="hanzi" style="font-size:60px;">九</div>
-        <div class="pinyin">jiǔ — ton 3</div>
-        <div class="traduction">9</div>
-        <div class="note-formateur">🎙 Ordre des traits : 1. trait courbé de gauche à droite · 2. crochet vers le bas. 2 traits. Ressemble à un crochet inversé. Symbole de longévité (homonyme de 久 = longtemps).</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 6</div>
-        <div class="diapo-titre">十 — Comment écrire 10</div>
-        <div class="hanzi" style="font-size:60px;">十</div>
-        <div class="pinyin">shí — ton 2</div>
-        <div class="traduction">10</div>
-        <div class="note-formateur">🎙 Ordre des traits : 1. trait horizontal · 2. trait vertical. 2 traits. C'est une croix ! Le plus simple de tous. Rassurant pour finir la série.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 7</div>
-        <div class="diapo-titre">Code culturel — Les chiffres porte-bonheur</div>
-        <div class="hanzi">八 &nbsp; 六 &nbsp; 九</div>
-        <div class="pinyin">bā · liù · jiǔ</div>
-        <div class="traduction">8 (richesse) · 6 (fluidité/chance) · 9 (longévité)</div>
-        <div class="note-formateur">🎙 En Chine, ces 3 chiffres dans un numéro de téléphone, une adresse ou une chambre d'hôtel = valeur ajoutée. Vrai pour les affaires aussi : proposer un prix en 8 est bien vu.</div>
-      </div>
-
-      <div class="diapo">
-        <div class="diapo-num">Diapo 8</div>
-        <div class="diapo-titre">Le chiffre à éviter : 四</div>
-        <div class="hanzi">四</div>
-        <div class="pinyin">sì — ressemble à 死 (sǐ = mort)</div>
-        <div class="traduction">4 — chiffre néfaste en Chine</div>
-        <div class="note-formateur">🎙 Beaucoup d'immeubles en Chine n'ont pas de 4ème étage. Dans une négociation, évitez les prix ou quantités contenant 4. À l'inverse, les chiffres en 8 sont favorables.</div>
-      </div>
-
-      <div class="diapo" style="grid-column: 1 / -1;">
-        <div class="diapo-num">Diapo 9 — Défi final</div>
-        <div class="diapo-titre">🎮 Qui écrit les 10 chiffres le plus vite ?</div>
-        <div class="hanzi">一二三四五六七八九十</div>
-        <div class="pinyin">yī èr sān sì wǔ liù qī bā jiǔ shí</div>
-        <div class="traduction">1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 · 9 · 10</div>
-        <div class="note-formateur">🎙 Chacun écrit les 10 chiffres de mémoire sur une feuille. Chronométrez. Comparez les résultats. Correction collective à l'écran. Bilan de session !</div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="livrable" id="b5-manuel">
-    <div class="manuel">
-      <h3>Guide d'écriture — 六 à 十</h3>
-      <table class="vocab-table">
-        <tr><th>Caractère</th><th>Pinyin</th><th>Chiffre</th><th>Nombre de traits</th><th>Astuce mémoire</th></tr>
-        <tr><td class="td-hanzi">六</td><td class="td-pinyin">liù</td><td>6</td><td>4 traits</td><td>Un chapeau pointu avec deux jambes</td></tr>
-        <tr><td class="td-hanzi">七</td><td class="td-pinyin">qī</td><td>7</td><td>2 traits</td><td>Ressemble au 7 occidental coupé</td></tr>
-        <tr><td class="td-hanzi">八</td><td class="td-pinyin">bā</td><td>8</td><td>2 traits</td><td>Deux traits qui s'écartent ⭐</td></tr>
-        <tr><td class="td-hanzi">九</td><td class="td-pinyin">jiǔ</td><td>9</td><td>2 traits</td><td>Un crochet courbé</td></tr>
-        <tr><td class="td-hanzi">十</td><td class="td-pinyin">shí</td><td>10</td><td>2 traits</td><td>Une croix +</td></tr>
-      </table>
-
-      <h3>Les chiffres porte-bonheur (et à éviter)</h3>
-
-      <div class="regle">
-        ⭐ Favorables : 八 (8) = richesse · 六 (6) = chance et fluidité · 九 (9) = longévité
-      </div>
-      <div class="memo">
-        ⚠️ À éviter : 四 (4) — se prononce comme 死 (mort). Beaucoup d'immeubles n'ont pas de 4ème étage.
-      </div>
-
-      <h3>Application concrète pour vos affaires</h3>
-      <p>En négociation, en restaurant, pour un cadeau ou un prix : évitez les montants contenant le chiffre 4. À l'inverse, proposer un montant qui se termine en 8 (188, 288, 888…) est un geste de bonne volonté culturelle toujours bien reçu.</p>
-
-      <h3>Les 10 chiffres — Récapitulatif complet</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Chiffre</th></tr>
-        <tr><td class="td-hanzi">一</td><td class="td-pinyin">yī</td><td>1</td></tr>
-        <tr><td class="td-hanzi">二</td><td class="td-pinyin">èr</td><td>2</td></tr>
-        <tr><td class="td-hanzi">三</td><td class="td-pinyin">sān</td><td>3</td></tr>
-        <tr><td class="td-hanzi">四</td><td class="td-pinyin">sì</td><td>4 ⚠️</td></tr>
-        <tr><td class="td-hanzi">五</td><td class="td-pinyin">wǔ</td><td>5</td></tr>
-        <tr><td class="td-hanzi">六</td><td class="td-pinyin">liù</td><td>6 ⭐</td></tr>
-        <tr><td class="td-hanzi">七</td><td class="td-pinyin">qī</td><td>7</td></tr>
-        <tr><td class="td-hanzi">八</td><td class="td-pinyin">bā</td><td>8 ⭐⭐</td></tr>
-        <tr><td class="td-hanzi">九</td><td class="td-pinyin">jiǔ</td><td>9 ⭐</td></tr>
-        <tr><td class="td-hanzi">十</td><td class="td-pinyin">shí</td><td>10</td></tr>
-      </table>
-
-      <div class="notes-perso">Zone d'écriture — refais les caractères ici :<br><br><br></div>
-    </div>
-  </div>
-
-  <div class="livrable" id="b5-exos">
-
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 1 — Codes culturels</div>
-      <div class="exercice-body">
-        <p>Vrai (V) ou Faux (F) ?</p>
-        <p>1. 八 (bā) est un chiffre porte-malheur en Chine. &nbsp;&nbsp; V / F<br>
-        2. Il vaut mieux éviter le chiffre 四 dans les affaires. &nbsp;&nbsp; V / F<br>
-        3. 九 (jiǔ) ressemble phonétiquement au mot "longtemps". &nbsp;&nbsp; V / F<br>
-        4. Pour un prix de vente, finir en 8 est mauvais signe. &nbsp;&nbsp; V / F</p>
-      </div>
-    </div>
-
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Remise en ordre</span> Exercice 2 — Mets dans l'ordre croissant</div>
-      <div class="exercice-body">
-        <p>Remets ces chiffres dans l'ordre croissant :</p>
-        <p>九 · 六 · 十 · 七 · 八</p>
-        <p>Ordre : ___ · ___ · ___ · ___ · ___</p>
-        <p><em>(Écris aussi leur pinyin)</em></p>
-      </div>
-    </div>
-
-    <div class="exercice">
-      <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — La négociation au marché (2 joueurs)</div>
-      <div class="exercice-body">
-        <p><span class="role">Rôle A — Client français :</span> Tu veux acheter un produit. Tu proposes un prix entre 6 et 10 yuans en disant : 我要这个，___ 块？ <em>(je veux ceci, ___ yuans ?)</em></p>
-        <p><span class="role">Rôle B — Vendeur chinois :</span> Si le chiffre contient un 4, tu fais la grimace et tu proposes un autre chiffre en 8. Si c'est bon, tu dis 好的！(Hǎo de! = D'accord !)</p>
-        <p><em>Rejouez 3 fois avec des chiffres différents.</em></p>
-      </div>
-    </div>
-
-    <div class="corrige">
-      <h4>✅ Corrigé</h4>
-      <p><strong>Ex. 1 :</strong> 1. F (porte-bonheur) · 2. V · 3. V · 4. F (c'est un bon signe)</p>
-      <p><strong>Ex. 2 :</strong> 六 liù · 七 qī · 八 bā · 九 jiǔ · 十 shí</p>
-      <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier que les chiffres sont bien prononcés avec les bons tons.</p>
-    </div>
-
-  </div>
-</div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- BILAN SESSION -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="slide slide-bilan">
-<div class="bilan-inner">
-<div style="background: var(--encre); color: white; border-radius: 12px; padding: 40px;">
-  <h2 style="font-size:22px; font-weight:600; margin-bottom:24px;">✅ Bilan Session 2 — Ce qu'on sait maintenant</h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:15px;">
-    <div>① Les 4 tons (1, 2, 3 et 4) avec exemples concrets</div>
-    <div>② Dire son métier et présenter sa famille</div>
-    <div>③ Utiliser XiaoHongShu pour découvrir la Chine</div>
-    <div>④ Discuter sur place : restaurant, taxi, business, WeChat</div>
-    <div>⑤ Écrire et lire les chiffres de 1 à 10</div>
-    <div>⑥ Codes culturels : chiffres porte-bonheur et néfastes</div>
-  </div>
-  <p style="font-size:13px; color:#999; margin-top:24px;">Session 3 → Directions & lieux · Questions pratiques · Paiement WeChat / Alipay · Premiers achats</p>
-</div>
-</div>
-</section>
-
-</div><!-- /slides-viewport -->
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- NAVIGATION PPT -->
-<!-- ═══════════════════════════════════════════════════ -->
-<button class="ppt-arrow left" id="ppt-prev" aria-label="Diapo précédente">◀</button>
-<button class="ppt-arrow right" id="ppt-next" aria-label="Diapo suivante">▶</button>
-<div class="ppt-progress">
-  <span class="counter" id="ppt-counter">1 / 7</span>
-  <div class="dots" id="ppt-dots">
-    <button class="dot active" data-slide="0" aria-label="Titre"></button>
-    <button class="dot" data-slide="1" aria-label="Bloc 1"></button>
-    <button class="dot" data-slide="2" aria-label="Bloc 2"></button>
-    <button class="dot" data-slide="3" aria-label="Bloc 3"></button>
-    <button class="dot" data-slide="4" aria-label="Bloc 4"></button>
-    <button class="dot" data-slide="5" aria-label="Bloc 5"></button>
-    <button class="dot" data-slide="6" aria-label="Bilan"></button>
-  </div>
+  <div class="bar"><div class="fill" id="bar-fill" style="width:0%"></div></div>
+  <span class="counter" id="counter">1 / 1</span>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // ── Onglets (Présentation / Manuel / Exercices) ──
-  document.querySelectorAll('.tab').forEach(function(tab) {
-    tab.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var blocId = tab.getAttribute('data-bloc');
-      var key = tab.getAttribute('data-key');
-      var bloc = tab.closest('.bloc');
-      if (!bloc) return;
-      bloc.querySelectorAll(':scope > .tabs .tab').forEach(function(t) { t.classList.remove('active'); });
-      bloc.querySelectorAll(':scope > .livrable').forEach(function(l) { l.classList.remove('active'); });
-      tab.classList.add('active');
-      var target = document.getElementById(blocId + '-' + key);
-      if (target) target.classList.add('active');
-    });
-  });
-
-  // ── Navigation PPT ──
-  var slides = Array.prototype.slice.call(document.querySelectorAll('.slides-viewport > .slide'));
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.deck > .slide'));
   var total = slides.length;
   var current = 0;
-  var btnPrev = document.getElementById('ppt-prev');
-  var btnNext = document.getElementById('ppt-next');
-  var counter = document.getElementById('ppt-counter');
-  var dots = Array.prototype.slice.call(document.querySelectorAll('#ppt-dots .dot'));
+  var btnPrev = document.getElementById('prev');
+  var btnNext = document.getElementById('next');
+  var counter = document.getElementById('counter');
+  var barFill = document.getElementById('bar-fill');
+  var marker = document.getElementById('section-marker');
+  var secDots = Array.prototype.slice.call(document.querySelectorAll('.sec-dot'));
+
+  var sectionLabels = {
+    '0': '',
+    '1': 'Section 01 · Chiffres',
+    '2': 'Section 02 · Pinyin & Tons',
+    '3': 'Section 03 · Se présenter',
+    '4': 'Section 04 · Communiquer en Chine',
+    '5': 'Section 05 · Discussions sur place',
+    '6': 'Bilan'
+  };
+
+  // Add slide-num indicator to each slide
+  slides.forEach(function(s, i) {
+    var indicator = document.createElement('div');
+    indicator.className = 'slide-num';
+    indicator.innerHTML = '<strong>' + String(i + 1).padStart(2, '0') + '</strong> / ' + String(total).padStart(2, '0');
+    s.appendChild(indicator);
+  });
+
+  function firstSlideOfSection(sec) {
+    for (var i = 0; i < slides.length; i++) {
+      if (slides[i].getAttribute('data-section') === String(sec)) return i;
+    }
+    return 0;
+  }
 
   function goTo(index) {
     if (index < 0 || index >= total) return;
@@ -1464,31 +1730,50 @@ document.addEventListener('DOMContentLoaded', function() {
       if (i === index) s.classList.add('active');
       else if (i < index) s.classList.add('prev');
     });
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === index);
-    });
-    if (counter) counter.textContent = (index + 1) + ' / ' + total;
-    if (btnPrev) btnPrev.disabled = (index === 0);
-    if (btnNext) btnNext.disabled = (index === total - 1);
+    counter.textContent = (index + 1) + ' / ' + total;
+    barFill.style.width = ((index) / Math.max(1, total - 1) * 100) + '%';
+    btnPrev.disabled = (index === 0);
+    btnNext.disabled = (index === total - 1);
     current = index;
-    var activeSlide = slides[index];
-    if (activeSlide) activeSlide.scrollTop = 0;
+
+    // Section marker
+    var sec = slides[index].getAttribute('data-section');
+    var label = sectionLabels[sec] || '';
+    var isCard = slides[index].classList.contains('slide-card') || slides[index].classList.contains('slide-manuel') || slides[index].classList.contains('slide-exercices');
+    if (label && isCard) {
+      marker.textContent = label;
+      marker.classList.add('visible');
+      marker.classList.remove('dark');
+    } else {
+      marker.classList.remove('visible');
+    }
+
+    // Section dots
+    secDots.forEach(function(d) {
+      d.classList.toggle('active', d.getAttribute('data-sec') === sec);
+    });
+
+    // Reset scroll
+    slides[index].scrollTop = 0;
   }
 
-  if (btnPrev) btnPrev.addEventListener('click', function() { goTo(current - 1); });
-  if (btnNext) btnNext.addEventListener('click', function() { goTo(current + 1); });
-  dots.forEach(function(d, i) {
-    d.addEventListener('click', function() { goTo(i); });
+  btnPrev.addEventListener('click', function() { goTo(current - 1); });
+  btnNext.addEventListener('click', function() { goTo(current + 1); });
+
+  secDots.forEach(function(d) {
+    d.addEventListener('click', function() {
+      var sec = parseInt(d.getAttribute('data-sec'), 10);
+      goTo(firstSlideOfSection(sec));
+    });
   });
 
-  // ── Clavier ──
   document.addEventListener('keydown', function(e) {
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown') {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
       e.preventDefault(); goTo(current - 1);
-    } else if (e.key === ' ' && e.target && e.target.tagName !== 'BUTTON') {
+    } else if (e.key === ' ' && (!e.target || e.target.tagName !== 'BUTTON')) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'Home') {
       e.preventDefault(); goTo(0);
@@ -1497,7 +1782,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // ── Swipe tactile ──
+  // Swipe
   var tsX = null, tsY = null;
   document.addEventListener('touchstart', function(e) {
     tsX = e.changedTouches[0].screenX;
