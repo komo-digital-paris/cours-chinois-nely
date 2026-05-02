@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static (Python http.server)",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd '/Users/xihuang/Desktop/Cours de chinois' && python3 -m http.server $PORT"],
+      "autoPort": true
+    },
+    {
+      "name": "Static (npx serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "/Users/xihuang/Desktop/Cours de chinois"],
+      "autoPort": true
+    }
+  ]
+}
