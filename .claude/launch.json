@@ -10,7 +10,7 @@
     {
       "name": "Static (npx serve)",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["-y", "serve", "/Users/xihuang/Desktop/Cours de chinois"],
+      "runtimeArgs": ["-y", "serve", "."],
       "autoPort": true
     }
   ]
