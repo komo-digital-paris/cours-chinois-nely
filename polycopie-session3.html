@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polycopié — Session 3 · Cours de Chinois débutant</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap');
+  @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css');
+
+  :root {
+    --rouge: #8b1d20;
+    --or: #c9a467;
+    --encre: #1a1a1a;
+    --gris: #6b6b6b;
+    --gris-fonce: #2d2d2d;
+    --bordure: #e0dbd4;
+    --bg: #ffffff;
+  }
+
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 11pt;
+    line-height: 1.65;
+    color: var(--encre);
+    background: var(--bg);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm 18mm;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    text-align: center;
+    padding: 50px 0 40px;
+    border-bottom: 2px solid var(--encre);
+    margin-bottom: 36px;
+    page-break-after: always;
+  }
+  .cover-zhwen {
+    font-family: 'LXGW WenKai Screen', 'Kaiti SC', serif;
+    font-size: 32pt;
+    color: var(--or);
+    letter-spacing: 16px;
+    padding-left: 16px;
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30pt;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .cover h1 em { font-style: italic; font-weight: 400; color: var(--gris-fonce); }
+  .cover .subtitle {
+    font-size: 10pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 30px;
+  }
+  .cover .meta {
+    font-size: 10pt;
+    color: var(--rouge);
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .cover .toc { text-align: left; max-width: 400px; margin: 0 auto; }
+  .cover .toc h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    margin-bottom: 12px;
+    color: var(--encre);
+  }
+  .cover .toc ol { padding-left: 20px; font-size: 10.5pt; color: var(--gris-fonce); }
+  .cover .toc li { margin-bottom: 6px; }
+
+  /* ── HEADINGS ── */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22pt;
+    font-weight: 500;
+    color: var(--encre);
+    border-bottom: 2px solid var(--rouge);
+    padding-bottom: 8px;
+    margin: 40px 0 20px;
+    page-break-before: always;
+    letter-spacing: -0.3px;
+  }
+  .section-title:first-of-type { page-break-before: auto; }
+  .section-title .num {
+    color: var(--rouge);
+    font-size: 14pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--encre);
+    margin: 24px 0 10px;
+    letter-spacing: -0.2px;
+  }
+
+  p { margin-bottom: 8px; }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 16px;
+    font-size: 10.5pt;
+  }
+  table th {
+    background: var(--encre);
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 8pt;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--bordure);
+    vertical-align: middle;
+  }
+  table tr:last-child td { border-bottom: none; }
+  .td-hanzi {
+    font-family: 'LXGW WenKai Screen', 'Kaiti SC', serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--encre);
+  }
+  .td-pinyin {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--gris-fonce);
+  }
+
+  /* ── BOXES ── */
+  .regle {
+    background: #fffaf0;
+    border-left: 3px solid var(--or);
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+    line-height: 1.7;
+  }
+  .memo {
+    background: #fdf2f2;
+    border-left: 3px solid var(--rouge);
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+    line-height: 1.7;
+  }
+
+  /* ── DIALOGUE ── */
+  .dialogue {
+    border: 1px solid var(--bordure);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+  }
+  .dialogue-header {
+    background: #f5f2ed;
+    padding: 8px 14px;
+    font-size: 9pt;
+    color: var(--gris);
+    font-style: italic;
+    border-bottom: 1px solid var(--bordure);
+  }
+  .dialogue-body { padding: 12px 14px; }
+  .dl {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .dl:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .dl .spk {
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .spk-fr { color: #2563eb; }
+  .spk-cn { color: var(--rouge); }
+  .dl .zh {
+    font-family: 'LXGW WenKai Screen', 'Kaiti SC', serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--encre);
+    line-height: 1.4;
+  }
+  .dl .py {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: var(--gris-fonce);
+  }
+  .dl .fr { font-size: 9.5pt; color: var(--gris); }
+  .dialogue-pause {
+    text-align: center;
+    font-size: 9pt;
+    color: var(--gris);
+    font-style: italic;
+    padding: 4px 0 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0ede8;
+  }
+
+  /* ── EXERCICES ── */
+  .exercice {
+    border: 1px solid var(--bordure);
+    border-radius: 6px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .exercice-header {
+    background: #f8f6f2;
+    padding: 8px 14px;
+    font-size: 10pt;
+    font-weight: 500;
+    border-bottom: 1px solid var(--bordure);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .exercice-type {
+    background: var(--encre);
+    color: white;
+    font-size: 7pt;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .exercice-body {
+    padding: 12px 14px;
+    font-size: 10.5pt;
+    line-height: 1.8;
+  }
+  .exercice-body .role { font-weight: 600; color: var(--rouge); }
+
+  .match-list { margin: 8px 0; }
+  .match-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .match-row .match-zh {
+    font-family: 'LXGW WenKai Screen', 'Kaiti SC', serif;
+    font-weight: 500;
+    font-size: 12pt;
+  }
+  .match-row .match-dot { color: var(--rouge); font-size: 10pt; }
+  .match-row .match-fr { text-align: right; color: var(--gris-fonce); }
+
+  .corrige {
+    background: #f0f7f2;
+    border: 1px solid #c4dccd;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-top: 16px;
+  }
+  .corrige h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12pt;
+    font-weight: 500;
+    color: #2e6b4f;
+    margin-bottom: 8px;
+  }
+  .corrige p { font-size: 10pt; color: var(--gris-fonce); margin-bottom: 4px; }
+  .corrige strong { color: var(--encre); }
+
+  /* ── WRITING PRACTICE ── */
+  .writing-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .writing-char {
+    text-align: center;
+    border: 1px solid var(--bordure);
+    border-radius: 6px;
+    padding: 12px 8px;
+  }
+  .writing-char .big {
+    font-family: 'LXGW WenKai Screen', 'Kaiti SC', serif;
+    font-size: 36pt;
+    font-weight: 700;
+    color: var(--rouge);
+    line-height: 1.1;
+  }
+  .writing-char .info {
+    font-size: 9pt;
+    color: var(--gris-fonce);
+    margin-top: 4px;
+  }
+  .writing-char .info em {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .practice-lines {
+    border: 1px dashed var(--bordure);
+    border-radius: 6px;
+    padding: 16px;
+    margin: 12px 0;
+    min-height: 60px;
+    color: var(--gris);
+    font-size: 9pt;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--bordure);
+    font-size: 8.5pt;
+    color: var(--gris);
+    text-align: center;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { padding: 0; max-width: none; }
+    .section-title { page-break-before: always; }
+    .section-title:first-of-type { page-break-before: auto; }
+    .exercice, .dialogue, .corrige { break-inside: avoid; }
+    table { break-inside: avoid; }
+    .no-break { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="cover-zhwen">中 文</div>
+  <h1>Cours de Chinois <em>débutant</em></h1>
+  <div class="subtitle">Polycopié de cours</div>
+  <div class="meta">Session 03 · 1 h 30</div>
+  <div class="toc">
+    <h3>Sommaire</h3>
+    <ol>
+      <li>Se repérer — Directions &amp; lieux</li>
+      <li>Questions pratiques de survie</li>
+      <li>Payer en Chine — WeChat Pay &amp; Alipay</li>
+      <li>Premiers achats — couleurs, tailles, prix</li>
+      <li>Sorties &amp; temps libre</li>
+      <li>Vocabulaire essentiel à retenir</li>
+      <li>Caractères à savoir écrire</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 1 ══════════════ -->
+<div class="section-title"><span class="num">Section 01</span>Se repérer — Directions &amp; lieux</div>
+
+<h3>Les 4 directions</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">左</td><td class="td-pinyin">zuǒ</td><td>gauche</td></tr>
+  <tr><td class="td-hanzi">右</td><td class="td-pinyin">yòu</td><td>droite</td></tr>
+  <tr><td class="td-hanzi">前</td><td class="td-pinyin">qián</td><td>devant</td></tr>
+  <tr><td class="td-hanzi">后</td><td class="td-pinyin">hòu</td><td>derrière</td></tr>
+</table>
+
+<h3>Lieux clés</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">酒店</td><td class="td-pinyin">jiǔdiàn</td><td>hôtel</td></tr>
+  <tr><td class="td-hanzi">机场</td><td class="td-pinyin">jīchǎng</td><td>aéroport</td></tr>
+  <tr><td class="td-hanzi">地铁站</td><td class="td-pinyin">dìtiě zhàn</td><td>station de métro</td></tr>
+  <tr><td class="td-hanzi">厕所</td><td class="td-pinyin">cèsuǒ</td><td>toilettes</td></tr>
+</table>
+
+<h3>Structures clés</h3>
+<div class="regle">
+  <strong>请问，___ 在哪里？</strong> (Qǐngwèn, ___ zài nǎlǐ?) = Excusez-moi, où se trouve ___ ?<br>
+  <strong>往 + direction + 走</strong> (Wǎng ___ zǒu) = Aller vers ___<br>
+  一直走 (yìzhí zǒu) = tout droit · 然后 (ránhòu) = ensuite
+</div>
+
+<div class="memo">🧭 En Chine, les adresses se lisent du GRAND au PETIT : pays → ville → rue → numéro. Les dates aussi : année → mois → jour.</div>
+
+<h3>Dialogue — Perdu dans Shanghai</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Sortie de l'aéroport de Pudong — Marc cherche le métro</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">你好！请问，地铁站在哪里？</div><div class="py">Nǐ hǎo! Qǐngwèn, dìtiě zhàn zài nǎlǐ?</div><div class="fr">Bonjour ! Excusez-moi, où est le métro ?</div></div>
+    <div class="dl"><div class="spk spk-cn">路人 🇨🇳</div><div class="zh">往前走，然后往左走。</div><div class="py">Wǎng qián zǒu, ránhòu wǎng zuǒ zǒu.</div><div class="fr">Tout droit, puis tournez à gauche.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">远吗？</div><div class="py">Yuǎn ma?</div><div class="fr">C'est loin ?</div></div>
+    <div class="dl"><div class="spk spk-cn">路人 🇨🇳</div><div class="zh">不远，走五分钟。</div><div class="py">Bù yuǎn, zǒu wǔ fēnzhōng.</div><div class="fr">Non, 5 minutes à pied.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">谢谢！</div><div class="py">Xièxie!</div><div class="fr">Merci !</div></div>
+    <div class="dl"><div class="spk spk-cn">路人 🇨🇳</div><div class="zh">不客气！</div><div class="py">Bú kèqi!</div><div class="fr">De rien !</div></div>
+  </div>
+</div>
+
+<h3>Exercices</h3>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Relie le lieu à sa traduction</div>
+  <div class="exercice-body">
+    <div class="match-list">
+      <div class="match-row"><span class="match-zh">酒店</span><span class="match-dot">•</span><span class="match-fr">station de métro</span></div>
+      <div class="match-row"><span class="match-zh">厕所</span><span class="match-dot">•</span><span class="match-fr">aéroport</span></div>
+      <div class="match-row"><span class="match-zh">地铁站</span><span class="match-dot">•</span><span class="match-fr">hôtel</span></div>
+      <div class="match-row"><span class="match-zh">机场</span><span class="match-dot">•</span><span class="match-fr">toilettes</span></div>
+    </div>
+  </div>
+</div>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Mini-traduction</span> Exercice 2 — Comment dit-on ?</div>
+  <div class="exercice-body">
+    <p>Traduis en chinois (pinyin accepté) :</p>
+    <p>1. Excusez-moi, où sont les toilettes ? ___________________________<br>
+    2. Tournez à droite. ___________________________<br>
+    3. Tout droit, puis tournez à gauche. ___________________________<br>
+    4. C'est loin ? ___________________________</p>
+  </div>
+</div>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Le touriste perdu (2 joueurs)</div>
+  <div class="exercice-body">
+    <p><span class="role">Rôle A — Touriste :</span> Demande où est l'hôtel : 请问，酒店在哪里？</p>
+    <p><span class="role">Rôle B — Passant :</span> Donne des directions : 往前走，然后往___走。不远！</p>
+    <p><em>Inversez les rôles et changez le lieu.</em></p>
+  </div>
+</div>
+<div class="corrige">
+  <h4>✅ Corrigé</h4>
+  <p><strong>Ex. 1 :</strong> 酒店 → hôtel · 厕所 → toilettes · 地铁站 → métro · 机场 → aéroport</p>
+  <p><strong>Ex. 2 :</strong> 1. Qǐngwèn, cèsuǒ zài nǎlǐ? · 2. Wǎng yòu zǒu · 3. Yìzhí zǒu, ránhòu wǎng zuǒ zǒu · 4. Yuǎn ma?</p>
+</div>
+
+<!-- ══════════════ SECTION 2 ══════════════ -->
+<div class="section-title"><span class="num">Section 02</span>Questions pratiques de survie</div>
+
+<h3>Questions de base</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">这是什么？</td><td class="td-pinyin">Zhè shì shénme?</td><td>C'est quoi ça ?</td></tr>
+  <tr><td class="td-hanzi">___怎么说？</td><td class="td-pinyin">___ zěnme shuō?</td><td>Comment dit-on ___ ?</td></tr>
+  <tr><td class="td-hanzi">可以吗？</td><td class="td-pinyin">Kěyǐ ma?</td><td>C'est possible ?</td></tr>
+  <tr><td class="td-hanzi">有没有___？</td><td class="td-pinyin">Yǒu méiyǒu ___?</td><td>Y a-t-il ___ ?</td></tr>
+</table>
+
+<h3>Quand on ne comprend pas</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">我听不懂</td><td class="td-pinyin">Wǒ tīng bù dǒng</td><td>Je ne comprends pas (oral)</td></tr>
+  <tr><td class="td-hanzi">我不懂</td><td class="td-pinyin">Wǒ bù dǒng</td><td>Je ne comprends pas (général)</td></tr>
+  <tr><td class="td-hanzi">请再说一次</td><td class="td-pinyin">Qǐng zài shuō yí cì</td><td>Répétez SVP</td></tr>
+</table>
+
+<h3>Vocabulaire bonus — Au restaurant</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">辣</td><td class="td-pinyin">là</td><td>épicé / pimenté</td></tr>
+  <tr><td class="td-hanzi">不辣</td><td class="td-pinyin">bú là</td><td>pas épicé</td></tr>
+  <tr><td class="td-hanzi">不好意思</td><td class="td-pinyin">bù hǎo yìsi</td><td>excusez-moi / désolé</td></tr>
+</table>
+
+<div class="memo">🎭 Le « non » chinois : en Chine, refuser directement est impoli. « Ce n'est pas très pratique » (不太方便) ou « je vais y réfléchir » (我考虑一下) = souvent un « non » poli. En affaires, ne poussez jamais après un refus déguisé.</div>
+
+<h3>Dialogue — Au restaurant à Chengdu</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Un petit restaurant local — le menu est uniquement en chinois</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">请问，这是什么？</div><div class="py">Qǐngwèn, zhè shì shénme?</div><div class="fr">Excusez-moi, c'est quoi ça ?</div></div>
+    <div class="dl"><div class="spk spk-cn">服务员 🇨🇳</div><div class="zh">这是麻婆豆腐。</div><div class="py">Zhè shì má pó dòufu.</div><div class="fr">C'est du mapo tofu.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">我听不懂…请再说一次？</div><div class="py">Wǒ tīng bù dǒng… Qǐng zài shuō yí cì?</div><div class="fr">Je ne comprends pas… Répétez SVP ?</div></div>
+    <div class="dl"><div class="spk spk-cn">服务员 🇨🇳</div><div class="zh">麻—婆—豆—腐。</div><div class="py">Má — pó — dòu — fu.</div><div class="fr">(lentement) Ma-po-tou-fou.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">辣不辣？</div><div class="py">Là bú là?</div><div class="fr">C'est épicé ?</div></div>
+    <div class="dl"><div class="spk spk-cn">服务员 🇨🇳</div><div class="zh">很辣！</div><div class="py">Hěn là!</div><div class="fr">Très épicé !</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">有没有不辣的？</div><div class="py">Yǒu méiyǒu bú là de?</div><div class="fr">Y en a-t-il sans épice ?</div></div>
+    <div class="dl"><div class="spk spk-cn">服务员 🇨🇳</div><div class="zh">有！</div><div class="py">Yǒu!</div><div class="fr">Oui !</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">好，我要这个。谢谢！</div><div class="py">Hǎo, wǒ yào zhège. Xièxie!</div><div class="fr">OK, je prends ça. Merci !</div></div>
+  </div>
+</div>
+
+<h3>Exercices</h3>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 1 — Complète avec le bon mot</div>
+  <div class="exercice-body">
+    <p>Complète avec : <strong>什么 / 怎么说 / 听不懂 / 可以 / 有没有</strong></p>
+    <p>1. 请问，这是______？ <em>(c'est quoi ?)</em><br>
+    2. « Merci » ______？ <em>(comment dit-on ?)</em><br>
+    3. 我______，请再说一次。 <em>(je ne comprends pas)</em><br>
+    4. ______坐这里吗？ <em>(puis-je m'asseoir ici ?)</em><br>
+    5. ______不辣的？ <em>(y a-t-il du non-épicé ?)</em></p>
+  </div>
+</div>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 2 — Code culturel</div>
+  <div class="exercice-body">
+    <p>1. En Chine, dire 不 (non) directement est normal et poli. &nbsp; V / F<br>
+    2. 我考虑一下 (je vais y réfléchir) signifie souvent « non ». &nbsp; V / F<br>
+    3. 有没有 sert à demander si quelque chose existe. &nbsp; V / F<br>
+    4. Si quelqu'un ne dit pas 好 clairement, il est d'accord. &nbsp; V / F</p>
+  </div>
+</div>
+<div class="corrige">
+  <h4>✅ Corrigé</h4>
+  <p><strong>Ex. 1 :</strong> 1. 什么 · 2. 怎么说 · 3. 听不懂 · 4. 可以 · 5. 有没有</p>
+  <p><strong>Ex. 2 :</strong> 1. F · 2. V · 3. V · 4. F (c'est souvent un refus poli)</p>
+</div>
+
+<!-- ══════════════ SECTION 3 ══════════════ -->
+<div class="section-title"><span class="num">Section 03</span>Payer en Chine — WeChat Pay &amp; Alipay</div>
+
+<h3>Vocabulaire du paiement</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">微信支付</td><td class="td-pinyin">Wēixìn zhīfù</td><td>WeChat Pay</td></tr>
+  <tr><td class="td-hanzi">支付宝</td><td class="td-pinyin">Zhīfùbǎo</td><td>Alipay</td></tr>
+  <tr><td class="td-hanzi">扫码</td><td class="td-pinyin">sǎo mǎ</td><td>scanner le QR code</td></tr>
+  <tr><td class="td-hanzi">付款</td><td class="td-pinyin">fùkuǎn</td><td>payer</td></tr>
+  <tr><td class="td-hanzi">现金</td><td class="td-pinyin">xiànjīn</td><td>espèces / cash</td></tr>
+  <tr><td class="td-hanzi">块</td><td class="td-pinyin">kuài</td><td>yuan (familier)</td></tr>
+  <tr><td class="td-hanzi">元</td><td class="td-pinyin">yuán</td><td>yuan (formel)</td></tr>
+  <tr><td class="td-hanzi">一共</td><td class="td-pinyin">yígòng</td><td>au total</td></tr>
+  <tr><td class="td-hanzi">红包</td><td class="td-pinyin">hóngbāo</td><td>enveloppe rouge</td></tr>
+</table>
+
+<h3>Phrases clés</h3>
+<div class="regle">
+  <strong>买单！</strong>(Mǎi dān!) = L'addition !<br>
+  <strong>可以用现金吗？</strong>(Kěyǐ yòng xiànjīn ma?) = Puis-je payer en cash ?<br>
+  <strong>微信还是支付宝？</strong>(Wēixìn háishi Zhīfùbǎo?) = WeChat ou Alipay ?
+</div>
+
+<div class="memo">💰 红包 (hongbao) : les montants en 8 portent bonheur (88, 168, 888 元). Envoyer un hongbao digital via WeChat à un partenaire = geste relationnel fort.</div>
+
+<h3>Dialogue — À la caisse sans cash</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Un restaurant de nouilles — Marc veut payer</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">买单！</div><div class="py">Mǎi dān!</div><div class="fr">L'addition !</div></div>
+    <div class="dl"><div class="spk spk-cn">收银员 🇨🇳</div><div class="zh">一共八十五块。</div><div class="py">Yígòng bāshí wǔ kuài.</div><div class="fr">85 yuans au total.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">可以用现金吗？</div><div class="py">Kěyǐ yòng xiànjīn ma?</div><div class="fr">Je peux payer en cash ?</div></div>
+    <div class="dl"><div class="spk spk-cn">收银员 🇨🇳</div><div class="zh">不好意思，只能扫码。微信还是支付宝？</div><div class="py">Bù hǎo yìsi, zhǐ néng sǎo mǎ. Wēixìn háishi Zhīfùbǎo?</div><div class="fr">Désolé, QR code uniquement. WeChat ou Alipay ?</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">微信支付。</div><div class="py">Wēixìn zhīfù.</div><div class="fr">WeChat Pay.</div></div>
+    <div class="dl"><div class="spk spk-cn">收银员 🇨🇳</div><div class="zh">好的，请扫码。</div><div class="py">Hǎo de, qǐng sǎo mǎ.</div><div class="fr">OK, scannez le code.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">好了！</div><div class="py">Hǎo le!</div><div class="fr">C'est fait !</div></div>
+    <div class="dl"><div class="spk spk-cn">收银员 🇨🇳</div><div class="zh">收到了，谢谢！</div><div class="py">Shōu dào le, xièxie!</div><div class="fr">Reçu, merci !</div></div>
+  </div>
+</div>
+
+<h3>Exercices</h3>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 1 — Le paiement en Chine</div>
+  <div class="exercice-body">
+    <p>1. En Chine, la plupart des commerces acceptent encore le cash. &nbsp; V / F<br>
+    2. 扫码 veut dire « scanner le QR code ». &nbsp; V / F<br>
+    3. Un hongbao de 444 元 est un bon cadeau. &nbsp; V / F<br>
+    4. 块 et 元 désignent tous deux le yuan. &nbsp; V / F</p>
+  </div>
+</div>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Remise en ordre</span> Exercice 2 — Les étapes du paiement</div>
+  <div class="exercice-body">
+    <p>A. Le caissier dit : 收到了，谢谢！&nbsp; B. Tu dis : 买单！&nbsp; C. Le caissier demande : 微信还是支付宝？&nbsp; D. Tu scannes le QR code &nbsp; E. Tu réponds : 微信支付</p>
+    <p>Ordre : ___ → ___ → ___ → ___ → ___</p>
+  </div>
+</div>
+<div class="corrige">
+  <h4>✅ Corrigé</h4>
+  <p><strong>Ex. 1 :</strong> 1. F · 2. V · 3. F (4 = malchance !) · 4. V</p>
+  <p><strong>Ex. 2 :</strong> B → C → E → D → A</p>
+</div>
+
+<!-- ══════════════ SECTION 4 ══════════════ -->
+<div class="section-title"><span class="num">Section 04</span>Premiers achats</div>
+
+<h3>Acheter</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">买</td><td class="td-pinyin">mǎi</td><td>acheter (ton 3)</td></tr>
+  <tr><td class="td-hanzi">卖</td><td class="td-pinyin">mài</td><td>vendre (ton 4)</td></tr>
+  <tr><td class="td-hanzi">可以试吗？</td><td class="td-pinyin">Kěyǐ shì ma?</td><td>Je peux essayer ?</td></tr>
+  <tr><td class="td-hanzi">太大了</td><td class="td-pinyin">Tài dà le</td><td>Trop grand</td></tr>
+  <tr><td class="td-hanzi">太小了</td><td class="td-pinyin">Tài xiǎo le</td><td>Trop petit</td></tr>
+</table>
+
+<h3>Couleurs</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">红</td><td class="td-pinyin">hóng</td><td>rouge</td></tr>
+  <tr><td class="td-hanzi">黑</td><td class="td-pinyin">hēi</td><td>noir</td></tr>
+  <tr><td class="td-hanzi">白</td><td class="td-pinyin">bái</td><td>blanc</td></tr>
+  <tr><td class="td-hanzi">蓝</td><td class="td-pinyin">lán</td><td>bleu</td></tr>
+</table>
+
+<h3>Compter les prix</h3>
+<div class="regle">
+  <strong>Dizaines :</strong> chiffre + 十 → 二十 (20), 三十 (30)… 九十 (90)<br>
+  <strong>Cent :</strong> 一百 (yì bǎi) · Deux cents : 两百 (liǎng bǎi) — pas 二百<br>
+  <strong>Raccourci oral :</strong> 两百五 = 250 (le 十 est implicite)
+</div>
+
+<div class="memo">⚠️ 买 (mǎi, ton 3) = acheter ≠ 卖 (mài, ton 4) = vendre. Un ton de différence ! Erreur classique et embarrassante.</div>
+
+<h3>Dialogue — Au marché aux perles de Shanghai</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marché de Yuyuan — Marc cherche un sac en cuir</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">你好！这个包多少钱？</div><div class="py">Nǐ hǎo! Zhège bāo duōshǎo qián?</div><div class="fr">Bonjour ! Ce sac, combien ?</div></div>
+    <div class="dl"><div class="spk spk-cn">老板 🇨🇳</div><div class="zh">三百块。</div><div class="py">Sān bǎi kuài.</div><div class="fr">300 yuans.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">太贵了！便宜一点？</div><div class="py">Tài guì le! Piányi yìdiǎn?</div><div class="fr">Trop cher ! Un peu moins ?</div></div>
+    <div class="dl"><div class="spk spk-cn">老板 🇨🇳</div><div class="zh">两百八。</div><div class="py">Liǎng bǎi bā.</div><div class="fr">280.</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">有没有大号的？</div><div class="py">Yǒu méiyǒu dà hào de?</div><div class="fr">Y a-t-il en grande taille ?</div></div>
+    <div class="dl"><div class="spk spk-cn">老板 🇨🇳</div><div class="zh">有！红的还是黑的？</div><div class="py">Yǒu! Hóng de háishi hēi de?</div><div class="fr">Oui ! Rouge ou noir ?</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">黑的。可以试吗？</div><div class="py">Hēi de. Kěyǐ shì ma?</div><div class="fr">Noir. Je peux essayer ?</div></div>
+    <div class="dl"><div class="spk spk-cn">老板 🇨🇳</div><div class="zh">可以！</div><div class="py">Kěyǐ!</div><div class="fr">Bien sûr !</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">两百块，好不好？</div><div class="py">Liǎng bǎi kuài, hǎo bù hǎo?</div><div class="fr">200 yuans, ça marche ?</div></div>
+    <div class="dl"><div class="spk spk-cn">老板 🇨🇳</div><div class="zh">好吧！</div><div class="py">Hǎo ba!</div><div class="fr">Allez, d'accord !</div></div>
+  </div>
+</div>
+
+<h3>Exercices</h3>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Calcul</span> Exercice 1 — Dis le prix en chinois</div>
+  <div class="exercice-body">
+    <p>1. 45 元 → _______________ &nbsp; 2. 88 块 → _______________ &nbsp; 3. 120 元 → _______________<br>
+    4. 250 块 → _______________ &nbsp; 5. 300 元 → _______________</p>
+  </div>
+</div>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 2 — Couleurs et tailles</div>
+  <div class="exercice-body">
+    <div class="match-list">
+      <div class="match-row"><span class="match-zh">红的</span><span class="match-dot">•</span><span class="match-fr">trop petit</span></div>
+      <div class="match-row"><span class="match-zh">大号</span><span class="match-dot">•</span><span class="match-fr">le rouge</span></div>
+      <div class="match-row"><span class="match-zh">太小了</span><span class="match-dot">•</span><span class="match-fr">le noir</span></div>
+      <div class="match-row"><span class="match-zh">黑的</span><span class="match-dot">•</span><span class="match-fr">grande taille</span></div>
+    </div>
+  </div>
+</div>
+<div class="corrige">
+  <h4>✅ Corrigé</h4>
+  <p><strong>Ex. 1 :</strong> 1. sì shí wǔ yuán · 2. bāshí bā kuài · 3. yì bǎi èr shí yuán · 4. liǎng bǎi wǔ shí kuài · 5. sān bǎi yuán</p>
+  <p><strong>Ex. 2 :</strong> 红的 → le rouge · 大号 → grande taille · 太小了 → trop petit · 黑的 → le noir</p>
+</div>
+
+<!-- ══════════════ SECTION 5 ══════════════ -->
+<div class="section-title"><span class="num">Section 05</span>Sorties &amp; temps libre</div>
+
+<h3>Le temps</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">今天</td><td class="td-pinyin">jīntiān</td><td>aujourd'hui</td></tr>
+  <tr><td class="td-hanzi">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
+  <tr><td class="td-hanzi">昨天</td><td class="td-pinyin">zuótiān</td><td>hier</td></tr>
+  <tr><td class="td-hanzi">晚上</td><td class="td-pinyin">wǎnshang</td><td>le soir</td></tr>
+  <tr><td class="td-hanzi">几点？</td><td class="td-pinyin">Jǐ diǎn?</td><td>Quelle heure ?</td></tr>
+  <tr><td class="td-hanzi">现在</td><td class="td-pinyin">xiànzài</td><td>maintenant</td></tr>
+</table>
+
+<h3>Inviter &amp; réagir</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">一起</td><td class="td-pinyin">yìqǐ</td><td>ensemble</td></tr>
+  <tr><td class="td-hanzi">吃饭</td><td class="td-pinyin">chīfàn</td><td>manger / dîner</td></tr>
+  <tr><td class="td-hanzi">好玩</td><td class="td-pinyin">hǎowán</td><td>fun / amusant</td></tr>
+  <tr><td class="td-hanzi">累了</td><td class="td-pinyin">lèi le</td><td>fatigué</td></tr>
+  <tr><td class="td-hanzi">回</td><td class="td-pinyin">huí</td><td>retourner</td></tr>
+</table>
+
+<h3>Payer l'addition — le rituel</h3>
+<div class="regle">
+  <strong>我来买单！</strong>(Wǒ lái mǎi dān!) = C'est moi qui paie !<br>
+  <strong>我请你！</strong>(Wǒ qǐng nǐ!) = Je t'invite !<br>
+  <strong>下次我请！</strong>(Xià cì wǒ qǐng!) = La prochaine fois c'est moi !
+</div>
+<div class="memo">🎭 Se battre pour l'addition (抢着买单) est un RITUEL social en Chine. Ne pas proposer de payer = impoli. Celui qui paie gagne du 面子 (miànzi = « face »). Laissez votre hôte chinois gagner, puis dites 下次我请！</div>
+
+<h3>Dialogue — Invitation à dîner</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Après une réunion à Shanghai — Li Ming invite Marc</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="spk spk-cn">李明 🇨🇳</div><div class="zh">今天晚上一起去吃饭吗？</div><div class="py">Jīntiān wǎnshang yìqǐ qù chīfàn ma?</div><div class="fr">On va dîner ensemble ce soir ?</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">好啊！去哪里？</div><div class="py">Hǎo a! Qù nǎlǐ?</div><div class="fr">Oui ! On va où ?</div></div>
+    <div class="dl"><div class="spk spk-cn">李明 🇨🇳</div><div class="zh">一个很好吃的地方。六点，好吗？</div><div class="py">Yí gè hěn hǎo chī de dìfang. Liù diǎn, hǎo ma?</div><div class="fr">Un endroit très bon. 6 heures, OK ?</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">好的！</div><div class="py">Hǎo de!</div><div class="fr">D'accord !</div></div>
+    <div class="dialogue-pause">— après le dîner —</div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">好吃！我来买单！</div><div class="py">Hǎo chī! Wǒ lái mǎi dān!</div><div class="fr">Délicieux ! C'est moi qui paie !</div></div>
+    <div class="dl"><div class="spk spk-cn">李明 🇨🇳</div><div class="zh">不不不，我请你！</div><div class="py">Bù bù bù, wǒ qǐng nǐ!</div><div class="fr">Non non non, c'est moi qui invite !</div></div>
+    <div class="dl"><div class="spk spk-fr">Marc 🇫🇷</div><div class="zh">谢谢！下次我请！今天很好玩！</div><div class="py">Xièxie! Xià cì wǒ qǐng! Jīntiān hěn hǎowán!</div><div class="fr">Merci ! La prochaine fois c'est moi ! C'était super !</div></div>
+  </div>
+</div>
+
+<h3>Exercices</h3>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Le temps</div>
+  <div class="exercice-body">
+    <div class="match-list">
+      <div class="match-row"><span class="match-zh">今天</span><span class="match-dot">•</span><span class="match-fr">hier</span></div>
+      <div class="match-row"><span class="match-zh">昨天</span><span class="match-dot">•</span><span class="match-fr">maintenant</span></div>
+      <div class="match-row"><span class="match-zh">明天</span><span class="match-dot">•</span><span class="match-fr">aujourd'hui</span></div>
+      <div class="match-row"><span class="match-zh">现在</span><span class="match-dot">•</span><span class="match-fr">demain</span></div>
+      <div class="match-row"><span class="match-zh">晚上</span><span class="match-dot">•</span><span class="match-fr">le soir</span></div>
+    </div>
+  </div>
+</div>
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 2 — L'invitation</div>
+  <div class="exercice-body">
+    <p>Complète avec : <strong>一起 / 好啊 / 几点 / 吃饭 / 我请你</strong></p>
+    <p>— ______去______吗？<br>— ______！______？<br>— 六点。<br>(après le dîner)<br>— 我来买单！<br>— 不不不，______！</p>
+  </div>
+</div>
+<div class="corrige">
+  <h4>✅ Corrigé</h4>
+  <p><strong>Ex. 1 :</strong> 今天 → aujourd'hui · 昨天 → hier · 明天 → demain · 现在 → maintenant · 晚上 → le soir</p>
+  <p><strong>Ex. 2 :</strong> 一起 · 吃饭 · 好啊 · 几点 · 我请你</p>
+</div>
+
+<!-- ══════════════ VOCABULAIRE COMPLET ══════════════ -->
+<div class="section-title"><span class="num">Section 06</span>Vocabulaire essentiel à retenir</div>
+
+<h3>Directions &amp; lieux</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">左</td><td class="td-pinyin">zuǒ</td><td>gauche</td></tr>
+  <tr><td class="td-hanzi">右</td><td class="td-pinyin">yòu</td><td>droite</td></tr>
+  <tr><td class="td-hanzi">前</td><td class="td-pinyin">qián</td><td>devant</td></tr>
+  <tr><td class="td-hanzi">后</td><td class="td-pinyin">hòu</td><td>derrière</td></tr>
+  <tr><td class="td-hanzi">走</td><td class="td-pinyin">zǒu</td><td>marcher</td></tr>
+  <tr><td class="td-hanzi">远</td><td class="td-pinyin">yuǎn</td><td>loin</td></tr>
+  <tr><td class="td-hanzi">酒店</td><td class="td-pinyin">jiǔdiàn</td><td>hôtel</td></tr>
+  <tr><td class="td-hanzi">地铁站</td><td class="td-pinyin">dìtiě zhàn</td><td>station de métro</td></tr>
+  <tr><td class="td-hanzi">厕所</td><td class="td-pinyin">cèsuǒ</td><td>toilettes</td></tr>
+</table>
+
+<h3>Questions &amp; communication</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">什么</td><td class="td-pinyin">shénme</td><td>quoi</td></tr>
+  <tr><td class="td-hanzi">怎么</td><td class="td-pinyin">zěnme</td><td>comment</td></tr>
+  <tr><td class="td-hanzi">哪里</td><td class="td-pinyin">nǎlǐ</td><td>où</td></tr>
+  <tr><td class="td-hanzi">可以</td><td class="td-pinyin">kěyǐ</td><td>pouvoir / possible</td></tr>
+  <tr><td class="td-hanzi">有</td><td class="td-pinyin">yǒu</td><td>avoir / il y a</td></tr>
+  <tr><td class="td-hanzi">没有</td><td class="td-pinyin">méiyǒu</td><td>ne pas avoir</td></tr>
+  <tr><td class="td-hanzi">懂</td><td class="td-pinyin">dǒng</td><td>comprendre</td></tr>
+  <tr><td class="td-hanzi">说</td><td class="td-pinyin">shuō</td><td>dire / parler</td></tr>
+  <tr><td class="td-hanzi">听</td><td class="td-pinyin">tīng</td><td>écouter / entendre</td></tr>
+</table>
+
+<h3>Paiement &amp; achats</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">买</td><td class="td-pinyin">mǎi</td><td>acheter</td></tr>
+  <tr><td class="td-hanzi">扫码</td><td class="td-pinyin">sǎo mǎ</td><td>scanner le QR code</td></tr>
+  <tr><td class="td-hanzi">现金</td><td class="td-pinyin">xiànjīn</td><td>cash / espèces</td></tr>
+  <tr><td class="td-hanzi">块</td><td class="td-pinyin">kuài</td><td>yuan (familier)</td></tr>
+  <tr><td class="td-hanzi">百</td><td class="td-pinyin">bǎi</td><td>cent</td></tr>
+  <tr><td class="td-hanzi">大</td><td class="td-pinyin">dà</td><td>grand</td></tr>
+  <tr><td class="td-hanzi">小</td><td class="td-pinyin">xiǎo</td><td>petit</td></tr>
+  <tr><td class="td-hanzi">红</td><td class="td-pinyin">hóng</td><td>rouge</td></tr>
+  <tr><td class="td-hanzi">黑</td><td class="td-pinyin">hēi</td><td>noir</td></tr>
+  <tr><td class="td-hanzi">白</td><td class="td-pinyin">bái</td><td>blanc</td></tr>
+</table>
+
+<h3>Temps &amp; social</h3>
+<table>
+  <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
+  <tr><td class="td-hanzi">今天</td><td class="td-pinyin">jīntiān</td><td>aujourd'hui</td></tr>
+  <tr><td class="td-hanzi">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
+  <tr><td class="td-hanzi">现在</td><td class="td-pinyin">xiànzài</td><td>maintenant</td></tr>
+  <tr><td class="td-hanzi">几点</td><td class="td-pinyin">jǐ diǎn</td><td>quelle heure</td></tr>
+  <tr><td class="td-hanzi">一起</td><td class="td-pinyin">yìqǐ</td><td>ensemble</td></tr>
+  <tr><td class="td-hanzi">回</td><td class="td-pinyin">huí</td><td>retourner</td></tr>
+  <tr><td class="td-hanzi">累</td><td class="td-pinyin">lèi</td><td>fatigué</td></tr>
+</table>
+
+<!-- ══════════════ ÉCRITURE ══════════════ -->
+<div class="section-title"><span class="num">Section 07</span>Caractères à savoir écrire</div>
+
+<p>10 caractères essentiels de cette session. Entraînez-vous à les écrire de mémoire.</p>
+
+<div class="writing-grid">
+  <div class="writing-char"><div class="big">左</div><div class="info"><em>zuǒ</em> · 5 traits<br>gauche</div></div>
+  <div class="writing-char"><div class="big">右</div><div class="info"><em>yòu</em> · 5 traits<br>droite</div></div>
+  <div class="writing-char"><div class="big">大</div><div class="info"><em>dà</em> · 3 traits<br>grand</div></div>
+  <div class="writing-char"><div class="big">小</div><div class="info"><em>xiǎo</em> · 3 traits<br>petit</div></div>
+  <div class="writing-char"><div class="big">买</div><div class="info"><em>mǎi</em> · 6 traits<br>acheter</div></div>
+  <div class="writing-char"><div class="big">元</div><div class="info"><em>yuán</em> · 4 traits<br>yuan</div></div>
+  <div class="writing-char"><div class="big">今</div><div class="info"><em>jīn</em> · 4 traits<br>maintenant</div></div>
+  <div class="writing-char"><div class="big">天</div><div class="info"><em>tiān</em> · 4 traits<br>jour / ciel</div></div>
+  <div class="writing-char"><div class="big">走</div><div class="info"><em>zǒu</em> · 7 traits<br>marcher</div></div>
+  <div class="writing-char"><div class="big">回</div><div class="info"><em>huí</em> · 6 traits<br>revenir</div></div>
+</div>
+
+<h3>Astuces mnémotechniques</h3>
+<div class="regle">
+  <strong>大</strong> = une personne bras écartés (grand !)<br>
+  <strong>小</strong> = un trait vertical + deux gouttes (tout petit)<br>
+  <strong>天</strong> = une personne (大) avec un chapeau (一) = le ciel<br>
+  <strong>回</strong> = un carré dans un carré = revenir à son point de départ<br>
+  <strong>走</strong> = partie basse = des jambes en mouvement
+</div>
+
+<h3>Zone de pratique</h3>
+<div class="practice-lines">Recopiez chaque caractère 5 fois de mémoire :<br><br><br><br><br><br><br></div>
+
+<div class="page-footer">
+  Cours de Chinois débutant · Session 3 · NELY
+</div>
+
+</body>
+</html>
