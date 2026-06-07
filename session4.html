@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours de Chinois débutant — Session 4</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap');
+  @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css');
+
+  :root {
+    --bg-base: #faf7f2;
+    --bg-card: #ffffff;
+    --bg-deep: #14110e;
+    --rouge: #8b1d20;
+    --rouge-soft: #b54146;
+    --or: #c9a467;
+    --or-light: #e8d3a3;
+    --encre: #1a1a1a;
+    --gris-fonce: #2d2d2d;
+    --gris: #6b6b6b;
+    --gris-clair: #d8d3ca;
+    --bordure: rgba(26, 20, 16, 0.08);
+    --shadow-sm: 0 2px 10px rgba(26, 20, 16, 0.04);
+    --shadow-md: 0 10px 40px rgba(26, 20, 16, 0.08);
+    --shadow-lg: 0 24px 70px rgba(26, 20, 16, 0.14);
+    --kai: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0a;
+    color: var(--encre);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+
+  .slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    overflow-y: auto; background: var(--bg-base);
+    opacity: 0; transform: translateX(60px);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+    pointer-events: none;
+  }
+  .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+  .slide.prev { opacity: 0; transform: translateX(-60px); }
+
+  .slide-num {
+    position: absolute; top: 26px; right: 32px;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gris); font-weight: 500; z-index: 5; font-variant-numeric: tabular-nums;
+  }
+  .slide-num strong { color: var(--rouge); font-weight: 600; margin-right: 2px; }
+  .slide-cover .slide-num, .slide-section .slide-num, .slide-bilan .slide-num { color: rgba(255,255,255,0.32); }
+  .slide-cover .slide-num strong, .slide-section .slide-num strong, .slide-bilan .slide-num strong { color: var(--or); }
+
+  /* ── COVER ── */
+  .slide-cover {
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(139, 29, 32, 0.20), transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(201, 164, 103, 0.10), transparent 55%),
+      linear-gradient(135deg, #0f0a08 0%, #1a1410 100%);
+    color: white; display: flex; align-items: center; justify-content: center;
+    padding: 60px; text-align: center;
+  }
+  .cover-inner { max-width: 920px; }
+  .cover-mark {
+    color: var(--or); font-family: var(--kai);
+    font-size: 36px; font-weight: 500; letter-spacing: 24px; padding-left: 24px;
+    margin-bottom: 38px; opacity: 0.9;
+  }
+  .cover-inner h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 84px; font-weight: 500; letter-spacing: -1.5px; line-height: 1.05;
+    margin-bottom: 28px; color: #faf7f2;
+  }
+  .cover-inner h1 em { font-style: italic; font-weight: 400; color: var(--or-light); }
+  .cover-subtitle {
+    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55);
+    letter-spacing: 5px; text-transform: uppercase; margin-bottom: 60px;
+  }
+  .cover-meta {
+    display: inline-flex; align-items: center; gap: 18px;
+    color: var(--or); font-size: 12px; letter-spacing: 4px;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .cover-meta::before, .cover-meta::after {
+    content: ''; width: 40px; height: 1px; background: var(--or); opacity: 0.5;
+  }
+  .cover-hint {
+    margin-top: 64px; color: rgba(255,255,255,0.34); font-size: 11px; letter-spacing: 1.5px; line-height: 2.2;
+  }
+  .cover-hint kbd {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    padding: 3px 9px; border-radius: 4px; margin: 0 2px; font-family: inherit; font-size: 10px;
+  }
+  .cover-hint .spk-note { color: var(--or-light); }
+
+  /* ── SECTION DIVIDER ── */
+  .slide-section {
+    background: radial-gradient(ellipse at center, rgba(139, 29, 32, 0.08), transparent 70%), var(--bg-deep);
+    color: white; display: flex; align-items: center; justify-content: center;
+    padding: 60px; text-align: center;
+  }
+  .section-inner { max-width: 900px; }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 200px; font-weight: 400;
+    line-height: 0.9; color: var(--or); margin-bottom: 12px; letter-spacing: -10px;
+  }
+  .section-cn {
+    font-family: var(--kai); font-size: 34px; color: var(--or-light);
+    letter-spacing: 8px; margin-bottom: 18px; opacity: 0.85;
+  }
+  .section-label {
+    font-size: 10px; letter-spacing: 6px; text-transform: uppercase;
+    color: rgba(255,255,255,0.40); margin-bottom: 22px;
+  }
+  .slide-section h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 500;
+    letter-spacing: -0.5px; color: #faf7f2; margin-bottom: 18px; line-height: 1.1;
+  }
+  .section-desc { color: rgba(255,255,255,0.55); font-size: 15px; font-weight: 300; letter-spacing: 0.3px; max-width: 600px; margin: 0 auto; }
+  .section-rule { width: 50px; height: 1px; background: var(--or); margin: 28px auto 0; opacity: 0.5; }
+
+  /* ── CARD SLIDE ── */
+  .slide-card {
+    background: var(--bg-base); display: flex; align-items: flex-start; justify-content: center;
+    padding: 58px 56px; text-align: center;
+  }
+  .card-inner { max-width: 900px; width: 100%; margin: auto 0; }
+  .card-wide { max-width: 1000px; }
+  .card-meta { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 14px; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 500;
+    color: var(--encre); margin-bottom: 30px; letter-spacing: -0.3px; line-height: 1.2;
+  }
+  .card-title .ct-cn { font-family: var(--kai); color: var(--rouge); font-weight: 600; margin-right: 10px; }
+
+  .hanzi-big {
+    font-family: var(--kai);
+    font-size: 130px; font-weight: 700; color: var(--encre); line-height: 1.1;
+    margin-bottom: 24px; letter-spacing: 6px;
+  }
+  .hanzi-medium { font-size: 90px; letter-spacing: 4px; }
+  .hanzi-small { font-size: 60px; letter-spacing: 2px; }
+  .pinyin-big {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px;
+    font-weight: 400; color: var(--gris-fonce); margin-bottom: 14px; letter-spacing: 1px;
+  }
+  .traduction-big { font-size: 17px; font-weight: 400; color: var(--gris); letter-spacing: 0.3px; }
+  .note-formateur {
+    max-width: 760px; margin: 28px auto 0; background: white;
+    border: 1px solid var(--bordure); border-left: 3px solid var(--or);
+    border-radius: 0 8px 8px 0; padding: 16px 20px; font-size: 13px;
+    color: var(--gris); text-align: left; line-height: 1.6; box-shadow: var(--shadow-sm);
+  }
+
+  /* ── SPEAKABLE AFFORDANCE ── */
+  .spk { cursor: pointer; transition: color 0.15s ease, background 0.15s ease; }
+  .spk:hover { color: var(--rouge); }
+  .spk.speaking { color: var(--rouge); }
+  @keyframes spkpulse { 0% { background: rgba(201,164,103,0.0); } 35% { background: rgba(201,164,103,0.28); } 100% { background: rgba(201,164,103,0.0); } }
+  .spk.speaking { animation: spkpulse 0.7s ease; border-radius: 6px; }
+
+  /* ── MINI DIALOGUE + KEYWORDS ── */
+  .dlg-row { display: flex; gap: 24px; align-items: stretch; text-align: left; margin-top: 6px; }
+  .dialogue-scene {
+    flex: 1 1 58%; background: white;
+    border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm);
+    border: 1px solid var(--bordure);
+  }
+  .dialogue-setting {
+    background: linear-gradient(135deg, #f8f6f2, #f3efe8);
+    padding: 12px 22px; font-size: 12.5px; color: var(--gris);
+    border-bottom: 1px solid var(--bordure); font-style: italic;
+  }
+  .dialogue-body { padding: 16px 22px; }
+  .dialogue-line {
+    margin-bottom: 13px; padding-bottom: 13px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .dialogue-line:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .dialogue-line .speaker {
+    font-size: 10.5px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .speaker-fr { color: #2563eb; }
+  .speaker-cn { color: var(--rouge); }
+  .dialogue-line .dg-zh {
+    font-family: var(--kai);
+    font-size: 21px; font-weight: 500; color: var(--encre); line-height: 1.4; margin-bottom: 3px;
+    display: inline-block;
+  }
+  .dialogue-line .dg-py {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: var(--gris-fonce); margin-bottom: 2px;
+  }
+  .dialogue-line .dg-fr { font-size: 12.5px; color: var(--gris); }
+
+  .keywords-panel {
+    flex: 1 1 42%; background: white; border-radius: 12px; padding: 16px 20px;
+    box-shadow: var(--shadow-sm); border: 1px solid var(--bordure);
+    display: flex; flex-direction: column;
+  }
+  .keywords-panel h4 {
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--rouge);
+    font-weight: 600; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--bordure);
+  }
+  .keywords-panel h4 .kw-cn { font-family: var(--kai); font-size: 14px; letter-spacing: 2px; margin-right: 6px; }
+  .kw { display: flex; align-items: baseline; gap: 10px; padding: 8px 6px; border-radius: 7px; }
+  .kw + .kw { border-top: 1px dashed rgba(0,0,0,0.05); }
+  .kw-zh { font-family: var(--kai); font-size: 20px; font-weight: 600; color: var(--encre); flex-shrink: 0; min-width: 76px; }
+  .kw-py { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--rouge); flex-shrink: 0; min-width: 64px; }
+  .kw-fr { font-size: 12.5px; color: var(--gris); line-height: 1.35; }
+
+  /* ── LANGUAGE POINTS (substitution drills) ── */
+  .langpoints { display: flex; flex-direction: column; gap: 10px; max-width: 940px; margin: 4px auto 0; text-align: left; }
+  .langpoint {
+    background: white; border-radius: 12px; padding: 13px 18px;
+    box-shadow: var(--shadow-sm); border-left: 3px solid var(--or);
+    display: flex; align-items: center; gap: 18px;
+  }
+  .langpoint-frame { flex-shrink: 0; width: 150px; display: flex; flex-direction: column; gap: 2px; }
+  .lp-pivot { font-family: var(--kai); font-size: 26px; font-weight: 700; color: var(--rouge); line-height: 1; }
+  .lp-pivot .lp-plus { font-family: 'Inter'; font-size: 13px; color: var(--gris); font-weight: 400; margin-left: 4px; }
+  .lp-gloss { font-size: 11px; color: var(--gris); letter-spacing: 0.2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; flex: 1; }
+  .chip {
+    background: var(--bg-base); border: 1px solid var(--bordure); border-radius: 8px;
+    padding: 6px 11px; text-align: center; line-height: 1.2; min-width: 64px;
+  }
+  .chip:hover { background: #fff3d6; border-color: var(--or); }
+  .chip .c-zh { display: block; font-family: var(--kai); font-size: 18px; font-weight: 600; color: var(--encre); }
+  .chip .c-fr { display: block; font-size: 9.5px; color: var(--gris); margin-top: 1px; }
+
+  /* ── EXERCISES (compact) ── */
+  .ex-wrap { display: flex; gap: 18px; max-width: 940px; margin: 6px auto 0; text-align: left; align-items: stretch; }
+  .ex-col { flex: 1; background: white; border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--bordure); }
+  .ex-col .ex-head { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+  .ex-col .ex-tag { background: var(--encre); color: #fff; font-size: 9px; padding: 4px 10px; border-radius: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .ex-col .ex-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--encre); }
+  .ex-col ol { margin-left: 20px; }
+  .ex-col li { font-size: 15px; line-height: 1.95; color: var(--gris-fonce); }
+  .ex-col li .zh { font-family: var(--kai); font-size: 17px; color: var(--encre); }
+  .ex-col .blank { color: var(--rouge); font-weight: 600; letter-spacing: 1px; }
+  .corrige-bar {
+    max-width: 940px; margin: 14px auto 0; background: #f3f8f4; border: 1px solid #c4dccd;
+    border-radius: 10px; padding: 11px 20px; font-size: 13px; color: #2e6b4f; text-align: left; line-height: 1.6;
+  }
+  .corrige-bar b { color: #1f5238; }
+  .corrige-bar .zh { font-family: var(--kai); font-size: 15px; }
+
+  /* ── MANUEL (reference doc) ── */
+  .slide-manuel { background: var(--bg-base); padding: 50px 48px 56px; display: flex; align-items: center; justify-content: center; }
+  .doc-inner { max-width: 1120px; width: 100%; margin: auto 0; }
+  .doc-meta { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 10px; text-align: center; }
+  .doc-inner h1 {
+    font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 500;
+    color: var(--encre); margin-bottom: 24px; letter-spacing: -0.3px; text-align: center;
+  }
+  .doc-inner h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500;
+    color: var(--encre); margin: 0 0 8px; letter-spacing: -0.2px;
+  }
+  .doc-inner h3 .h3-cn { font-family: var(--kai); color: var(--rouge); margin-right: 8px; }
+  .vocab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 20px; }
+  .vocab-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .vocab-table td { padding: 6.5px 14px; border-bottom: 1px solid var(--bordure); font-size: 13.5px; color: var(--gris-fonce); }
+  .vocab-table tr:last-child td { border-bottom: none; }
+  .vocab-table tr:hover td { background: rgba(139, 29, 32, 0.025); }
+  .vocab-table .td-hanzi { font-family: var(--kai); font-size: 20px; font-weight: 700; color: var(--encre); width: 1%; white-space: nowrap; }
+  .vocab-table .td-pinyin { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--rouge); width: 1%; white-space: nowrap; }
+
+  /* ── CHARACTERS ── */
+  .char-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 920px; margin: 8px auto 0; }
+  .char-card {
+    background: white; border-radius: 14px; padding: 18px 8px 14px; box-shadow: var(--shadow-sm);
+    border: 1px solid var(--bordure); text-align: center; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .char-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .char-big { font-family: var(--kai); font-size: 64px; font-weight: 700; color: var(--rouge); line-height: 1; margin-bottom: 8px; }
+  .char-py { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--gris-fonce); }
+  .char-fr { font-size: 11px; color: var(--gris); margin-top: 2px; }
+  .char-strokes { font-size: 9.5px; color: var(--or); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; font-weight: 500; }
+  .regle, .memo { border-radius: 10px; padding: 18px 22px; margin: 14px auto 0; max-width: 760px; font-size: 14.5px; line-height: 1.7; box-shadow: var(--shadow-sm); text-align: left; }
+  .regle { background: linear-gradient(135deg, #fff8e8, #fff3d6); border-left: 3px solid var(--or); color: var(--gris-fonce); }
+  .regle .zh { font-family: var(--kai); font-size: 17px; color: var(--rouge); }
+
+  /* ── BILAN ── */
+  .slide-bilan {
+    background: radial-gradient(ellipse at center, rgba(201, 164, 103, 0.08), transparent 70%), var(--bg-deep);
+    color: white; display: flex; align-items: center; justify-content: center; padding: 60px;
+  }
+  .bilan-inner { max-width: 920px; width: 100%; text-align: center; }
+  .bilan-mark { color: var(--or); font-size: 28px; margin-bottom: 22px; opacity: 0.7; letter-spacing: 18px; padding-left: 18px; font-family: var(--kai); }
+  .slide-bilan h2 { font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 40px; color: #faf7f2; }
+  .recap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 38px; text-align: left; }
+  .recap-item {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 24px; border-radius: 12px; font-size: 15px;
+    color: rgba(255,255,255,0.85); display: flex; gap: 14px; align-items: baseline;
+  }
+  .recap-item .num { color: var(--or); font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; flex-shrink: 0; }
+  .recap-item .ri-cn { font-family: var(--kai); color: var(--or-light); margin-right: 4px; }
+  .bilan-next { color: rgba(255,255,255,0.45); font-size: 13px; font-style: italic; letter-spacing: 0.3px; line-height: 1.7; }
+
+  /* ── NAV ── */
+  .nav-arrow {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px; background: rgba(26, 20, 16, 0.62);
+    color: white; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%;
+    font-size: 14px; cursor: pointer; opacity: 0.5; transition: all 0.25s ease;
+    z-index: 100; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-arrow:hover:not(:disabled) { opacity: 1; background: var(--rouge); transform: translateY(-50%) scale(1.06); box-shadow: 0 8px 28px rgba(139, 29, 32, 0.4); }
+  .nav-arrow:disabled { opacity: 0.10; cursor: not-allowed; }
+  .nav-arrow.left { left: 28px; }
+  .nav-arrow.right { right: 28px; }
+
+  .progress-bar {
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 18px;
+    background: rgba(20, 17, 14, 0.9); color: white; padding: 10px 20px;
+    border-radius: 100px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    z-index: 100; font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06);
+  }
+  .progress-bar .counter { min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.85); }
+  .progress-bar .bar { width: 180px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-bar .bar .fill { height: 100%; background: linear-gradient(90deg, var(--or), var(--rouge-soft)); border-radius: 2px; transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .sec-dots { display: flex; gap: 7px; }
+  .sec-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18); cursor: pointer; transition: all 0.25s; border: none; padding: 0; }
+  .sec-dot:hover { background: rgba(255,255,255,0.55); }
+  .sec-dot.active { background: var(--or); transform: scale(1.5); box-shadow: 0 0 0 3px rgba(201, 164, 103, 0.18); }
+
+  .section-marker {
+    position: fixed; top: 22px; left: 50%; transform: translateX(-50%); z-index: 50;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris);
+    background: rgba(255,255,255,0.65); padding: 7px 16px; border-radius: 100px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--bordure); pointer-events: none; opacity: 0;
+    transition: opacity 0.4s; font-weight: 500;
+  }
+  .section-marker.visible { opacity: 1; }
+
+  /* TTS persistent hint */
+  .tts-hint {
+    position: fixed; bottom: 24px; left: 24px; z-index: 90;
+    font-size: 10.5px; letter-spacing: 0.5px; color: var(--gris);
+    background: rgba(255,255,255,0.7); border: 1px solid var(--bordure);
+    padding: 7px 13px; border-radius: 100px; backdrop-filter: blur(8px);
+    display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm);
+    transition: opacity 0.4s;
+  }
+  .tts-hint.dark { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.1); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 820px) {
+    .slide-card { padding: 30px 18px; }
+    .card-title { font-size: 23px; margin-bottom: 22px; }
+    .dlg-row { flex-direction: column; gap: 14px; }
+    .langpoint { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .langpoint-frame { width: auto; flex-direction: row; align-items: baseline; gap: 8px; }
+    .ex-wrap { flex-direction: column; }
+    .char-grid { grid-template-columns: repeat(3, 1fr); }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .cover-inner h1 { font-size: 46px; }
+    .cover-mark { font-size: 22px; letter-spacing: 14px; }
+    .section-num { font-size: 130px; }
+    .slide-section h2 { font-size: 34px; }
+    .recap-grid { grid-template-columns: 1fr; }
+    .nav-arrow { width: 40px; height: 40px; }
+    .nav-arrow.left { left: 12px; } .nav-arrow.right { right: 12px; }
+    .tts-hint { display: none; }
+  }
+
+  @media print {
+    html, body { overflow: auto !important; height: auto !important; }
+    .slide { position: relative !important; opacity: 1 !important; transform: none !important; height: auto !important; page-break-after: always; }
+    .nav-arrow, .progress-bar, .section-marker, .tts-hint { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 00 · COVER -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-cover active" data-section="0">
+    <div class="cover-inner">
+      <div class="cover-mark spk">中 文</div>
+      <h1>Cours de Chinois<br><em>débutant</em></h1>
+      <div class="cover-subtitle">Transport · Hôtel · Restaurant · Santé · Rendez-vous</div>
+      <div class="cover-meta">Session 04 · 1 h 30</div>
+      <div class="cover-hint">
+        Naviguez avec <kbd>←</kbd> <kbd>→</kbd> · <kbd>Espace</kbd> pour avancer<br>
+        <span class="spk-note">🔊 Cliquez sur n'importe quel mot chinois pour l'entendre</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §1 · 交通出行 — SE DÉPLACER -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="1">
+    <div class="section-inner">
+      <div class="section-num">01</div>
+      <div class="section-cn spk">交通出行</div>
+      <div class="section-label">Section un</div>
+      <h2>Se déplacer</h2>
+      <div class="section-desc">Taxi, Didi, métro — bouger dans la ville sans rester planté sur le trottoir</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <!-- §1 Dialogue A -->
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Dialogue A</div>
+      <h2 class="card-title">Commander un Didi</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc sort de l'hôtel et ouvre l'appli Didi (滴滴)</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">你好，我要打车。</div>
+              <div class="dg-py">Nǐ hǎo, wǒ yào dǎchē.</div>
+              <div class="dg-fr">Bonjour, je voudrais un taxi.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">司机 🇨🇳</div>
+              <div class="dg-zh spk">你在哪里？</div>
+              <div class="dg-py">Nǐ zài nǎlǐ?</div>
+              <div class="dg-fr">Vous êtes où ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我在酒店门口。</div>
+              <div class="dg-py">Wǒ zài jiǔdiàn ménkǒu.</div>
+              <div class="dg-fr">Je suis devant l'hôtel.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">司机 🇨🇳</div>
+              <div class="dg-zh spk">好的，三分钟到。</div>
+              <div class="dg-py">Hǎo de, sān fēnzhōng dào.</div>
+              <div class="dg-fr">D'accord, j'arrive dans 3 minutes.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">打车</span><span class="kw-py">dǎchē</span><span class="kw-fr">prendre un taxi</span></div>
+          <div class="kw"><span class="kw-zh spk">在哪里</span><span class="kw-py">zài nǎlǐ</span><span class="kw-fr">où (se trouver)</span></div>
+          <div class="kw"><span class="kw-zh spk">门口</span><span class="kw-py">ménkǒu</span><span class="kw-fr">devant la porte / l'entrée</span></div>
+          <div class="kw"><span class="kw-zh spk">到</span><span class="kw-py">dào</span><span class="kw-fr">arriver</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §1 Dialogue B -->
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Dialogue B</div>
+      <h2 class="card-title">Dans le taxi</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc monte, le chauffeur démarre</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">师傅，去南京路。</div>
+              <div class="dg-py">Shīfu, qù Nánjīng lù.</div>
+              <div class="dg-fr">Chef, direction Nanjing Road.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">司机 🇨🇳</div>
+              <div class="dg-zh spk">好，大概二十分钟。</div>
+              <div class="dg-py">Hǎo, dàgài èrshí fēnzhōng.</div>
+              <div class="dg-fr">Ok, environ 20 minutes.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">到了吗？</div>
+              <div class="dg-py">Dào le ma?</div>
+              <div class="dg-fr">On est arrivés ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">司机 🇨🇳</div>
+              <div class="dg-zh spk">到了！</div>
+              <div class="dg-py">Dào le!</div>
+              <div class="dg-fr">On y est !</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">师傅</span><span class="kw-py">shīfu</span><span class="kw-fr">« chef » (chauffeur, artisan)</span></div>
+          <div class="kw"><span class="kw-zh spk">去</span><span class="kw-py">qù</span><span class="kw-fr">aller (à)</span></div>
+          <div class="kw"><span class="kw-zh spk">大概</span><span class="kw-py">dàgài</span><span class="kw-fr">environ, à peu près</span></div>
+          <div class="kw"><span class="kw-zh spk">分钟</span><span class="kw-py">fēnzhōng</span><span class="kw-fr">minute (durée)</span></div>
+          <div class="kw"><span class="kw-zh spk">到了</span><span class="kw-py">dào le</span><span class="kw-fr">arrivé (c'est fait)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §1 Dialogue C -->
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Dialogue C</div>
+      <h2 class="card-title">Prendre le métro</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Dans la station, Marc cherche la bonne ligne</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">去人民广场坐几号线？</div>
+              <div class="dg-py">Qù Rénmín guǎngchǎng zuò jǐ hào xiàn?</div>
+              <div class="dg-fr">Quelle ligne pour People's Square ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">路人 🇨🇳</div>
+              <div class="dg-zh spk">坐二号线，三站。</div>
+              <div class="dg-py">Zuò èr hào xiàn, sān zhàn.</div>
+              <div class="dg-fr">Ligne 2, trois stations.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">要换线吗？</div>
+              <div class="dg-py">Yào huàn xiàn ma?</div>
+              <div class="dg-fr">Faut-il changer de ligne ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">路人 🇨🇳</div>
+              <div class="dg-zh spk">不用，直达。</div>
+              <div class="dg-py">Búyòng, zhídá.</div>
+              <div class="dg-fr">Non, c'est direct.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">坐</span><span class="kw-py">zuò</span><span class="kw-fr">prendre (un transport)</span></div>
+          <div class="kw"><span class="kw-zh spk">几号线</span><span class="kw-py">jǐ hào xiàn</span><span class="kw-fr">quelle ligne</span></div>
+          <div class="kw"><span class="kw-zh spk">站</span><span class="kw-py">zhàn</span><span class="kw-fr">station, arrêt</span></div>
+          <div class="kw"><span class="kw-zh spk">换</span><span class="kw-py">huàn</span><span class="kw-fr">changer</span></div>
+          <div class="kw"><span class="kw-zh spk">不用</span><span class="kw-py">búyòng</span><span class="kw-fr">pas besoin (de)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §1 Dialogue D -->
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Dialogue D</div>
+      <h2 class="card-title">Montrer l'adresse</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Le chauffeur ne trouve pas la destination</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">司机 🇨🇳</div>
+              <div class="dg-zh spk">你要去哪里？</div>
+              <div class="dg-py">Nǐ yào qù nǎlǐ?</div>
+              <div class="dg-fr">Vous voulez aller où ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我给你看地址。</div>
+              <div class="dg-py">Wǒ gěi nǐ kàn dìzhǐ.</div>
+              <div class="dg-fr">Je vous montre l'adresse.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">司机 🇨🇳</div>
+              <div class="dg-zh spk">哦，我知道了。</div>
+              <div class="dg-py">Ò, wǒ zhīdào le.</div>
+              <div class="dg-fr">Ah, je vois.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">请停这里。</div>
+              <div class="dg-py">Qǐng tíng zhèlǐ.</div>
+              <div class="dg-fr">Arrêtez-vous ici, svp.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">给你看</span><span class="kw-py">gěi nǐ kàn</span><span class="kw-fr">te / vous montrer</span></div>
+          <div class="kw"><span class="kw-zh spk">地址</span><span class="kw-py">dìzhǐ</span><span class="kw-fr">adresse</span></div>
+          <div class="kw"><span class="kw-zh spk">知道</span><span class="kw-py">zhīdào</span><span class="kw-fr">savoir, comprendre</span></div>
+          <div class="kw"><span class="kw-zh spk">停</span><span class="kw-py">tíng</span><span class="kw-fr">s'arrêter, se garer</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §1 Points de langue -->
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Structures clés</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">去<span class="lp-plus">+ lieu</span></span><span class="lp-gloss">aller quelque part</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="去工厂"><span class="c-zh">去工厂</span><span class="c-fr">usine</span></span>
+            <span class="chip spk" data-zh="去火车站"><span class="c-zh">去火车站</span><span class="c-fr">gare</span></span>
+            <span class="chip spk" data-zh="去机场"><span class="c-zh">去机场</span><span class="c-fr">aéroport</span></span>
+            <span class="chip spk" data-zh="去酒店"><span class="c-zh">去酒店</span><span class="c-fr">hôtel</span></span>
+            <span class="chip spk" data-zh="去坐地铁"><span class="c-zh">去坐地铁</span><span class="c-fr">prendre le métro</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">坐<span class="lp-plus">+ transport</span></span><span class="lp-gloss">prendre un transport</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="坐地铁"><span class="c-zh">坐地铁</span><span class="c-fr">métro</span></span>
+            <span class="chip spk" data-zh="坐公交"><span class="c-zh">坐公交</span><span class="c-fr">bus</span></span>
+            <span class="chip spk" data-zh="坐滴滴"><span class="c-zh">坐滴滴</span><span class="c-fr">Didi</span></span>
+            <span class="chip spk" data-zh="坐出租车"><span class="c-zh">坐出租车</span><span class="c-fr">taxi</span></span>
+            <span class="chip spk" data-zh="坐高铁"><span class="c-zh">坐高铁</span><span class="c-fr">TGV (gāotiě)</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">在<span class="lp-plus">+ lieu</span></span><span class="lp-gloss">se trouver à / dans</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="在酒店"><span class="c-zh">在酒店</span><span class="c-fr">à l'hôtel</span></span>
+            <span class="chip spk" data-zh="在门口"><span class="c-zh">在门口</span><span class="c-fr">à l'entrée</span></span>
+            <span class="chip spk" data-zh="在家"><span class="c-zh">在家</span><span class="c-fr">à la maison</span></span>
+            <span class="chip spk" data-zh="在里面"><span class="c-zh">在里面</span><span class="c-fr">dedans</span></span>
+            <span class="chip spk" data-zh="在外面"><span class="c-zh">在外面</span><span class="c-fr">dehors</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">大概<span class="lp-plus">+ durée</span></span><span class="lp-gloss">environ (combien de temps)</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="大概十分钟"><span class="c-zh">大概十分钟</span><span class="c-fr">~10 min</span></span>
+            <span class="chip spk" data-zh="大概一个小时"><span class="c-zh">大概一个小时</span><span class="c-fr">~1 heure</span></span>
+            <span class="chip spk" data-zh="大概两天"><span class="c-zh">大概两天</span><span class="c-fr">~2 jours</span></span>
+            <span class="chip spk" data-zh="大概三周"><span class="c-zh">大概三周</span><span class="c-fr">~3 semaines</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">了</span><span class="lp-gloss">V + 了 : action accomplie / changement</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="到了"><span class="c-zh">到了</span><span class="c-fr">arrivé</span></span>
+            <span class="chip spk" data-zh="知道了"><span class="c-zh">知道了</span><span class="c-fr">compris</span></span>
+            <span class="chip spk" data-zh="饿了"><span class="c-zh">饿了</span><span class="c-fr">j'ai faim</span></span>
+            <span class="chip spk" data-zh="好了"><span class="c-zh">好了</span><span class="c-fr">c'est bon / prêt</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §1 Exercices -->
+  <section class="slide slide-card" data-section="1">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Exercices</div>
+      <h2 class="card-title"><span class="ct-cn">练习</span>À vous de jouer</h2>
+      <div class="ex-wrap">
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Complétez</span><span class="ex-name">Le bon mot</span></div>
+          <ol>
+            <li><span class="zh">师傅，<span class="blank">___</span>南京路。</span></li>
+            <li><span class="zh">去广场坐<span class="blank">___</span>号线？</span></li>
+            <li><span class="zh">我<span class="blank">___</span>酒店门口。</span></li>
+            <li><span class="zh"><span class="blank">___</span>二十分钟。</span></li>
+          </ol>
+        </div>
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Répondez</span><span class="ex-name">En chinois</span></div>
+          <ol>
+            <li><span class="zh spk">你要去哪里？</span></li>
+            <li><span class="zh spk">到了吗？</span></li>
+            <li><span class="zh spk">要换线吗？</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="corrige-bar"><b>✅ Corrigé —</b> 1. <span class="zh">去</span> · 2. <span class="zh">几</span> · 3. <span class="zh">在</span> · 4. <span class="zh">大概</span>　|　Réponses libres, ex. <span class="zh">我去机场 / 到了 / 不用换</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §2 · 住酒店 — À L'HÔTEL -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="2">
+    <div class="section-inner">
+      <div class="section-num">02</div>
+      <div class="section-cn spk">住酒店</div>
+      <div class="section-label">Section deux</div>
+      <h2>À l'hôtel</h2>
+      <div class="section-desc">Check-in, WiFi, une panne dans la chambre, check-out avec facture</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <!-- §2 Dialogue A -->
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Dialogue A</div>
+      <h2 class="card-title">L'arrivée (check-in)</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 À la réception de l'hôtel</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">你好，我预订了一个房间。</div>
+              <div class="dg-py">Nǐ hǎo, wǒ yùdìng le yí ge fángjiān.</div>
+              <div class="dg-fr">Bonjour, j'ai réservé une chambre.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">请给我护照。</div>
+              <div class="dg-py">Qǐng gěi wǒ hùzhào.</div>
+              <div class="dg-fr">Votre passeport, s'il vous plaît.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">给你。</div>
+              <div class="dg-py">Gěi nǐ.</div>
+              <div class="dg-fr">Tenez.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">这是房卡。</div>
+              <div class="dg-py">Zhè shì fángkǎ.</div>
+              <div class="dg-fr">Voici votre carte de chambre.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">预订</span><span class="kw-py">yùdìng</span><span class="kw-fr">réserver</span></div>
+          <div class="kw"><span class="kw-zh spk">房间</span><span class="kw-py">fángjiān</span><span class="kw-fr">chambre</span></div>
+          <div class="kw"><span class="kw-zh spk">护照</span><span class="kw-py">hùzhào</span><span class="kw-fr">passeport</span></div>
+          <div class="kw"><span class="kw-zh spk">房卡</span><span class="kw-py">fángkǎ</span><span class="kw-fr">carte / clé de chambre</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 Dialogue B -->
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Dialogue B</div>
+      <h2 class="card-title">WiFi &amp; petit-déjeuner</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc demande deux infos essentielles</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">WiFi 密码是什么？</div>
+              <div class="dg-py">WiFi mìmǎ shì shénme?</div>
+              <div class="dg-fr">C'est quoi le mot de passe WiFi ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">在房卡上。</div>
+              <div class="dg-py">Zài fángkǎ shàng.</div>
+              <div class="dg-fr">Il est sur la carte.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">几点吃早饭？</div>
+              <div class="dg-py">Jǐ diǎn chī zǎofàn?</div>
+              <div class="dg-fr">Le petit-déj est à quelle heure ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">七点到十点。</div>
+              <div class="dg-py">Qī diǎn dào shí diǎn.</div>
+              <div class="dg-fr">De 7h à 10h.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">密码</span><span class="kw-py">mìmǎ</span><span class="kw-fr">mot de passe / code</span></div>
+          <div class="kw"><span class="kw-zh spk">早饭</span><span class="kw-py">zǎofàn</span><span class="kw-fr">petit-déjeuner</span></div>
+          <div class="kw"><span class="kw-zh spk">几点</span><span class="kw-py">jǐ diǎn</span><span class="kw-fr">à quelle heure</span></div>
+          <div class="kw"><span class="kw-zh spk">在…上</span><span class="kw-py">zài…shàng</span><span class="kw-fr">sur (qqch)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 Dialogue C -->
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Dialogue C</div>
+      <h2 class="card-title">Un problème dans la chambre</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc rappelle la réception</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">你好，空调坏了。</div>
+              <div class="dg-py">Nǐ hǎo, kòngtiáo huài le.</div>
+              <div class="dg-fr">Bonjour, la clim est en panne.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">我马上来看。</div>
+              <div class="dg-py">Wǒ mǎshàng lái kàn.</div>
+              <div class="dg-fr">J'arrive tout de suite.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">还有，没有热水。</div>
+              <div class="dg-py">Hái yǒu, méiyǒu rèshuǐ.</div>
+              <div class="dg-fr">Et aussi, il n'y a pas d'eau chaude.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">真不好意思！</div>
+              <div class="dg-py">Zhēn bù hǎoyìsi!</div>
+              <div class="dg-fr">Vraiment désolé !</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">空调</span><span class="kw-py">kòngtiáo</span><span class="kw-fr">climatisation</span></div>
+          <div class="kw"><span class="kw-zh spk">坏了</span><span class="kw-py">huài le</span><span class="kw-fr">en panne, cassé</span></div>
+          <div class="kw"><span class="kw-zh spk">马上</span><span class="kw-py">mǎshàng</span><span class="kw-fr">tout de suite</span></div>
+          <div class="kw"><span class="kw-zh spk">热水</span><span class="kw-py">rèshuǐ</span><span class="kw-fr">eau chaude</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 Dialogue D -->
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Dialogue D</div>
+      <h2 class="card-title">Le départ (check-out)</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Le matin du départ</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我要退房。</div>
+              <div class="dg-py">Wǒ yào tuìfáng.</div>
+              <div class="dg-fr">Je voudrais faire le check-out.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">好，房卡给我。</div>
+              <div class="dg-py">Hǎo, fángkǎ gěi wǒ.</div>
+              <div class="dg-fr">Bien, donnez-moi la carte.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">可以开发票吗？</div>
+              <div class="dg-py">Kěyǐ kāi fāpiào ma?</div>
+              <div class="dg-fr">Vous pouvez faire une facture ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">前台 🇨🇳</div>
+              <div class="dg-zh spk">可以，请稍等。</div>
+              <div class="dg-py">Kěyǐ, qǐng shāo děng.</div>
+              <div class="dg-fr">Oui, un instant svp.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">退房</span><span class="kw-py">tuìfáng</span><span class="kw-fr">check-out, libérer la chambre</span></div>
+          <div class="kw"><span class="kw-zh spk">开发票</span><span class="kw-py">kāi fāpiào</span><span class="kw-fr">émettre une facture</span></div>
+          <div class="kw"><span class="kw-zh spk">给</span><span class="kw-py">gěi</span><span class="kw-fr">donner (à)</span></div>
+          <div class="kw"><span class="kw-zh spk">稍等</span><span class="kw-py">shāo děng</span><span class="kw-fr">patienter un instant</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 Points de langue -->
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Structures clés</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">我要<span class="lp-plus">+ V</span></span><span class="lp-gloss">je voudrais (faire)</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="我要退房"><span class="c-zh">我要退房</span><span class="c-fr">check-out</span></span>
+            <span class="chip spk" data-zh="我要打车"><span class="c-zh">我要打车</span><span class="c-fr">un taxi</span></span>
+            <span class="chip spk" data-zh="我要换房间"><span class="c-zh">我要换房间</span><span class="c-fr">changer de chambre</span></span>
+            <span class="chip spk" data-zh="我要开发票"><span class="c-zh">我要开发票</span><span class="c-fr">une facture</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">坏了</span><span class="lp-gloss">N + 坏了 : en panne</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="空调坏了"><span class="c-zh">空调坏了</span><span class="c-fr">la clim</span></span>
+            <span class="chip spk" data-zh="电视坏了"><span class="c-zh">电视坏了</span><span class="c-fr">la télé</span></span>
+            <span class="chip spk" data-zh="灯坏了"><span class="c-zh">灯坏了</span><span class="c-fr">la lumière</span></span>
+            <span class="chip spk" data-zh="门坏了"><span class="c-zh">门坏了</span><span class="c-fr">la porte</span></span>
+            <span class="chip spk" data-zh="钥匙坏了"><span class="c-zh">钥匙坏了</span><span class="c-fr">la clé</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">没有<span class="lp-plus">+ N</span></span><span class="lp-gloss">il n'y a pas de</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="没有热水"><span class="c-zh">没有热水</span><span class="c-fr">eau chaude</span></span>
+            <span class="chip spk" data-zh="没有网络"><span class="c-zh">没有网络</span><span class="c-fr">internet</span></span>
+            <span class="chip spk" data-zh="没有毛巾"><span class="c-zh">没有毛巾</span><span class="c-fr">serviette</span></span>
+            <span class="chip spk" data-zh="没有牙刷"><span class="c-zh">没有牙刷</span><span class="c-fr">brosse à dents</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">可以…吗</span><span class="lp-gloss">可以 + V + 吗 : puis-je ?</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="可以开发票吗"><span class="c-zh">可以开发票吗</span><span class="c-fr">facture</span></span>
+            <span class="chip spk" data-zh="可以换房间吗"><span class="c-zh">可以换房间吗</span><span class="c-fr">changer chambre</span></span>
+            <span class="chip spk" data-zh="可以晚点退房吗"><span class="c-zh">可以晚点退房吗</span><span class="c-fr">check-out tardif</span></span>
+            <span class="chip spk" data-zh="可以停车吗"><span class="c-zh">可以停车吗</span><span class="c-fr">se garer</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">几点<span class="lp-plus">+ V</span></span><span class="lp-gloss">à quelle heure (on…)</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="几点吃早饭"><span class="c-zh">几点吃早饭</span><span class="c-fr">petit-déj</span></span>
+            <span class="chip spk" data-zh="几点退房"><span class="c-zh">几点退房</span><span class="c-fr">check-out</span></span>
+            <span class="chip spk" data-zh="几点开门"><span class="c-zh">几点开门</span><span class="c-fr">ouverture</span></span>
+            <span class="chip spk" data-zh="几点关门"><span class="c-zh">几点关门</span><span class="c-fr">fermeture</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 Exercices -->
+  <section class="slide slide-card" data-section="2">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Exercices</div>
+      <h2 class="card-title"><span class="ct-cn">练习</span>À vous de jouer</h2>
+      <div class="ex-wrap">
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Complétez</span><span class="ex-name">Le bon mot</span></div>
+          <ol>
+            <li><span class="zh">空调<span class="blank">___</span>了。</span></li>
+            <li><span class="zh">我要<span class="blank">___</span>房。</span></li>
+            <li><span class="zh"><span class="blank">___</span>点吃早饭？</span></li>
+            <li><span class="zh">可以开<span class="blank">___</span>吗？</span></li>
+          </ol>
+        </div>
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Répondez</span><span class="ex-name">En chinois</span></div>
+          <ol>
+            <li><span class="zh spk">你预订房间了吗？</span></li>
+            <li><span class="zh spk">几点退房？</span></li>
+            <li><span class="zh spk">房间有问题吗？</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="corrige-bar"><b>✅ Corrigé —</b> 1. <span class="zh">坏</span> · 2. <span class="zh">退</span> · 3. <span class="zh">几</span> · 4. <span class="zh">发票</span>　|　ex. <span class="zh">预订了 / 中午十二点 / 空调坏了</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §3 · 点菜 — COMMANDER AU RESTAURANT -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="3">
+    <div class="section-inner">
+      <div class="section-num">03</div>
+      <div class="section-cn spk">点菜</div>
+      <div class="section-label">Section trois</div>
+      <h2>Commander à table</h2>
+      <div class="section-desc">Lire un menu, commander, gérer le piment et les allergies, trinquer et payer</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <!-- §3 Dialogue A -->
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Dialogue A</div>
+      <h2 class="card-title">S'installer</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc entre dans un restaurant local</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">几位？</div>
+              <div class="dg-py">Jǐ wèi?</div>
+              <div class="dg-fr">Combien de personnes ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">两位。</div>
+              <div class="dg-py">Liǎng wèi.</div>
+              <div class="dg-fr">Deux.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">这是菜单。</div>
+              <div class="dg-py">Zhè shì càidān.</div>
+              <div class="dg-fr">Voici le menu.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">谢谢。</div>
+              <div class="dg-py">Xièxie.</div>
+              <div class="dg-fr">Merci.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">几位</span><span class="kw-py">jǐ wèi</span><span class="kw-fr">combien de personnes</span></div>
+          <div class="kw"><span class="kw-zh spk">位</span><span class="kw-py">wèi</span><span class="kw-fr">classificateur poli (personne)</span></div>
+          <div class="kw"><span class="kw-zh spk">菜单</span><span class="kw-py">càidān</span><span class="kw-fr">menu, carte</span></div>
+          <div class="kw"><span class="kw-zh spk">两位</span><span class="kw-py">liǎng wèi</span><span class="kw-fr">deux personnes</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 Dialogue B -->
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Dialogue B</div>
+      <h2 class="card-title">Commander les plats</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Le serveur prend la commande</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">你们点什么？</div>
+              <div class="dg-py">Nǐmen diǎn shénme?</div>
+              <div class="dg-fr">Vous commandez quoi ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">来一个宫保鸡丁。</div>
+              <div class="dg-py">Lái yí ge Gōngbǎo jīdīng.</div>
+              <div class="dg-fr">Un poulet Kung Pao.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">要米饭吗？</div>
+              <div class="dg-py">Yào mǐfàn ma?</div>
+              <div class="dg-fr">Du riz ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">要两碗。</div>
+              <div class="dg-py">Yào liǎng wǎn.</div>
+              <div class="dg-fr">Deux bols.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">点</span><span class="kw-py">diǎn</span><span class="kw-fr">commander</span></div>
+          <div class="kw"><span class="kw-zh spk">来一个</span><span class="kw-py">lái yí ge</span><span class="kw-fr">j'en prends un (apportez)</span></div>
+          <div class="kw"><span class="kw-zh spk">米饭</span><span class="kw-py">mǐfàn</span><span class="kw-fr">riz (cuit)</span></div>
+          <div class="kw"><span class="kw-zh spk">碗</span><span class="kw-py">wǎn</span><span class="kw-fr">bol (classificateur)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 Dialogue C -->
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Dialogue C</div>
+      <h2 class="card-title">Préférences &amp; allergies</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc précise ses préférences</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">要辣吗？</div>
+              <div class="dg-py">Yào là ma?</div>
+              <div class="dg-fr">Épicé ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">不要太辣。</div>
+              <div class="dg-py">Búyào tài là.</div>
+              <div class="dg-fr">Pas trop épicé.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我对花生过敏。</div>
+              <div class="dg-py">Wǒ duì huāshēng guòmǐn.</div>
+              <div class="dg-fr">Je suis allergique aux cacahuètes.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">好，知道了。</div>
+              <div class="dg-py">Hǎo, zhīdào le.</div>
+              <div class="dg-fr">Bien, c'est noté.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">辣</span><span class="kw-py">là</span><span class="kw-fr">épicé, pimenté</span></div>
+          <div class="kw"><span class="kw-zh spk">不要太</span><span class="kw-py">búyào tài</span><span class="kw-fr">pas trop…</span></div>
+          <div class="kw"><span class="kw-zh spk">对…过敏</span><span class="kw-py">duì…guòmǐn</span><span class="kw-fr">allergique à…</span></div>
+          <div class="kw"><span class="kw-zh spk">花生</span><span class="kw-py">huāshēng</span><span class="kw-fr">cacahuète</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 Dialogue D -->
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Dialogue D</div>
+      <h2 class="card-title">Trinquer &amp; payer</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Fin du repas, ambiance conviviale</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">干杯！</div>
+              <div class="dg-py">Gānbēi!</div>
+              <div class="dg-fr">Santé ! (cul sec)</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">干杯！吃好喝好！</div>
+              <div class="dg-py">Gānbēi! Chī hǎo hē hǎo!</div>
+              <div class="dg-fr">Santé ! Régalez-vous !</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">服务员，买单！</div>
+              <div class="dg-py">Fúwùyuán, mǎidān!</div>
+              <div class="dg-fr">Serveur, l'addition !</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">服务员 🇨🇳</div>
+              <div class="dg-zh spk">扫码就行。</div>
+              <div class="dg-py">Sǎomǎ jiù xíng.</div>
+              <div class="dg-fr">Scannez le QR, c'est tout.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">干杯</span><span class="kw-py">gānbēi</span><span class="kw-fr">santé ! / cul sec</span></div>
+          <div class="kw"><span class="kw-zh spk">买单</span><span class="kw-py">mǎidān</span><span class="kw-fr">l'addition</span></div>
+          <div class="kw"><span class="kw-zh spk">扫码</span><span class="kw-py">sǎomǎ</span><span class="kw-fr">scanner le QR code</span></div>
+          <div class="kw"><span class="kw-zh spk">就行</span><span class="kw-py">jiù xíng</span><span class="kw-fr">ça suffit, c'est bon</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 Points de langue -->
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Structures clés</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">来<span class="lp-plus">+ 量 + N</span></span><span class="lp-gloss">apportez / je prends</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="来一个菜"><span class="c-zh">来一个菜</span><span class="c-fr">un plat</span></span>
+            <span class="chip spk" data-zh="来两碗米饭"><span class="c-zh">来两碗米饭</span><span class="c-fr">2 bols de riz</span></span>
+            <span class="chip spk" data-zh="来三瓶啤酒"><span class="c-zh">来三瓶啤酒</span><span class="c-fr">3 bières</span></span>
+            <span class="chip spk" data-zh="来一壶茶"><span class="c-zh">来一壶茶</span><span class="c-fr">une théière</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">不要太<span class="lp-plus">+ adj</span></span><span class="lp-gloss">pas trop…</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="不要太辣"><span class="c-zh">不要太辣</span><span class="c-fr">épicé</span></span>
+            <span class="chip spk" data-zh="不要太甜"><span class="c-zh">不要太甜</span><span class="c-fr">sucré</span></span>
+            <span class="chip spk" data-zh="不要太咸"><span class="c-zh">不要太咸</span><span class="c-fr">salé</span></span>
+            <span class="chip spk" data-zh="不要太油"><span class="c-zh">不要太油</span><span class="c-fr">gras</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">对…过敏</span><span class="lp-gloss">对 + N + 过敏 : allergique à</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="对花生过敏"><span class="c-zh">对花生过敏</span><span class="c-fr">cacahuète</span></span>
+            <span class="chip spk" data-zh="对海鲜过敏"><span class="c-zh">对海鲜过敏</span><span class="c-fr">fruits de mer</span></span>
+            <span class="chip spk" data-zh="对牛奶过敏"><span class="c-zh">对牛奶过敏</span><span class="c-fr">lait</span></span>
+            <span class="chip spk" data-zh="对鸡蛋过敏"><span class="c-zh">对鸡蛋过敏</span><span class="c-fr">œuf</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">要…吗</span><span class="lp-gloss">要 + N + 吗 : voulez-vous ?</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="要辣吗"><span class="c-zh">要辣吗</span><span class="c-fr">épicé</span></span>
+            <span class="chip spk" data-zh="要米饭吗"><span class="c-zh">要米饭吗</span><span class="c-fr">riz</span></span>
+            <span class="chip spk" data-zh="要筷子吗"><span class="c-zh">要筷子吗</span><span class="c-fr">baguettes</span></span>
+            <span class="chip spk" data-zh="要纸巾吗"><span class="c-zh">要纸巾吗</span><span class="c-fr">mouchoirs</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">有没有<span class="lp-plus">+ N</span></span><span class="lp-gloss">avez-vous… ?</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="有没有菜单"><span class="c-zh">有没有菜单</span><span class="c-fr">menu</span></span>
+            <span class="chip spk" data-zh="有没有英文菜单"><span class="c-zh">有没有英文菜单</span><span class="c-fr">menu en anglais</span></span>
+            <span class="chip spk" data-zh="有没有素菜"><span class="c-zh">有没有素菜</span><span class="c-fr">plats végé</span></span>
+            <span class="chip spk" data-zh="有没有冰水"><span class="c-zh">有没有冰水</span><span class="c-fr">eau glacée</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 Exercices -->
+  <section class="slide slide-card" data-section="3">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Exercices</div>
+      <h2 class="card-title"><span class="ct-cn">练习</span>À vous de jouer</h2>
+      <div class="ex-wrap">
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Complétez</span><span class="ex-name">Le bon mot</span></div>
+          <ol>
+            <li><span class="zh"><span class="blank">___</span>一个宫保鸡丁。</span></li>
+            <li><span class="zh">不要太<span class="blank">___</span>。</span></li>
+            <li><span class="zh">我<span class="blank">___</span>花生过敏。</span></li>
+            <li><span class="zh">服务员，<span class="blank">___</span>！</span></li>
+          </ol>
+        </div>
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Répondez</span><span class="ex-name">En chinois</span></div>
+          <ol>
+            <li><span class="zh spk">几位？</span></li>
+            <li><span class="zh spk">要辣吗？</span></li>
+            <li><span class="zh spk">你对什么过敏？</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="corrige-bar"><b>✅ Corrigé —</b> 1. <span class="zh">来</span> · 2. <span class="zh">辣</span> · 3. <span class="zh">对</span> · 4. <span class="zh">买单</span>　|　ex. <span class="zh">两位 / 不要太辣 / 我对海鲜过敏</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §4 · 看病 — SANTÉ -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="4">
+    <div class="section-inner">
+      <div class="section-num">04</div>
+      <div class="section-cn spk">看病</div>
+      <div class="section-label">Section quatre</div>
+      <h2>Chez le médecin</h2>
+      <div class="section-desc">Dire où on a mal, décrire ses symptômes, signaler une allergie, comprendre la posologie</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <!-- §4 Dialogue A -->
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Dialogue A</div>
+      <h2 class="card-title">À la pharmacie</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc a trop mangé épicé à Chengdu</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">你好，我不舒服。</div>
+              <div class="dg-py">Nǐ hǎo, wǒ bù shūfu.</div>
+              <div class="dg-fr">Bonjour, je ne me sens pas bien.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">药剂师 🇨🇳</div>
+              <div class="dg-zh spk">哪里不舒服？</div>
+              <div class="dg-py">Nǎlǐ bù shūfu?</div>
+              <div class="dg-fr">Où avez-vous mal ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我肚子疼。</div>
+              <div class="dg-py">Wǒ dùzi téng.</div>
+              <div class="dg-fr">J'ai mal au ventre.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">药剂师 🇨🇳</div>
+              <div class="dg-zh spk">吃这个药。</div>
+              <div class="dg-py">Chī zhège yào.</div>
+              <div class="dg-fr">Prenez ce médicament.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">不舒服</span><span class="kw-py">bù shūfu</span><span class="kw-fr">ne pas se sentir bien</span></div>
+          <div class="kw"><span class="kw-zh spk">肚子</span><span class="kw-py">dùzi</span><span class="kw-fr">ventre</span></div>
+          <div class="kw"><span class="kw-zh spk">疼</span><span class="kw-py">téng</span><span class="kw-fr">avoir mal, douleur</span></div>
+          <div class="kw"><span class="kw-zh spk">药</span><span class="kw-py">yào</span><span class="kw-fr">médicament</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 Dialogue B -->
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Dialogue B</div>
+      <h2 class="card-title">Décrire ses symptômes</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Chez le médecin</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">医生 🇨🇳</div>
+              <div class="dg-zh spk">你怎么了？</div>
+              <div class="dg-py">Nǐ zěnme le?</div>
+              <div class="dg-fr">Qu'est-ce qui ne va pas ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我头疼，还发烧。</div>
+              <div class="dg-py">Wǒ tóu téng, hái fāshāo.</div>
+              <div class="dg-fr">J'ai mal à la tête, et de la fièvre.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">医生 🇨🇳</div>
+              <div class="dg-zh spk">几天了？</div>
+              <div class="dg-py">Jǐ tiān le?</div>
+              <div class="dg-fr">Depuis combien de jours ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">两天了。</div>
+              <div class="dg-py">Liǎng tiān le.</div>
+              <div class="dg-fr">Deux jours.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">怎么了</span><span class="kw-py">zěnme le</span><span class="kw-fr">qu'y a-t-il ?</span></div>
+          <div class="kw"><span class="kw-zh spk">头疼</span><span class="kw-py">tóu téng</span><span class="kw-fr">mal de tête</span></div>
+          <div class="kw"><span class="kw-zh spk">发烧</span><span class="kw-py">fāshāo</span><span class="kw-fr">avoir de la fièvre</span></div>
+          <div class="kw"><span class="kw-zh spk">几天了</span><span class="kw-py">jǐ tiān le</span><span class="kw-fr">depuis combien de jours</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 Dialogue C -->
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Dialogue C</div>
+      <h2 class="card-title">Allergie &amp; pharmacie</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Une précision qui peut sauver la vie</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我对青霉素过敏。</div>
+              <div class="dg-py">Wǒ duì qīngméisù guòmǐn.</div>
+              <div class="dg-fr">Je suis allergique à la pénicilline.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">医生 🇨🇳</div>
+              <div class="dg-zh spk">好，我记一下。</div>
+              <div class="dg-py">Hǎo, wǒ jì yíxià.</div>
+              <div class="dg-fr">Bien, je le note.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">这里有药店吗？</div>
+              <div class="dg-py">Zhèlǐ yǒu yàodiàn ma?</div>
+              <div class="dg-fr">Y a-t-il une pharmacie ici ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">医生 🇨🇳</div>
+              <div class="dg-zh spk">在一楼。</div>
+              <div class="dg-py">Zài yī lóu.</div>
+              <div class="dg-fr">Au rez-de-chaussée.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">过敏</span><span class="kw-py">guòmǐn</span><span class="kw-fr">allergie / allergique</span></div>
+          <div class="kw"><span class="kw-zh spk">药店</span><span class="kw-py">yàodiàn</span><span class="kw-fr">pharmacie</span></div>
+          <div class="kw"><span class="kw-zh spk">一楼</span><span class="kw-py">yī lóu</span><span class="kw-fr">rez-de-chaussée</span></div>
+          <div class="kw"><span class="kw-zh spk">记一下</span><span class="kw-py">jì yíxià</span><span class="kw-fr">noter (rapidement)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 Dialogue D -->
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Dialogue D</div>
+      <h2 class="card-title">La posologie</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Au comptoir de la pharmacie</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">一天吃几次？</div>
+              <div class="dg-py">Yì tiān chī jǐ cì?</div>
+              <div class="dg-fr">Combien de fois par jour ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">药剂师 🇨🇳</div>
+              <div class="dg-zh spk">一天三次。</div>
+              <div class="dg-py">Yì tiān sān cì.</div>
+              <div class="dg-fr">Trois fois par jour.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">饭前还是饭后？</div>
+              <div class="dg-py">Fàn qián háishi fàn hòu?</div>
+              <div class="dg-fr">Avant ou après le repas ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">药剂师 🇨🇳</div>
+              <div class="dg-zh spk">饭后。</div>
+              <div class="dg-py">Fàn hòu.</div>
+              <div class="dg-fr">Après le repas.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">几次</span><span class="kw-py">jǐ cì</span><span class="kw-fr">combien de fois</span></div>
+          <div class="kw"><span class="kw-zh spk">次</span><span class="kw-py">cì</span><span class="kw-fr">fois (classificateur)</span></div>
+          <div class="kw"><span class="kw-zh spk">饭前</span><span class="kw-py">fàn qián</span><span class="kw-fr">avant le repas</span></div>
+          <div class="kw"><span class="kw-zh spk">饭后</span><span class="kw-py">fàn hòu</span><span class="kw-fr">après le repas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 Points de langue -->
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Structures clés</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">疼</span><span class="lp-gloss">partie du corps + 疼 : avoir mal</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="头疼"><span class="c-zh">头疼</span><span class="c-fr">tête</span></span>
+            <span class="chip spk" data-zh="肚子疼"><span class="c-zh">肚子疼</span><span class="c-fr">ventre</span></span>
+            <span class="chip spk" data-zh="嗓子疼"><span class="c-zh">嗓子疼</span><span class="c-fr">gorge</span></span>
+            <span class="chip spk" data-zh="牙疼"><span class="c-zh">牙疼</span><span class="c-fr">dents</span></span>
+            <span class="chip spk" data-zh="腰疼"><span class="c-zh">腰疼</span><span class="c-fr">dos / reins</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">有点儿<span class="lp-plus">+ adj</span></span><span class="lp-gloss">un peu (gêne)</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="有点儿疼"><span class="c-zh">有点儿疼</span><span class="c-fr">mal</span></span>
+            <span class="chip spk" data-zh="有点儿累"><span class="c-zh">有点儿累</span><span class="c-fr">fatigué</span></span>
+            <span class="chip spk" data-zh="有点儿冷"><span class="c-zh">有点儿冷</span><span class="c-fr">froid</span></span>
+            <span class="chip spk" data-zh="有点儿热"><span class="c-zh">有点儿热</span><span class="c-fr">chaud</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">想<span class="lp-plus">+ V</span></span><span class="lp-gloss">avoir envie de</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="想休息"><span class="c-zh">想休息</span><span class="c-fr">se reposer</span></span>
+            <span class="chip spk" data-zh="想睡觉"><span class="c-zh">想睡觉</span><span class="c-fr">dormir</span></span>
+            <span class="chip spk" data-zh="想吐"><span class="c-zh">想吐</span><span class="c-fr">vomir</span></span>
+            <span class="chip spk" data-zh="想看医生"><span class="c-zh">想看医生</span><span class="c-fr">voir un médecin</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">一天…次</span><span class="lp-gloss">一天 + n + 次 : x fois/jour</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="一天一次"><span class="c-zh">一天一次</span><span class="c-fr">1×/jour</span></span>
+            <span class="chip spk" data-zh="一天两次"><span class="c-zh">一天两次</span><span class="c-fr">2×/jour</span></span>
+            <span class="chip spk" data-zh="一天三次"><span class="c-zh">一天三次</span><span class="c-fr">3×/jour</span></span>
+            <span class="chip spk" data-zh="一周一次"><span class="c-zh">一周一次</span><span class="c-fr">1×/sem.</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">需要<span class="lp-plus">+ N/V</span></span><span class="lp-gloss">avoir besoin de</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="需要休息"><span class="c-zh">需要休息</span><span class="c-fr">du repos</span></span>
+            <span class="chip spk" data-zh="需要打针"><span class="c-zh">需要打针</span><span class="c-fr">une piqûre</span></span>
+            <span class="chip spk" data-zh="需要验血"><span class="c-zh">需要验血</span><span class="c-fr">prise de sang</span></span>
+            <span class="chip spk" data-zh="需要住院"><span class="c-zh">需要住院</span><span class="c-fr">hospitalisation</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 Exercices -->
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Exercices</div>
+      <h2 class="card-title"><span class="ct-cn">练习</span>À vous de jouer</h2>
+      <div class="ex-wrap">
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Complétez</span><span class="ex-name">Le bon mot</span></div>
+          <ol>
+            <li><span class="zh">我头<span class="blank">___</span>。</span></li>
+            <li><span class="zh">我<span class="blank">___</span>青霉素过敏。</span></li>
+            <li><span class="zh">一天吃几<span class="blank">___</span>？</span></li>
+            <li><span class="zh">饭<span class="blank">___</span>还是饭后？</span></li>
+          </ol>
+        </div>
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Répondez</span><span class="ex-name">En chinois</span></div>
+          <ol>
+            <li><span class="zh spk">你怎么了？</span></li>
+            <li><span class="zh spk">哪里不舒服？</span></li>
+            <li><span class="zh spk">一天吃几次？</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="corrige-bar"><b>✅ Corrigé —</b> 1. <span class="zh">疼</span> · 2. <span class="zh">对</span> · 3. <span class="zh">次</span> · 4. <span class="zh">前</span>　|　ex. <span class="zh">我头疼 / 肚子不舒服 / 一天三次</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §5 · 日程安排 — RENDEZ-VOUS -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="5">
+    <div class="section-inner">
+      <div class="section-num">05</div>
+      <div class="section-cn spk">日程安排</div>
+      <div class="section-label">Section cinq</div>
+      <h2>Fixer un rendez-vous</h2>
+      <div class="section-desc">Proposer une date et une heure, choisir le lieu, reporter, confirmer sur WeChat</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <!-- §5 Dialogue A -->
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Dialogue A</div>
+      <h2 class="card-title">Proposer un rendez-vous</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc appelle un client</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我们明天见面，好吗？</div>
+              <div class="dg-py">Wǒmen míngtiān jiànmiàn, hǎo ma?</div>
+              <div class="dg-fr">On se voit demain, ça vous va ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">好，几点？</div>
+              <div class="dg-py">Hǎo, jǐ diǎn?</div>
+              <div class="dg-fr">Ok, à quelle heure ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">上午十点。</div>
+              <div class="dg-py">Shàngwǔ shí diǎn.</div>
+              <div class="dg-fr">10h du matin.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">没问题。</div>
+              <div class="dg-py">Méi wèntí.</div>
+              <div class="dg-fr">Pas de problème.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">明天</span><span class="kw-py">míngtiān</span><span class="kw-fr">demain</span></div>
+          <div class="kw"><span class="kw-zh spk">见面</span><span class="kw-py">jiànmiàn</span><span class="kw-fr">se rencontrer</span></div>
+          <div class="kw"><span class="kw-zh spk">几点</span><span class="kw-py">jǐ diǎn</span><span class="kw-fr">à quelle heure</span></div>
+          <div class="kw"><span class="kw-zh spk">上午</span><span class="kw-py">shàngwǔ</span><span class="kw-fr">matin (avant midi)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 Dialogue B -->
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Dialogue B</div>
+      <h2 class="card-title">Préciser le lieu</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 On se met d'accord sur l'endroit</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">在哪里见？</div>
+              <div class="dg-py">Zài nǎlǐ jiàn?</div>
+              <div class="dg-fr">On se voit où ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">在你们公司。</div>
+              <div class="dg-py">Zài nǐmen gōngsī.</div>
+              <div class="dg-fr">Dans votre entreprise.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">好，我发地址给你。</div>
+              <div class="dg-py">Hǎo, wǒ fā dìzhǐ gěi nǐ.</div>
+              <div class="dg-fr">Ok, je t'envoie l'adresse.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">谢谢！</div>
+              <div class="dg-py">Xièxie!</div>
+              <div class="dg-fr">Merci !</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">在哪里见</span><span class="kw-py">zài nǎlǐ jiàn</span><span class="kw-fr">où se retrouver</span></div>
+          <div class="kw"><span class="kw-zh spk">公司</span><span class="kw-py">gōngsī</span><span class="kw-fr">entreprise, société</span></div>
+          <div class="kw"><span class="kw-zh spk">发</span><span class="kw-py">fā</span><span class="kw-fr">envoyer (message)</span></div>
+          <div class="kw"><span class="kw-zh spk">地址</span><span class="kw-py">dìzhǐ</span><span class="kw-fr">adresse</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 Dialogue C -->
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Dialogue C</div>
+      <h2 class="card-title">Reporter le rendez-vous</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Un imprévu de dernière minute</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">不好意思，明天不行。</div>
+              <div class="dg-py">Bù hǎoyìsi, míngtiān bùxíng.</div>
+              <div class="dg-fr">Désolé, demain ce n'est pas possible.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">没关系，后天呢？</div>
+              <div class="dg-py">Méi guānxi, hòutiān ne?</div>
+              <div class="dg-fr">Pas grave, après-demain ?</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">后天可以。</div>
+              <div class="dg-py">Hòutiān kěyǐ.</div>
+              <div class="dg-fr">Après-demain, ça marche.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">那就后天。</div>
+              <div class="dg-py">Nà jiù hòutiān.</div>
+              <div class="dg-fr">Alors, après-demain.</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">不行</span><span class="kw-py">bùxíng</span><span class="kw-fr">pas possible</span></div>
+          <div class="kw"><span class="kw-zh spk">没关系</span><span class="kw-py">méi guānxi</span><span class="kw-fr">pas grave, ce n'est rien</span></div>
+          <div class="kw"><span class="kw-zh spk">后天</span><span class="kw-py">hòutiān</span><span class="kw-fr">après-demain</span></div>
+          <div class="kw"><span class="kw-zh spk">那就</span><span class="kw-py">nà jiù</span><span class="kw-fr">alors, dans ce cas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 Dialogue D -->
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Dialogue D</div>
+      <h2 class="card-title">Confirmer sur WeChat</h2>
+      <div class="dlg-row">
+        <div class="dialogue-scene">
+          <div class="dialogue-setting">📍 Marc finalise par message</div>
+          <div class="dialogue-body">
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">我发微信给你确认。</div>
+              <div class="dg-py">Wǒ fā wēixìn gěi nǐ quèrèn.</div>
+              <div class="dg-fr">Je te confirme par WeChat.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">好，到时候见。</div>
+              <div class="dg-py">Hǎo, dào shíhou jiàn.</div>
+              <div class="dg-fr">Ok, à ce moment-là.</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-fr">Marc 🇫🇷</div>
+              <div class="dg-zh spk">到时候见！</div>
+              <div class="dg-py">Dào shíhou jiàn!</div>
+              <div class="dg-fr">À tout à l'heure !</div>
+            </div>
+            <div class="dialogue-line">
+              <div class="speaker speaker-cn">客户 🇨🇳</div>
+              <div class="dg-zh spk">再见！</div>
+              <div class="dg-py">Zàijiàn!</div>
+              <div class="dg-fr">Au revoir !</div>
+            </div>
+          </div>
+        </div>
+        <div class="keywords-panel">
+          <h4><span class="kw-cn">关键词</span> Mots clés</h4>
+          <div class="kw"><span class="kw-zh spk">微信</span><span class="kw-py">wēixìn</span><span class="kw-fr">WeChat</span></div>
+          <div class="kw"><span class="kw-zh spk">确认</span><span class="kw-py">quèrèn</span><span class="kw-fr">confirmer</span></div>
+          <div class="kw"><span class="kw-zh spk">到时候见</span><span class="kw-py">dào shíhou jiàn</span><span class="kw-fr">à ce moment-là / à plus</span></div>
+          <div class="kw"><span class="kw-zh spk">再见</span><span class="kw-py">zàijiàn</span><span class="kw-fr">au revoir</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 Points de langue -->
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Structures clés</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">时间词</span><span class="lp-gloss">les repères de jour</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="今天"><span class="c-zh">今天</span><span class="c-fr">aujourd'hui</span></span>
+            <span class="chip spk" data-zh="明天"><span class="c-zh">明天</span><span class="c-fr">demain</span></span>
+            <span class="chip spk" data-zh="后天"><span class="c-zh">后天</span><span class="c-fr">après-demain</span></span>
+            <span class="chip spk" data-zh="昨天"><span class="c-zh">昨天</span><span class="c-fr">hier</span></span>
+            <span class="chip spk" data-zh="下周"><span class="c-zh">下周</span><span class="c-fr">sem. prochaine</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">上午下午</span><span class="lp-gloss">moment + 点 : l'heure</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="上午十点"><span class="c-zh">上午十点</span><span class="c-fr">10h</span></span>
+            <span class="chip spk" data-zh="中午十二点"><span class="c-zh">中午十二点</span><span class="c-fr">midi</span></span>
+            <span class="chip spk" data-zh="下午三点"><span class="c-zh">下午三点</span><span class="c-fr">15h</span></span>
+            <span class="chip spk" data-zh="晚上八点"><span class="c-zh">晚上八点</span><span class="c-fr">20h</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">在…见</span><span class="lp-gloss">在 + lieu + 见 : se voir à</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="在公司见"><span class="c-zh">在公司见</span><span class="c-fr">entreprise</span></span>
+            <span class="chip spk" data-zh="在酒店见"><span class="c-zh">在酒店见</span><span class="c-fr">hôtel</span></span>
+            <span class="chip spk" data-zh="在门口见"><span class="c-zh">在门口见</span><span class="c-fr">à l'entrée</span></span>
+            <span class="chip spk" data-zh="在咖啡厅见"><span class="c-zh">在咖啡厅见</span><span class="c-fr">au café</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">发…给</span><span class="lp-gloss">发 + N + 给 + qqn : envoyer à</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="发微信给你"><span class="c-zh">发微信给你</span><span class="c-fr">un WeChat</span></span>
+            <span class="chip spk" data-zh="发地址给你"><span class="c-zh">发地址给你</span><span class="c-fr">l'adresse</span></span>
+            <span class="chip spk" data-zh="发邮件给你"><span class="c-zh">发邮件给你</span><span class="c-fr">un email</span></span>
+            <span class="chip spk" data-zh="发照片给你"><span class="c-zh">发照片给你</span><span class="c-fr">une photo</span></span>
+          </div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk">点</span><span class="lp-gloss">dire l'heure précise</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="一点"><span class="c-zh">一点</span><span class="c-fr">1h</span></span>
+            <span class="chip spk" data-zh="两点"><span class="c-zh">两点</span><span class="c-fr">2h (liǎng)</span></span>
+            <span class="chip spk" data-zh="三点半"><span class="c-zh">三点半</span><span class="c-fr">3h30</span></span>
+            <span class="chip spk" data-zh="差五分八点"><span class="c-zh">差五分八点</span><span class="c-fr">8h moins 5</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 Exercices -->
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Exercices</div>
+      <h2 class="card-title"><span class="ct-cn">练习</span>À vous de jouer</h2>
+      <div class="ex-wrap">
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Complétez</span><span class="ex-name">Le bon mot</span></div>
+          <ol>
+            <li><span class="zh">我们明天<span class="blank">___</span>面。</span></li>
+            <li><span class="zh"><span class="blank">___</span>午十点。</span></li>
+            <li><span class="zh">在哪里<span class="blank">___</span>？</span></li>
+            <li><span class="zh">我发微信给你<span class="blank">___</span>。</span></li>
+          </ol>
+        </div>
+        <div class="ex-col">
+          <div class="ex-head"><span class="ex-tag">Répondez</span><span class="ex-name">En chinois</span></div>
+          <ol>
+            <li><span class="zh spk">我们几点见面？</span></li>
+            <li><span class="zh spk">在哪里见？</span></li>
+            <li><span class="zh spk">明天行吗？</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="corrige-bar"><b>✅ Corrigé —</b> 1. <span class="zh">见</span> · 2. <span class="zh">上</span> · 3. <span class="zh">见</span> · 4. <span class="zh">确认</span>　|　ex. <span class="zh">上午十点 / 在公司见 / 明天不行，后天吧</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- §6 · 词汇与汉字 — VOCABULAIRE & ÉCRITURE -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="slide slide-section" data-section="6">
+    <div class="section-inner">
+      <div class="section-num">06</div>
+      <div class="section-cn spk">词汇与汉字</div>
+      <div class="section-label">Section six</div>
+      <h2>Vocabulaire &amp; écriture</h2>
+      <div class="section-desc">Le vocabulaire à connaître par cœur, et les 10 caractères à savoir écrire</div>
+      <div class="section-rule"></div>
+    </div>
+  </section>
+
+  <!-- §6 Vocab recap (reference doc) -->
+  <section class="slide slide-manuel" data-section="6">
+    <div class="doc-inner">
+      <div class="doc-meta">Section 06 · À connaître par cœur</div>
+      <h1>Vocabulaire essentiel</h1>
+      <div class="vocab-grid">
+        <div>
+          <h3><span class="h3-cn">交通</span>Transport</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">打车</td><td class="td-pinyin">dǎchē</td><td>prendre un taxi</td></tr>
+            <tr><td class="td-hanzi spk">坐</td><td class="td-pinyin">zuò</td><td>prendre (transport)</td></tr>
+            <tr><td class="td-hanzi spk">地铁</td><td class="td-pinyin">dìtiě</td><td>métro</td></tr>
+            <tr><td class="td-hanzi spk">站</td><td class="td-pinyin">zhàn</td><td>station</td></tr>
+            <tr><td class="td-hanzi spk">换</td><td class="td-pinyin">huàn</td><td>changer</td></tr>
+            <tr><td class="td-hanzi spk">地址</td><td class="td-pinyin">dìzhǐ</td><td>adresse</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">酒店</span>Hôtel</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">预订</td><td class="td-pinyin">yùdìng</td><td>réserver</td></tr>
+            <tr><td class="td-hanzi spk">房间</td><td class="td-pinyin">fángjiān</td><td>chambre</td></tr>
+            <tr><td class="td-hanzi spk">护照</td><td class="td-pinyin">hùzhào</td><td>passeport</td></tr>
+            <tr><td class="td-hanzi spk">坏了</td><td class="td-pinyin">huài le</td><td>en panne</td></tr>
+            <tr><td class="td-hanzi spk">退房</td><td class="td-pinyin">tuìfáng</td><td>check-out</td></tr>
+            <tr><td class="td-hanzi spk">发票</td><td class="td-pinyin">fāpiào</td><td>facture</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">点菜</span>Restaurant</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">菜单</td><td class="td-pinyin">càidān</td><td>menu</td></tr>
+            <tr><td class="td-hanzi spk">点</td><td class="td-pinyin">diǎn</td><td>commander</td></tr>
+            <tr><td class="td-hanzi spk">米饭</td><td class="td-pinyin">mǐfàn</td><td>riz</td></tr>
+            <tr><td class="td-hanzi spk">辣</td><td class="td-pinyin">là</td><td>épicé</td></tr>
+            <tr><td class="td-hanzi spk">过敏</td><td class="td-pinyin">guòmǐn</td><td>allergie</td></tr>
+            <tr><td class="td-hanzi spk">买单</td><td class="td-pinyin">mǎidān</td><td>l'addition</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">看病</span>Santé</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">不舒服</td><td class="td-pinyin">bù shūfu</td><td>pas bien</td></tr>
+            <tr><td class="td-hanzi spk">疼</td><td class="td-pinyin">téng</td><td>avoir mal</td></tr>
+            <tr><td class="td-hanzi spk">发烧</td><td class="td-pinyin">fāshāo</td><td>fièvre</td></tr>
+            <tr><td class="td-hanzi spk">药</td><td class="td-pinyin">yào</td><td>médicament</td></tr>
+            <tr><td class="td-hanzi spk">医院</td><td class="td-pinyin">yīyuàn</td><td>hôpital</td></tr>
+            <tr><td class="td-hanzi spk">次</td><td class="td-pinyin">cì</td><td>fois</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">日程</span>Rendez-vous</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
+            <tr><td class="td-hanzi spk">见面</td><td class="td-pinyin">jiànmiàn</td><td>se voir</td></tr>
+            <tr><td class="td-hanzi spk">几点</td><td class="td-pinyin">jǐ diǎn</td><td>quelle heure</td></tr>
+            <tr><td class="td-hanzi spk">上午</td><td class="td-pinyin">shàngwǔ</td><td>matin</td></tr>
+            <tr><td class="td-hanzi spk">确认</td><td class="td-pinyin">quèrèn</td><td>confirmer</td></tr>
+            <tr><td class="td-hanzi spk">微信</td><td class="td-pinyin">wēixìn</td><td>WeChat</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">常用</span>Tout-terrain</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">大概</td><td class="td-pinyin">dàgài</td><td>environ</td></tr>
+            <tr><td class="td-hanzi spk">马上</td><td class="td-pinyin">mǎshàng</td><td>tout de suite</td></tr>
+            <tr><td class="td-hanzi spk">可以</td><td class="td-pinyin">kěyǐ</td><td>pouvoir</td></tr>
+            <tr><td class="td-hanzi spk">没关系</td><td class="td-pinyin">méi guānxi</td><td>pas grave</td></tr>
+            <tr><td class="td-hanzi spk">知道</td><td class="td-pinyin">zhīdào</td><td>savoir</td></tr>
+            <tr><td class="td-hanzi spk">需要</td><td class="td-pinyin">xūyào</td><td>avoir besoin</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §6 Characters -->
+  <section class="slide slide-card" data-section="6">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 06 · À savoir écrire</div>
+      <h2 class="card-title"><span class="ct-cn">汉字</span>Les 10 caractères</h2>
+      <div class="char-grid">
+        <div class="char-card spk" data-zh="车"><div class="char-big">车</div><div class="char-py">chē</div><div class="char-fr">véhicule</div><div class="char-strokes">4 traits</div></div>
+        <div class="char-card spk" data-zh="住"><div class="char-big">住</div><div class="char-py">zhù</div><div class="char-fr">loger</div><div class="char-strokes">7 traits</div></div>
+        <div class="char-card spk" data-zh="吃"><div class="char-big">吃</div><div class="char-py">chī</div><div class="char-fr">manger</div><div class="char-strokes">6 traits</div></div>
+        <div class="char-card spk" data-zh="菜"><div class="char-big">菜</div><div class="char-py">cài</div><div class="char-fr">plat / légume</div><div class="char-strokes">11 traits</div></div>
+        <div class="char-card spk" data-zh="头"><div class="char-big">头</div><div class="char-py">tóu</div><div class="char-fr">tête</div><div class="char-strokes">5 traits</div></div>
+        <div class="char-card spk" data-zh="病"><div class="char-big">病</div><div class="char-py">bìng</div><div class="char-fr">maladie</div><div class="char-strokes">10 traits</div></div>
+        <div class="char-card spk" data-zh="点"><div class="char-big">点</div><div class="char-py">diǎn</div><div class="char-fr">heure / commander</div><div class="char-strokes">9 traits</div></div>
+        <div class="char-card spk" data-zh="见"><div class="char-big">见</div><div class="char-py">jiàn</div><div class="char-fr">voir</div><div class="char-strokes">4 traits</div></div>
+        <div class="char-card spk" data-zh="明"><div class="char-big">明</div><div class="char-py">míng</div><div class="char-fr">clair / demain</div><div class="char-strokes">8 traits</div></div>
+        <div class="char-card spk" data-zh="上"><div class="char-big">上</div><div class="char-py">shàng</div><div class="char-fr">au-dessus / monter</div><div class="char-strokes">3 traits</div></div>
+      </div>
+      <div class="regle">🧠 <b>Astuces :</b> <span class="zh">明</span> = 日 (soleil) + 月 (lune) = lumineux, clair · <span class="zh">见</span> = un œil 目 sur deux jambes = « voir » · <span class="zh">吃</span> = la bouche 口 à gauche = « manger » · <span class="zh">病</span> = le radical de la maladie 疒 · <span class="zh">上</span> = un trait au-dessus de la ligne = « au-dessus ».</div>
+    </div>
+  </section>
+
+  <!-- BILAN -->
+  <section class="slide slide-bilan" data-section="7">
+    <div class="bilan-inner">
+      <div class="bilan-mark spk">完 成</div>
+      <h2>Bilan de la session</h2>
+      <div class="recap-grid">
+        <div class="recap-item"><span class="num">01</span><span><span class="ri-cn">交通</span>Taxi, Didi, métro — bouger en ville</span></div>
+        <div class="recap-item"><span class="num">02</span><span><span class="ri-cn">酒店</span>Check-in, panne, check-out à l'hôtel</span></div>
+        <div class="recap-item"><span class="num">03</span><span><span class="ri-cn">点菜</span>Commander, allergies, trinquer, payer</span></div>
+        <div class="recap-item"><span class="num">04</span><span><span class="ri-cn">看病</span>Symptômes, pharmacie, posologie</span></div>
+        <div class="recap-item"><span class="num">05</span><span><span class="ri-cn">日程</span>Fixer, déplacer et confirmer un RDV</span></div>
+        <div class="recap-item"><span class="num">06</span><span><span class="ri-cn">汉字</span>36 mots + 10 caractères à écrire</span></div>
+      </div>
+      <div class="bilan-next">Session 5 → Au bureau &amp; en réunion · Négocier un contrat · Visiter une usine · Sorties culturelles</div>
+    </div>
+  </section>
+
+</div><!-- /deck -->
+
+<div class="section-marker" id="section-marker"></div>
+
+<button class="nav-arrow left" id="prev" aria-label="Précédent">◀</button>
+<button class="nav-arrow right" id="next" aria-label="Suivant">▶</button>
+
+<div class="tts-hint" id="tts-hint">🔊 Cliquez sur le chinois pour l'écouter</div>
+
+<div class="progress-bar">
+  <div class="sec-dots" id="sec-dots">
+    <button class="sec-dot active" data-sec="0" aria-label="Couverture"></button>
+    <button class="sec-dot" data-sec="1" aria-label="Section 1"></button>
+    <button class="sec-dot" data-sec="2" aria-label="Section 2"></button>
+    <button class="sec-dot" data-sec="3" aria-label="Section 3"></button>
+    <button class="sec-dot" data-sec="4" aria-label="Section 4"></button>
+    <button class="sec-dot" data-sec="5" aria-label="Section 5"></button>
+    <button class="sec-dot" data-sec="6" aria-label="Section 6"></button>
+    <button class="sec-dot" data-sec="7" aria-label="Bilan"></button>
+  </div>
+  <div class="bar"><div class="fill" id="bar-fill" style="width:0%"></div></div>
+  <span class="counter" id="counter">1 / 1</span>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.deck > .slide'));
+  var total = slides.length;
+  var current = 0;
+  var btnPrev = document.getElementById('prev');
+  var btnNext = document.getElementById('next');
+  var counter = document.getElementById('counter');
+  var barFill = document.getElementById('bar-fill');
+  var marker = document.getElementById('section-marker');
+  var ttsHint = document.getElementById('tts-hint');
+  var secDots = Array.prototype.slice.call(document.querySelectorAll('.sec-dot'));
+
+  var sectionLabels = {
+    '0': '', '1': 'Section 01 · Se déplacer', '2': 'Section 02 · À l’hôtel',
+    '3': 'Section 03 · Au restaurant', '4': 'Section 04 · Chez le médecin',
+    '5': 'Section 05 · Rendez-vous', '6': 'Section 06 · Vocabulaire & Écriture', '7': 'Bilan'
+  };
+
+  slides.forEach(function(s, i) {
+    var indicator = document.createElement('div');
+    indicator.className = 'slide-num';
+    indicator.innerHTML = '<strong>' + String(i + 1).padStart(2, '0') + '</strong> / ' + String(total).padStart(2, '0');
+    s.appendChild(indicator);
+  });
+
+  function firstSlideOfSection(sec) {
+    for (var i = 0; i < slides.length; i++) {
+      if (slides[i].getAttribute('data-section') === String(sec)) return i;
+    }
+    return 0;
+  }
+
+  function goTo(index) {
+    if (index < 0 || index >= total) return;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    slides.forEach(function(s, i) {
+      s.classList.remove('active', 'prev');
+      if (i === index) s.classList.add('active');
+      else if (i < index) s.classList.add('prev');
+    });
+    counter.textContent = (index + 1) + ' / ' + total;
+    barFill.style.width = ((index) / Math.max(1, total - 1) * 100) + '%';
+    btnPrev.disabled = (index === 0);
+    btnNext.disabled = (index === total - 1);
+    current = index;
+
+    var sec = slides[index].getAttribute('data-section');
+    var label = sectionLabels[sec] || '';
+    var isCard = slides[index].classList.contains('slide-card') || slides[index].classList.contains('slide-manuel');
+    if (label && isCard) {
+      marker.textContent = label;
+      marker.classList.add('visible');
+    } else {
+      marker.classList.remove('visible');
+    }
+
+    var isDark = slides[index].classList.contains('slide-cover') || slides[index].classList.contains('slide-section') || slides[index].classList.contains('slide-bilan');
+    ttsHint.classList.toggle('dark', isDark);
+
+    secDots.forEach(function(d) {
+      d.classList.toggle('active', d.getAttribute('data-sec') === sec);
+    });
+
+    slides[index].scrollTop = 0;
+  }
+
+  btnPrev.addEventListener('click', function() { goTo(current - 1); });
+  btnNext.addEventListener('click', function() { goTo(current + 1); });
+
+  secDots.forEach(function(d) {
+    d.addEventListener('click', function() {
+      goTo(firstSlideOfSection(parseInt(d.getAttribute('data-sec'), 10)));
+    });
+  });
+
+  // ── Keyboard: arrows/space navigate slides, up/down scroll within slide ──
+  document.addEventListener('keydown', function(e) {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      e.preventDefault(); goTo(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); goTo(current - 1);
+    } else if (e.key === ' ') {
+      if (e.target && e.target.tagName === 'BUTTON') return;
+      e.preventDefault(); goTo(current + 1);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault(); slides[current].scrollBy({ top: 120, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault(); slides[current].scrollBy({ top: -120, behavior: 'smooth' });
+    } else if (e.key === 'Home') {
+      e.preventDefault(); goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); goTo(total - 1);
+    }
+  });
+
+  // ── Text-to-speech (click any Chinese to hear it) ──
+  var zhVoice = null;
+  function loadVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices();
+    zhVoice = vs.filter(function(v) { return /zh|cmn|chinese/i.test(v.lang + ' ' + v.name); })
+                .sort(function(a, b) { return (/zh[-_]CN|cmn/i.test(b.lang) ? 1 : 0) - (/zh[-_]CN|cmn/i.test(a.lang) ? 1 : 0); })[0] || null;
+  }
+  if (window.speechSynthesis) {
+    loadVoice();
+    window.speechSynthesis.onvoiceschanged = loadVoice;
+  }
+  function speak(text, el) {
+    if (!window.speechSynthesis || !text) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN';
+    u.rate = 0.8;
+    if (zhVoice) u.voice = zhVoice;
+    if (el) {
+      el.classList.add('speaking');
+      u.onend = u.onerror = function() { el.classList.remove('speaking'); };
+    }
+    window.speechSynthesis.speak(u);
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('.spk');
+    if (!el) return;
+    e.preventDefault();
+    var text = el.getAttribute('data-zh') || el.textContent.trim();
+    speak(text, el);
+  });
+
+  goTo(0);
+});
+</script>
+</body>
+</html>

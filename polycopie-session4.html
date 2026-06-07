@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polycopié — Session 4 · Cours de Chinois débutant</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap');
+  @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css');
+
+  :root {
+    --rouge: #8b1d20;
+    --or: #c9a467;
+    --encre: #1a1a1a;
+    --gris: #6b6b6b;
+    --gris-fonce: #2d2d2d;
+    --bordure: #e0dbd4;
+    --bg: #ffffff;
+    --kai: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', serif;
+  }
+
+  @page { size: A4; margin: 20mm 16mm; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 11pt; line-height: 1.6; color: var(--encre);
+    background: var(--bg); font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    max-width: 210mm; margin: 0 auto; padding: 18mm 16mm;
+  }
+
+  /* ── COVER ── */
+  .cover { text-align: center; padding: 40px 0 34px; border-bottom: 2px solid var(--encre); margin-bottom: 30px; page-break-after: always; }
+  .cover-zhwen { font-family: var(--kai); font-size: 30pt; color: var(--or); letter-spacing: 16px; padding-left: 16px; margin-bottom: 18px; }
+  .cover h1 { font-family: 'Cormorant Garamond', serif; font-size: 29pt; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .cover h1 em { font-style: italic; font-weight: 400; color: var(--gris-fonce); }
+  .cover .subtitle { font-size: 10pt; letter-spacing: 4px; text-transform: uppercase; color: var(--gris); margin-bottom: 26px; }
+  .cover .meta { font-size: 10pt; color: var(--rouge); font-weight: 500; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 28px; }
+  .cover .toc { text-align: left; max-width: 430px; margin: 0 auto; }
+  .cover .toc h3 { font-family: 'Cormorant Garamond', serif; font-size: 14pt; margin-bottom: 12px; }
+  .cover .toc ol { padding-left: 20px; font-size: 10.5pt; color: var(--gris-fonce); }
+  .cover .toc li { margin-bottom: 6px; }
+  .cover .toc li .cn { font-family: var(--kai); color: var(--rouge); margin-right: 6px; }
+  .cover .tip { margin-top: 24px; font-size: 9.5pt; color: var(--gris); font-style: italic; }
+
+  /* ── HEADINGS ── */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 21pt; font-weight: 500; color: var(--encre);
+    border-bottom: 2px solid var(--rouge); padding-bottom: 8px; margin: 0 0 18px;
+    page-break-before: always; letter-spacing: -0.3px;
+  }
+  .section-title:first-of-type { page-break-before: auto; }
+  .section-title .num { color: var(--rouge); font-size: 13pt; font-weight: 600; letter-spacing: 2px; display: block; margin-bottom: 4px; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+  .section-title .cn { font-family: var(--kai); color: var(--rouge); margin-right: 8px; }
+
+  h3 { font-family: 'Cormorant Garamond', serif; font-size: 13.5pt; font-weight: 600; color: var(--encre); margin: 20px 0 8px; letter-spacing: -0.2px; }
+  h3 .tag { display: inline-block; background: var(--encre); color: #fff; font-size: 7.5pt; padding: 2px 8px; border-radius: 8px; letter-spacing: 1px; text-transform: uppercase; vertical-align: middle; margin-right: 8px; font-family: 'Inter', sans-serif; font-weight: 500; }
+
+  /* ── DIALOGUE ── */
+  .dialogue { border: 1px solid var(--bordure); border-radius: 6px; margin: 10px 0 6px; overflow: hidden; break-inside: avoid; }
+  .dialogue-header { background: #f5f2ed; padding: 7px 14px; font-size: 9pt; color: var(--gris); font-style: italic; border-bottom: 1px solid var(--bordure); }
+  .dialogue-body { padding: 10px 14px; }
+  .dl { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #f0ede8; }
+  .dl:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .dl .who { font-size: 7.5pt; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 1px; }
+  .who-fr { color: #2563eb; } .who-cn { color: var(--rouge); }
+  .dl .zh { font-family: var(--kai); font-size: 13.5pt; font-weight: 500; color: var(--encre); line-height: 1.35; }
+  .dl .py { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 10pt; color: var(--gris-fonce); }
+  .dl .fr { font-size: 9.5pt; color: var(--gris); }
+
+  .keywords { font-size: 9.5pt; color: var(--gris-fonce); margin: 0 0 14px; padding: 7px 12px; background: #faf8f4; border-left: 2px solid var(--or); line-height: 1.7; }
+  .keywords b { color: var(--rouge); }
+  .keywords .kz { font-family: var(--kai); font-size: 11pt; color: var(--encre); font-weight: 600; }
+  .keywords em { font-family: 'Cormorant Garamond', serif; color: var(--gris-fonce); }
+
+  /* ── LANGUAGE POINTS ── */
+  .lp-table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 10.5pt; break-inside: avoid; }
+  .lp-table td { padding: 8px 12px; border-bottom: 1px solid var(--bordure); vertical-align: top; }
+  .lp-table tr:last-child td { border-bottom: none; }
+  .lp-table .lp-key { width: 30%; }
+  .lp-table .lp-key .k { font-family: var(--kai); font-size: 14pt; font-weight: 700; color: var(--rouge); }
+  .lp-table .lp-key .g { display: block; font-size: 8.5pt; color: var(--gris); margin-top: 2px; }
+  .lp-table .lp-ex { font-family: var(--kai); font-size: 12pt; color: var(--encre); line-height: 1.9; }
+  .lp-table .lp-ex .fr { font-family: 'Inter', sans-serif; font-size: 8pt; color: var(--gris); }
+
+  /* ── EXERCICES ── */
+  .exercice { border: 1px solid var(--bordure); border-radius: 6px; margin-bottom: 12px; overflow: hidden; break-inside: avoid; }
+  .exercice-header { background: #f8f6f2; padding: 7px 14px; font-size: 10pt; font-weight: 500; border-bottom: 1px solid var(--bordure); display: flex; gap: 10px; align-items: center; }
+  .exercice-type { background: var(--encre); color: white; font-size: 7pt; padding: 2px 8px; border-radius: 8px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+  .exercice-body { padding: 10px 14px; font-size: 10.5pt; line-height: 1.9; }
+  .exercice-body ol { padding-left: 20px; }
+  .exercice-body .zh { font-family: var(--kai); font-size: 12pt; color: var(--encre); }
+  .exercice-body .blank { color: var(--rouge); letter-spacing: 1px; }
+  .ex-cols { display: flex; gap: 16px; }
+  .ex-cols > div { flex: 1; }
+
+  .corrige { background: #f0f7f2; border: 1px solid #c4dccd; border-radius: 6px; padding: 10px 14px; margin-top: 10px; break-inside: avoid; }
+  .corrige h4 { font-family: 'Cormorant Garamond', serif; font-size: 11.5pt; font-weight: 500; color: #2e6b4f; margin-bottom: 6px; }
+  .corrige p { font-size: 9.5pt; color: var(--gris-fonce); margin-bottom: 3px; }
+  .corrige .zh { font-family: var(--kai); font-size: 11pt; color: var(--encre); }
+
+  /* ── VOCAB RECAP ── */
+  table.vocab { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 10pt; break-inside: avoid; }
+  table.vocab th { background: var(--encre); color: white; padding: 6px 10px; text-align: left; font-size: 7.5pt; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; }
+  table.vocab td { padding: 5.5px 10px; border-bottom: 1px solid var(--bordure); }
+  table.vocab tr:last-child td { border-bottom: none; }
+  .td-hanzi { font-family: var(--kai); font-size: 14pt; font-weight: 700; color: var(--encre); white-space: nowrap; width: 1%; }
+  .td-pinyin { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 10.5pt; color: var(--rouge); white-space: nowrap; width: 1%; }
+  .vocab-2col { display: flex; gap: 20px; }
+  .vocab-2col > div { flex: 1; }
+
+  /* ── CHARACTERS ── */
+  .writing-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 12px 0; }
+  .writing-char { text-align: center; border: 1px solid var(--bordure); border-radius: 6px; padding: 10px 6px; break-inside: avoid; }
+  .writing-char .big { font-family: var(--kai); font-size: 32pt; font-weight: 700; color: var(--rouge); line-height: 1.1; }
+  .writing-char .info { font-size: 8.5pt; color: var(--gris-fonce); margin-top: 4px; }
+  .writing-char .info em { font-family: 'Cormorant Garamond', serif; }
+  .regle { background: #fffaf0; border-left: 3px solid var(--or); padding: 11px 15px; margin: 12px 0; font-size: 10pt; line-height: 1.7; break-inside: avoid; }
+  .regle .zh { font-family: var(--kai); font-size: 12pt; color: var(--rouge); }
+  .practice-lines { border: 1px dashed var(--bordure); border-radius: 6px; padding: 14px; margin: 10px 0; min-height: 130px; color: var(--gris); font-size: 9pt; }
+  .grid-paper { background-image: linear-gradient(#f0ece6 1px, transparent 1px), linear-gradient(90deg, #f0ece6 1px, transparent 1px); background-size: 22px 22px; }
+
+  .page-footer { margin-top: 36px; padding-top: 12px; border-top: 1px solid var(--bordure); font-size: 8.5pt; color: var(--gris); text-align: center; }
+
+  @media print {
+    body { padding: 0; max-width: none; }
+    .section-title { page-break-before: always; }
+    .section-title:first-of-type { page-break-before: auto; }
+    .exercice, .dialogue, .corrige, .lp-table, table.vocab, .writing-char, .keywords { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="cover-zhwen">中 文</div>
+  <h1>Cours de Chinois <em>débutant</em></h1>
+  <div class="subtitle">Polycopié de cours</div>
+  <div class="meta">Session 04 · 1 h 30</div>
+  <div class="toc">
+    <h3>Sommaire</h3>
+    <ol>
+      <li><span class="cn">交通出行</span>Se déplacer — taxi, Didi, métro</li>
+      <li><span class="cn">住酒店</span>À l'hôtel — check-in, panne, check-out</li>
+      <li><span class="cn">点菜</span>Commander au restaurant</li>
+      <li><span class="cn">看病</span>Chez le médecin — santé &amp; pharmacie</li>
+      <li><span class="cn">日程安排</span>Fixer un rendez-vous</li>
+      <li><span class="cn">词汇</span>Vocabulaire essentiel à retenir</li>
+      <li><span class="cn">汉字</span>10 caractères à savoir écrire</li>
+    </ol>
+  </div>
+  <div class="tip">Chaque section : 4 dialogues en situation → structures clés → exercices &amp; corrigés.</div>
+</div>
+
+<!-- ══════════════ SECTION 1 — 交通出行 ══════════════ -->
+<div class="section-title"><span class="num">Section 01</span><span class="cn">交通出行</span>Se déplacer</div>
+
+<h3><span class="tag">Dialogue A</span>Commander un Didi</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc sort de l'hôtel et ouvre l'appli Didi (滴滴)</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">你好，我要打车。</div><div class="py">Nǐ hǎo, wǒ yào dǎchē.</div><div class="fr">Bonjour, je voudrais un taxi.</div></div>
+    <div class="dl"><div class="who who-cn">司机 🇨🇳</div><div class="zh">你在哪里？</div><div class="py">Nǐ zài nǎlǐ?</div><div class="fr">Vous êtes où ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我在酒店门口。</div><div class="py">Wǒ zài jiǔdiàn ménkǒu.</div><div class="fr">Je suis devant l'hôtel.</div></div>
+    <div class="dl"><div class="who who-cn">司机 🇨🇳</div><div class="zh">好的，三分钟到。</div><div class="py">Hǎo de, sān fēnzhōng dào.</div><div class="fr">D'accord, j'arrive dans 3 minutes.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">打车</span> <em>dǎchē</em> prendre un taxi · <span class="kz">在哪里</span> <em>zài nǎlǐ</em> où · <span class="kz">门口</span> <em>ménkǒu</em> entrée · <span class="kz">到</span> <em>dào</em> arriver</div>
+
+<h3><span class="tag">Dialogue B</span>Dans le taxi</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc monte, le chauffeur démarre</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">师傅，去南京路。</div><div class="py">Shīfu, qù Nánjīng lù.</div><div class="fr">Chef, direction Nanjing Road.</div></div>
+    <div class="dl"><div class="who who-cn">司机 🇨🇳</div><div class="zh">好，大概二十分钟。</div><div class="py">Hǎo, dàgài èrshí fēnzhōng.</div><div class="fr">Ok, environ 20 minutes.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">到了吗？</div><div class="py">Dào le ma?</div><div class="fr">On est arrivés ?</div></div>
+    <div class="dl"><div class="who who-cn">司机 🇨🇳</div><div class="zh">到了！</div><div class="py">Dào le!</div><div class="fr">On y est !</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">师傅</span> <em>shīfu</em> « chef » (chauffeur) · <span class="kz">去</span> <em>qù</em> aller · <span class="kz">大概</span> <em>dàgài</em> environ · <span class="kz">分钟</span> <em>fēnzhōng</em> minute · <span class="kz">到了</span> <em>dào le</em> arrivé</div>
+
+<h3><span class="tag">Dialogue C</span>Prendre le métro</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Dans la station, Marc cherche la bonne ligne</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">去人民广场坐几号线？</div><div class="py">Qù Rénmín guǎngchǎng zuò jǐ hào xiàn?</div><div class="fr">Quelle ligne pour People's Square ?</div></div>
+    <div class="dl"><div class="who who-cn">路人 🇨🇳</div><div class="zh">坐二号线，三站。</div><div class="py">Zuò èr hào xiàn, sān zhàn.</div><div class="fr">Ligne 2, trois stations.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">要换线吗？</div><div class="py">Yào huàn xiàn ma?</div><div class="fr">Faut-il changer de ligne ?</div></div>
+    <div class="dl"><div class="who who-cn">路人 🇨🇳</div><div class="zh">不用，直达。</div><div class="py">Búyòng, zhídá.</div><div class="fr">Non, c'est direct.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">坐</span> <em>zuò</em> prendre (transport) · <span class="kz">几号线</span> <em>jǐ hào xiàn</em> quelle ligne · <span class="kz">站</span> <em>zhàn</em> station · <span class="kz">换</span> <em>huàn</em> changer · <span class="kz">不用</span> <em>búyòng</em> pas besoin</div>
+
+<h3><span class="tag">Dialogue D</span>Montrer l'adresse</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Le chauffeur ne trouve pas la destination</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">司机 🇨🇳</div><div class="zh">你要去哪里？</div><div class="py">Nǐ yào qù nǎlǐ?</div><div class="fr">Vous voulez aller où ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我给你看地址。</div><div class="py">Wǒ gěi nǐ kàn dìzhǐ.</div><div class="fr">Je vous montre l'adresse.</div></div>
+    <div class="dl"><div class="who who-cn">司机 🇨🇳</div><div class="zh">哦，我知道了。</div><div class="py">Ò, wǒ zhīdào le.</div><div class="fr">Ah, je vois.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">请停这里。</div><div class="py">Qǐng tíng zhèlǐ.</div><div class="fr">Arrêtez-vous ici, svp.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">给你看</span> <em>gěi nǐ kàn</em> te montrer · <span class="kz">地址</span> <em>dìzhǐ</em> adresse · <span class="kz">知道</span> <em>zhīdào</em> savoir · <span class="kz">停</span> <em>tíng</em> s'arrêter</div>
+
+<h3>Structures clés — substitution</h3>
+<table class="lp-table">
+  <tr><td class="lp-key"><span class="k">去</span> + lieu<span class="g">aller quelque part</span></td><td class="lp-ex">去工厂 <span class="fr">usine</span> · 去火车站 <span class="fr">gare</span> · 去机场 <span class="fr">aéroport</span> · 去酒店 <span class="fr">hôtel</span> · 去坐地铁 <span class="fr">prendre le métro</span></td></tr>
+  <tr><td class="lp-key"><span class="k">坐</span> + transport<span class="g">prendre un transport</span></td><td class="lp-ex">坐地铁 <span class="fr">métro</span> · 坐公交 <span class="fr">bus</span> · 坐滴滴 <span class="fr">Didi</span> · 坐出租车 <span class="fr">taxi</span> · 坐高铁 <span class="fr">TGV</span></td></tr>
+  <tr><td class="lp-key"><span class="k">在</span> + lieu<span class="g">se trouver à / dans</span></td><td class="lp-ex">在酒店 <span class="fr">hôtel</span> · 在门口 <span class="fr">entrée</span> · 在家 <span class="fr">maison</span> · 在里面 <span class="fr">dedans</span> · 在外面 <span class="fr">dehors</span></td></tr>
+  <tr><td class="lp-key"><span class="k">大概</span> + durée<span class="g">environ</span></td><td class="lp-ex">大概十分钟 <span class="fr">~10 min</span> · 大概一个小时 <span class="fr">~1 h</span> · 大概两天 <span class="fr">~2 jours</span> · 大概三周 <span class="fr">~3 sem.</span></td></tr>
+  <tr><td class="lp-key"><span class="k">了</span><span class="g">V + 了 : action accomplie</span></td><td class="lp-ex">到了 <span class="fr">arrivé</span> · 知道了 <span class="fr">compris</span> · 饿了 <span class="fr">j'ai faim</span> · 好了 <span class="fr">c'est prêt</span></td></tr>
+</table>
+
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Exercices</span> À vous de jouer</div>
+  <div class="exercice-body">
+    <div class="ex-cols">
+      <div><b>Complétez :</b>
+        <ol>
+          <li><span class="zh">师傅，<span class="blank">___</span>南京路。</span></li>
+          <li><span class="zh">去广场坐<span class="blank">___</span>号线？</span></li>
+          <li><span class="zh">我<span class="blank">___</span>酒店门口。</span></li>
+          <li><span class="zh"><span class="blank">___</span>二十分钟。</span></li>
+        </ol>
+      </div>
+      <div><b>Répondez en chinois :</b>
+        <ol>
+          <li><span class="zh">你要去哪里？</span></li>
+          <li><span class="zh">到了吗？</span></li>
+          <li><span class="zh">要换线吗？</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corrige"><h4>✅ Corrigé</h4><p>1. <span class="zh">去</span> · 2. <span class="zh">几</span> · 3. <span class="zh">在</span> · 4. <span class="zh">大概</span></p><p>Réponses libres, ex. <span class="zh">我去机场 / 到了 / 不用换</span></p></div>
+
+<!-- ══════════════ SECTION 2 — 住酒店 ══════════════ -->
+<div class="section-title"><span class="num">Section 02</span><span class="cn">住酒店</span>À l'hôtel</div>
+
+<h3><span class="tag">Dialogue A</span>L'arrivée (check-in)</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 À la réception de l'hôtel</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">你好，我预订了一个房间。</div><div class="py">Nǐ hǎo, wǒ yùdìng le yí ge fángjiān.</div><div class="fr">Bonjour, j'ai réservé une chambre.</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">请给我护照。</div><div class="py">Qǐng gěi wǒ hùzhào.</div><div class="fr">Votre passeport, s'il vous plaît.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">给你。</div><div class="py">Gěi nǐ.</div><div class="fr">Tenez.</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">这是房卡。</div><div class="py">Zhè shì fángkǎ.</div><div class="fr">Voici votre carte de chambre.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">预订</span> <em>yùdìng</em> réserver · <span class="kz">房间</span> <em>fángjiān</em> chambre · <span class="kz">护照</span> <em>hùzhào</em> passeport · <span class="kz">房卡</span> <em>fángkǎ</em> carte de chambre</div>
+
+<h3><span class="tag">Dialogue B</span>WiFi &amp; petit-déjeuner</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc demande deux infos essentielles</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">WiFi 密码是什么？</div><div class="py">WiFi mìmǎ shì shénme?</div><div class="fr">C'est quoi le mot de passe WiFi ?</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">在房卡上。</div><div class="py">Zài fángkǎ shàng.</div><div class="fr">Il est sur la carte.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">几点吃早饭？</div><div class="py">Jǐ diǎn chī zǎofàn?</div><div class="fr">Le petit-déj est à quelle heure ?</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">七点到十点。</div><div class="py">Qī diǎn dào shí diǎn.</div><div class="fr">De 7h à 10h.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">密码</span> <em>mìmǎ</em> mot de passe · <span class="kz">早饭</span> <em>zǎofàn</em> petit-déjeuner · <span class="kz">几点</span> <em>jǐ diǎn</em> à quelle heure · <span class="kz">在…上</span> <em>zài…shàng</em> sur</div>
+
+<h3><span class="tag">Dialogue C</span>Un problème dans la chambre</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc rappelle la réception</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">你好，空调坏了。</div><div class="py">Nǐ hǎo, kòngtiáo huài le.</div><div class="fr">Bonjour, la clim est en panne.</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">我马上来看。</div><div class="py">Wǒ mǎshàng lái kàn.</div><div class="fr">J'arrive tout de suite.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">还有，没有热水。</div><div class="py">Hái yǒu, méiyǒu rèshuǐ.</div><div class="fr">Et aussi, il n'y a pas d'eau chaude.</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">真不好意思！</div><div class="py">Zhēn bù hǎoyìsi!</div><div class="fr">Vraiment désolé !</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">空调</span> <em>kòngtiáo</em> climatisation · <span class="kz">坏了</span> <em>huài le</em> en panne · <span class="kz">马上</span> <em>mǎshàng</em> tout de suite · <span class="kz">热水</span> <em>rèshuǐ</em> eau chaude</div>
+
+<h3><span class="tag">Dialogue D</span>Le départ (check-out)</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Le matin du départ</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我要退房。</div><div class="py">Wǒ yào tuìfáng.</div><div class="fr">Je voudrais faire le check-out.</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">好，房卡给我。</div><div class="py">Hǎo, fángkǎ gěi wǒ.</div><div class="fr">Bien, donnez-moi la carte.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">可以开发票吗？</div><div class="py">Kěyǐ kāi fāpiào ma?</div><div class="fr">Vous pouvez faire une facture ?</div></div>
+    <div class="dl"><div class="who who-cn">前台 🇨🇳</div><div class="zh">可以，请稍等。</div><div class="py">Kěyǐ, qǐng shāo děng.</div><div class="fr">Oui, un instant svp.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">退房</span> <em>tuìfáng</em> check-out · <span class="kz">开发票</span> <em>kāi fāpiào</em> émettre une facture · <span class="kz">给</span> <em>gěi</em> donner · <span class="kz">稍等</span> <em>shāo děng</em> patienter</div>
+
+<h3>Structures clés — substitution</h3>
+<table class="lp-table">
+  <tr><td class="lp-key"><span class="k">我要</span> + V<span class="g">je voudrais</span></td><td class="lp-ex">我要退房 <span class="fr">check-out</span> · 我要打车 <span class="fr">un taxi</span> · 我要换房间 <span class="fr">changer de chambre</span> · 我要开发票 <span class="fr">une facture</span></td></tr>
+  <tr><td class="lp-key"><span class="k">…坏了</span><span class="g">N + 坏了 : en panne</span></td><td class="lp-ex">空调坏了 <span class="fr">clim</span> · 电视坏了 <span class="fr">télé</span> · 灯坏了 <span class="fr">lumière</span> · 门坏了 <span class="fr">porte</span> · 钥匙坏了 <span class="fr">clé</span></td></tr>
+  <tr><td class="lp-key"><span class="k">没有</span> + N<span class="g">il n'y a pas de</span></td><td class="lp-ex">没有热水 <span class="fr">eau chaude</span> · 没有网络 <span class="fr">internet</span> · 没有毛巾 <span class="fr">serviette</span> · 没有牙刷 <span class="fr">brosse à dents</span></td></tr>
+  <tr><td class="lp-key"><span class="k">可以…吗</span><span class="g">可以 + V + 吗 : puis-je ?</span></td><td class="lp-ex">可以开发票吗 <span class="fr">facture</span> · 可以换房间吗 <span class="fr">changer</span> · 可以晚点退房吗 <span class="fr">check-out tardif</span> · 可以停车吗 <span class="fr">se garer</span></td></tr>
+  <tr><td class="lp-key"><span class="k">几点</span> + V<span class="g">à quelle heure</span></td><td class="lp-ex">几点吃早饭 <span class="fr">petit-déj</span> · 几点退房 <span class="fr">check-out</span> · 几点开门 <span class="fr">ouverture</span> · 几点关门 <span class="fr">fermeture</span></td></tr>
+</table>
+
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Exercices</span> À vous de jouer</div>
+  <div class="exercice-body">
+    <div class="ex-cols">
+      <div><b>Complétez :</b>
+        <ol>
+          <li><span class="zh">空调<span class="blank">___</span>了。</span></li>
+          <li><span class="zh">我要<span class="blank">___</span>房。</span></li>
+          <li><span class="zh"><span class="blank">___</span>点吃早饭？</span></li>
+          <li><span class="zh">可以开<span class="blank">___</span>吗？</span></li>
+        </ol>
+      </div>
+      <div><b>Répondez en chinois :</b>
+        <ol>
+          <li><span class="zh">你预订房间了吗？</span></li>
+          <li><span class="zh">几点退房？</span></li>
+          <li><span class="zh">房间有问题吗？</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corrige"><h4>✅ Corrigé</h4><p>1. <span class="zh">坏</span> · 2. <span class="zh">退</span> · 3. <span class="zh">几</span> · 4. <span class="zh">发票</span></p><p>ex. <span class="zh">预订了 / 中午十二点 / 空调坏了</span></p></div>
+
+<!-- ══════════════ SECTION 3 — 点菜 ══════════════ -->
+<div class="section-title"><span class="num">Section 03</span><span class="cn">点菜</span>Commander au restaurant</div>
+
+<h3><span class="tag">Dialogue A</span>S'installer</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc entre dans un restaurant local</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">几位？</div><div class="py">Jǐ wèi?</div><div class="fr">Combien de personnes ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">两位。</div><div class="py">Liǎng wèi.</div><div class="fr">Deux.</div></div>
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">这是菜单。</div><div class="py">Zhè shì càidān.</div><div class="fr">Voici le menu.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">谢谢。</div><div class="py">Xièxie.</div><div class="fr">Merci.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">几位</span> <em>jǐ wèi</em> combien de personnes · <span class="kz">位</span> <em>wèi</em> classificateur poli · <span class="kz">菜单</span> <em>càidān</em> menu</div>
+
+<h3><span class="tag">Dialogue B</span>Commander les plats</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Le serveur prend la commande</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">你们点什么？</div><div class="py">Nǐmen diǎn shénme?</div><div class="fr">Vous commandez quoi ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">来一个宫保鸡丁。</div><div class="py">Lái yí ge Gōngbǎo jīdīng.</div><div class="fr">Un poulet Kung Pao.</div></div>
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">要米饭吗？</div><div class="py">Yào mǐfàn ma?</div><div class="fr">Du riz ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">要两碗。</div><div class="py">Yào liǎng wǎn.</div><div class="fr">Deux bols.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">点</span> <em>diǎn</em> commander · <span class="kz">来一个</span> <em>lái yí ge</em> j'en prends un · <span class="kz">米饭</span> <em>mǐfàn</em> riz · <span class="kz">碗</span> <em>wǎn</em> bol</div>
+
+<h3><span class="tag">Dialogue C</span>Préférences &amp; allergies</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc précise ses préférences</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">要辣吗？</div><div class="py">Yào là ma?</div><div class="fr">Épicé ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">不要太辣。</div><div class="py">Búyào tài là.</div><div class="fr">Pas trop épicé.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我对花生过敏。</div><div class="py">Wǒ duì huāshēng guòmǐn.</div><div class="fr">Je suis allergique aux cacahuètes.</div></div>
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">好，知道了。</div><div class="py">Hǎo, zhīdào le.</div><div class="fr">Bien, c'est noté.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">辣</span> <em>là</em> épicé · <span class="kz">不要太</span> <em>búyào tài</em> pas trop · <span class="kz">对…过敏</span> <em>duì…guòmǐn</em> allergique à · <span class="kz">花生</span> <em>huāshēng</em> cacahuète</div>
+
+<h3><span class="tag">Dialogue D</span>Trinquer &amp; payer</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Fin du repas, ambiance conviviale</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">干杯！</div><div class="py">Gānbēi!</div><div class="fr">Santé ! (cul sec)</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">干杯！吃好喝好！</div><div class="py">Gānbēi! Chī hǎo hē hǎo!</div><div class="fr">Santé ! Régalez-vous !</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">服务员，买单！</div><div class="py">Fúwùyuán, mǎidān!</div><div class="fr">Serveur, l'addition !</div></div>
+    <div class="dl"><div class="who who-cn">服务员 🇨🇳</div><div class="zh">扫码就行。</div><div class="py">Sǎomǎ jiù xíng.</div><div class="fr">Scannez le QR, c'est tout.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">干杯</span> <em>gānbēi</em> santé / cul sec · <span class="kz">买单</span> <em>mǎidān</em> l'addition · <span class="kz">扫码</span> <em>sǎomǎ</em> scanner le QR · <span class="kz">就行</span> <em>jiù xíng</em> ça suffit</div>
+
+<h3>Structures clés — substitution</h3>
+<table class="lp-table">
+  <tr><td class="lp-key"><span class="k">来</span> + 量 + N<span class="g">apportez / je prends</span></td><td class="lp-ex">来一个菜 <span class="fr">un plat</span> · 来两碗米饭 <span class="fr">2 bols de riz</span> · 来三瓶啤酒 <span class="fr">3 bières</span> · 来一壶茶 <span class="fr">une théière</span></td></tr>
+  <tr><td class="lp-key"><span class="k">不要太</span> + adj<span class="g">pas trop…</span></td><td class="lp-ex">不要太辣 <span class="fr">épicé</span> · 不要太甜 <span class="fr">sucré</span> · 不要太咸 <span class="fr">salé</span> · 不要太油 <span class="fr">gras</span></td></tr>
+  <tr><td class="lp-key"><span class="k">对…过敏</span><span class="g">对 + N + 过敏 : allergique à</span></td><td class="lp-ex">对花生过敏 <span class="fr">cacahuète</span> · 对海鲜过敏 <span class="fr">fruits de mer</span> · 对牛奶过敏 <span class="fr">lait</span> · 对鸡蛋过敏 <span class="fr">œuf</span></td></tr>
+  <tr><td class="lp-key"><span class="k">要…吗</span><span class="g">要 + N + 吗 : voulez-vous ?</span></td><td class="lp-ex">要辣吗 <span class="fr">épicé</span> · 要米饭吗 <span class="fr">riz</span> · 要筷子吗 <span class="fr">baguettes</span> · 要纸巾吗 <span class="fr">mouchoirs</span></td></tr>
+  <tr><td class="lp-key"><span class="k">有没有</span> + N<span class="g">avez-vous… ?</span></td><td class="lp-ex">有没有菜单 <span class="fr">menu</span> · 有没有英文菜单 <span class="fr">menu anglais</span> · 有没有素菜 <span class="fr">plats végé</span> · 有没有冰水 <span class="fr">eau glacée</span></td></tr>
+</table>
+
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Exercices</span> À vous de jouer</div>
+  <div class="exercice-body">
+    <div class="ex-cols">
+      <div><b>Complétez :</b>
+        <ol>
+          <li><span class="zh"><span class="blank">___</span>一个宫保鸡丁。</span></li>
+          <li><span class="zh">不要太<span class="blank">___</span>。</span></li>
+          <li><span class="zh">我<span class="blank">___</span>花生过敏。</span></li>
+          <li><span class="zh">服务员，<span class="blank">___</span>！</span></li>
+        </ol>
+      </div>
+      <div><b>Répondez en chinois :</b>
+        <ol>
+          <li><span class="zh">几位？</span></li>
+          <li><span class="zh">要辣吗？</span></li>
+          <li><span class="zh">你对什么过敏？</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corrige"><h4>✅ Corrigé</h4><p>1. <span class="zh">来</span> · 2. <span class="zh">辣</span> · 3. <span class="zh">对</span> · 4. <span class="zh">买单</span></p><p>ex. <span class="zh">两位 / 不要太辣 / 我对海鲜过敏</span></p></div>
+
+<!-- ══════════════ SECTION 4 — 看病 ══════════════ -->
+<div class="section-title"><span class="num">Section 04</span><span class="cn">看病</span>Chez le médecin</div>
+
+<h3><span class="tag">Dialogue A</span>À la pharmacie</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc a trop mangé épicé à Chengdu</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">你好，我不舒服。</div><div class="py">Nǐ hǎo, wǒ bù shūfu.</div><div class="fr">Bonjour, je ne me sens pas bien.</div></div>
+    <div class="dl"><div class="who who-cn">药剂师 🇨🇳</div><div class="zh">哪里不舒服？</div><div class="py">Nǎlǐ bù shūfu?</div><div class="fr">Où avez-vous mal ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我肚子疼。</div><div class="py">Wǒ dùzi téng.</div><div class="fr">J'ai mal au ventre.</div></div>
+    <div class="dl"><div class="who who-cn">药剂师 🇨🇳</div><div class="zh">吃这个药。</div><div class="py">Chī zhège yào.</div><div class="fr">Prenez ce médicament.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">不舒服</span> <em>bù shūfu</em> pas bien · <span class="kz">肚子</span> <em>dùzi</em> ventre · <span class="kz">疼</span> <em>téng</em> avoir mal · <span class="kz">药</span> <em>yào</em> médicament</div>
+
+<h3><span class="tag">Dialogue B</span>Décrire ses symptômes</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Chez le médecin</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">医生 🇨🇳</div><div class="zh">你怎么了？</div><div class="py">Nǐ zěnme le?</div><div class="fr">Qu'est-ce qui ne va pas ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我头疼，还发烧。</div><div class="py">Wǒ tóu téng, hái fāshāo.</div><div class="fr">J'ai mal à la tête, et de la fièvre.</div></div>
+    <div class="dl"><div class="who who-cn">医生 🇨🇳</div><div class="zh">几天了？</div><div class="py">Jǐ tiān le?</div><div class="fr">Depuis combien de jours ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">两天了。</div><div class="py">Liǎng tiān le.</div><div class="fr">Deux jours.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">怎么了</span> <em>zěnme le</em> qu'y a-t-il · <span class="kz">头疼</span> <em>tóu téng</em> mal de tête · <span class="kz">发烧</span> <em>fāshāo</em> fièvre · <span class="kz">几天了</span> <em>jǐ tiān le</em> depuis quand</div>
+
+<h3><span class="tag">Dialogue C</span>Allergie &amp; pharmacie</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Une précision qui peut sauver la vie</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我对青霉素过敏。</div><div class="py">Wǒ duì qīngméisù guòmǐn.</div><div class="fr">Je suis allergique à la pénicilline.</div></div>
+    <div class="dl"><div class="who who-cn">医生 🇨🇳</div><div class="zh">好，我记一下。</div><div class="py">Hǎo, wǒ jì yíxià.</div><div class="fr">Bien, je le note.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">这里有药店吗？</div><div class="py">Zhèlǐ yǒu yàodiàn ma?</div><div class="fr">Y a-t-il une pharmacie ici ?</div></div>
+    <div class="dl"><div class="who who-cn">医生 🇨🇳</div><div class="zh">在一楼。</div><div class="py">Zài yī lóu.</div><div class="fr">Au rez-de-chaussée.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">过敏</span> <em>guòmǐn</em> allergie · <span class="kz">药店</span> <em>yàodiàn</em> pharmacie · <span class="kz">一楼</span> <em>yī lóu</em> rez-de-chaussée · <span class="kz">记一下</span> <em>jì yíxià</em> noter</div>
+
+<h3><span class="tag">Dialogue D</span>La posologie</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Au comptoir de la pharmacie</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">一天吃几次？</div><div class="py">Yì tiān chī jǐ cì?</div><div class="fr">Combien de fois par jour ?</div></div>
+    <div class="dl"><div class="who who-cn">药剂师 🇨🇳</div><div class="zh">一天三次。</div><div class="py">Yì tiān sān cì.</div><div class="fr">Trois fois par jour.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">饭前还是饭后？</div><div class="py">Fàn qián háishi fàn hòu?</div><div class="fr">Avant ou après le repas ?</div></div>
+    <div class="dl"><div class="who who-cn">药剂师 🇨🇳</div><div class="zh">饭后。</div><div class="py">Fàn hòu.</div><div class="fr">Après le repas.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">几次</span> <em>jǐ cì</em> combien de fois · <span class="kz">次</span> <em>cì</em> fois · <span class="kz">饭前</span> <em>fàn qián</em> avant le repas · <span class="kz">饭后</span> <em>fàn hòu</em> après le repas</div>
+
+<h3>Structures clés — substitution</h3>
+<table class="lp-table">
+  <tr><td class="lp-key"><span class="k">…疼</span><span class="g">corps + 疼 : avoir mal</span></td><td class="lp-ex">头疼 <span class="fr">tête</span> · 肚子疼 <span class="fr">ventre</span> · 嗓子疼 <span class="fr">gorge</span> · 牙疼 <span class="fr">dents</span> · 腰疼 <span class="fr">dos</span></td></tr>
+  <tr><td class="lp-key"><span class="k">有点儿</span> + adj<span class="g">un peu (gêne)</span></td><td class="lp-ex">有点儿疼 <span class="fr">mal</span> · 有点儿累 <span class="fr">fatigué</span> · 有点儿冷 <span class="fr">froid</span> · 有点儿热 <span class="fr">chaud</span></td></tr>
+  <tr><td class="lp-key"><span class="k">想</span> + V<span class="g">avoir envie de</span></td><td class="lp-ex">想休息 <span class="fr">se reposer</span> · 想睡觉 <span class="fr">dormir</span> · 想吐 <span class="fr">vomir</span> · 想看医生 <span class="fr">voir un médecin</span></td></tr>
+  <tr><td class="lp-key"><span class="k">一天…次</span><span class="g">一天 + n + 次 : x fois/jour</span></td><td class="lp-ex">一天一次 <span class="fr">1×</span> · 一天两次 <span class="fr">2×</span> · 一天三次 <span class="fr">3×</span> · 一周一次 <span class="fr">1×/sem</span></td></tr>
+  <tr><td class="lp-key"><span class="k">需要</span> + N/V<span class="g">avoir besoin de</span></td><td class="lp-ex">需要休息 <span class="fr">du repos</span> · 需要打针 <span class="fr">une piqûre</span> · 需要验血 <span class="fr">prise de sang</span> · 需要住院 <span class="fr">hospitalisation</span></td></tr>
+</table>
+
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Exercices</span> À vous de jouer</div>
+  <div class="exercice-body">
+    <div class="ex-cols">
+      <div><b>Complétez :</b>
+        <ol>
+          <li><span class="zh">我头<span class="blank">___</span>。</span></li>
+          <li><span class="zh">我<span class="blank">___</span>青霉素过敏。</span></li>
+          <li><span class="zh">一天吃几<span class="blank">___</span>？</span></li>
+          <li><span class="zh">饭<span class="blank">___</span>还是饭后？</span></li>
+        </ol>
+      </div>
+      <div><b>Répondez en chinois :</b>
+        <ol>
+          <li><span class="zh">你怎么了？</span></li>
+          <li><span class="zh">哪里不舒服？</span></li>
+          <li><span class="zh">一天吃几次？</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corrige"><h4>✅ Corrigé</h4><p>1. <span class="zh">疼</span> · 2. <span class="zh">对</span> · 3. <span class="zh">次</span> · 4. <span class="zh">前</span></p><p>ex. <span class="zh">我头疼 / 肚子不舒服 / 一天三次</span></p></div>
+
+<!-- ══════════════ SECTION 5 — 日程安排 ══════════════ -->
+<div class="section-title"><span class="num">Section 05</span><span class="cn">日程安排</span>Fixer un rendez-vous</div>
+
+<h3><span class="tag">Dialogue A</span>Proposer un rendez-vous</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc appelle un client</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我们明天见面，好吗？</div><div class="py">Wǒmen míngtiān jiànmiàn, hǎo ma?</div><div class="fr">On se voit demain, ça vous va ?</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">好，几点？</div><div class="py">Hǎo, jǐ diǎn?</div><div class="fr">Ok, à quelle heure ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">上午十点。</div><div class="py">Shàngwǔ shí diǎn.</div><div class="fr">10h du matin.</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">没问题。</div><div class="py">Méi wèntí.</div><div class="fr">Pas de problème.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">明天</span> <em>míngtiān</em> demain · <span class="kz">见面</span> <em>jiànmiàn</em> se rencontrer · <span class="kz">几点</span> <em>jǐ diǎn</em> à quelle heure · <span class="kz">上午</span> <em>shàngwǔ</em> matin</div>
+
+<h3><span class="tag">Dialogue B</span>Préciser le lieu</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 On se met d'accord sur l'endroit</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">在哪里见？</div><div class="py">Zài nǎlǐ jiàn?</div><div class="fr">On se voit où ?</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">在你们公司。</div><div class="py">Zài nǐmen gōngsī.</div><div class="fr">Dans votre entreprise.</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">好，我发地址给你。</div><div class="py">Hǎo, wǒ fā dìzhǐ gěi nǐ.</div><div class="fr">Ok, je t'envoie l'adresse.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">谢谢！</div><div class="py">Xièxie!</div><div class="fr">Merci !</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">在哪里见</span> <em>zài nǎlǐ jiàn</em> où se retrouver · <span class="kz">公司</span> <em>gōngsī</em> entreprise · <span class="kz">发</span> <em>fā</em> envoyer · <span class="kz">地址</span> <em>dìzhǐ</em> adresse</div>
+
+<h3><span class="tag">Dialogue C</span>Reporter le rendez-vous</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Un imprévu de dernière minute</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">不好意思，明天不行。</div><div class="py">Bù hǎoyìsi, míngtiān bùxíng.</div><div class="fr">Désolé, demain ce n'est pas possible.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">没关系，后天呢？</div><div class="py">Méi guānxi, hòutiān ne?</div><div class="fr">Pas grave, après-demain ?</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">后天可以。</div><div class="py">Hòutiān kěyǐ.</div><div class="fr">Après-demain, ça marche.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">那就后天。</div><div class="py">Nà jiù hòutiān.</div><div class="fr">Alors, après-demain.</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">不行</span> <em>bùxíng</em> pas possible · <span class="kz">没关系</span> <em>méi guānxi</em> pas grave · <span class="kz">后天</span> <em>hòutiān</em> après-demain · <span class="kz">那就</span> <em>nà jiù</em> alors</div>
+
+<h3><span class="tag">Dialogue D</span>Confirmer sur WeChat</h3>
+<div class="dialogue">
+  <div class="dialogue-header">📍 Marc finalise par message</div>
+  <div class="dialogue-body">
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">我发微信给你确认。</div><div class="py">Wǒ fā wēixìn gěi nǐ quèrèn.</div><div class="fr">Je te confirme par WeChat.</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">好，到时候见。</div><div class="py">Hǎo, dào shíhou jiàn.</div><div class="fr">Ok, à ce moment-là.</div></div>
+    <div class="dl"><div class="who who-fr">Marc 🇫🇷</div><div class="zh">到时候见！</div><div class="py">Dào shíhou jiàn!</div><div class="fr">À tout à l'heure !</div></div>
+    <div class="dl"><div class="who who-cn">客户 🇨🇳</div><div class="zh">再见！</div><div class="py">Zàijiàn!</div><div class="fr">Au revoir !</div></div>
+  </div>
+</div>
+<div class="keywords"><b>Mots clés —</b> <span class="kz">微信</span> <em>wēixìn</em> WeChat · <span class="kz">确认</span> <em>quèrèn</em> confirmer · <span class="kz">到时候见</span> <em>dào shíhou jiàn</em> à plus · <span class="kz">再见</span> <em>zàijiàn</em> au revoir</div>
+
+<h3>Structures clés — substitution</h3>
+<table class="lp-table">
+  <tr><td class="lp-key"><span class="k">时间词</span><span class="g">les repères de jour</span></td><td class="lp-ex">今天 <span class="fr">aujourd'hui</span> · 明天 <span class="fr">demain</span> · 后天 <span class="fr">après-demain</span> · 昨天 <span class="fr">hier</span> · 下周 <span class="fr">sem. prochaine</span></td></tr>
+  <tr><td class="lp-key"><span class="k">上午/下午</span> + 点<span class="g">moment + heure</span></td><td class="lp-ex">上午十点 <span class="fr">10h</span> · 中午十二点 <span class="fr">midi</span> · 下午三点 <span class="fr">15h</span> · 晚上八点 <span class="fr">20h</span></td></tr>
+  <tr><td class="lp-key"><span class="k">在…见</span><span class="g">在 + lieu + 见 : se voir à</span></td><td class="lp-ex">在公司见 <span class="fr">entreprise</span> · 在酒店见 <span class="fr">hôtel</span> · 在门口见 <span class="fr">entrée</span> · 在咖啡厅见 <span class="fr">café</span></td></tr>
+  <tr><td class="lp-key"><span class="k">发…给</span><span class="g">发 + N + 给 + qqn</span></td><td class="lp-ex">发微信给你 <span class="fr">un WeChat</span> · 发地址给你 <span class="fr">l'adresse</span> · 发邮件给你 <span class="fr">un email</span> · 发照片给你 <span class="fr">une photo</span></td></tr>
+  <tr><td class="lp-key"><span class="k">点</span><span class="g">dire l'heure précise</span></td><td class="lp-ex">一点 <span class="fr">1h</span> · 两点 <span class="fr">2h (liǎng)</span> · 三点半 <span class="fr">3h30</span> · 差五分八点 <span class="fr">8h moins 5</span></td></tr>
+</table>
+
+<div class="exercice">
+  <div class="exercice-header"><span class="exercice-type">Exercices</span> À vous de jouer</div>
+  <div class="exercice-body">
+    <div class="ex-cols">
+      <div><b>Complétez :</b>
+        <ol>
+          <li><span class="zh">我们明天<span class="blank">___</span>面。</span></li>
+          <li><span class="zh"><span class="blank">___</span>午十点。</span></li>
+          <li><span class="zh">在哪里<span class="blank">___</span>？</span></li>
+          <li><span class="zh">我发微信给你<span class="blank">___</span>。</span></li>
+        </ol>
+      </div>
+      <div><b>Répondez en chinois :</b>
+        <ol>
+          <li><span class="zh">我们几点见面？</span></li>
+          <li><span class="zh">在哪里见？</span></li>
+          <li><span class="zh">明天行吗？</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corrige"><h4>✅ Corrigé</h4><p>1. <span class="zh">见</span> · 2. <span class="zh">上</span> · 3. <span class="zh">见</span> · 4. <span class="zh">确认</span></p><p>ex. <span class="zh">上午十点 / 在公司见 / 明天不行，后天吧</span></p></div>
+
+<!-- ══════════════ SECTION 6 — VOCABULAIRE ══════════════ -->
+<div class="section-title"><span class="num">Section 06</span><span class="cn">词汇</span>Vocabulaire essentiel à retenir</div>
+
+<div class="vocab-2col">
+  <div>
+    <h3><span class="cn" style="font-family:var(--kai);color:var(--rouge)">交通</span> Transport</h3>
+    <table class="vocab">
+      <tr><td class="td-hanzi">打车</td><td class="td-pinyin">dǎchē</td><td>prendre un taxi</td></tr>
+      <tr><td class="td-hanzi">坐</td><td class="td-pinyin">zuò</td><td>prendre (transport)</td></tr>
+      <tr><td class="td-hanzi">地铁</td><td class="td-pinyin">dìtiě</td><td>métro</td></tr>
+      <tr><td class="td-hanzi">站</td><td class="td-pinyin">zhàn</td><td>station</td></tr>
+      <tr><td class="td-hanzi">换</td><td class="td-pinyin">huàn</td><td>changer</td></tr>
+      <tr><td class="td-hanzi">地址</td><td class="td-pinyin">dìzhǐ</td><td>adresse</td></tr>
+    </table>
+    <h3><span class="cn" style="font-family:var(--kai);color:var(--rouge)">点菜</span> Restaurant</h3>
+    <table class="vocab">
+      <tr><td class="td-hanzi">菜单</td><td class="td-pinyin">càidān</td><td>menu</td></tr>
+      <tr><td class="td-hanzi">点</td><td class="td-pinyin">diǎn</td><td>commander</td></tr>
+      <tr><td class="td-hanzi">米饭</td><td class="td-pinyin">mǐfàn</td><td>riz</td></tr>
+      <tr><td class="td-hanzi">辣</td><td class="td-pinyin">là</td><td>épicé</td></tr>
+      <tr><td class="td-hanzi">过敏</td><td class="td-pinyin">guòmǐn</td><td>allergie</td></tr>
+      <tr><td class="td-hanzi">买单</td><td class="td-pinyin">mǎidān</td><td>l'addition</td></tr>
+    </table>
+    <h3><span class="cn" style="font-family:var(--kai);color:var(--rouge)">日程</span> Rendez-vous</h3>
+    <table class="vocab">
+      <tr><td class="td-hanzi">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
+      <tr><td class="td-hanzi">见面</td><td class="td-pinyin">jiànmiàn</td><td>se voir</td></tr>
+      <tr><td class="td-hanzi">几点</td><td class="td-pinyin">jǐ diǎn</td><td>quelle heure</td></tr>
+      <tr><td class="td-hanzi">上午</td><td class="td-pinyin">shàngwǔ</td><td>matin</td></tr>
+      <tr><td class="td-hanzi">确认</td><td class="td-pinyin">quèrèn</td><td>confirmer</td></tr>
+      <tr><td class="td-hanzi">微信</td><td class="td-pinyin">wēixìn</td><td>WeChat</td></tr>
+    </table>
+  </div>
+  <div>
+    <h3><span class="cn" style="font-family:var(--kai);color:var(--rouge)">酒店</span> Hôtel</h3>
+    <table class="vocab">
+      <tr><td class="td-hanzi">预订</td><td class="td-pinyin">yùdìng</td><td>réserver</td></tr>
+      <tr><td class="td-hanzi">房间</td><td class="td-pinyin">fángjiān</td><td>chambre</td></tr>
+      <tr><td class="td-hanzi">护照</td><td class="td-pinyin">hùzhào</td><td>passeport</td></tr>
+      <tr><td class="td-hanzi">坏了</td><td class="td-pinyin">huài le</td><td>en panne</td></tr>
+      <tr><td class="td-hanzi">退房</td><td class="td-pinyin">tuìfáng</td><td>check-out</td></tr>
+      <tr><td class="td-hanzi">发票</td><td class="td-pinyin">fāpiào</td><td>facture</td></tr>
+    </table>
+    <h3><span class="cn" style="font-family:var(--kai);color:var(--rouge)">看病</span> Santé</h3>
+    <table class="vocab">
+      <tr><td class="td-hanzi">不舒服</td><td class="td-pinyin">bù shūfu</td><td>pas bien</td></tr>
+      <tr><td class="td-hanzi">疼</td><td class="td-pinyin">téng</td><td>avoir mal</td></tr>
+      <tr><td class="td-hanzi">发烧</td><td class="td-pinyin">fāshāo</td><td>fièvre</td></tr>
+      <tr><td class="td-hanzi">药</td><td class="td-pinyin">yào</td><td>médicament</td></tr>
+      <tr><td class="td-hanzi">医院</td><td class="td-pinyin">yīyuàn</td><td>hôpital</td></tr>
+      <tr><td class="td-hanzi">次</td><td class="td-pinyin">cì</td><td>fois</td></tr>
+    </table>
+    <h3><span class="cn" style="font-family:var(--kai);color:var(--rouge)">常用</span> Tout-terrain</h3>
+    <table class="vocab">
+      <tr><td class="td-hanzi">大概</td><td class="td-pinyin">dàgài</td><td>environ</td></tr>
+      <tr><td class="td-hanzi">马上</td><td class="td-pinyin">mǎshàng</td><td>tout de suite</td></tr>
+      <tr><td class="td-hanzi">可以</td><td class="td-pinyin">kěyǐ</td><td>pouvoir</td></tr>
+      <tr><td class="td-hanzi">没关系</td><td class="td-pinyin">méi guānxi</td><td>pas grave</td></tr>
+      <tr><td class="td-hanzi">知道</td><td class="td-pinyin">zhīdào</td><td>savoir</td></tr>
+      <tr><td class="td-hanzi">需要</td><td class="td-pinyin">xūyào</td><td>avoir besoin</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 7 — CARACTÈRES ══════════════ -->
+<div class="section-title"><span class="num">Section 07</span><span class="cn">汉字</span>Caractères à savoir écrire</div>
+
+<div class="writing-grid">
+  <div class="writing-char"><div class="big">车</div><div class="info"><em>chē</em> · 4 traits<br>véhicule</div></div>
+  <div class="writing-char"><div class="big">住</div><div class="info"><em>zhù</em> · 7 traits<br>loger</div></div>
+  <div class="writing-char"><div class="big">吃</div><div class="info"><em>chī</em> · 6 traits<br>manger</div></div>
+  <div class="writing-char"><div class="big">菜</div><div class="info"><em>cài</em> · 11 traits<br>plat / légume</div></div>
+  <div class="writing-char"><div class="big">头</div><div class="info"><em>tóu</em> · 5 traits<br>tête</div></div>
+  <div class="writing-char"><div class="big">病</div><div class="info"><em>bìng</em> · 10 traits<br>maladie</div></div>
+  <div class="writing-char"><div class="big">点</div><div class="info"><em>diǎn</em> · 9 traits<br>heure / commander</div></div>
+  <div class="writing-char"><div class="big">见</div><div class="info"><em>jiàn</em> · 4 traits<br>voir</div></div>
+  <div class="writing-char"><div class="big">明</div><div class="info"><em>míng</em> · 8 traits<br>clair / demain</div></div>
+  <div class="writing-char"><div class="big">上</div><div class="info"><em>shàng</em> · 3 traits<br>au-dessus / monter</div></div>
+</div>
+
+<div class="regle">🧠 <strong>Astuces mnémotechniques :</strong><br>
+<span class="zh">明</span> = 日 (soleil) + 月 (lune) = lumineux, clair · <span class="zh">见</span> = un œil 目 sur deux jambes = « voir »<br>
+<span class="zh">吃</span> = la bouche 口 à gauche = « manger » · <span class="zh">病</span> = le radical de la maladie 疒<br>
+<span class="zh">上</span> = un trait au-dessus de la ligne = « au-dessus » · <span class="zh">车</span> = vue d'un chariot avec son essieu</div>
+
+<h3>Zone de pratique — recopiez chaque caractère 5 fois</h3>
+<div class="practice-lines grid-paper"></div>
+<div class="practice-lines grid-paper"></div>
+
+<div class="page-footer">Cours de Chinois débutant · Session 4 · NELY — 🔊 version interactive : cliquez sur le chinois pour l'entendre</div>
+
+</body>
+</html>
