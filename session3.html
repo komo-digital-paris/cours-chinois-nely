@@ -24,6 +24,7 @@
     --shadow-sm: 0 2px 10px rgba(26, 20, 16, 0.04);
     --shadow-md: 0 10px 40px rgba(26, 20, 16, 0.08);
     --shadow-lg: 0 24px 70px rgba(26, 20, 16, 0.14);
+    --kai: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,12 +32,8 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0a0a0a;
-    color: var(--encre);
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    background: #0a0a0a; color: var(--encre); font-weight: 300;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
   }
 
   .deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
@@ -46,7 +43,7 @@
     overflow-y: auto; background: var(--bg-base);
     opacity: 0; transform: translateX(60px);
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
-    pointer-events: none; -webkit-overflow-scrolling: touch;
+    pointer-events: none;
   }
   .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
   .slide.prev { opacity: 0; transform: translateX(-60px); }
@@ -66,348 +63,247 @@
       radial-gradient(ellipse at 80% 0%, rgba(139, 29, 32, 0.20), transparent 55%),
       radial-gradient(ellipse at 0% 100%, rgba(201, 164, 103, 0.10), transparent 55%),
       linear-gradient(135deg, #0f0a08 0%, #1a1410 100%);
-    color: white; display: flex; align-items: center; justify-content: center;
-    padding: 60px; text-align: center;
+    color: white; display: flex; align-items: center; justify-content: center; padding: 60px; text-align: center;
   }
   .cover-inner { max-width: 920px; }
-  .cover-mark {
-    color: var(--or);
-    font-family: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
-    font-size: 36px; font-weight: 500; letter-spacing: 24px; padding-left: 24px;
-    margin-bottom: 38px; opacity: 0.9;
-  }
-  .cover-inner h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 84px; font-weight: 500; letter-spacing: -1.5px; line-height: 1.05;
-    margin-bottom: 28px; color: #faf7f2;
-  }
+  .cover-mark { color: var(--or); font-family: var(--kai); font-size: 36px; font-weight: 500; letter-spacing: 24px; padding-left: 24px; margin-bottom: 38px; opacity: 0.9; }
+  .cover-inner h1 { font-family: 'Cormorant Garamond', serif; font-size: 84px; font-weight: 500; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 28px; color: #faf7f2; }
   .cover-inner h1 em { font-style: italic; font-weight: 400; color: var(--or-light); }
-  .cover-subtitle {
-    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55);
-    letter-spacing: 5px; text-transform: uppercase; margin-bottom: 60px;
-  }
-  .cover-meta {
-    display: inline-flex; align-items: center; gap: 18px;
-    color: var(--or); font-size: 12px; letter-spacing: 4px;
-    text-transform: uppercase; font-weight: 500;
-  }
-  .cover-meta::before, .cover-meta::after {
-    content: ''; width: 40px; height: 1px; background: var(--or); opacity: 0.5;
-  }
-  .cover-hint {
-    margin-top: 70px; color: rgba(255,255,255,0.30); font-size: 11px; letter-spacing: 1.5px;
-  }
-  .cover-hint kbd {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-    padding: 3px 9px; border-radius: 4px; margin: 0 2px; font-family: inherit; font-size: 10px;
-  }
+  .cover-subtitle { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 60px; }
+  .cover-meta { display: inline-flex; align-items: center; gap: 18px; color: var(--or); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; font-weight: 500; }
+  .cover-meta::before, .cover-meta::after { content: ''; width: 40px; height: 1px; background: var(--or); opacity: 0.5; }
+  .cover-hint { margin-top: 64px; color: rgba(255,255,255,0.34); font-size: 11px; letter-spacing: 1.5px; line-height: 2.2; }
+  .cover-hint kbd { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 3px 9px; border-radius: 4px; margin: 0 2px; font-family: inherit; font-size: 10px; }
+  .cover-hint .spk-note { color: var(--or-light); }
 
   /* ── SECTION DIVIDER ── */
   .slide-section {
     background: radial-gradient(ellipse at center, rgba(139, 29, 32, 0.08), transparent 70%), var(--bg-deep);
-    color: white; display: flex; align-items: center; justify-content: center;
-    padding: 60px; text-align: center;
+    color: white; display: flex; align-items: center; justify-content: center; padding: 60px; text-align: center;
   }
   .section-inner { max-width: 900px; }
-  .section-num {
-    font-family: 'Cormorant Garamond', serif; font-size: 200px; font-weight: 400;
-    line-height: 0.9; color: var(--or); margin-bottom: 18px; letter-spacing: -10px;
-  }
-  .section-label {
-    font-size: 10px; letter-spacing: 6px; text-transform: uppercase;
-    color: rgba(255,255,255,0.40); margin-bottom: 22px;
-  }
-  .slide-section h2 {
-    font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 500;
-    letter-spacing: -0.5px; color: #faf7f2; margin-bottom: 18px; line-height: 1.1;
-  }
+  .section-num { font-family: 'Cormorant Garamond', serif; font-size: 200px; font-weight: 400; line-height: 0.9; color: var(--or); margin-bottom: 12px; letter-spacing: -10px; }
+  .section-cn { font-family: var(--kai); font-size: 34px; color: var(--or-light); letter-spacing: 8px; margin-bottom: 18px; opacity: 0.85; }
+  .section-label { font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: rgba(255,255,255,0.40); margin-bottom: 22px; }
+  .slide-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 500; letter-spacing: -0.5px; color: #faf7f2; margin-bottom: 18px; line-height: 1.1; }
   .section-desc { color: rgba(255,255,255,0.55); font-size: 15px; font-weight: 300; letter-spacing: 0.3px; max-width: 600px; margin: 0 auto; }
   .section-rule { width: 50px; height: 1px; background: var(--or); margin: 28px auto 0; opacity: 0.5; }
 
   /* ── CARD SLIDE ── */
-  .slide-card {
-    background: var(--bg-base); display: flex; align-items: center; justify-content: center;
-    padding: 60px; text-align: center;
-  }
-  .card-inner { max-width: 900px; width: 100%; }
-  .card-meta { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 16px; }
-  .card-title {
-    font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500;
-    color: var(--encre); margin-bottom: 56px; letter-spacing: -0.3px; line-height: 1.2;
-  }
-  .hanzi-big {
-    font-family: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
-    font-size: 130px; font-weight: 700; color: var(--encre); line-height: 1.1;
-    margin-bottom: 26px; letter-spacing: 6px;
-  }
+  .slide-card { background: var(--bg-base); display: flex; align-items: flex-start; justify-content: center; padding: 56px 56px 44px; text-align: center; }
+  .card-inner { max-width: 900px; width: 100%; margin: auto 0; }
+  .card-wide { max-width: 1000px; }
+  .card-meta { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 9px; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; color: var(--encre); margin-bottom: 22px; letter-spacing: -0.3px; line-height: 1.2; }
+  .card-title .ct-cn { font-family: var(--kai); color: var(--rouge); font-weight: 600; margin-right: 10px; }
+
+  .hanzi-big { font-family: var(--kai); font-size: 120px; font-weight: 700; color: var(--encre); line-height: 1.1; margin-bottom: 24px; letter-spacing: 6px; }
   .hanzi-medium { font-size: 90px; letter-spacing: 4px; }
-  .hanzi-small { font-size: 64px; letter-spacing: 2px; }
-  .hanzi-stroke { font-size: 200px; line-height: 1; letter-spacing: 0; color: var(--rouge); }
-  .pinyin-big {
-    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 30px;
-    font-weight: 400; color: var(--gris-fonce); margin-bottom: 16px; letter-spacing: 1px;
-  }
+  .hanzi-small { font-size: 60px; letter-spacing: 2px; }
+  .pinyin-big { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--gris-fonce); margin-bottom: 14px; letter-spacing: 1px; }
   .traduction-big { font-size: 17px; font-weight: 400; color: var(--gris); letter-spacing: 0.3px; }
   .note-formateur {
-    max-width: 720px; margin: 50px auto 0; background: white;
+    max-width: 760px; margin: 26px auto 0; background: white;
     border: 1px solid var(--bordure); border-left: 3px solid var(--or);
-    border-radius: 0 8px 8px 0; padding: 18px 22px; font-size: 13px;
-    color: var(--gris); text-align: left; line-height: 1.65; box-shadow: var(--shadow-sm);
+    border-radius: 0 8px 8px 0; padding: 16px 20px; font-size: 13px;
+    color: var(--gris); text-align: left; line-height: 1.6; box-shadow: var(--shadow-sm);
   }
-  .activity-text {
-    max-width: 720px; margin: 30px auto 0; font-size: 15px; color: var(--gris-fonce);
-    line-height: 1.7; text-align: left; background: white; padding: 20px 24px;
-    border-radius: 10px; box-shadow: var(--shadow-sm);
-  }
+  .note-formateur.cult { border-left-color: var(--rouge); background: linear-gradient(135deg, #fdf0f0, #fae5e5); }
+
+  /* ── SPEAKABLE ── */
+  .spk { cursor: pointer; transition: color 0.15s ease, background 0.15s ease; }
+  .spk:hover { color: var(--rouge); }
+  @keyframes spkpulse { 0% { background: rgba(201,164,103,0.0); } 35% { background: rgba(201,164,103,0.28); } 100% { background: rgba(201,164,103,0.0); } }
+  .spk.speaking { color: var(--rouge); animation: spkpulse 0.7s ease; border-radius: 6px; }
 
   /* ── DIALOGUE ── */
-  .dialogue-scene {
-    max-width: 720px; margin: 36px auto 0; background: white;
-    border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm);
-    border: 1px solid var(--bordure); text-align: left;
-  }
-  .dialogue-setting {
-    background: linear-gradient(135deg, #f8f6f2, #f3efe8);
-    padding: 13px 24px; font-size: 13px; color: var(--gris);
-    border-bottom: 1px solid var(--bordure); font-style: italic;
-  }
-  .dialogue-body { padding: 20px 24px; }
-  .dialogue-line {
-    margin-bottom: 16px; padding-bottom: 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-  }
+  .dialogue-scene { max-width: 760px; margin: 6px auto 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--bordure); text-align: left; }
+  .dialogue-setting { background: linear-gradient(135deg, #f8f6f2, #f3efe8); padding: 9px 22px; font-size: 12px; color: var(--gris); border-bottom: 1px solid var(--bordure); font-style: italic; }
+  .dialogue-body { padding: 11px 22px; }
+  .dialogue-line { margin-bottom: 7px; padding-bottom: 7px; border-bottom: 1px solid rgba(0,0,0,0.04); }
   .dialogue-line:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .dialogue-line .speaker {
-    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
-    text-transform: uppercase; margin-bottom: 5px;
-  }
+  .dialogue-line .speaker { font-size: 9.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1px; }
   .speaker-fr { color: #2563eb; }
   .speaker-cn { color: var(--rouge); }
-  .dialogue-line .dg-zh {
-    font-family: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
-    font-size: 20px; font-weight: 500; color: var(--encre); line-height: 1.4; margin-bottom: 3px;
-  }
-  .dialogue-line .dg-py {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 14px; color: var(--gris-fonce); margin-bottom: 3px;
-  }
-  .dialogue-line .dg-fr { font-size: 13px; color: var(--gris); }
-  .dialogue-pause {
-    text-align: center; font-size: 12px; color: var(--gris); font-style: italic;
-    padding: 6px 0 16px; margin-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.04);
-  }
+  .dialogue-line .dg-zh { font-family: var(--kai); font-size: 18px; font-weight: 500; color: var(--encre); line-height: 1.25; margin-bottom: 1px; display: inline-block; }
+  .dialogue-line .dg-py { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: var(--gris-fonce); }
+  .dialogue-line .dg-fr { font-size: 11.5px; color: var(--gris); }
+  .dialogue-pause { text-align: center; font-size: 10.5px; color: var(--gris); font-style: italic; padding: 3px 0 9px; margin-bottom: 7px; border-bottom: 1px solid rgba(0,0,0,0.04); }
 
-  /* ── MANUEL & EXERCICES ── */
-  .slide-manuel, .slide-exercices { background: var(--bg-base); padding: 80px 60px 120px; }
-  .doc-inner { max-width: 920px; margin: 0 auto; }
-  .doc-meta { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 14px; }
-  .doc-inner h1 {
-    font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500;
-    color: var(--encre); margin-bottom: 44px; letter-spacing: -0.3px;
-  }
-  .doc-inner h3 {
-    font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500;
-    color: var(--encre); margin: 38px 0 14px; letter-spacing: -0.2px;
-  }
-  .doc-inner h3:first-of-type { margin-top: 0; }
-  .doc-inner p { font-size: 15px; line-height: 1.7; color: var(--gris-fonce); margin-bottom: 12px; }
+  .kw-strip { max-width: 760px; margin: 10px auto 0; background: #faf8f4; border-left: 3px solid var(--or); border-radius: 0 8px 8px 0; padding: 10px 18px; font-size: 12.5px; color: var(--gris-fonce); text-align: left; line-height: 1.95; }
+  .kw-strip b { color: var(--rouge); font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; margin-right: 4px; }
+  .kw-strip .kz { font-family: var(--kai); font-size: 15px; font-weight: 600; color: var(--encre); }
+  .kw-strip em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--rouge); }
 
-  .vocab-table {
-    width: 100%; border-collapse: collapse; margin: 14px 0 18px;
-    background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm);
-  }
-  .vocab-table th {
-    background: var(--encre); color: white; padding: 14px 18px; font-size: 10px;
-    text-align: left; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
-  }
-  .vocab-table td { padding: 14px 18px; border-bottom: 1px solid var(--bordure); font-size: 15px; color: var(--gris-fonce); }
+  /* ── LANGUAGE POINTS ── */
+  .langpoints { display: flex; flex-direction: column; gap: 10px; max-width: 940px; margin: 4px auto 0; text-align: left; }
+  .langpoint { background: white; border-radius: 12px; padding: 13px 18px; box-shadow: var(--shadow-sm); border-left: 3px solid var(--or); display: flex; align-items: center; gap: 18px; }
+  .langpoint-frame { flex-shrink: 0; width: 154px; display: flex; flex-direction: column; gap: 2px; }
+  .lp-pivot { font-family: var(--kai); font-size: 24px; font-weight: 700; color: var(--rouge); line-height: 1.1; }
+  .lp-pivot .lp-plus { font-family: 'Inter'; font-size: 12px; color: var(--gris); font-weight: 400; margin-left: 4px; }
+  .lp-gloss { font-size: 11px; color: var(--gris); letter-spacing: 0.2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; flex: 1; }
+  .chip { background: var(--bg-base); border: 1px solid var(--bordure); border-radius: 8px; padding: 6px 11px; text-align: center; line-height: 1.2; min-width: 60px; }
+  .chip:hover { background: #fff3d6; border-color: var(--or); }
+  .chip .c-zh { display: block; font-family: var(--kai); font-size: 18px; font-weight: 600; color: var(--encre); }
+  .chip .c-fr { display: block; font-size: 9.5px; color: var(--gris); margin-top: 1px; }
+
+  /* ── COLOR SWATCHES ── */
+  .color-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 560px; margin: 8px auto 0; }
+  .color-item { display: flex; flex-direction: column; align-items: center; gap: 7px; background: white; border-radius: 14px; padding: 18px 12px 14px; box-shadow: var(--shadow-sm); }
+  .color-swatch { width: 46px; height: 46px; border-radius: 50%; border: 3px solid rgba(0,0,0,0.06); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .color-swatch.swatch-white { border: 3px solid var(--gris-clair); }
+  .color-hanzi { font-family: var(--kai); font-size: 28px; color: var(--encre); }
+  .color-pinyin { font-size: 13px; color: var(--rouge); font-style: italic; }
+  .color-fr { font-size: 12px; color: var(--gris); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+  /* ── SIZE GRID ── */
+  .size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 560px; margin: 8px auto 0; }
+  .size-item { background: white; border-radius: 12px; padding: 16px 10px; box-shadow: var(--shadow-sm); text-align: center; }
+  .size-item:nth-child(odd) { border-left: 3px solid var(--or); }
+  .size-code { font-size: 22px; font-weight: 600; color: var(--rouge); letter-spacing: 1px; margin-bottom: 4px; }
+  .size-zh { font-family: var(--kai); font-size: 22px; color: var(--encre); }
+  .size-py { font-size: 11px; color: var(--rouge); font-style: italic; }
+
+  /* ── PRODUCT GRID ── */
+  .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 600px; margin: 8px auto 0; }
+  .product-item { display: flex; align-items: center; gap: 12px; background: white; border-radius: 10px; padding: 13px 16px; box-shadow: var(--shadow-sm); text-align: left; }
+  .product-emoji { font-size: 24px; flex-shrink: 0; }
+  .product-text { display: flex; flex-direction: column; }
+  .product-zh { font-family: var(--kai); font-size: 20px; color: var(--encre); }
+  .product-py { font-size: 11px; color: var(--rouge); font-style: italic; }
+  .product-fr { font-size: 12px; color: var(--gris); }
+
+  /* ── MANUEL / DOC (vocab recap + exercices) ── */
+  .slide-manuel { background: var(--bg-base); padding: 50px 48px 56px; display: flex; align-items: flex-start; justify-content: center; }
+  .doc-inner { max-width: 1120px; width: 100%; margin: auto 0; }
+  .doc-meta { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 10px; text-align: center; }
+  .doc-inner h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 500; color: var(--encre); margin-bottom: 22px; letter-spacing: -0.3px; text-align: center; }
+  .doc-inner h3 { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; color: var(--encre); margin: 0 0 8px; letter-spacing: -0.2px; }
+  .doc-inner h3 .h3-cn { font-family: var(--kai); color: var(--rouge); margin-right: 8px; }
+  .vocab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 20px; }
+  .vocab-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .vocab-table td { padding: 6px 14px; border-bottom: 1px solid var(--bordure); font-size: 13px; color: var(--gris-fonce); }
   .vocab-table tr:last-child td { border-bottom: none; }
   .vocab-table tr:hover td { background: rgba(139, 29, 32, 0.025); }
-  .vocab-table .td-hanzi {
-    font-family: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
-    font-size: 22px; font-weight: 700; color: var(--encre);
-  }
-  .vocab-table .td-pinyin { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--gris-fonce); }
+  .vocab-table .td-hanzi { font-family: var(--kai); font-size: 19px; font-weight: 700; color: var(--encre); white-space: nowrap; width: 1%; }
+  .vocab-table .td-pinyin { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--rouge); white-space: nowrap; width: 1%; }
 
-  .regle, .memo { border-radius: 10px; padding: 20px 24px; margin: 16px 0; font-size: 15px; line-height: 1.65; box-shadow: var(--shadow-sm); }
-  .regle { background: linear-gradient(135deg, #fff8e8, #fff3d6); border-left: 3px solid var(--or); color: var(--gris-fonce); }
-  .memo { background: linear-gradient(135deg, #fdf0f0, #fae5e5); border-left: 3px solid var(--rouge); color: var(--gris-fonce); }
-  .notes-perso {
-    border: 1px dashed var(--gris-clair); border-radius: 10px; padding: 20px;
-    margin-top: 28px; color: var(--gris); font-size: 13px; min-height: 70px; background: rgba(255,255,255,0.4);
-  }
-
-  .exercice { background: white; border: 1px solid var(--bordure); border-radius: 12px; margin-bottom: 22px; overflow: hidden; box-shadow: var(--shadow-sm); }
-  .exercice-header {
-    background: var(--bg-base); border-bottom: 1px solid var(--bordure); padding: 14px 24px;
-    font-size: 14px; font-weight: 500; color: var(--encre); display: flex; gap: 12px; align-items: center;
-  }
-  .exercice-type {
-    background: var(--encre); color: white; font-size: 9px; padding: 4px 11px;
-    border-radius: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
-  }
-  .exercice-body { padding: 22px 24px; font-size: 15px; line-height: 1.85; color: var(--gris-fonce); }
+  /* ── EXERCICES ── */
+  .ex-doc { max-width: 980px; }
+  .ex-doc h1 { text-align: center; }
+  .exercice { background: white; border: 1px solid var(--bordure); border-radius: 12px; margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .exercice-header { background: var(--bg-base); border-bottom: 1px solid var(--bordure); padding: 11px 20px; font-size: 13.5px; font-weight: 500; color: var(--encre); display: flex; gap: 11px; align-items: center; }
+  .exercice-type { background: var(--encre); color: white; font-size: 9px; padding: 3px 10px; border-radius: 11px; font-weight: 500; letter-spacing: 1.3px; text-transform: uppercase; flex-shrink: 0; }
+  .exercice-body { padding: 16px 20px; font-size: 14px; line-height: 1.8; color: var(--gris-fonce); }
+  .exercice-body .zh { font-family: var(--kai); font-size: 16px; color: var(--encre); }
   .exercice-body .role { font-weight: 600; color: var(--rouge); }
-
-  .match-list { display: flex; flex-direction: column; gap: 14px; margin: 14px 0 4px; }
-  .match-row { display: flex; justify-content: space-between; align-items: center; gap: 24px; line-height: 1.4; }
-  .match-row .match-zh {
-    font-family: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
-    font-weight: 500; color: var(--encre); font-size: 17px; flex-shrink: 0;
-  }
-  .match-row .match-dot { color: var(--rouge); font-size: 14px; flex-shrink: 0; opacity: 0.6; }
-  .match-row .match-fr { text-align: right; color: var(--gris-fonce); flex-shrink: 1; }
-
-  .corrige { background: #f3f8f4; border: 1px solid #c4dccd; border-radius: 12px; padding: 22px 24px; margin-top: 26px; }
-  .corrige h4 { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #2e6b4f; margin-bottom: 12px; letter-spacing: -0.2px; }
-  .corrige p { font-size: 14px; color: var(--gris-fonce); margin-bottom: 6px; }
+  .exercice-body p { margin-bottom: 6px; }
+  .ex-2col { display: flex; gap: 20px; }
+  .ex-2col > .exercice { flex: 1; }
+  .match-list { display: flex; flex-direction: column; gap: 11px; }
+  .match-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; line-height: 1.4; }
+  .match-row .match-zh { font-family: var(--kai); font-weight: 600; color: var(--encre); font-size: 18px; flex-shrink: 0; }
+  .match-row .match-dot { color: var(--rouge); font-size: 13px; flex-shrink: 0; opacity: 0.5; }
+  .match-row .match-fr { text-align: right; color: var(--gris-fonce); }
+  .corrige { background: #f3f8f4; border: 1px solid #c4dccd; border-radius: 12px; padding: 16px 20px; margin-top: 6px; }
+  .corrige h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: #2e6b4f; margin-bottom: 9px; }
+  .corrige p { font-size: 13px; color: var(--gris-fonce); margin-bottom: 5px; line-height: 1.6; }
+  .corrige .zh { font-family: var(--kai); font-size: 14px; color: var(--encre); }
   .corrige strong { color: var(--encre); }
 
+  /* ── CHARACTERS ── */
+  .char-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 920px; margin: 8px auto 0; }
+  .char-card { background: white; border-radius: 14px; padding: 16px 8px 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--bordure); text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+  .char-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .char-big { font-family: var(--kai); font-size: 62px; font-weight: 700; color: var(--rouge); line-height: 1; margin-bottom: 8px; }
+  .char-py { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--gris-fonce); }
+  .char-fr { font-size: 11px; color: var(--gris); margin-top: 2px; }
+  .char-strokes { font-size: 9.5px; color: var(--or); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; font-weight: 500; }
+  .regle { background: linear-gradient(135deg, #fff8e8, #fff3d6); border-left: 3px solid var(--or); color: var(--gris-fonce); border-radius: 10px; padding: 16px 20px; margin: 16px auto 0; max-width: 820px; font-size: 14px; line-height: 1.7; box-shadow: var(--shadow-sm); text-align: left; }
+  .regle .zh { font-family: var(--kai); font-size: 16px; color: var(--rouge); }
+
   /* ── BILAN ── */
-  .slide-bilan {
-    background: radial-gradient(ellipse at center, rgba(201, 164, 103, 0.08), transparent 70%), var(--bg-deep);
-    color: white; display: flex; align-items: center; justify-content: center; padding: 60px;
-  }
+  .slide-bilan { background: radial-gradient(ellipse at center, rgba(201, 164, 103, 0.08), transparent 70%), var(--bg-deep); color: white; display: flex; align-items: center; justify-content: center; padding: 60px; }
   .bilan-inner { max-width: 920px; width: 100%; text-align: center; }
-  .bilan-mark {
-    color: var(--or); font-size: 28px; margin-bottom: 22px; opacity: 0.7;
-    letter-spacing: 18px; padding-left: 18px;
-    font-family: 'LXGW WenKai Screen', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
-  }
-  .slide-bilan h2 {
-    font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 500;
-    letter-spacing: -0.5px; margin-bottom: 50px; color: #faf7f2;
-  }
-  .recap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 44px; text-align: left; }
-  .recap-item {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    padding: 22px 26px; border-radius: 12px; font-size: 15px;
-    color: rgba(255,255,255,0.85); display: flex; gap: 14px; align-items: baseline;
-  }
-  .recap-item .num { color: var(--or); font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; flex-shrink: 0; }
+  .bilan-mark { color: var(--or); font-size: 28px; margin-bottom: 22px; opacity: 0.7; letter-spacing: 18px; padding-left: 18px; font-family: var(--kai); }
+  .slide-bilan h2 { font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 40px; color: #faf7f2; }
+  .recap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 38px; text-align: left; }
+  .recap-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 18px 24px; border-radius: 12px; font-size: 15px; color: rgba(255,255,255,0.85); display: flex; gap: 14px; align-items: baseline; }
+  .recap-item .num { color: var(--or); font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; flex-shrink: 0; }
+  .recap-item .ri-cn { font-family: var(--kai); color: var(--or-light); margin-right: 4px; }
   .bilan-next { color: rgba(255,255,255,0.45); font-size: 13px; font-style: italic; letter-spacing: 0.3px; line-height: 1.7; }
 
   /* ── NAV ── */
-  .nav-arrow {
-    position: fixed; top: 50%; transform: translateY(-50%);
-    width: 48px; height: 48px; background: rgba(26, 20, 16, 0.62);
-    color: white; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%;
-    font-size: 14px; cursor: pointer; opacity: 0.5; transition: all 0.25s ease;
-    z-index: 100; display: flex; align-items: center; justify-content: center;
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  }
-  .nav-arrow:hover:not(:disabled) {
-    opacity: 1; background: var(--rouge); transform: translateY(-50%) scale(1.06);
-    box-shadow: 0 8px 28px rgba(139, 29, 32, 0.4);
-  }
+  .nav-arrow { position: fixed; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(26, 20, 16, 0.62); color: white; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%; font-size: 14px; cursor: pointer; opacity: 0.5; transition: all 0.25s ease; z-index: 100; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .nav-arrow:hover:not(:disabled) { opacity: 1; background: var(--rouge); transform: translateY(-50%) scale(1.06); box-shadow: 0 8px 28px rgba(139, 29, 32, 0.4); }
   .nav-arrow:disabled { opacity: 0.10; cursor: not-allowed; }
-  .nav-arrow.left { left: 28px; }
-  .nav-arrow.right { right: 28px; }
+  .nav-arrow.left { left: 28px; } .nav-arrow.right { right: 28px; }
 
-  .progress-bar {
-    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-    display: flex; align-items: center; gap: 18px;
-    background: rgba(20, 17, 14, 0.9); color: white; padding: 11px 22px;
-    border-radius: 100px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    z-index: 100; font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
-    box-shadow: 0 12px 36px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06);
-  }
-  .progress-bar .counter { min-width: 60px; text-align: center; font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.85); }
-  .progress-bar .bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-bar { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 18px; background: rgba(20, 17, 14, 0.9); color: white; padding: 10px 20px; border-radius: 100px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 100; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; box-shadow: 0 12px 36px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); }
+  .progress-bar .counter { min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.85); }
+  .progress-bar .bar { width: 180px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
   .progress-bar .bar .fill { height: 100%; background: linear-gradient(90deg, var(--or), var(--rouge-soft)); border-radius: 2px; transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
   .sec-dots { display: flex; gap: 7px; }
-  .sec-dot {
-    width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18);
-    cursor: pointer; transition: all 0.25s; border: none; padding: 0;
-  }
+  .sec-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18); cursor: pointer; transition: all 0.25s; border: none; padding: 0; }
   .sec-dot:hover { background: rgba(255,255,255,0.55); }
   .sec-dot.active { background: var(--or); transform: scale(1.5); box-shadow: 0 0 0 3px rgba(201, 164, 103, 0.18); }
 
-  .section-marker {
-    position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 50;
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris);
-    background: rgba(255,255,255,0.55); padding: 7px 16px; border-radius: 100px;
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--bordure); pointer-events: none; opacity: 0;
-    transition: opacity 0.4s, background 0.4s, color 0.4s; font-weight: 500;
-  }
+  .section-marker { position: fixed; top: 22px; left: 50%; transform: translateX(-50%); z-index: 50; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); background: rgba(255,255,255,0.65); padding: 7px 16px; border-radius: 100px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--bordure); pointer-events: none; opacity: 0; transition: opacity 0.4s; font-weight: 500; }
   .section-marker.visible { opacity: 1; }
-  .section-marker.dark { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.55); border-color: rgba(255,255,255,0.08); }
+
+  .tts-hint { position: fixed; bottom: 24px; left: 24px; z-index: 90; font-size: 10.5px; letter-spacing: 0.5px; color: var(--gris); background: rgba(255,255,255,0.7); border: 1px solid var(--bordure); padding: 7px 13px; border-radius: 100px; backdrop-filter: blur(8px); display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); transition: opacity 0.4s; }
+  .tts-hint.dark { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.1); }
 
   /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    .slide-cover { padding: 30px 22px; }
-    .cover-mark { font-size: 22px; letter-spacing: 14px; padding-left: 14px; margin-bottom: 22px; }
-    .cover-inner h1 { font-size: 44px; }
-    .cover-subtitle { font-size: 11px; letter-spacing: 3px; margin-bottom: 38px; }
-    .cover-meta { font-size: 11px; gap: 12px; }
-    .cover-meta::before, .cover-meta::after { width: 26px; }
-    .slide-section { padding: 30px 22px; }
-    .section-num { font-size: 130px; letter-spacing: -6px; }
-    .slide-section h2 { font-size: 32px; }
-    .section-desc { font-size: 13px; }
+  @media (max-width: 820px) {
     .slide-card { padding: 30px 18px; }
-    .card-title { font-size: 22px; margin-bottom: 30px; }
-    .hanzi-big { font-size: 72px; letter-spacing: 4px; }
-    .hanzi-medium { font-size: 58px; }
-    .hanzi-small { font-size: 44px; }
-    .hanzi-stroke { font-size: 130px; }
-    .pinyin-big { font-size: 22px; }
-    .traduction-big { font-size: 15px; }
-    .dialogue-scene { margin: 20px auto 0; }
-    .dialogue-setting { padding: 11px 18px; font-size: 12px; }
-    .dialogue-body { padding: 16px 18px; }
-    .dialogue-line .dg-zh { font-size: 18px; }
-    .slide-manuel, .slide-exercices { padding: 50px 18px 110px; }
-    .doc-inner h1 { font-size: 30px; margin-bottom: 28px; }
-    .doc-inner h3 { font-size: 18px; }
-    .slide-bilan { padding: 30px 22px; }
-    .slide-bilan h2 { font-size: 32px; margin-bottom: 32px; }
-    .recap-grid { grid-template-columns: 1fr; gap: 12px; }
-    .recap-item { font-size: 14px; padding: 16px 20px; }
-    .nav-arrow { width: 40px; height: 40px; font-size: 12px; }
-    .nav-arrow.left { left: 12px; }
-    .nav-arrow.right { right: 12px; }
-    .progress-bar { gap: 12px; padding: 9px 16px; }
-    .progress-bar .bar { width: 110px; }
-    .section-marker { font-size: 9px; padding: 5px 12px; top: 16px; }
-    .match-row { gap: 14px; }
-    .match-row .match-zh { font-size: 16px; }
-  }
-  @media (max-width: 600px) {
-    .match-row { gap: 14px; }
-    .match-row .match-zh { font-size: 16px; }
+    .card-title { font-size: 23px; margin-bottom: 22px; }
+    .langpoint { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .langpoint-frame { width: auto; flex-direction: row; align-items: baseline; gap: 8px; }
+    .ex-2col { flex-direction: column; }
+    .char-grid { grid-template-columns: repeat(3, 1fr); }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .color-grid, .size-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .cover-inner h1 { font-size: 46px; }
+    .cover-mark { font-size: 22px; letter-spacing: 14px; }
+    .section-num { font-size: 130px; }
+    .slide-section h2 { font-size: 34px; }
+    .recap-grid { grid-template-columns: 1fr; }
+    .nav-arrow { width: 40px; height: 40px; }
+    .nav-arrow.left { left: 12px; } .nav-arrow.right { right: 12px; }
+    .tts-hint { display: none; }
   }
 
   @media print {
     html, body { overflow: auto !important; height: auto !important; }
     .slide { position: relative !important; opacity: 1 !important; transform: none !important; height: auto !important; page-break-after: always; }
-    .nav-arrow, .progress-bar, .section-marker { display: none !important; }
+    .nav-arrow, .progress-bar, .section-marker, .tts-hint { display: none !important; }
   }
 </style>
 </head>
 <body>
 <div class="deck">
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- 01 · COVER -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 00 · COVER -->
   <section class="slide slide-cover active" data-section="0">
     <div class="cover-inner">
-      <div class="cover-mark">中 文</div>
+      <div class="cover-mark spk">中 文</div>
       <h1>Cours de Chinois<br><em>débutant</em></h1>
       <div class="cover-subtitle">Directions · Questions · Paiement · Achats · Sorties</div>
       <div class="cover-meta">Session 03 · 1 h 30</div>
-      <div class="cover-hint">Naviguez avec <kbd>←</kbd> <kbd>→</kbd> · <kbd>Espace</kbd> pour avancer</div>
+      <div class="cover-hint">
+        Naviguez avec <kbd>←</kbd> <kbd>→</kbd> · <kbd>Espace</kbd> pour avancer<br>
+        <span class="spk-note">🔊 Cliquez sur n'importe quel mot chinois pour l'entendre</span>
+      </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- §1 · SE REPÉRER : DIRECTIONS & LIEUX -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════ §1 · 问路 — SE REPÉRER ═══════════ -->
   <section class="slide slide-section" data-section="1">
     <div class="section-inner">
       <div class="section-num">01</div>
+      <div class="section-cn spk">问路</div>
       <div class="section-label">Section un</div>
       <h2>Se repérer</h2>
       <div class="section-desc">Gauche, droite, tout droit — les mots qui vous sauvent quand Google Maps lâche</div>
@@ -416,204 +312,116 @@
   </section>
 
   <section class="slide slide-card" data-section="1">
-    <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 1</div>
-      <h2 class="card-title">Les 4 directions</h2>
-      <div class="hanzi-big">左 &nbsp; 右<br>前 &nbsp; 后</div>
-      <div class="pinyin-big">zuǒ · yòu · qián · hòu</div>
-      <div class="traduction-big">gauche · droite · devant · derrière</div>
-      <div class="note-formateur">🎙 Levez la main gauche = 左 (zuǒ). Levez la main droite = 右 (yòu). Pointez devant = 前 (qián). Pointez derrière = 后 (hòu). Faites répéter avec les gestes.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="1">
-    <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 2</div>
-      <h2 class="card-title">Lieux clés à connaître</h2>
-      <div class="hanzi-big hanzi-small">酒店 &nbsp; 机场<br>地铁站 &nbsp; 厕所</div>
-      <div class="pinyin-big">jiǔdiàn · jīchǎng · dìtiě zhàn · cèsuǒ</div>
-      <div class="traduction-big">hôtel · aéroport · station de métro · toilettes</div>
-      <div class="note-formateur">🎙 Le mot le plus utile en arrivant en Chine ? 厕所 (cèsuǒ) — toilettes. Sans hésiter. Deuxième : 地铁站 (dìtiě zhàn) — station de métro, votre meilleur ami dans toute ville chinoise.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="1">
-    <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 3</div>
-      <h2 class="card-title">La question magique</h2>
-      <div class="hanzi-big hanzi-medium">请问，___在哪里？</div>
-      <div class="pinyin-big">Qǐngwèn, ___ zài nǎlǐ?</div>
-      <div class="traduction-big">Excusez-moi, où se trouve ___ ?</div>
-      <div class="note-formateur">🎙 Remplissez le blanc avec n'importe quel lieu. Ça marche pour tout : 厕所在哪里？地铁站在哪里？酒店在哪里？Faites pratiquer chaque combinaison à voix haute.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="1">
-    <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 4</div>
-      <h2 class="card-title">Comprendre les réponses</h2>
-      <div class="hanzi-big hanzi-small">往左走<br>往右走<br>一直走</div>
-      <div class="pinyin-big">wǎng zuǒ zǒu · wǎng yòu zǒu · yìzhí zǒu</div>
-      <div class="traduction-big">tournez à gauche · tournez à droite · tout droit</div>
-      <div class="note-formateur">🎙 Formule magique : 往 (wǎng = vers) + direction + 走 (zǒu = marcher). Aussi : 往前走 (allez tout droit), 然后 (ránhòu = ensuite) pour enchaîner.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="1">
-    <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 5 · Code culturel</div>
-      <h2 class="card-title">Les adresses chinoises — du grand au petit</h2>
-      <div class="hanzi-big hanzi-small">中国 上海市<br>南京路 123号</div>
-      <div class="pinyin-big">Zhōngguó, Shànghǎi shì, Nánjīng lù, 123 hào</div>
-      <div class="traduction-big">Chine → Shanghai → Rue de Nankin → n° 123</div>
-      <div class="note-formateur">🎙 En Chine, on va du GÉNÉRAL au PARTICULIER : pays → ville → rue → numéro. C'est l'inverse du français. Même logique pour les dates : année-mois-jour. Le contexte d'abord, le détail ensuite.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="1">
-    <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 6 · Dialogue</div>
-      <h2 class="card-title">Dialogue — Perdu dans Shanghai</h2>
-      <div class="dialogue-scene">
-        <div class="dialogue-setting">📍 Sortie de l'aéroport de Pudong — Marc cherche le métro</div>
-        <div class="dialogue-body">
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">你好！请问，地铁站在哪里？</div>
-            <div class="dg-py">Nǐ hǎo! Qǐngwèn, dìtiě zhàn zài nǎlǐ?</div>
-            <div class="dg-fr">Bonjour ! Excusez-moi, où est la station de métro ?</div>
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 01 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Directions, lieux &amp; orientation</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="方向">方向</span><span class="lp-gloss">les 4 directions</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="左"><span class="c-zh">左</span><span class="c-fr">gauche</span></span>
+            <span class="chip spk" data-zh="右"><span class="c-zh">右</span><span class="c-fr">droite</span></span>
+            <span class="chip spk" data-zh="前"><span class="c-zh">前</span><span class="c-fr">devant</span></span>
+            <span class="chip spk" data-zh="后"><span class="c-zh">后</span><span class="c-fr">derrière</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">路人 🇨🇳</div>
-            <div class="dg-zh">往前走，然后往左走。</div>
-            <div class="dg-py">Wǎng qián zǒu, ránhòu wǎng zuǒ zǒu.</div>
-            <div class="dg-fr">Allez tout droit, puis tournez à gauche.</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="地点">地点</span><span class="lp-gloss">lieux clés</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="酒店"><span class="c-zh">酒店</span><span class="c-fr">hôtel</span></span>
+            <span class="chip spk" data-zh="机场"><span class="c-zh">机场</span><span class="c-fr">aéroport</span></span>
+            <span class="chip spk" data-zh="地铁站"><span class="c-zh">地铁站</span><span class="c-fr">métro</span></span>
+            <span class="chip spk" data-zh="厕所"><span class="c-zh">厕所</span><span class="c-fr">toilettes</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">远吗？</div>
-            <div class="dg-py">Yuǎn ma?</div>
-            <div class="dg-fr">C'est loin ?</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="在哪里">…在哪里</span><span class="lp-gloss">请问，___ 在哪里 ?</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="厕所在哪里"><span class="c-zh">厕所在哪里</span><span class="c-fr">où sont les WC</span></span>
+            <span class="chip spk" data-zh="地铁站在哪里"><span class="c-zh">地铁站在哪里</span><span class="c-fr">où est le métro</span></span>
+            <span class="chip spk" data-zh="酒店在哪里"><span class="c-zh">酒店在哪里</span><span class="c-fr">où est l'hôtel</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">路人 🇨🇳</div>
-            <div class="dg-zh">不远，走五分钟。</div>
-            <div class="dg-py">Bù yuǎn, zǒu wǔ fēnzhōng.</div>
-            <div class="dg-fr">Non, 5 minutes à pied.</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">谢谢！</div>
-            <div class="dg-py">Xièxie!</div>
-            <div class="dg-fr">Merci !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">路人 🇨🇳</div>
-            <div class="dg-zh">不客气！</div>
-            <div class="dg-py">Bú kèqi!</div>
-            <div class="dg-fr">De rien !</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="往…走">往…走</span><span class="lp-gloss">aller vers (direction)</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="往左走"><span class="c-zh">往左走</span><span class="c-fr">à gauche</span></span>
+            <span class="chip spk" data-zh="往右走"><span class="c-zh">往右走</span><span class="c-fr">à droite</span></span>
+            <span class="chip spk" data-zh="一直走"><span class="c-zh">一直走</span><span class="c-fr">tout droit</span></span>
+            <span class="chip spk" data-zh="然后"><span class="c-zh">然后</span><span class="c-fr">ensuite</span></span>
+            <span class="chip spk" data-zh="远"><span class="c-zh">远</span><span class="c-fr">loin</span></span>
           </div>
         </div>
       </div>
+      <div class="note-formateur cult">🧭 <b>Adresses chinoises — du grand au petit :</b> pays → ville → rue → numéro (中国 · 上海市 · 南京路 · 123号). C'est l'inverse du français ; les dates suivent la même logique (année → mois → jour).</div>
     </div>
   </section>
 
   <section class="slide slide-card" data-section="1">
     <div class="card-inner">
-      <div class="card-meta">Section 01 · Diapo 7 · Activité</div>
-      <h2 class="card-title">🎮 Le GPS humain</h2>
-      <div class="hanzi-big hanzi-small">往前走！<br>往左走！<br>停！</div>
-      <div class="pinyin-big">Wǎng qián zǒu! · Wǎng zuǒ zǒu! · Tíng!</div>
-      <div class="activity-text">Un apprenant ferme les yeux (ou se retourne). L'autre donne des directions en chinois : 往前走…往左走…往右走…停！L'apprenant aveugle suit les instructions et mime le trajet. Inversez les rôles.</div>
-      <div class="note-formateur">🎙 Activité très physique et mémorable. 3 minutes max. Ajoutez 远 (yuǎn = loin) et 近 (jìn = proche) pour les plus rapides.</div>
+      <div class="card-meta">Section 01 · Dialogue</div>
+      <h2 class="card-title">Perdu dans Shanghai</h2>
+      <div class="dialogue-scene">
+        <div class="dialogue-setting">📍 Sortie de l'aéroport de Pudong — Marc cherche le métro</div>
+        <div class="dialogue-body">
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">你好！请问，地铁站在哪里？</div><div class="dg-py">Nǐ hǎo! Qǐngwèn, dìtiě zhàn zài nǎlǐ?</div><div class="dg-fr">Bonjour ! Excusez-moi, où est la station de métro ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">路人 🇨🇳</div><div class="dg-zh spk">往前走，然后往左走。</div><div class="dg-py">Wǎng qián zǒu, ránhòu wǎng zuǒ zǒu.</div><div class="dg-fr">Allez tout droit, puis tournez à gauche.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">远吗？</div><div class="dg-py">Yuǎn ma?</div><div class="dg-fr">C'est loin ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">路人 🇨🇳</div><div class="dg-zh spk">不远，走五分钟。</div><div class="dg-py">Bù yuǎn, zǒu wǔ fēnzhōng.</div><div class="dg-fr">Non, 5 minutes à pied.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">谢谢！</div><div class="dg-py">Xièxie!</div><div class="dg-fr">Merci !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">路人 🇨🇳</div><div class="dg-zh spk">不客气！</div><div class="dg-py">Bú kèqi!</div><div class="dg-fr">De rien !</div></div>
+        </div>
+      </div>
+      <div class="kw-strip"><b>关键词</b> <span class="kz spk" data-zh="请问">请问</span> <em>qǐngwèn</em> excusez-moi · <span class="kz spk" data-zh="在哪里">在哪里</span> <em>zài nǎlǐ</em> où · <span class="kz spk" data-zh="一直走">一直走</span> <em>yìzhí zǒu</em> tout droit · <span class="kz spk" data-zh="远">远</span> <em>yuǎn</em> loin · <span class="kz spk" data-zh="分钟">分钟</span> <em>fēnzhōng</em> minute</div>
     </div>
   </section>
 
   <section class="slide slide-manuel" data-section="1">
-    <div class="doc-inner">
-      <div class="doc-meta">Section 01 · Manuel</div>
-      <h1>Se repérer — Mémo</h1>
-
-      <h3>Les 4 directions</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">左</td><td class="td-pinyin">zuǒ</td><td>gauche</td></tr>
-        <tr><td class="td-hanzi">右</td><td class="td-pinyin">yòu</td><td>droite</td></tr>
-        <tr><td class="td-hanzi">前</td><td class="td-pinyin">qián</td><td>devant</td></tr>
-        <tr><td class="td-hanzi">后</td><td class="td-pinyin">hòu</td><td>derrière</td></tr>
-      </table>
-
-      <h3>Lieux clés</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">酒店</td><td class="td-pinyin">jiǔdiàn</td><td>hôtel</td></tr>
-        <tr><td class="td-hanzi">机场</td><td class="td-pinyin">jīchǎng</td><td>aéroport</td></tr>
-        <tr><td class="td-hanzi">地铁站</td><td class="td-pinyin">dìtiě zhàn</td><td>station de métro</td></tr>
-        <tr><td class="td-hanzi">厕所</td><td class="td-pinyin">cèsuǒ</td><td>toilettes</td></tr>
-      </table>
-
-      <h3>Structures clés</h3>
-      <div class="regle">请问，___ 在哪里？ (Qǐngwèn, ___ zài nǎlǐ?) = Excusez-moi, où est ___ ?</div>
-      <div class="regle">往 + direction + 走 (Wǎng ___ zǒu) = Aller vers ___<br>一直走 (yìzhí zǒu) = tout droit · 然后 (ránhòu) = ensuite</div>
-
-      <div class="memo">🧭 En Chine, les adresses se lisent du GRAND au PETIT : pays → ville → rue → numéro. Les dates aussi : année → mois → jour. Le contexte d'abord, le détail ensuite.</div>
-
-      <div class="notes-perso">Mes notes : _______________________________________________</div>
-    </div>
-  </section>
-
-  <section class="slide slide-exercices" data-section="1">
-    <div class="doc-inner">
+    <div class="doc-inner ex-doc">
       <div class="doc-meta">Section 01 · Exercices</div>
       <h1>Exercices — Directions</h1>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Relie le lieu à sa traduction</div>
-        <div class="exercice-body">
-          <div class="match-list">
-            <div class="match-row"><span class="match-zh">酒店</span><span class="match-dot">•</span><span class="match-fr">station de métro</span></div>
-            <div class="match-row"><span class="match-zh">厕所</span><span class="match-dot">•</span><span class="match-fr">aéroport</span></div>
-            <div class="match-row"><span class="match-zh">地铁站</span><span class="match-dot">•</span><span class="match-fr">hôtel</span></div>
-            <div class="match-row"><span class="match-zh">机场</span><span class="match-dot">•</span><span class="match-fr">toilettes</span></div>
+      <div class="ex-2col">
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Associe</span> Relie le lieu</div>
+          <div class="exercice-body">
+            <div class="match-list">
+              <div class="match-row"><span class="match-zh spk">酒店</span><span class="match-dot">•</span><span class="match-fr">station de métro</span></div>
+              <div class="match-row"><span class="match-zh spk">厕所</span><span class="match-dot">•</span><span class="match-fr">aéroport</span></div>
+              <div class="match-row"><span class="match-zh spk">地铁站</span><span class="match-dot">•</span><span class="match-fr">hôtel</span></div>
+              <div class="match-row"><span class="match-zh spk">机场</span><span class="match-dot">•</span><span class="match-fr">toilettes</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Traduis</span> Comment dit-on ?</div>
+          <div class="exercice-body">
+            <p>1. Excusez-moi, où sont les toilettes ?</p>
+            <p>2. Tournez à droite.</p>
+            <p>3. Tout droit, puis à gauche.</p>
+            <p>4. C'est loin ?</p>
           </div>
         </div>
       </div>
-
       <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Mini-traduction</span> Exercice 2 — Comment dit-on ?</div>
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Le touriste perdu &amp; le GPS humain (2 joueurs)</div>
         <div class="exercice-body">
-          <p>Traduis en chinois (pinyin accepté) :</p>
-          <p>1. Excusez-moi, où sont les toilettes ?<br>
-          2. Tournez à droite.<br>
-          3. Tout droit, puis tournez à gauche.<br>
-          4. C'est loin ?</p>
+          <p><span class="role">A — Touriste :</span> tu sors du métro. Demande où est l'hôtel : <span class="zh">请问，酒店在哪里？</span></p>
+          <p><span class="role">B — Passant :</span> donne des directions en enchaînant : <span class="zh">往前走，然后往___走。不远！</span> — l'autre mime le trajet les yeux fermés. Inversez et changez le lieu (<span class="zh">地铁站, 厕所, 机场</span>).</p>
         </div>
       </div>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Le touriste perdu (2 joueurs)</div>
-        <div class="exercice-body">
-          <p><span class="role">Rôle A — Touriste français :</span> Tu sors du métro. Demande où est l'hôtel en utilisant 请问，酒店在哪里？</p>
-          <p><span class="role">Rôle B — Passant chinois :</span> Donne des directions en enchaînant : 往前走，然后往___走。不远！</p>
-          <p><em>Inversez les rôles et changez le lieu (地铁站, 厕所, 机场).</em></p>
-        </div>
-      </div>
-
       <div class="corrige">
         <h4>✅ Corrigé</h4>
-        <p><strong>Ex. 1 :</strong> 酒店 → hôtel · 厕所 → toilettes · 地铁站 → métro · 机场 → aéroport</p>
-        <p><strong>Ex. 2 :</strong> 1. Qǐngwèn, cèsuǒ zài nǎlǐ? · 2. Wǎng yòu zǒu · 3. Yìzhí zǒu, ránhòu wǎng zuǒ zǒu · 4. Yuǎn ma?</p>
-        <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier la prononciation de 请问 et 在哪里.</p>
+        <p><strong>Associe :</strong> <span class="zh">酒店</span> → hôtel · <span class="zh">厕所</span> → toilettes · <span class="zh">地铁站</span> → métro · <span class="zh">机场</span> → aéroport</p>
+        <p><strong>Traduis :</strong> 1. <span class="zh">请问，厕所在哪里？</span> · 2. <span class="zh">往右走</span> · 3. <span class="zh">一直走，然后往左走</span> · 4. <span class="zh">远吗？</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- §2 · QUESTIONS PRATIQUES DE SURVIE -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════ §2 · 沟通 — QUESTIONS PRATIQUES ═══════════ -->
   <section class="slide slide-section" data-section="2">
     <div class="section-inner">
       <div class="section-num">02</div>
+      <div class="section-cn spk">沟通</div>
       <div class="section-label">Section deux</div>
       <h2>Questions pratiques</h2>
       <div class="section-desc">Les phrases de survie quand on ne comprend rien — et l'art chinois du refus poli</div>
@@ -622,212 +430,122 @@
   </section>
 
   <section class="slide slide-card" data-section="2">
-    <div class="card-inner">
-      <div class="card-meta">Section 02 · Diapo 1</div>
-      <h2 class="card-title">C'est quoi ? Comment on dit ?</h2>
-      <div class="hanzi-big hanzi-medium">这是什么？<br>___怎么说？</div>
-      <div class="pinyin-big">Zhè shì shénme? · ___ zěnme shuō?</div>
-      <div class="traduction-big">C'est quoi ça ? · Comment dit-on ___ ?</div>
-      <div class="note-formateur">🎙 这是什么 est la question la plus utile quand on pointe quelque chose. 怎么说 sert à demander un mot : « Bœuf » 怎么说？→ 牛肉 (niúròu).</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="2">
-    <div class="card-inner">
-      <div class="card-meta">Section 02 · Diapo 2</div>
-      <h2 class="card-title">Demander la permission — « C'est possible ? »</h2>
-      <div class="hanzi-big">可以吗？<br>有没有___？</div>
-      <div class="pinyin-big">Kěyǐ ma? · Yǒu méiyǒu ___?</div>
-      <div class="traduction-big">C'est possible ? · Y a-t-il ___ ?</div>
-      <div class="note-formateur">🎙 可以 (kěyǐ) = permission. Au restaurant : 可以坐这里吗？(Puis-je m'asseoir ici ?). 有没有 = façon douce de demander si quelque chose existe.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="2">
-    <div class="card-inner">
-      <div class="card-meta">Section 02 · Diapo 3</div>
-      <h2 class="card-title">La phrase de survie ultime</h2>
-      <div class="hanzi-big">我听不懂。<br>请再说一次。</div>
-      <div class="pinyin-big">Wǒ tīng bù dǒng. · Qǐng zài shuō yí cì.</div>
-      <div class="traduction-big">Je ne comprends pas. · Répétez SVP.</div>
-      <div class="note-formateur">🎙 听不懂 (tīng bù dǒng) = je n'arrive pas à comprendre ce que j'entends. Variante : 我不懂 (wǒ bù dǒng) = je ne comprends pas (en général). Ces deux phrases vous sauveront la vie.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="2">
-    <div class="card-inner">
-      <div class="card-meta">Section 02 · Diapo 4 · Code culturel</div>
-      <h2 class="card-title">L'art du refus indirect</h2>
-      <div class="hanzi-big hanzi-small">不太方便<br>我考虑一下</div>
-      <div class="pinyin-big">Bú tài fāngbiàn · Wǒ kǎolǜ yíxià</div>
-      <div class="traduction-big">« Ce n'est pas très pratique » · « Je vais y réfléchir »</div>
-      <div class="note-formateur">🎙 En Chine, dire 不 (bù = non) directement est brutal. Si votre interlocuteur ne dit pas clairement 好 (hǎo) ou 可以 (kěyǐ), c'est souvent un « non » déguisé. En affaires : 我们再研究一下 (« on va étudier ça ») = probablement non. Ne poussez pas.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="2">
-    <div class="card-inner">
-      <div class="card-meta">Section 02 · Diapo 5 · Dialogue</div>
-      <h2 class="card-title">Dialogue — Au restaurant à Chengdu</h2>
-      <div class="dialogue-scene">
-        <div class="dialogue-setting">📍 Un petit restaurant local — le menu est uniquement en chinois</div>
-        <div class="dialogue-body">
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">请问，这是什么？</div>
-            <div class="dg-py">Qǐngwèn, zhè shì shénme?</div>
-            <div class="dg-fr">Excusez-moi, c'est quoi ça ? (pointe le menu)</div>
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 02 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Demander, comprendre, refuser</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="疑问词">疑问词</span><span class="lp-gloss">mots interrogatifs</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="什么"><span class="c-zh">什么</span><span class="c-fr">quoi</span></span>
+            <span class="chip spk" data-zh="怎么"><span class="c-zh">怎么</span><span class="c-fr">comment</span></span>
+            <span class="chip spk" data-zh="哪里"><span class="c-zh">哪里</span><span class="c-fr">où</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">服务员 🇨🇳</div>
-            <div class="dg-zh">这是麻婆豆腐。</div>
-            <div class="dg-py">Zhè shì má pó dòufu.</div>
-            <div class="dg-fr">C'est du mapo tofu.</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="这是什么">这是什么</span><span class="lp-gloss">c'est quoi / comment on dit</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="这是什么"><span class="c-zh">这是什么</span><span class="c-fr">c'est quoi ça</span></span>
+            <span class="chip spk" data-zh="怎么说"><span class="c-zh">___ 怎么说</span><span class="c-fr">comment dit-on</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">我听不懂…请再说一次？</div>
-            <div class="dg-py">Wǒ tīng bù dǒng… Qǐng zài shuō yí cì?</div>
-            <div class="dg-fr">Je ne comprends pas… Répétez SVP ?</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="可以吗">可以…吗</span><span class="lp-gloss">permission / existence</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="可以吗"><span class="c-zh">可以吗</span><span class="c-fr">c'est possible</span></span>
+            <span class="chip spk" data-zh="可以坐这里吗"><span class="c-zh">可以坐这里吗</span><span class="c-fr">puis-je m'asseoir</span></span>
+            <span class="chip spk" data-zh="有没有"><span class="c-zh">有没有 ___</span><span class="c-fr">y a-t-il…</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">服务员 🇨🇳</div>
-            <div class="dg-zh">麻—婆—豆—腐。</div>
-            <div class="dg-py">Má — pó — dòu — fu.</div>
-            <div class="dg-fr">(lentement) Ma-po-tou-fu.</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="听不懂">听不懂</span><span class="lp-gloss">je ne comprends pas</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="我听不懂"><span class="c-zh">我听不懂</span><span class="c-fr">(à l'oral)</span></span>
+            <span class="chip spk" data-zh="我不懂"><span class="c-zh">我不懂</span><span class="c-fr">(en général)</span></span>
+            <span class="chip spk" data-zh="请再说一次"><span class="c-zh">请再说一次</span><span class="c-fr">répétez svp</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">辣不辣？</div>
-            <div class="dg-py">Là bú là?</div>
-            <div class="dg-fr">C'est épicé ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">服务员 🇨🇳</div>
-            <div class="dg-zh">很辣！</div>
-            <div class="dg-py">Hěn là!</div>
-            <div class="dg-fr">Très épicé !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">有没有不辣的？</div>
-            <div class="dg-py">Yǒu méiyǒu bú là de?</div>
-            <div class="dg-fr">Y en a-t-il sans épice ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">服务员 🇨🇳</div>
-            <div class="dg-zh">有！</div>
-            <div class="dg-py">Yǒu!</div>
-            <div class="dg-fr">Oui !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">好，我要这个。谢谢！</div>
-            <div class="dg-py">Hǎo, wǒ yào zhège. Xièxie!</div>
-            <div class="dg-fr">OK, je prends ça. Merci !</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="委婉拒绝">委婉拒绝</span><span class="lp-gloss">le « non » poli</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="不太方便"><span class="c-zh">不太方便</span><span class="c-fr">pas très pratique</span></span>
+            <span class="chip spk" data-zh="我考虑一下"><span class="c-zh">我考虑一下</span><span class="c-fr">je vais réfléchir</span></span>
+            <span class="chip spk" data-zh="我们再研究一下"><span class="c-zh">我们再研究一下</span><span class="c-fr">on va étudier ça</span></span>
           </div>
         </div>
       </div>
+      <div class="note-formateur cult">🎭 <b>Le « non » chinois :</b> refuser directement (不) est brutal. Si on vous répond « pas très pratique » ou « je vais réfléchir », c'est souvent un non poli. En affaires, ne poussez jamais après un refus déguisé.</div>
     </div>
   </section>
 
   <section class="slide slide-card" data-section="2">
     <div class="card-inner">
-      <div class="card-meta">Section 02 · Diapo 6 · Activité</div>
-      <h2 class="card-title">🎮 Le traducteur improvisé</h2>
-      <div class="hanzi-big hanzi-small">这是什么？<br>___怎么说？</div>
-      <div class="activity-text">Chacun montre un objet autour de soi (téléphone, stylo, sac…). L'autre demande : 这是什么？ Répondez par le mot chinois si vous le connaissez, sinon en français + 怎么说？ Le formateur donne la réponse chinoise.</div>
-      <div class="note-formateur">🎙 Activité rapide, 3 minutes. Objectif : ancrer le réflexe de poser la question plutôt que de rester muet.</div>
+      <div class="card-meta">Section 02 · Dialogue</div>
+      <h2 class="card-title">Au restaurant à Chengdu</h2>
+      <div class="dialogue-scene">
+        <div class="dialogue-setting">📍 Un petit restaurant local — le menu est uniquement en chinois</div>
+        <div class="dialogue-body">
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">请问，这是什么？</div><div class="dg-py">Qǐngwèn, zhè shì shénme?</div><div class="dg-fr">Excusez-moi, c'est quoi ça ? (pointe le menu)</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">服务员 🇨🇳</div><div class="dg-zh spk">这是麻婆豆腐。</div><div class="dg-py">Zhè shì má pó dòufu.</div><div class="dg-fr">C'est du mapo tofu.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">我听不懂…请再说一次？</div><div class="dg-py">Wǒ tīng bù dǒng… Qǐng zài shuō yí cì?</div><div class="dg-fr">Je ne comprends pas… Répétez SVP ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">服务员 🇨🇳</div><div class="dg-zh spk">麻—婆—豆—腐。</div><div class="dg-py">Má — pó — dòu — fu.</div><div class="dg-fr">(lentement) Ma-po-tou-fu.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">辣不辣？</div><div class="dg-py">Là bú là?</div><div class="dg-fr">C'est épicé ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">服务员 🇨🇳</div><div class="dg-zh spk">很辣！</div><div class="dg-py">Hěn là!</div><div class="dg-fr">Très épicé !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">有没有不辣的？</div><div class="dg-py">Yǒu méiyǒu bú là de?</div><div class="dg-fr">Y en a-t-il sans épice ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">服务员 🇨🇳</div><div class="dg-zh spk">有！</div><div class="dg-py">Yǒu!</div><div class="dg-fr">Oui !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">好，我要这个。谢谢！</div><div class="dg-py">Hǎo, wǒ yào zhège. Xièxie!</div><div class="dg-fr">OK, je prends ça. Merci !</div></div>
+        </div>
+      </div>
+      <div class="kw-strip"><b>关键词</b> <span class="kz spk" data-zh="这是什么">这是什么</span> <em>zhè shì shénme</em> c'est quoi · <span class="kz spk" data-zh="听不懂">听不懂</span> <em>tīng bù dǒng</em> pas compris · <span class="kz spk" data-zh="辣">辣</span> <em>là</em> épicé · <span class="kz spk" data-zh="有没有">有没有</span> <em>yǒu méiyǒu</em> y a-t-il · <span class="kz spk" data-zh="我要这个">我要这个</span> <em>wǒ yào zhège</em> je prends ça</div>
     </div>
   </section>
 
   <section class="slide slide-manuel" data-section="2">
-    <div class="doc-inner">
-      <div class="doc-meta">Section 02 · Manuel</div>
-      <h1>Questions pratiques — Mémo</h1>
-
-      <h3>Questions de base</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">这是什么？</td><td class="td-pinyin">Zhè shì shénme?</td><td>C'est quoi ça ?</td></tr>
-        <tr><td class="td-hanzi">___怎么说？</td><td class="td-pinyin">___ zěnme shuō?</td><td>Comment dit-on ___ ?</td></tr>
-        <tr><td class="td-hanzi">可以吗？</td><td class="td-pinyin">Kěyǐ ma?</td><td>C'est possible ?</td></tr>
-        <tr><td class="td-hanzi">有没有___？</td><td class="td-pinyin">Yǒu méiyǒu ___?</td><td>Y a-t-il ___ ?</td></tr>
-      </table>
-
-      <h3>Quand on ne comprend pas</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">我听不懂</td><td class="td-pinyin">Wǒ tīng bù dǒng</td><td>Je ne comprends pas (oral)</td></tr>
-        <tr><td class="td-hanzi">我不懂</td><td class="td-pinyin">Wǒ bù dǒng</td><td>Je ne comprends pas (général)</td></tr>
-        <tr><td class="td-hanzi">请再说一次</td><td class="td-pinyin">Qǐng zài shuō yí cì</td><td>Répétez SVP</td></tr>
-      </table>
-
-      <h3>Vocabulaire bonus — Au restaurant</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">辣</td><td class="td-pinyin">là</td><td>épicé / pimenté</td></tr>
-        <tr><td class="td-hanzi">不辣</td><td class="td-pinyin">bú là</td><td>pas épicé</td></tr>
-        <tr><td class="td-hanzi">不好意思</td><td class="td-pinyin">bù hǎo yìsi</td><td>excusez-moi / désolé</td></tr>
-      </table>
-
-      <div class="memo">🎭 Le « non » chinois : en Chine, refuser directement est impoli. Si on vous répond « c'est pas très pratique » (不太方便) ou « je vais y réfléchir » (我考虑一下), c'est souvent un « non » poli. En affaires, ne poussez jamais après un refus déguisé.</div>
-
-      <div class="notes-perso">Mes notes : _______________________________________________</div>
-    </div>
-  </section>
-
-  <section class="slide slide-exercices" data-section="2">
-    <div class="doc-inner">
+    <div class="doc-inner ex-doc">
       <div class="doc-meta">Section 02 · Exercices</div>
       <h1>Exercices — Questions pratiques</h1>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 1 — Complète avec le bon mot</div>
-        <div class="exercice-body">
-          <p>Complète avec : <strong>什么 / 怎么说 / 听不懂 / 可以 / 有没有</strong></p>
-          <p>1. 请问，这是______？ <em>(c'est quoi ?)</em><br>
-          2. « Merci » ______？ <em>(comment dit-on ?)</em><br>
-          3. 我______，请再说一次。 <em>(je ne comprends pas)</em><br>
-          4. ______坐这里吗？ <em>(puis-je m'asseoir ici ?)</em><br>
-          5. ______不辣的？ <em>(y a-t-il du non-épicé ?)</em></p>
+      <div class="ex-2col">
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">À trous</span> Le bon mot</div>
+          <div class="exercice-body">
+            <p>什么 / 怎么说 / 听不懂 / 可以 / 有没有</p>
+            <p>1. <span class="zh">请问，这是___？</span></p>
+            <p>2. « Merci » <span class="zh">___？</span></p>
+            <p>3. <span class="zh">我___，请再说一次。</span></p>
+            <p>4. <span class="zh">___坐这里吗？</span></p>
+            <p>5. <span class="zh">___不辣的？</span></p>
+          </div>
+        </div>
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Code culturel</div>
+          <div class="exercice-body">
+            <p>1. Dire <span class="zh">不</span> directement est poli. &nbsp;V / F</p>
+            <p>2. <span class="zh">我考虑一下</span> = souvent « non ». &nbsp;V / F</p>
+            <p>3. <span class="zh">有没有</span> demande si ça existe. &nbsp;V / F</p>
+            <p>4. Pas de <span class="zh">好</span> clair = il est d'accord. &nbsp;V / F</p>
+          </div>
         </div>
       </div>
-
       <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 2 — Code culturel</div>
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Le restaurant mystère &amp; le traducteur improvisé (2 joueurs)</div>
         <div class="exercice-body">
-          <p>1. En Chine, dire 不 (non) directement est normal et poli. &nbsp; V / F<br>
-          2. 我考虑一下 (je vais y réfléchir) signifie souvent « non ». &nbsp; V / F<br>
-          3. 有没有 sert à demander si quelque chose existe. &nbsp; V / F<br>
-          4. Si quelqu'un ne dit pas 好 clairement, il est d'accord. &nbsp; V / F</p>
+          <p><span class="role">A — Client :</span> tu ne comprends rien au menu. Enchaîne : <span class="zh">这是什么？辣不辣？有没有不辣的？我要这个。</span></p>
+          <p><span class="role">B — Serveur :</span> explique les plats (invente !), parle vite puis lentement quand A dit <span class="zh">请再说一次</span>. Variante : montrez un objet et demandez <span class="zh">这是什么？___怎么说？</span></p>
         </div>
       </div>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Au restaurant mystère (2 joueurs)</div>
-        <div class="exercice-body">
-          <p><span class="role">Rôle A — Client français :</span> Tu ne comprends rien au menu. Utilise : 这是什么？辣不辣？有没有不辣的？我要这个。</p>
-          <p><span class="role">Rôle B — Serveur chinois :</span> Tu expliques les plats (invente !). Tu parles d'abord vite, puis lentement quand le client dit 请再说一次.</p>
-          <p><em>Inversez les rôles.</em></p>
-        </div>
-      </div>
-
       <div class="corrige">
         <h4>✅ Corrigé</h4>
-        <p><strong>Ex. 1 :</strong> 1. 什么 · 2. 怎么说 · 3. 听不懂 · 4. 可以 · 5. 有没有</p>
-        <p><strong>Ex. 2 :</strong> 1. F (c'est brutal) · 2. V · 3. V · 4. F (c'est souvent un refus poli)</p>
-        <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier l'enchaînement des questions.</p>
+        <p><strong>À trous :</strong> 1. <span class="zh">什么</span> · 2. <span class="zh">怎么说</span> · 3. <span class="zh">听不懂</span> · 4. <span class="zh">可以</span> · 5. <span class="zh">有没有</span></p>
+        <p><strong>Vrai / Faux :</strong> 1. F (c'est brutal) · 2. V · 3. V · 4. F (refus poli)</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- §3 · PAYER EN CHINE : WECHAT PAY & ALIPAY -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════ §3 · 支付 — PAYER EN CHINE ═══════════ -->
   <section class="slide slide-section" data-section="3">
     <div class="section-inner">
       <div class="section-num">03</div>
+      <div class="section-cn spk">支付</div>
       <div class="section-label">Section trois</div>
       <h2>Payer en Chine</h2>
       <div class="section-desc">WeChat Pay, Alipay, QR codes — le cash est mort, bienvenue dans le futur</div>
@@ -836,200 +554,124 @@
   </section>
 
   <section class="slide slide-card" data-section="3">
-    <div class="card-inner">
-      <div class="card-meta">Section 03 · Diapo 1</div>
-      <h2 class="card-title">Les deux géants du paiement</h2>
-      <div class="hanzi-big hanzi-small">微信支付<br>支付宝</div>
-      <div class="pinyin-big">Wēixìn zhīfù · Zhīfùbǎo</div>
-      <div class="traduction-big">WeChat Pay · Alipay</div>
-      <div class="note-formateur">🎙 99 % des paiements en Chine passent par ces deux apps. Même les marchands de rue, les taxis et les temples acceptent le QR code. Avoir au moins un des deux est INDISPENSABLE avant de partir.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="3">
-    <div class="card-inner">
-      <div class="card-meta">Section 03 · Diapo 2</div>
-      <h2 class="card-title">Scanner et payer</h2>
-      <div class="hanzi-big">扫码<br>付款</div>
-      <div class="pinyin-big">sǎo mǎ · fùkuǎn</div>
-      <div class="traduction-big">scanner le QR code · payer</div>
-      <div class="note-formateur">🎙 Deux gestes à connaître : 扫 (sǎo = balayer/scanner) + 码 (mǎ = code). Vous entendrez partout : 请扫码 (qǐng sǎo mǎ = veuillez scanner). À la caisse, on vous demandera : 微信还是支付宝？(WeChat ou Alipay ?)</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="3">
-    <div class="card-inner">
-      <div class="card-meta">Section 03 · Diapo 3</div>
-      <h2 class="card-title">Le cash est (presque) mort</h2>
-      <div class="hanzi-big">现金</div>
-      <div class="pinyin-big">xiànjīn</div>
-      <div class="traduction-big">espèces / cash</div>
-      <div class="note-formateur">🎙 Beaucoup de commerces n'acceptent plus le cash. Même les mendiants ont un QR code. Phrase utile : 可以用现金吗？(Kěyǐ yòng xiànjīn ma? = Puis-je payer en cash ?). La réponse sera souvent : 不好意思，只能扫码 (désolé, QR code uniquement).</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="3">
-    <div class="card-inner">
-      <div class="card-meta">Section 03 · Diapo 4 · Code culturel</div>
-      <h2 class="card-title">Le hongbao digital — 红包</h2>
-      <div class="hanzi-big hanzi-medium">红包</div>
-      <div class="pinyin-big">hóngbāo</div>
-      <div class="traduction-big">enveloppe rouge (cadeau d'argent)</div>
-      <div class="note-formateur">🎙 Tradition ancestrale modernisée : on envoie des 红包 via WeChat pour le Nouvel An, un mariage, un remerciement. Montants favoris : 88, 168, 888 元 (rappelez-vous : 8 = richesse). Envoyer un hongbao à un partenaire business est un geste fort de relation.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="3">
-    <div class="card-inner">
-      <div class="card-meta">Section 03 · Diapo 5 · Dialogue</div>
-      <h2 class="card-title">Dialogue — À la caisse sans cash</h2>
-      <div class="dialogue-scene">
-        <div class="dialogue-setting">📍 Un restaurant de nouilles — Marc veut payer l'addition</div>
-        <div class="dialogue-body">
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">买单！</div>
-            <div class="dg-py">Mǎi dān!</div>
-            <div class="dg-fr">L'addition !</div>
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 03 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Scanner, payer, le cash mort</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="支付方式">支付方式</span><span class="lp-gloss">moyens de paiement</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="微信支付"><span class="c-zh">微信支付</span><span class="c-fr">WeChat Pay</span></span>
+            <span class="chip spk" data-zh="支付宝"><span class="c-zh">支付宝</span><span class="c-fr">Alipay</span></span>
+            <span class="chip spk" data-zh="现金"><span class="c-zh">现金</span><span class="c-fr">cash</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">收银员 🇨🇳</div>
-            <div class="dg-zh">一共八十五块。</div>
-            <div class="dg-py">Yígòng bāshí wǔ kuài.</div>
-            <div class="dg-fr">85 yuans au total.</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="扫码">扫码付款</span><span class="lp-gloss">scanner &amp; payer</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="扫码"><span class="c-zh">扫码</span><span class="c-fr">scanner le QR</span></span>
+            <span class="chip spk" data-zh="付款"><span class="c-zh">付款</span><span class="c-fr">payer</span></span>
+            <span class="chip spk" data-zh="请扫码"><span class="c-zh">请扫码</span><span class="c-fr">scannez svp</span></span>
+            <span class="chip spk" data-zh="收到了"><span class="c-zh">收到了</span><span class="c-fr">bien reçu</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">可以用现金吗？</div>
-            <div class="dg-py">Kěyǐ yòng xiànjīn ma?</div>
-            <div class="dg-fr">Je peux payer en cash ?</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="钱">钱</span><span class="lp-gloss">l'argent</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="块"><span class="c-zh">块</span><span class="c-fr">yuan (oral)</span></span>
+            <span class="chip spk" data-zh="元"><span class="c-zh">元</span><span class="c-fr">yuan (formel)</span></span>
+            <span class="chip spk" data-zh="一共"><span class="c-zh">一共</span><span class="c-fr">au total</span></span>
+            <span class="chip spk" data-zh="百"><span class="c-zh">百</span><span class="c-fr">cent</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">收银员 🇨🇳</div>
-            <div class="dg-zh">不好意思，只能扫码。微信还是支付宝？</div>
-            <div class="dg-py">Bù hǎo yìsi, zhǐ néng sǎo mǎ. Wēixìn háishi Zhīfùbǎo?</div>
-            <div class="dg-fr">Désolé, QR code uniquement. WeChat ou Alipay ?</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="可以用现金吗">可以用…吗</span><span class="lp-gloss">à la caisse</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="可以用现金吗"><span class="c-zh">可以用现金吗</span><span class="c-fr">payer en cash ?</span></span>
+            <span class="chip spk" data-zh="微信还是支付宝"><span class="c-zh">微信还是支付宝</span><span class="c-fr">WeChat ou Alipay</span></span>
+            <span class="chip spk" data-zh="只能扫码"><span class="c-zh">只能扫码</span><span class="c-fr">QR uniquement</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">微信支付。</div>
-            <div class="dg-py">Wēixìn zhīfù.</div>
-            <div class="dg-fr">WeChat Pay.</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">收银员 🇨🇳</div>
-            <div class="dg-zh">好的，请扫码。</div>
-            <div class="dg-py">Hǎo de, qǐng sǎo mǎ.</div>
-            <div class="dg-fr">OK, scannez le code.</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">好了！</div>
-            <div class="dg-py">Hǎo le!</div>
-            <div class="dg-fr">C'est fait !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">收银员 🇨🇳</div>
-            <div class="dg-zh">收到了，谢谢！</div>
-            <div class="dg-py">Shōu dào le, xièxie!</div>
-            <div class="dg-fr">Reçu, merci !</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="红包">红包</span><span class="lp-gloss">enveloppe rouge</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="红包"><span class="c-zh">红包</span><span class="c-fr">cadeau d'argent</span></span>
+            <span class="chip spk" data-zh="八十八"><span class="c-zh">88 元</span><span class="c-fr">porte-bonheur</span></span>
+            <span class="chip spk" data-zh="一百六十八"><span class="c-zh">168 元</span><span class="c-fr">chance</span></span>
+            <span class="chip spk" data-zh="八百八十八"><span class="c-zh">888 元</span><span class="c-fr">richesse</span></span>
           </div>
         </div>
       </div>
+      <div class="note-formateur cult">💰 <b>Le hongbao digital :</b> on envoie des 红包 via WeChat (Nouvel An, mariage, remerciement). Les montants en 8 portent bonheur. En envoyer un à un partenaire business est un geste relationnel fort.</div>
     </div>
   </section>
 
   <section class="slide slide-card" data-section="3">
     <div class="card-inner">
-      <div class="card-meta">Section 03 · Diapo 6 · Activité</div>
-      <h2 class="card-title">🎮 Simuler un paiement</h2>
-      <div class="hanzi-big hanzi-small">请扫码！<br>收到了！</div>
-      <div class="pinyin-big">Qǐng sǎo mǎ! · Shōu dào le!</div>
-      <div class="activity-text">A = caissier : invente un prix (ex : 一共六十块). Demande : 微信还是支付宝？puis 请扫码。<br>B = client : répond, mime le scan du QR code avec son téléphone, dit 好了！<br>Le caissier confirme : 收到了，谢谢！<br>Inversez 3 fois avec des montants différents.</div>
-      <div class="note-formateur">🎙 Utilisez de vrais téléphones pour rendre le mime réaliste. Objectif : automatiser le vocabulaire du paiement.</div>
+      <div class="card-meta">Section 03 · Dialogue</div>
+      <h2 class="card-title">À la caisse, sans cash</h2>
+      <div class="dialogue-scene">
+        <div class="dialogue-setting">📍 Un restaurant de nouilles — Marc veut payer l'addition</div>
+        <div class="dialogue-body">
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">买单！</div><div class="dg-py">Mǎi dān!</div><div class="dg-fr">L'addition !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">收银员 🇨🇳</div><div class="dg-zh spk">一共八十五块。</div><div class="dg-py">Yígòng bāshí wǔ kuài.</div><div class="dg-fr">85 yuans au total.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">可以用现金吗？</div><div class="dg-py">Kěyǐ yòng xiànjīn ma?</div><div class="dg-fr">Je peux payer en cash ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">收银员 🇨🇳</div><div class="dg-zh spk">不好意思，只能扫码。微信还是支付宝？</div><div class="dg-py">Bù hǎo yìsi, zhǐ néng sǎo mǎ. Wēixìn háishi Zhīfùbǎo?</div><div class="dg-fr">Désolé, QR code uniquement. WeChat ou Alipay ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">微信支付。</div><div class="dg-py">Wēixìn zhīfù.</div><div class="dg-fr">WeChat Pay.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">收银员 🇨🇳</div><div class="dg-zh spk">好的，请扫码。</div><div class="dg-py">Hǎo de, qǐng sǎo mǎ.</div><div class="dg-fr">OK, scannez le code.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">好了！</div><div class="dg-py">Hǎo le!</div><div class="dg-fr">C'est fait !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">收银员 🇨🇳</div><div class="dg-zh spk">收到了，谢谢！</div><div class="dg-py">Shōu dào le, xièxie!</div><div class="dg-fr">Reçu, merci !</div></div>
+        </div>
+      </div>
+      <div class="kw-strip"><b>关键词</b> <span class="kz spk" data-zh="买单">买单</span> <em>mǎi dān</em> l'addition · <span class="kz spk" data-zh="一共">一共</span> <em>yígòng</em> au total · <span class="kz spk" data-zh="扫码">扫码</span> <em>sǎo mǎ</em> scanner · <span class="kz spk" data-zh="微信还是支付宝">微信还是支付宝</span> <em>… háishi …</em> WeChat ou Alipay · <span class="kz spk" data-zh="好了">好了</span> <em>hǎo le</em> c'est fait</div>
     </div>
   </section>
 
   <section class="slide slide-manuel" data-section="3">
-    <div class="doc-inner">
-      <div class="doc-meta">Section 03 · Manuel</div>
-      <h1>Payer en Chine — Mémo</h1>
-
-      <h3>Vocabulaire du paiement</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">微信支付</td><td class="td-pinyin">Wēixìn zhīfù</td><td>WeChat Pay</td></tr>
-        <tr><td class="td-hanzi">支付宝</td><td class="td-pinyin">Zhīfùbǎo</td><td>Alipay</td></tr>
-        <tr><td class="td-hanzi">扫码</td><td class="td-pinyin">sǎo mǎ</td><td>scanner le QR code</td></tr>
-        <tr><td class="td-hanzi">付款</td><td class="td-pinyin">fùkuǎn</td><td>payer</td></tr>
-        <tr><td class="td-hanzi">现金</td><td class="td-pinyin">xiànjīn</td><td>espèces / cash</td></tr>
-        <tr><td class="td-hanzi">块</td><td class="td-pinyin">kuài</td><td>yuan (familier)</td></tr>
-        <tr><td class="td-hanzi">元</td><td class="td-pinyin">yuán</td><td>yuan (formel)</td></tr>
-        <tr><td class="td-hanzi">一共</td><td class="td-pinyin">yígòng</td><td>au total</td></tr>
-        <tr><td class="td-hanzi">红包</td><td class="td-pinyin">hóngbāo</td><td>enveloppe rouge</td></tr>
-      </table>
-
-      <h3>Phrases clés</h3>
-      <div class="regle">买单！(Mǎi dān!) = L'addition !<br>可以用现金吗？(Kěyǐ yòng xiànjīn ma?) = Puis-je payer en cash ?<br>微信还是支付宝？(Wēixìn háishi Zhīfùbǎo?) = WeChat ou Alipay ?</div>
-
-      <div class="memo">💰 Astuce 红包 : les montants en 8 portent bonheur (88, 168, 888 元). Envoyer un hongbao digital via WeChat à un partenaire = geste relationnel fort. À connaître absolument pour le business.</div>
-
-      <div class="notes-perso">Mes notes : _______________________________________________</div>
-    </div>
-  </section>
-
-  <section class="slide slide-exercices" data-section="3">
-    <div class="doc-inner">
+    <div class="doc-inner ex-doc">
       <div class="doc-meta">Section 03 · Exercices</div>
       <h1>Exercices — Paiement</h1>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Exercice 1 — Le paiement en Chine</div>
-        <div class="exercice-body">
-          <p>1. En Chine, la plupart des commerces acceptent encore le cash. &nbsp; V / F<br>
-          2. 扫码 (sǎo mǎ) veut dire « scanner le QR code ». &nbsp; V / F<br>
-          3. Un hongbao de 444 元 est un bon cadeau. &nbsp; V / F<br>
-          4. 块 et 元 désignent tous deux le yuan. &nbsp; V / F</p>
+      <div class="ex-2col">
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Vrai / Faux</span> Le paiement</div>
+          <div class="exercice-body">
+            <p>1. La plupart des commerces acceptent le cash. &nbsp;V / F</p>
+            <p>2. <span class="zh">扫码</span> = « scanner le QR ». &nbsp;V / F</p>
+            <p>3. Un hongbao de 444 元 est un bon cadeau. &nbsp;V / F</p>
+            <p>4. <span class="zh">块</span> et <span class="zh">元</span> = le yuan. &nbsp;V / F</p>
+          </div>
+        </div>
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Remets en ordre</span> Les étapes</div>
+          <div class="exercice-body">
+            <p>A. <span class="zh">收到了，谢谢！</span></p>
+            <p>B. <span class="zh">买单！</span></p>
+            <p>C. <span class="zh">微信还是支付宝？</span></p>
+            <p>D. Tu scannes le QR code</p>
+            <p>E. <span class="zh">微信支付。</span></p>
+          </div>
         </div>
       </div>
-
       <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Remise en ordre</span> Exercice 2 — Les étapes du paiement</div>
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Simuler un paiement (2 joueurs)</div>
         <div class="exercice-body">
-          <p>Remets ces étapes dans le bon ordre :</p>
-          <p>A. Le caissier dit : 收到了，谢谢！<br>
-          B. Tu dis : 买单！<br>
-          C. Le caissier demande : 微信还是支付宝？<br>
-          D. Tu scannes le QR code<br>
-          E. Tu réponds : 微信支付</p>
-          <p>Ordre : ___ → ___ → ___ → ___ → ___</p>
+          <p><span class="role">A — Caissier :</span> annonce un prix (<span class="zh">一共六十块</span>), demande <span class="zh">微信还是支付宝？</span> puis <span class="zh">请扫码。</span></p>
+          <p><span class="role">B — Client :</span> répond, mime le scan, dit <span class="zh">好了！</span> Le caissier confirme <span class="zh">收到了，谢谢！</span> Recommencez 3× avec des montants différents.</p>
         </div>
       </div>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Le touriste sans cash (2 joueurs)</div>
-        <div class="exercice-body">
-          <p><span class="role">Rôle A — Client français :</span> Tu viens de manger. Demande l'addition. Essaie de payer en cash, puis adapte-toi.</p>
-          <p><span class="role">Rôle B — Caissier chinois :</span> Annonce un prix (entre 30 et 100 块). Refuse le cash poliment : 不好意思，只能扫码。Demande : 微信还是支付宝？</p>
-          <p><em>Inversez les rôles.</em></p>
-        </div>
-      </div>
-
       <div class="corrige">
         <h4>✅ Corrigé</h4>
-        <p><strong>Ex. 1 :</strong> 1. F (la plupart n'acceptent que le mobile) · 2. V · 3. F (4 = malchance !) · 4. V</p>
-        <p><strong>Ex. 2 :</strong> B → C → E → D → A</p>
-        <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier 买单 et 扫码.</p>
+        <p><strong>Vrai / Faux :</strong> 1. F · 2. V · 3. F (4 = malchance, évitez) · 4. V</p>
+        <p><strong>Ordre :</strong> B → C → E → D → A</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- §4 · PREMIERS ACHATS -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════ §4 · 购物 — PREMIERS ACHATS ═══════════ -->
   <section class="slide slide-section" data-section="4">
     <div class="section-inner">
       <div class="section-num">04</div>
+      <div class="section-cn spk">购物</div>
       <div class="section-label">Section quatre</div>
       <h2>Premiers achats</h2>
       <div class="section-desc">Couleurs, tailles, prix — négocier et acheter comme un local</div>
@@ -1038,228 +680,178 @@
   </section>
 
   <section class="slide slide-card" data-section="4">
-    <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 1</div>
-      <h2 class="card-title">Je veux acheter…</h2>
-      <div class="hanzi-big hanzi-medium">我要买___。</div>
-      <div class="pinyin-big">Wǒ yào mǎi ___.</div>
-      <div class="traduction-big">Je veux acheter ___.</div>
-      <div class="note-formateur">🎙 Rappel session 2 : 我要这个 (je veux ceci). Maintenant on ajoute 买 (mǎi = acheter). Attention : 买 (mǎi, ton 3) = acheter ≠ 卖 (mài, ton 4) = vendre. Le ton change tout !</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="4">
-    <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 2</div>
-      <h2 class="card-title">Les couleurs essentielles</h2>
-      <div class="hanzi-big">红 &nbsp; 黑 &nbsp; 白 &nbsp; 蓝</div>
-      <div class="pinyin-big">hóng · hēi · bái · lán</div>
-      <div class="traduction-big">rouge · noir · blanc · bleu</div>
-      <div class="note-formateur">🎙 Quatre couleurs qui couvrent 80 % des achats. 红 (hóng = rouge) : la couleur de la chance en Chine. Pour dire « le rouge » comme choix : 红的 (hóng de). « Rouge ou noir ? » = 红的还是黑的？</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="4">
-    <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 3</div>
-      <h2 class="card-title">Tailles — Grand ou petit ?</h2>
-      <div class="hanzi-big">大 &nbsp; 小<br>可以试吗？</div>
-      <div class="pinyin-big">dà · xiǎo · Kěyǐ shì ma?</div>
-      <div class="traduction-big">grand · petit · Je peux essayer ?</div>
-      <div class="note-formateur">🎙 大号 (dà hào) = grande taille · 小号 (xiǎo hào) = petite taille. 太大了 (tài dà le) = trop grand · 太小了 (tài xiǎo le) = trop petit. Structure identique à 太贵了 de la session 2.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="4">
-    <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 4</div>
-      <h2 class="card-title">Compter au-delà de 10</h2>
-      <div class="hanzi-big hanzi-small">二十 三十 四十 五十<br>六十 七十 八十 九十<br>一百</div>
-      <div class="pinyin-big">èr shí · sān shí · sì shí · wǔ shí · liù shí · qī shí · bā shí · jiǔ shí · yì bǎi</div>
-      <div class="traduction-big">20 · 30 · 40 · 50 · 60 · 70 · 80 · 90 · 100</div>
-      <div class="note-formateur">🎙 Logique ultra-simple : chiffre + 十. Pour 100 : 一百 (yì bǎi). Pour 200 : 两百 (liǎng bǎi) — on dit 两 et pas 二 devant 百. Combiner : 二十五 = 25, 三十八 = 38.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="4">
-    <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 5</div>
-      <h2 class="card-title">Dire un prix</h2>
-      <div class="hanzi-big hanzi-medium">两百五十块</div>
-      <div class="pinyin-big">liǎng bǎi wǔ shí kuài</div>
-      <div class="traduction-big">250 yuans</div>
-      <div class="note-formateur">🎙 块 (kuài) = yuan familier. 元 (yuán) = yuan formel (sur les billets). En raccourci oral : 两百五 = 250 (le 十 est implicite). Faites pratiquer : 八十块, 一百二十块, 三百块.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="4">
-    <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 6 · Dialogue</div>
-      <h2 class="card-title">Dialogue — Au marché aux perles de Shanghai</h2>
-      <div class="dialogue-scene">
-        <div class="dialogue-setting">📍 Marché de Yuyuan — Marc cherche un sac en cuir</div>
-        <div class="dialogue-body">
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">你好！这个包多少钱？</div>
-            <div class="dg-py">Nǐ hǎo! Zhège bāo duōshǎo qián?</div>
-            <div class="dg-fr">Bonjour ! Ce sac, combien ?</div>
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Acheter, compter, négocier</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="我要买">我要买</span><span class="lp-gloss">je veux acheter</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="我要买这个"><span class="c-zh">我要买这个</span><span class="c-fr">ceci</span></span>
+            <span class="chip spk" data-zh="我要买茶叶"><span class="c-zh">我要买茶叶</span><span class="c-fr">du thé</span></span>
+            <span class="chip spk" data-zh="买"><span class="c-zh">买</span><span class="c-fr">acheter (mǎi)</span></span>
+            <span class="chip spk" data-zh="卖"><span class="c-zh">卖</span><span class="c-fr">vendre (mài)</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">老板 🇨🇳</div>
-            <div class="dg-zh">三百块。</div>
-            <div class="dg-py">Sān bǎi kuài.</div>
-            <div class="dg-fr">300 yuans.</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="数字">数字</span><span class="lp-gloss">compter au-delà de 10</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="二十"><span class="c-zh">二十</span><span class="c-fr">20</span></span>
+            <span class="chip spk" data-zh="五十"><span class="c-zh">五十</span><span class="c-fr">50</span></span>
+            <span class="chip spk" data-zh="一百"><span class="c-zh">一百</span><span class="c-fr">100</span></span>
+            <span class="chip spk" data-zh="两百五"><span class="c-zh">两百五</span><span class="c-fr">250</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">太贵了！便宜一点？</div>
-            <div class="dg-py">Tài guì le! Piányi yìdiǎn?</div>
-            <div class="dg-fr">Trop cher ! Un peu moins ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">老板 🇨🇳</div>
-            <div class="dg-zh">两百八。</div>
-            <div class="dg-py">Liǎng bǎi bā.</div>
-            <div class="dg-fr">280.</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">有没有大号的？</div>
-            <div class="dg-py">Yǒu méiyǒu dà hào de?</div>
-            <div class="dg-fr">Y a-t-il en grande taille ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">老板 🇨🇳</div>
-            <div class="dg-zh">有！红的还是黑的？</div>
-            <div class="dg-py">Yǒu! Hóng de háishi hēi de?</div>
-            <div class="dg-fr">Oui ! Rouge ou noir ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">黑的。可以试吗？</div>
-            <div class="dg-py">Hēi de. Kěyǐ shì ma?</div>
-            <div class="dg-fr">Noir. Je peux essayer ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">老板 🇨🇳</div>
-            <div class="dg-zh">可以！</div>
-            <div class="dg-py">Kěyǐ!</div>
-            <div class="dg-fr">Bien sûr !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">两百块，好不好？</div>
-            <div class="dg-py">Liǎng bǎi kuài, hǎo bù hǎo?</div>
-            <div class="dg-fr">200 yuans, ça marche ?</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">老板 🇨🇳</div>
-            <div class="dg-zh">好吧！</div>
-            <div class="dg-py">Hǎo ba!</div>
-            <div class="dg-fr">Allez, d'accord !</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="价格">价格</span><span class="lp-gloss">le prix &amp; la négo</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="多少钱"><span class="c-zh">多少钱</span><span class="c-fr">combien ?</span></span>
+            <span class="chip spk" data-zh="太贵了"><span class="c-zh">太贵了</span><span class="c-fr">trop cher</span></span>
+            <span class="chip spk" data-zh="便宜一点"><span class="c-zh">便宜一点</span><span class="c-fr">moins cher</span></span>
+            <span class="chip spk" data-zh="可以试吗"><span class="c-zh">可以试吗</span><span class="c-fr">je peux essayer</span></span>
           </div>
         </div>
       </div>
+      <div class="note-formateur">🎙 <b>Attention au ton :</b> <span style="font-family:var(--kai)">买</span> (mǎi, ton 3) = acheter ≠ <span style="font-family:var(--kai)">卖</span> (mài, ton 4) = vendre. Pour 200 on dit <span style="font-family:var(--kai)">两百</span> (liǎng bǎi), pas 二百. Raccourci oral : <span style="font-family:var(--kai)">两百五</span> = 250.</div>
     </div>
   </section>
 
   <section class="slide slide-card" data-section="4">
     <div class="card-inner">
-      <div class="card-meta">Section 04 · Diapo 7 · Activité</div>
-      <h2 class="card-title">🎮 La bonne affaire</h2>
-      <div class="hanzi-big hanzi-small">多少钱？<br>太贵了！<br>两百块！</div>
-      <div class="activity-text">A = vendeur : choisis un objet (sac, thé, bijou…), annonce un prix en centaines. B = client : négocie avec 太贵了！便宜一点？ puis propose un prix. Demande une couleur et une taille. Le vendeur accepte ou contre-propose. 3 échanges puis inversez.</div>
-      <div class="note-formateur">🎙 Encouragez les prix en 8 (八十八, 一百八十八…) et le théâtre. La négociation au marché, c'est un spectacle !</div>
+      <div class="card-meta">Section 04 · Couleurs</div>
+      <h2 class="card-title"><span class="ct-cn">颜色</span>Les couleurs essentielles</h2>
+      <div class="color-grid">
+        <div class="color-item spk" data-zh="红"><div class="color-swatch" style="background:#d32f2f;"></div><div class="color-hanzi">红</div><div class="color-pinyin">hóng</div><div class="color-fr">rouge</div></div>
+        <div class="color-item spk" data-zh="黑"><div class="color-swatch" style="background:#1a1a1a;"></div><div class="color-hanzi">黑</div><div class="color-pinyin">hēi</div><div class="color-fr">noir</div></div>
+        <div class="color-item spk" data-zh="白"><div class="color-swatch swatch-white" style="background:#ffffff;"></div><div class="color-hanzi">白</div><div class="color-pinyin">bái</div><div class="color-fr">blanc</div></div>
+        <div class="color-item spk" data-zh="蓝"><div class="color-swatch" style="background:#1565c0;"></div><div class="color-hanzi">蓝</div><div class="color-pinyin">lán</div><div class="color-fr">bleu</div></div>
+        <div class="color-item spk" data-zh="绿"><div class="color-swatch" style="background:#2e7d32;"></div><div class="color-hanzi">绿</div><div class="color-pinyin">lǜ</div><div class="color-fr">vert</div></div>
+        <div class="color-item spk" data-zh="黄"><div class="color-swatch" style="background:#f9a825;"></div><div class="color-hanzi">黄</div><div class="color-pinyin">huáng</div><div class="color-fr">jaune</div></div>
+      </div>
+      <div class="note-formateur">🎙 红 (rouge) = la couleur de la chance en Chine. Pour dire « le rouge » comme choix : 红的 (hóng de). « Rouge ou noir ? » = 红的还是黑的？</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Tailles</div>
+      <h2 class="card-title"><span class="ct-cn">尺码</span>Les tailles</h2>
+      <div class="size-grid">
+        <div class="size-item spk" data-zh="小码"><div class="size-code">S</div><div class="size-zh">小码</div><div class="size-py">xiǎo mǎ</div></div>
+        <div class="size-item spk" data-zh="中码"><div class="size-code">M</div><div class="size-zh">中码</div><div class="size-py">zhōng mǎ</div></div>
+        <div class="size-item spk" data-zh="大码"><div class="size-code">L</div><div class="size-zh">大码</div><div class="size-py">dà mǎ</div></div>
+        <div class="size-item spk" data-zh="加大码"><div class="size-code">XL</div><div class="size-zh">加大码</div><div class="size-py">jiā dà mǎ</div></div>
+      </div>
+      <div class="hanzi-big hanzi-small spk" data-zh="可以试吗" style="margin-top:28px">可以试吗？</div>
+      <div class="pinyin-big">Kěyǐ shì ma?</div>
+      <div class="traduction-big">Je peux essayer ?</div>
+      <div class="note-formateur">🎙 En magasin : 有M码吗？(Vous avez du M ?) · 太大了 (trop grand) · 太小了 (trop petit) · 换一个 (échanger). En Chine les tailles taillent petit — prenez une taille au-dessus !</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Achats du voyageur</div>
+      <h2 class="card-title"><span class="ct-cn">日用品</span>En Chine, qu'acheter ?</h2>
+      <div class="product-grid">
+        <div class="product-item spk" data-zh="水"><div class="product-emoji">💧</div><div class="product-text"><div class="product-zh">水</div><div class="product-py">shuǐ</div><div class="product-fr">eau</div></div></div>
+        <div class="product-item spk" data-zh="充电宝"><div class="product-emoji">🔋</div><div class="product-text"><div class="product-zh">充电宝</div><div class="product-py">chōngdiànbǎo</div><div class="product-fr">batterie externe</div></div></div>
+        <div class="product-item spk" data-zh="电话卡"><div class="product-emoji">📱</div><div class="product-text"><div class="product-zh">电话卡</div><div class="product-py">diànhuàkǎ</div><div class="product-fr">carte SIM</div></div></div>
+        <div class="product-item spk" data-zh="药"><div class="product-emoji">💊</div><div class="product-text"><div class="product-zh">药</div><div class="product-py">yào</div><div class="product-fr">médicament</div></div></div>
+        <div class="product-item spk" data-zh="伞"><div class="product-emoji">☂️</div><div class="product-text"><div class="product-zh">伞</div><div class="product-py">sǎn</div><div class="product-fr">parapluie</div></div></div>
+        <div class="product-item spk" data-zh="纸巾"><div class="product-emoji">🧻</div><div class="product-text"><div class="product-zh">纸巾</div><div class="product-py">zhǐjīn</div><div class="product-fr">mouchoirs</div></div></div>
+        <div class="product-item spk" data-zh="茶叶"><div class="product-emoji">🍵</div><div class="product-text"><div class="product-zh">茶叶</div><div class="product-py">cháyè</div><div class="product-fr">thé</div></div></div>
+        <div class="product-item spk" data-zh="礼物"><div class="product-emoji">🎁</div><div class="product-text"><div class="product-zh">礼物</div><div class="product-py">lǐwù</div><div class="product-fr">cadeau</div></div></div>
+      </div>
+      <div class="note-formateur">🎙 充电宝 (power bank) : tout passe par le téléphone, indispensable. 纸巾 : les WC publics en fournissent rarement. 水 : premier mot, premier achat.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 04 · Achats business</div>
+      <h2 class="card-title"><span class="ct-cn">谈生意</span>Vocabulaire business</h2>
+      <div class="product-grid">
+        <div class="product-item spk" data-zh="样品"><div class="product-emoji">📦</div><div class="product-text"><div class="product-zh">样品</div><div class="product-py">yàngpǐn</div><div class="product-fr">échantillon</div></div></div>
+        <div class="product-item spk" data-zh="名片"><div class="product-emoji">🪪</div><div class="product-text"><div class="product-zh">名片</div><div class="product-py">míngpiàn</div><div class="product-fr">carte de visite</div></div></div>
+        <div class="product-item spk" data-zh="发票"><div class="product-emoji">🧾</div><div class="product-text"><div class="product-zh">发票</div><div class="product-py">fāpiào</div><div class="product-fr">facture</div></div></div>
+        <div class="product-item spk" data-zh="订单"><div class="product-emoji">📋</div><div class="product-text"><div class="product-zh">订单</div><div class="product-py">dìngdān</div><div class="product-fr">commande</div></div></div>
+        <div class="product-item spk" data-zh="合同"><div class="product-emoji">📝</div><div class="product-text"><div class="product-zh">合同</div><div class="product-py">hétong</div><div class="product-fr">contrat</div></div></div>
+        <div class="product-item spk" data-zh="价格"><div class="product-emoji">💰</div><div class="product-text"><div class="product-zh">价格</div><div class="product-py">jiàgé</div><div class="product-fr">prix (formel)</div></div></div>
+        <div class="product-item spk" data-zh="批发"><div class="product-emoji">🏭</div><div class="product-text"><div class="product-zh">批发</div><div class="product-py">pīfā</div><div class="product-fr">vente en gros</div></div></div>
+        <div class="product-item spk" data-zh="质量"><div class="product-emoji">✅</div><div class="product-text"><div class="product-zh">质量</div><div class="product-py">zhìliàng</div><div class="product-fr">qualité</div></div></div>
+      </div>
+      <div class="note-formateur">🎙 En salon : 你们有样品吗？ 发票 (fāpiào) : sans elle, pas de remboursement d'entreprise. 名片 : toujours donner et recevoir à deux mains.</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="4">
+    <div class="card-inner">
+      <div class="card-meta">Section 04 · Dialogue</div>
+      <h2 class="card-title">Au marché de Yuyuan</h2>
+      <div class="dialogue-scene">
+        <div class="dialogue-setting">📍 Marché de Yuyuan — Marc cherche un sac en cuir</div>
+        <div class="dialogue-body">
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">你好！这个包多少钱？</div><div class="dg-py">Nǐ hǎo! Zhège bāo duōshǎo qián?</div><div class="dg-fr">Bonjour ! Ce sac, combien ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">老板 🇨🇳</div><div class="dg-zh spk">三百块。</div><div class="dg-py">Sān bǎi kuài.</div><div class="dg-fr">300 yuans.</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">太贵了！便宜一点？</div><div class="dg-py">Tài guì le! Piányi yìdiǎn?</div><div class="dg-fr">Trop cher ! Un peu moins ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">老板 🇨🇳</div><div class="dg-zh spk">两百八。红的还是黑的？</div><div class="dg-py">Liǎng bǎi bā. Hóng de háishi hēi de?</div><div class="dg-fr">280. Rouge ou noir ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">黑的。可以试吗？</div><div class="dg-py">Hēi de. Kěyǐ shì ma?</div><div class="dg-fr">Noir. Je peux essayer ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">老板 🇨🇳</div><div class="dg-zh spk">可以！两百块，好不好？</div><div class="dg-py">Kěyǐ! Liǎng bǎi kuài, hǎo bù hǎo?</div><div class="dg-fr">Bien sûr ! 200 yuans, ça marche ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">好吧！</div><div class="dg-py">Hǎo ba!</div><div class="dg-fr">Allez, d'accord !</div></div>
+        </div>
+      </div>
+      <div class="kw-strip"><b>关键词</b> <span class="kz spk" data-zh="多少钱">多少钱</span> <em>duōshǎo qián</em> combien · <span class="kz spk" data-zh="太贵了">太贵了</span> <em>tài guì le</em> trop cher · <span class="kz spk" data-zh="便宜一点">便宜一点</span> <em>piányi yìdiǎn</em> moins cher · <span class="kz spk" data-zh="可以试吗">可以试吗</span> <em>kěyǐ shì ma</em> je peux essayer</div>
     </div>
   </section>
 
   <section class="slide slide-manuel" data-section="4">
-    <div class="doc-inner">
-      <div class="doc-meta">Section 04 · Manuel</div>
-      <h1>Premiers achats — Mémo</h1>
-
-      <h3>Acheter</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">买</td><td class="td-pinyin">mǎi</td><td>acheter (ton 3)</td></tr>
-        <tr><td class="td-hanzi">卖</td><td class="td-pinyin">mài</td><td>vendre (ton 4)</td></tr>
-        <tr><td class="td-hanzi">可以试吗？</td><td class="td-pinyin">Kěyǐ shì ma?</td><td>Je peux essayer ?</td></tr>
-        <tr><td class="td-hanzi">太大了</td><td class="td-pinyin">Tài dà le</td><td>Trop grand</td></tr>
-        <tr><td class="td-hanzi">太小了</td><td class="td-pinyin">Tài xiǎo le</td><td>Trop petit</td></tr>
-      </table>
-
-      <h3>Couleurs</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">红</td><td class="td-pinyin">hóng</td><td>rouge</td></tr>
-        <tr><td class="td-hanzi">黑</td><td class="td-pinyin">hēi</td><td>noir</td></tr>
-        <tr><td class="td-hanzi">白</td><td class="td-pinyin">bái</td><td>blanc</td></tr>
-        <tr><td class="td-hanzi">蓝</td><td class="td-pinyin">lán</td><td>bleu</td></tr>
-      </table>
-
-      <h3>Compter les prix</h3>
-      <div class="regle">Dizaines : chiffre + 十 → 二十 (20), 三十 (30)… 九十 (90)<br>Cent : 一百 (yì bǎi) · Deux cents : 两百 (liǎng bǎi) — pas 二百<br>Raccourci oral : 两百五 = 250 (le 十 est implicite)</div>
-
-      <div class="memo">⚠️ 买 (mǎi, ton 3) = acheter ≠ 卖 (mài, ton 4) = vendre. Un ton de différence ! Erreur classique et embarrassante.</div>
-
-      <div class="notes-perso">Mes notes : _______________________________________________</div>
-    </div>
-  </section>
-
-  <section class="slide slide-exercices" data-section="4">
-    <div class="doc-inner">
+    <div class="doc-inner ex-doc">
       <div class="doc-meta">Section 04 · Exercices</div>
       <h1>Exercices — Achats</h1>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Calcul</span> Exercice 1 — Dis le prix en chinois</div>
-        <div class="exercice-body">
-          <p>Écris ces prix en pinyin :</p>
-          <p>1. 45 元 → ___<br>
-          2. 88 块 → ___<br>
-          3. 120 元 → ___<br>
-          4. 250 块 → ___<br>
-          5. 300 元 → ___</p>
+      <div class="ex-2col">
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Calcul</span> Dis le prix</div>
+          <div class="exercice-body">
+            <p>Écris ces prix en pinyin :</p>
+            <p>1. 45 元 → ___</p>
+            <p>2. 88 块 → ___</p>
+            <p>3. 120 元 → ___</p>
+            <p>4. 250 块 → ___</p>
+          </div>
         </div>
-      </div>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 2 — Couleurs et tailles</div>
-        <div class="exercice-body">
-          <div class="match-list">
-            <div class="match-row"><span class="match-zh">红的</span><span class="match-dot">•</span><span class="match-fr">trop petit</span></div>
-            <div class="match-row"><span class="match-zh">大号</span><span class="match-dot">•</span><span class="match-fr">le rouge</span></div>
-            <div class="match-row"><span class="match-zh">太小了</span><span class="match-dot">•</span><span class="match-fr">le noir</span></div>
-            <div class="match-row"><span class="match-zh">黑的</span><span class="match-dot">•</span><span class="match-fr">grande taille</span></div>
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Associe</span> Couleurs &amp; tailles</div>
+          <div class="exercice-body">
+            <div class="match-list">
+              <div class="match-row"><span class="match-zh spk">红的</span><span class="match-dot">•</span><span class="match-fr">trop petit</span></div>
+              <div class="match-row"><span class="match-zh spk">大码</span><span class="match-dot">•</span><span class="match-fr">le rouge</span></div>
+              <div class="match-row"><span class="match-zh spk">太小了</span><span class="match-dot">•</span><span class="match-fr">le noir</span></div>
+              <div class="match-row"><span class="match-zh spk">黑的</span><span class="match-dot">•</span><span class="match-fr">grande taille</span></div>
+            </div>
           </div>
         </div>
       </div>
-
       <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Au marché (2 joueurs)</div>
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> La bonne affaire au marché (2 joueurs)</div>
         <div class="exercice-body">
-          <p><span class="role">Rôle A — Vendeur :</span> Choisis un objet, annonce un prix en centaines. Propose deux couleurs : ___的还是___的？</p>
-          <p><span class="role">Rôle B — Client :</span> Négocie (太贵了！便宜一点？), demande une taille (有没有大号的？), puis propose un prix final.</p>
-          <p><em>Inversez les rôles.</em></p>
+          <p><span class="role">A — Vendeur :</span> choisis un objet, annonce un prix en centaines, propose deux couleurs : <span class="zh">___的还是___的？</span></p>
+          <p><span class="role">B — Client :</span> négocie (<span class="zh">太贵了！便宜一点？</span>), demande une taille (<span class="zh">有没有大号的？</span>), propose un prix final. Inversez.</p>
         </div>
       </div>
-
       <div class="corrige">
         <h4>✅ Corrigé</h4>
-        <p><strong>Ex. 1 :</strong> 1. sì shí wǔ yuán · 2. bāshí bā kuài · 3. yì bǎi èr shí yuán · 4. liǎng bǎi wǔ shí kuài · 5. sān bǎi yuán</p>
-        <p><strong>Ex. 2 :</strong> 红的 → le rouge · 大号 → grande taille · 太小了 → trop petit · 黑的 → le noir</p>
-        <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier les prix et couleurs.</p>
+        <p><strong>Calcul :</strong> 1. <em>sì shí wǔ yuán</em> · 2. <em>bāshí bā kuài</em> · 3. <em>yì bǎi èr shí yuán</em> · 4. <em>liǎng bǎi wǔ shí kuài</em></p>
+        <p><strong>Associe :</strong> <span class="zh">红的</span> → le rouge · <span class="zh">大码</span> → grande taille · <span class="zh">太小了</span> → trop petit · <span class="zh">黑的</span> → le noir</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- §5 · SORTIES & TEMPS LIBRE -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════ §5 · 应酬 — SORTIES & TEMPS LIBRE ═══════════ -->
   <section class="slide slide-section" data-section="5">
     <div class="section-inner">
       <div class="section-num">05</div>
+      <div class="section-cn spk">应酬</div>
       <div class="section-label">Section cinq</div>
       <h2>Sorties &amp; temps libre</h2>
       <div class="section-desc">Inviter, planifier, et se battre pour payer l'addition — la vraie vie en Chine</div>
@@ -1268,207 +860,130 @@
   </section>
 
   <section class="slide slide-card" data-section="5">
-    <div class="card-inner">
-      <div class="card-meta">Section 05 · Diapo 1</div>
-      <h2 class="card-title">Aujourd'hui, demain, hier</h2>
-      <div class="hanzi-big">今天<br>明天<br>昨天</div>
-      <div class="pinyin-big">jīntiān · míngtiān · zuótiān</div>
-      <div class="traduction-big">aujourd'hui · demain · hier</div>
-      <div class="note-formateur">🎙 Remarquez la logique : tous finissent par 天 (tiān = jour). 今 = maintenant, 明 = lumière/prochain, 昨 = passé. Le chinois est souvent plus logique que le français !</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="5">
-    <div class="card-inner">
-      <div class="card-meta">Section 05 · Diapo 2</div>
-      <h2 class="card-title">Quelle heure ? Maintenant !</h2>
-      <div class="hanzi-big">几点？<br>现在</div>
-      <div class="pinyin-big">Jǐ diǎn? · Xiànzài</div>
-      <div class="traduction-big">Quelle heure ? · Maintenant</div>
-      <div class="note-formateur">🎙 Pour dire l'heure : chiffre + 点 (diǎn). Six heures = 六点 (liù diǎn). Sept heures et demie = 七点半 (qī diǎn bàn). Le soir = 晚上 (wǎnshang).</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="5">
-    <div class="card-inner">
-      <div class="card-meta">Section 05 · Diapo 3</div>
-      <h2 class="card-title">Inviter quelqu'un</h2>
-      <div class="hanzi-big hanzi-medium">一起去吗？<br>好啊！</div>
-      <div class="pinyin-big">Yìqǐ qù ma? · Hǎo a!</div>
-      <div class="traduction-big">On y va ensemble ? · Oui, super !</div>
-      <div class="note-formateur">🎙 一起 (yìqǐ) = ensemble. 去 (qù) = aller. Structure complète : 今天晚上一起去吃饭吗？(On va dîner ensemble ce soir ?). Réponse enthousiaste : 好啊！</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="5">
-    <div class="card-inner">
-      <div class="card-meta">Section 05 · Diapo 4</div>
-      <h2 class="card-title">Réactions de fin de soirée</h2>
-      <div class="hanzi-big">好玩！<br>累了。<br>回酒店。</div>
-      <div class="pinyin-big">Hǎowán! · Lèi le. · Huí jiǔdiàn.</div>
-      <div class="traduction-big">C'était fun ! · Je suis fatigué. · Retour à l'hôtel.</div>
-      <div class="note-formateur">🎙 好玩 (hǎowán) = amusant, fun. 累 (lèi) = fatigué. 回 (huí) = retourner. Ces trois mots résument la fin de soirée parfaite en Chine.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="5">
-    <div class="card-inner">
-      <div class="card-meta">Section 05 · Diapo 5 · Code culturel</div>
-      <h2 class="card-title">Se battre pour l'addition — 抢着买单</h2>
-      <div class="hanzi-big hanzi-small">我来买单！<br>不不不，我请你！</div>
-      <div class="pinyin-big">Wǒ lái mǎi dān! · Bù bù bù, wǒ qǐng nǐ!</div>
-      <div class="traduction-big">C'est moi qui paie ! · Non non non, c'est moi qui invite !</div>
-      <div class="note-formateur">🎙 En Chine, se battre pour payer est un RITUEL. Ne pas proposer de payer = impoli. Celui qui invite (请 qǐng) gagne du 面子 (miànzi = « face »). Si on vous invite, dites 下次我请！(Xià cì wǒ qǐng! = La prochaine fois c'est moi !)</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="5">
-    <div class="card-inner">
-      <div class="card-meta">Section 05 · Diapo 6 · Dialogue</div>
-      <h2 class="card-title">Dialogue — Invitation à dîner</h2>
-      <div class="dialogue-scene">
-        <div class="dialogue-setting">📍 Après une réunion à Shanghai — Li Ming invite Marc</div>
-        <div class="dialogue-body">
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">李明 🇨🇳</div>
-            <div class="dg-zh">今天晚上一起去吃饭吗？</div>
-            <div class="dg-py">Jīntiān wǎnshang yìqǐ qù chīfàn ma?</div>
-            <div class="dg-fr">On va dîner ensemble ce soir ?</div>
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 05 · Points de langue</div>
+      <h2 class="card-title"><span class="ct-cn">点睛</span>Inviter, planifier, trinquer</h2>
+      <div class="langpoints">
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="时间">时间</span><span class="lp-gloss">les repères de temps</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="今天"><span class="c-zh">今天</span><span class="c-fr">aujourd'hui</span></span>
+            <span class="chip spk" data-zh="明天"><span class="c-zh">明天</span><span class="c-fr">demain</span></span>
+            <span class="chip spk" data-zh="昨天"><span class="c-zh">昨天</span><span class="c-fr">hier</span></span>
+            <span class="chip spk" data-zh="现在"><span class="c-zh">现在</span><span class="c-fr">maintenant</span></span>
+            <span class="chip spk" data-zh="晚上"><span class="c-zh">晚上</span><span class="c-fr">le soir</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">好啊！去哪里？</div>
-            <div class="dg-py">Hǎo a! Qù nǎlǐ?</div>
-            <div class="dg-fr">Oui ! On va où ?</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="几点">几点</span><span class="lp-gloss">dire l'heure</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="几点"><span class="c-zh">几点</span><span class="c-fr">quelle heure</span></span>
+            <span class="chip spk" data-zh="六点"><span class="c-zh">六点</span><span class="c-fr">6 h</span></span>
+            <span class="chip spk" data-zh="七点半"><span class="c-zh">七点半</span><span class="c-fr">7 h 30</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">李明 🇨🇳</div>
-            <div class="dg-zh">一个很好吃的地方。六点，好吗？</div>
-            <div class="dg-py">Yí gè hěn hǎo chī de dìfang. Liù diǎn, hǎo ma?</div>
-            <div class="dg-fr">Un endroit très bon. 6 heures, OK ?</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="邀请">邀请</span><span class="lp-gloss">inviter</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="一起去吗"><span class="c-zh">一起去吗</span><span class="c-fr">on y va ensemble</span></span>
+            <span class="chip spk" data-zh="一起吃饭"><span class="c-zh">一起吃饭</span><span class="c-fr">dîner ensemble</span></span>
+            <span class="chip spk" data-zh="好啊"><span class="c-zh">好啊</span><span class="c-fr">oui, super</span></span>
           </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">好的！</div>
-            <div class="dg-py">Hǎo de!</div>
-            <div class="dg-fr">D'accord !</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="反应">反应</span><span class="lp-gloss">réactions</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="好玩"><span class="c-zh">好玩</span><span class="c-fr">fun</span></span>
+            <span class="chip spk" data-zh="好吃"><span class="c-zh">好吃</span><span class="c-fr">délicieux</span></span>
+            <span class="chip spk" data-zh="累了"><span class="c-zh">累了</span><span class="c-fr">fatigué</span></span>
+            <span class="chip spk" data-zh="回酒店"><span class="c-zh">回酒店</span><span class="c-fr">rentrer à l'hôtel</span></span>
           </div>
-          <div class="dialogue-pause">— après le dîner —</div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">好吃！我来买单！</div>
-            <div class="dg-py">Hǎo chī! Wǒ lái mǎi dān!</div>
-            <div class="dg-fr">Délicieux ! C'est moi qui paie !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-cn">李明 🇨🇳</div>
-            <div class="dg-zh">不不不，我请你！</div>
-            <div class="dg-py">Bù bù bù, wǒ qǐng nǐ!</div>
-            <div class="dg-fr">Non non non, c'est moi qui invite !</div>
-          </div>
-          <div class="dialogue-line">
-            <div class="speaker speaker-fr">Marc 🇫🇷</div>
-            <div class="dg-zh">谢谢！下次我请！今天很好玩！</div>
-            <div class="dg-py">Xièxie! Xià cì wǒ qǐng! Jīntiān hěn hǎowán!</div>
-            <div class="dg-fr">Merci ! La prochaine fois c'est moi ! C'était super !</div>
+        </div>
+        <div class="langpoint">
+          <div class="langpoint-frame"><span class="lp-pivot spk" data-zh="买单之争">买单之争</span><span class="lp-gloss">la bataille de l'addition</span></div>
+          <div class="chips">
+            <span class="chip spk" data-zh="我来买单"><span class="c-zh">我来买单</span><span class="c-fr">c'est moi qui paie</span></span>
+            <span class="chip spk" data-zh="我请你"><span class="c-zh">我请你</span><span class="c-fr">je t'invite</span></span>
+            <span class="chip spk" data-zh="下次我请"><span class="c-zh">下次我请</span><span class="c-fr">la prochaine c'est moi</span></span>
           </div>
         </div>
       </div>
+      <div class="note-formateur cult">🎭 <b>Se battre pour l'addition</b> (抢着买单) est un RITUEL. Ne pas proposer = impoli. Celui qui invite (请) gagne du 面子 (« la face »). Si on vous invite, dites 下次我请！</div>
+    </div>
+  </section>
+
+  <section class="slide slide-card" data-section="5">
+    <div class="card-inner">
+      <div class="card-meta">Section 05 · Dialogue</div>
+      <h2 class="card-title">Invitation à dîner</h2>
+      <div class="dialogue-scene">
+        <div class="dialogue-setting">📍 Après une réunion à Shanghai — Li Ming invite Marc</div>
+        <div class="dialogue-body">
+          <div class="dialogue-line"><div class="speaker speaker-cn">李明 🇨🇳</div><div class="dg-zh spk">今天晚上一起去吃饭吗？</div><div class="dg-py">Jīntiān wǎnshang yìqǐ qù chīfàn ma?</div><div class="dg-fr">On va dîner ensemble ce soir ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">好啊！去哪里？</div><div class="dg-py">Hǎo a! Qù nǎlǐ?</div><div class="dg-fr">Oui ! On va où ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">李明 🇨🇳</div><div class="dg-zh spk">一个很好吃的地方。六点，好吗？</div><div class="dg-py">Yí gè hěn hǎo chī de dìfang. Liù diǎn, hǎo ma?</div><div class="dg-fr">Un endroit très bon. 6 heures, OK ?</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">好的！</div><div class="dg-py">Hǎo de!</div><div class="dg-fr">D'accord !</div></div>
+          <div class="dialogue-pause">— après le dîner —</div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">好吃！我来买单！</div><div class="dg-py">Hǎo chī! Wǒ lái mǎi dān!</div><div class="dg-fr">Délicieux ! C'est moi qui paie !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-cn">李明 🇨🇳</div><div class="dg-zh spk">不不不，我请你！</div><div class="dg-py">Bù bù bù, wǒ qǐng nǐ!</div><div class="dg-fr">Non non non, c'est moi qui invite !</div></div>
+          <div class="dialogue-line"><div class="speaker speaker-fr">Marc 🇫🇷</div><div class="dg-zh spk">谢谢！下次我请！今天很好玩！</div><div class="dg-py">Xièxie! Xià cì wǒ qǐng! Jīntiān hěn hǎowán!</div><div class="dg-fr">Merci ! La prochaine fois c'est moi ! C'était super !</div></div>
+        </div>
+      </div>
+      <div class="kw-strip"><b>关键词</b> <span class="kz spk" data-zh="一起">一起</span> <em>yìqǐ</em> ensemble · <span class="kz spk" data-zh="吃饭">吃饭</span> <em>chīfàn</em> dîner · <span class="kz spk" data-zh="几点">几点</span> <em>jǐ diǎn</em> quelle heure · <span class="kz spk" data-zh="我请你">我请你</span> <em>wǒ qǐng nǐ</em> je t'invite · <span class="kz spk" data-zh="下次我请">下次我请</span> <em>xià cì wǒ qǐng</em> la prochaine c'est moi</div>
     </div>
   </section>
 
   <section class="slide slide-manuel" data-section="5">
-    <div class="doc-inner">
-      <div class="doc-meta">Section 05 · Manuel</div>
-      <h1>Sorties &amp; temps libre — Mémo</h1>
-
-      <h3>Le temps</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">今天</td><td class="td-pinyin">jīntiān</td><td>aujourd'hui</td></tr>
-        <tr><td class="td-hanzi">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
-        <tr><td class="td-hanzi">昨天</td><td class="td-pinyin">zuótiān</td><td>hier</td></tr>
-        <tr><td class="td-hanzi">晚上</td><td class="td-pinyin">wǎnshang</td><td>le soir</td></tr>
-        <tr><td class="td-hanzi">几点？</td><td class="td-pinyin">Jǐ diǎn?</td><td>Quelle heure ?</td></tr>
-        <tr><td class="td-hanzi">现在</td><td class="td-pinyin">xiànzài</td><td>maintenant</td></tr>
-      </table>
-
-      <h3>Inviter &amp; réagir</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">一起</td><td class="td-pinyin">yìqǐ</td><td>ensemble</td></tr>
-        <tr><td class="td-hanzi">吃饭</td><td class="td-pinyin">chīfàn</td><td>manger / dîner</td></tr>
-        <tr><td class="td-hanzi">好玩</td><td class="td-pinyin">hǎowán</td><td>fun / amusant</td></tr>
-        <tr><td class="td-hanzi">累了</td><td class="td-pinyin">lèi le</td><td>fatigué</td></tr>
-        <tr><td class="td-hanzi">回</td><td class="td-pinyin">huí</td><td>retourner</td></tr>
-      </table>
-
-      <h3>Payer l'addition</h3>
-      <div class="regle">我来买单！(Wǒ lái mǎi dān!) = C'est moi qui paie !<br>我请你！(Wǒ qǐng nǐ!) = Je t'invite !<br>下次我请！(Xià cì wǒ qǐng!) = La prochaine fois c'est moi !</div>
-
-      <div class="memo">🎭 Se battre pour l'addition (抢着买单 qiǎngzhe mǎi dān) est un RITUEL social en Chine. Ne pas proposer de payer = impoli. Celui qui paie gagne du 面子 (miànzi = « face »). Laissez votre hôte chinois gagner, puis dites 下次我请！</div>
-
-      <div class="notes-perso">Mes notes : _______________________________________________</div>
-    </div>
-  </section>
-
-  <section class="slide slide-exercices" data-section="5">
-    <div class="doc-inner">
+    <div class="doc-inner ex-doc">
       <div class="doc-meta">Section 05 · Exercices</div>
       <h1>Exercices — Sorties</h1>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Association</span> Exercice 1 — Le temps</div>
-        <div class="exercice-body">
-          <div class="match-list">
-            <div class="match-row"><span class="match-zh">今天</span><span class="match-dot">•</span><span class="match-fr">hier</span></div>
-            <div class="match-row"><span class="match-zh">昨天</span><span class="match-dot">•</span><span class="match-fr">maintenant</span></div>
-            <div class="match-row"><span class="match-zh">明天</span><span class="match-dot">•</span><span class="match-fr">aujourd'hui</span></div>
-            <div class="match-row"><span class="match-zh">现在</span><span class="match-dot">•</span><span class="match-fr">demain</span></div>
-            <div class="match-row"><span class="match-zh">晚上</span><span class="match-dot">•</span><span class="match-fr">le soir</span></div>
+      <div class="ex-2col">
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">Associe</span> Le temps</div>
+          <div class="exercice-body">
+            <div class="match-list">
+              <div class="match-row"><span class="match-zh spk">今天</span><span class="match-dot">•</span><span class="match-fr">hier</span></div>
+              <div class="match-row"><span class="match-zh spk">昨天</span><span class="match-dot">•</span><span class="match-fr">maintenant</span></div>
+              <div class="match-row"><span class="match-zh spk">明天</span><span class="match-dot">•</span><span class="match-fr">aujourd'hui</span></div>
+              <div class="match-row"><span class="match-zh spk">现在</span><span class="match-dot">•</span><span class="match-fr">demain</span></div>
+              <div class="match-row"><span class="match-zh spk">晚上</span><span class="match-dot">•</span><span class="match-fr">le soir</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="exercice">
+          <div class="exercice-header"><span class="exercice-type">À trous</span> L'invitation</div>
+          <div class="exercice-body">
+            <p>一起 / 好啊 / 几点 / 吃饭 / 我请你</p>
+            <p>— <span class="zh">___去___吗？</span></p>
+            <p>— <span class="zh">___！___？</span></p>
+            <p>— <span class="zh">六点。</span></p>
+            <p>— <span class="zh">我来买单！</span></p>
+            <p>— <span class="zh">不不不，___！</span></p>
           </div>
         </div>
       </div>
-
       <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Texte à trous</span> Exercice 2 — L'invitation</div>
+        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Le dîner business (2 joueurs)</div>
         <div class="exercice-body">
-          <p>Complète avec : <strong>一起 / 好啊 / 几点 / 吃饭 / 我请你</strong></p>
-          <p>— ______去______吗？ <em>(On va manger ensemble ?)</em><br>
-          — ______！______？ <em>(Oui ! À quelle heure ?)</em><br>
-          — 六点。<br>
-          (après le dîner)<br>
-          — 我来买单！<br>
-          — 不不不，______！ <em>(c'est moi qui invite !)</em></p>
+          <p><span class="role">A — Collègue chinois :</span> invite B à dîner ce soir, propose une heure. Après le repas, insiste pour payer.</p>
+          <p><span class="role">B — Entrepreneur :</span> accepte, propose de payer (<span class="zh">我来买单！</span>), puis cède : <span class="zh">下次我请！今天很好玩！</span> Inversez.</p>
         </div>
       </div>
-
-      <div class="exercice">
-        <div class="exercice-header"><span class="exercice-type">Jeu de rôle</span> Exercice 3 — Le dîner business (2 joueurs)</div>
-        <div class="exercice-body">
-          <p><span class="role">Rôle A — Collègue chinois :</span> Invite B à dîner ce soir. Propose une heure. Après le repas, insiste pour payer.</p>
-          <p><span class="role">Rôle B — Entrepreneur français :</span> Accepte. Après le repas, propose de payer (我来买单！). Quand A insiste, cède et dis : 下次我请！今天很好玩！</p>
-          <p><em>Inversez les rôles.</em></p>
-        </div>
-      </div>
-
       <div class="corrige">
         <h4>✅ Corrigé</h4>
-        <p><strong>Ex. 1 :</strong> 今天 → aujourd'hui · 昨天 → hier · 明天 → demain · 现在 → maintenant · 晚上 → le soir</p>
-        <p><strong>Ex. 2 :</strong> 一起 · 吃饭 · 好啊 · 几点 · 我请你</p>
-        <p><strong>Ex. 3 :</strong> Jeu de rôle oral — vérifier le rituel de l'addition.</p>
+        <p><strong>Associe :</strong> <span class="zh">今天</span> → aujourd'hui · <span class="zh">昨天</span> → hier · <span class="zh">明天</span> → demain · <span class="zh">现在</span> → maintenant · <span class="zh">晚上</span> → le soir</p>
+        <p><strong>À trous :</strong> <span class="zh">一起 · 吃饭 · 好啊 · 几点 · 我请你</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!-- §6 · VOCABULAIRE ESSENTIEL & ÉCRITURE -->
-  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════ §6 · 词汇与汉字 — VOCABULAIRE & ÉCRITURE ═══════════ -->
   <section class="slide slide-section" data-section="6">
     <div class="section-inner">
       <div class="section-num">06</div>
+      <div class="section-cn spk">词汇与汉字</div>
       <div class="section-label">Section six</div>
-      <h2>Vocabulaire &amp; Écriture</h2>
+      <h2>Vocabulaire &amp; écriture</h2>
       <div class="section-desc">Les mots à connaître par cœur et les 10 caractères à savoir écrire</div>
       <div class="section-rule"></div>
     </div>
@@ -1476,126 +991,127 @@
 
   <section class="slide slide-manuel" data-section="6">
     <div class="doc-inner">
-      <div class="doc-meta">Section 06 · Vocabulaire à retenir</div>
-      <h1>Liste de vocabulaire — Session 3</h1>
-
-      <h3>Directions &amp; lieux</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">左</td><td class="td-pinyin">zuǒ</td><td>gauche</td></tr>
-        <tr><td class="td-hanzi">右</td><td class="td-pinyin">yòu</td><td>droite</td></tr>
-        <tr><td class="td-hanzi">前</td><td class="td-pinyin">qián</td><td>devant</td></tr>
-        <tr><td class="td-hanzi">后</td><td class="td-pinyin">hòu</td><td>derrière</td></tr>
-        <tr><td class="td-hanzi">走</td><td class="td-pinyin">zǒu</td><td>marcher</td></tr>
-        <tr><td class="td-hanzi">远</td><td class="td-pinyin">yuǎn</td><td>loin</td></tr>
-        <tr><td class="td-hanzi">酒店</td><td class="td-pinyin">jiǔdiàn</td><td>hôtel</td></tr>
-        <tr><td class="td-hanzi">地铁站</td><td class="td-pinyin">dìtiě zhàn</td><td>station de métro</td></tr>
-        <tr><td class="td-hanzi">厕所</td><td class="td-pinyin">cèsuǒ</td><td>toilettes</td></tr>
-      </table>
-
-      <h3>Questions &amp; communication</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">什么</td><td class="td-pinyin">shénme</td><td>quoi</td></tr>
-        <tr><td class="td-hanzi">怎么</td><td class="td-pinyin">zěnme</td><td>comment</td></tr>
-        <tr><td class="td-hanzi">哪里</td><td class="td-pinyin">nǎlǐ</td><td>où</td></tr>
-        <tr><td class="td-hanzi">可以</td><td class="td-pinyin">kěyǐ</td><td>pouvoir / possible</td></tr>
-        <tr><td class="td-hanzi">有</td><td class="td-pinyin">yǒu</td><td>avoir / il y a</td></tr>
-        <tr><td class="td-hanzi">没有</td><td class="td-pinyin">méiyǒu</td><td>ne pas avoir</td></tr>
-        <tr><td class="td-hanzi">懂</td><td class="td-pinyin">dǒng</td><td>comprendre</td></tr>
-        <tr><td class="td-hanzi">说</td><td class="td-pinyin">shuō</td><td>dire / parler</td></tr>
-        <tr><td class="td-hanzi">听</td><td class="td-pinyin">tīng</td><td>écouter / entendre</td></tr>
-      </table>
-
-      <h3>Paiement &amp; achats</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">买</td><td class="td-pinyin">mǎi</td><td>acheter</td></tr>
-        <tr><td class="td-hanzi">扫码</td><td class="td-pinyin">sǎo mǎ</td><td>scanner le QR code</td></tr>
-        <tr><td class="td-hanzi">现金</td><td class="td-pinyin">xiànjīn</td><td>cash / espèces</td></tr>
-        <tr><td class="td-hanzi">块</td><td class="td-pinyin">kuài</td><td>yuan (familier)</td></tr>
-        <tr><td class="td-hanzi">百</td><td class="td-pinyin">bǎi</td><td>cent</td></tr>
-        <tr><td class="td-hanzi">大</td><td class="td-pinyin">dà</td><td>grand</td></tr>
-        <tr><td class="td-hanzi">小</td><td class="td-pinyin">xiǎo</td><td>petit</td></tr>
-        <tr><td class="td-hanzi">红</td><td class="td-pinyin">hóng</td><td>rouge</td></tr>
-        <tr><td class="td-hanzi">黑</td><td class="td-pinyin">hēi</td><td>noir</td></tr>
-        <tr><td class="td-hanzi">白</td><td class="td-pinyin">bái</td><td>blanc</td></tr>
-      </table>
-
-      <h3>Temps &amp; social</h3>
-      <table class="vocab-table">
-        <tr><th>Chinois</th><th>Pinyin</th><th>Français</th></tr>
-        <tr><td class="td-hanzi">今天</td><td class="td-pinyin">jīntiān</td><td>aujourd'hui</td></tr>
-        <tr><td class="td-hanzi">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
-        <tr><td class="td-hanzi">现在</td><td class="td-pinyin">xiànzài</td><td>maintenant</td></tr>
-        <tr><td class="td-hanzi">几点</td><td class="td-pinyin">jǐ diǎn</td><td>quelle heure</td></tr>
-        <tr><td class="td-hanzi">一起</td><td class="td-pinyin">yìqǐ</td><td>ensemble</td></tr>
-        <tr><td class="td-hanzi">回</td><td class="td-pinyin">huí</td><td>retourner</td></tr>
-        <tr><td class="td-hanzi">累</td><td class="td-pinyin">lèi</td><td>fatigué</td></tr>
-      </table>
+      <div class="doc-meta">Section 06 · À connaître par cœur</div>
+      <h1>Vocabulaire essentiel</h1>
+      <div class="vocab-grid">
+        <div>
+          <h3><span class="h3-cn">问路</span>Directions &amp; lieux</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">左 / 右</td><td class="td-pinyin">zuǒ / yòu</td><td>gauche / droite</td></tr>
+            <tr><td class="td-hanzi spk">前 / 后</td><td class="td-pinyin">qián / hòu</td><td>devant / derrière</td></tr>
+            <tr><td class="td-hanzi spk">走</td><td class="td-pinyin">zǒu</td><td>marcher</td></tr>
+            <tr><td class="td-hanzi spk">远</td><td class="td-pinyin">yuǎn</td><td>loin</td></tr>
+            <tr><td class="td-hanzi spk">酒店</td><td class="td-pinyin">jiǔdiàn</td><td>hôtel</td></tr>
+            <tr><td class="td-hanzi spk">地铁站</td><td class="td-pinyin">dìtiě zhàn</td><td>métro</td></tr>
+            <tr><td class="td-hanzi spk">厕所</td><td class="td-pinyin">cèsuǒ</td><td>toilettes</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">沟通</span>Questions</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">什么</td><td class="td-pinyin">shénme</td><td>quoi</td></tr>
+            <tr><td class="td-hanzi spk">怎么</td><td class="td-pinyin">zěnme</td><td>comment</td></tr>
+            <tr><td class="td-hanzi spk">哪里</td><td class="td-pinyin">nǎlǐ</td><td>où</td></tr>
+            <tr><td class="td-hanzi spk">可以</td><td class="td-pinyin">kěyǐ</td><td>pouvoir</td></tr>
+            <tr><td class="td-hanzi spk">有 / 没有</td><td class="td-pinyin">yǒu / méiyǒu</td><td>avoir / ne pas</td></tr>
+            <tr><td class="td-hanzi spk">懂</td><td class="td-pinyin">dǒng</td><td>comprendre</td></tr>
+            <tr><td class="td-hanzi spk">说 / 听</td><td class="td-pinyin">shuō / tīng</td><td>dire / écouter</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">支付</span>Paiement &amp; achats</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">买</td><td class="td-pinyin">mǎi</td><td>acheter</td></tr>
+            <tr><td class="td-hanzi spk">扫码</td><td class="td-pinyin">sǎo mǎ</td><td>scanner le QR</td></tr>
+            <tr><td class="td-hanzi spk">现金</td><td class="td-pinyin">xiànjīn</td><td>cash</td></tr>
+            <tr><td class="td-hanzi spk">块 / 元</td><td class="td-pinyin">kuài / yuán</td><td>yuan</td></tr>
+            <tr><td class="td-hanzi spk">百</td><td class="td-pinyin">bǎi</td><td>cent</td></tr>
+            <tr><td class="td-hanzi spk">大 / 小</td><td class="td-pinyin">dà / xiǎo</td><td>grand / petit</td></tr>
+            <tr><td class="td-hanzi spk">红 / 黑 / 白</td><td class="td-pinyin">hóng/hēi/bái</td><td>rouge/noir/blanc</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">应酬</span>Temps &amp; social</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">今天</td><td class="td-pinyin">jīntiān</td><td>aujourd'hui</td></tr>
+            <tr><td class="td-hanzi spk">明天</td><td class="td-pinyin">míngtiān</td><td>demain</td></tr>
+            <tr><td class="td-hanzi spk">现在</td><td class="td-pinyin">xiànzài</td><td>maintenant</td></tr>
+            <tr><td class="td-hanzi spk">几点</td><td class="td-pinyin">jǐ diǎn</td><td>quelle heure</td></tr>
+            <tr><td class="td-hanzi spk">一起</td><td class="td-pinyin">yìqǐ</td><td>ensemble</td></tr>
+            <tr><td class="td-hanzi spk">回</td><td class="td-pinyin">huí</td><td>retourner</td></tr>
+            <tr><td class="td-hanzi spk">累</td><td class="td-pinyin">lèi</td><td>fatigué</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">付钱</span>Phrases de paiement</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">买单</td><td class="td-pinyin">mǎi dān</td><td>l'addition</td></tr>
+            <tr><td class="td-hanzi spk">一共</td><td class="td-pinyin">yígòng</td><td>au total</td></tr>
+            <tr><td class="td-hanzi spk">微信支付</td><td class="td-pinyin">Wēixìn zhīfù</td><td>WeChat Pay</td></tr>
+            <tr><td class="td-hanzi spk">支付宝</td><td class="td-pinyin">Zhīfùbǎo</td><td>Alipay</td></tr>
+            <tr><td class="td-hanzi spk">红包</td><td class="td-pinyin">hóngbāo</td><td>enveloppe rouge</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3><span class="h3-cn">购物</span>Au magasin</h3>
+          <table class="vocab-table">
+            <tr><td class="td-hanzi spk">多少钱</td><td class="td-pinyin">duōshǎo qián</td><td>combien ?</td></tr>
+            <tr><td class="td-hanzi spk">太贵了</td><td class="td-pinyin">tài guì le</td><td>trop cher</td></tr>
+            <tr><td class="td-hanzi spk">便宜一点</td><td class="td-pinyin">piányi yìdiǎn</td><td>moins cher</td></tr>
+            <tr><td class="td-hanzi spk">可以试吗</td><td class="td-pinyin">kěyǐ shì ma</td><td>je peux essayer</td></tr>
+            <tr><td class="td-hanzi spk">辣 / 不辣</td><td class="td-pinyin">là / bú là</td><td>épicé / non</td></tr>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="slide slide-card" data-section="6">
-    <div class="card-inner">
-      <div class="card-meta">Section 06 · Écriture 1/3</div>
-      <h2 class="card-title">Écrire — Gauche, Droite, Grand, Petit</h2>
-      <div class="hanzi-stroke">左 右 大 小</div>
-      <div class="pinyin-big">zuǒ (5 traits) · yòu (5 traits) · dà (3 traits) · xiǎo (3 traits)</div>
-      <div class="note-formateur">🎙 左 et 右 se ressemblent mais attention : 左 commence par un trait horizontal puis un trait tombant ; 右 commence par le trait tombant puis l'horizontal. 大 = une personne bras écartés. 小 = un trait vertical + deux petites gouttes.</div>
+    <div class="card-inner card-wide">
+      <div class="card-meta">Section 06 · À savoir écrire</div>
+      <h2 class="card-title"><span class="ct-cn">汉字</span>Les 10 caractères</h2>
+      <div class="char-grid">
+        <div class="char-card spk" data-zh="左"><div class="char-big">左</div><div class="char-py">zuǒ</div><div class="char-fr">gauche</div><div class="char-strokes">5 traits</div></div>
+        <div class="char-card spk" data-zh="右"><div class="char-big">右</div><div class="char-py">yòu</div><div class="char-fr">droite</div><div class="char-strokes">5 traits</div></div>
+        <div class="char-card spk" data-zh="大"><div class="char-big">大</div><div class="char-py">dà</div><div class="char-fr">grand</div><div class="char-strokes">3 traits</div></div>
+        <div class="char-card spk" data-zh="小"><div class="char-big">小</div><div class="char-py">xiǎo</div><div class="char-fr">petit</div><div class="char-strokes">3 traits</div></div>
+        <div class="char-card spk" data-zh="买"><div class="char-big">买</div><div class="char-py">mǎi</div><div class="char-fr">acheter</div><div class="char-strokes">6 traits</div></div>
+        <div class="char-card spk" data-zh="元"><div class="char-big">元</div><div class="char-py">yuán</div><div class="char-fr">yuan</div><div class="char-strokes">4 traits</div></div>
+        <div class="char-card spk" data-zh="今"><div class="char-big">今</div><div class="char-py">jīn</div><div class="char-fr">maintenant</div><div class="char-strokes">4 traits</div></div>
+        <div class="char-card spk" data-zh="天"><div class="char-big">天</div><div class="char-py">tiān</div><div class="char-fr">jour / ciel</div><div class="char-strokes">4 traits</div></div>
+        <div class="char-card spk" data-zh="走"><div class="char-big">走</div><div class="char-py">zǒu</div><div class="char-fr">marcher</div><div class="char-strokes">7 traits</div></div>
+        <div class="char-card spk" data-zh="回"><div class="char-big">回</div><div class="char-py">huí</div><div class="char-fr">revenir</div><div class="char-strokes">6 traits</div></div>
+      </div>
+      <div class="regle">🧠 <b>Astuces :</b> <span class="zh">大</span> = une personne bras écartés (grand !) · <span class="zh">小</span> = un trait + deux gouttes (tout petit) · <span class="zh">天</span> = une personne (大) avec un chapeau = le ciel · <span class="zh">回</span> = un carré dans un carré = revenir au point de départ · <span class="zh">走</span> = la partie basse = des jambes en mouvement.</div>
     </div>
   </section>
 
-  <section class="slide slide-card" data-section="6">
-    <div class="card-inner">
-      <div class="card-meta">Section 06 · Écriture 2/3</div>
-      <h2 class="card-title">Écrire — Acheter &amp; Yuan</h2>
-      <div class="hanzi-stroke">买 元</div>
-      <div class="pinyin-big">mǎi (6 traits) · yuán (4 traits)</div>
-      <div class="traduction-big">acheter · yuan (unité monétaire)</div>
-      <div class="note-formateur">🎙 买 (acheter) : partie haute = tête simplifiée, partie basse = deux jambes. 元 : 4 traits seulement, l'un des plus simples. On le voit partout sur les billets et étiquettes de prix.</div>
-    </div>
-  </section>
-
-  <section class="slide slide-card" data-section="6">
-    <div class="card-inner">
-      <div class="card-meta">Section 06 · Écriture 3/3</div>
-      <h2 class="card-title">Écrire — Aujourd'hui, Marcher, Revenir</h2>
-      <div class="hanzi-stroke">今 天 走 回</div>
-      <div class="pinyin-big">jīn (4 traits) · tiān (4 traits) · zǒu (7 traits) · huí (6 traits)</div>
-      <div class="note-formateur">🎙 今 + 天 = aujourd'hui (今天). 天 = une personne avec un grand chapeau (le ciel !). 走 = courir/marcher, la partie basse ressemble à des jambes. 回 = un carré dans un carré, comme revenir à son point de départ.</div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════ -->
   <!-- BILAN -->
-  <!-- ═══════════════════════════════════════════════════ -->
   <section class="slide slide-bilan" data-section="7">
     <div class="bilan-inner">
-      <div class="bilan-mark">完 成</div>
+      <div class="bilan-mark spk">完 成</div>
       <h2>Bilan de la session</h2>
       <div class="recap-grid">
-        <div class="recap-item"><span class="num">01</span><span>Demander son chemin et comprendre les directions</span></div>
-        <div class="recap-item"><span class="num">02</span><span>Questions de survie et art du refus indirect</span></div>
-        <div class="recap-item"><span class="num">03</span><span>Payer par QR code — WeChat Pay &amp; Alipay</span></div>
-        <div class="recap-item"><span class="num">04</span><span>Acheter : couleurs, tailles, prix et négociation</span></div>
-        <div class="recap-item"><span class="num">05</span><span>Inviter, planifier et se battre pour l'addition</span></div>
-        <div class="recap-item"><span class="num">06</span><span>36 mots de vocabulaire + 10 caractères à écrire</span></div>
+        <div class="recap-item"><span class="num">01</span><span><span class="ri-cn">问路</span>Demander son chemin et comprendre les directions</span></div>
+        <div class="recap-item"><span class="num">02</span><span><span class="ri-cn">沟通</span>Questions de survie et art du refus indirect</span></div>
+        <div class="recap-item"><span class="num">03</span><span><span class="ri-cn">支付</span>Payer par QR code — WeChat Pay &amp; Alipay</span></div>
+        <div class="recap-item"><span class="num">04</span><span><span class="ri-cn">购物</span>Acheter : couleurs, tailles, prix, négociation</span></div>
+        <div class="recap-item"><span class="num">05</span><span><span class="ri-cn">应酬</span>Inviter, planifier et se battre pour l'addition</span></div>
+        <div class="recap-item"><span class="num">06</span><span><span class="ri-cn">汉字</span>Vocabulaire essentiel + 10 caractères à écrire</span></div>
       </div>
-      <div class="bilan-next">Session 4 → Transport longue distance · Au bureau &amp; en réunion · Rendez-vous · E-commerce chinois</div>
+      <div class="bilan-next">Session 4 → Transport · Hôtel · Restaurant · Santé · Rendez-vous</div>
     </div>
   </section>
 
 </div><!-- /deck -->
 
-<!-- Section marker top -->
 <div class="section-marker" id="section-marker"></div>
 
-<!-- Side arrows -->
 <button class="nav-arrow left" id="prev" aria-label="Précédent">◀</button>
 <button class="nav-arrow right" id="next" aria-label="Suivant">▶</button>
 
-<!-- Bottom progress bar -->
+<div class="tts-hint" id="tts-hint">🔊 Cliquez sur le chinois pour l'écouter</div>
+
 <div class="progress-bar">
   <div class="sec-dots" id="sec-dots">
     <button class="sec-dot active" data-sec="0" aria-label="Couverture"></button>
@@ -1621,17 +1137,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var counter = document.getElementById('counter');
   var barFill = document.getElementById('bar-fill');
   var marker = document.getElementById('section-marker');
+  var ttsHint = document.getElementById('tts-hint');
   var secDots = Array.prototype.slice.call(document.querySelectorAll('.sec-dot'));
 
   var sectionLabels = {
-    '0': '',
-    '1': 'Section 01 · Directions',
-    '2': 'Section 02 · Questions pratiques',
-    '3': 'Section 03 · Paiement',
-    '4': 'Section 04 · Achats',
-    '5': 'Section 05 · Sorties',
-    '6': 'Section 06 · Vocabulaire & Écriture',
-    '7': 'Bilan'
+    '0': '', '1': 'Section 01 · Se repérer', '2': 'Section 02 · Questions pratiques',
+    '3': 'Section 03 · Payer en Chine', '4': 'Section 04 · Premiers achats',
+    '5': 'Section 05 · Sorties', '6': 'Section 06 · Vocabulaire & Écriture', '7': 'Bilan'
   };
 
   slides.forEach(function(s, i) {
@@ -1650,6 +1162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function goTo(index) {
     if (index < 0 || index >= total) return;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
     slides.forEach(function(s, i) {
       s.classList.remove('active', 'prev');
       if (i === index) s.classList.add('active');
@@ -1663,66 +1176,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var sec = slides[index].getAttribute('data-section');
     var label = sectionLabels[sec] || '';
-    var isCard = slides[index].classList.contains('slide-card') || slides[index].classList.contains('slide-manuel') || slides[index].classList.contains('slide-exercices');
-    if (label && isCard) {
-      marker.textContent = label;
-      marker.classList.add('visible');
-      marker.classList.remove('dark');
-    } else {
-      marker.classList.remove('visible');
-    }
+    var isCard = slides[index].classList.contains('slide-card') || slides[index].classList.contains('slide-manuel');
+    if (label && isCard) { marker.textContent = label; marker.classList.add('visible'); }
+    else { marker.classList.remove('visible'); }
 
-    secDots.forEach(function(d) {
-      d.classList.toggle('active', d.getAttribute('data-sec') === sec);
-    });
+    var isDark = slides[index].classList.contains('slide-cover') || slides[index].classList.contains('slide-section') || slides[index].classList.contains('slide-bilan');
+    ttsHint.classList.toggle('dark', isDark);
 
+    secDots.forEach(function(d) { d.classList.toggle('active', d.getAttribute('data-sec') === sec); });
     slides[index].scrollTop = 0;
   }
 
   btnPrev.addEventListener('click', function() { goTo(current - 1); });
   btnNext.addEventListener('click', function() { goTo(current + 1); });
-
-  secDots.forEach(function(d) {
-    d.addEventListener('click', function() {
-      var sec = parseInt(d.getAttribute('data-sec'), 10);
-      goTo(firstSlideOfSection(sec));
-    });
-  });
+  secDots.forEach(function(d) { d.addEventListener('click', function() { goTo(firstSlideOfSection(parseInt(d.getAttribute('data-sec'), 10))); }); });
 
   document.addEventListener('keydown', function(e) {
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
-    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-      e.preventDefault(); goTo(current + 1);
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-      e.preventDefault(); goTo(current - 1);
-    } else if (e.key === ' ' && (!e.target || e.target.tagName !== 'BUTTON')) {
-      e.preventDefault(); goTo(current + 1);
-    } else if (e.key === 'Home') {
-      e.preventDefault(); goTo(0);
-    } else if (e.key === 'End') {
-      e.preventDefault(); goTo(total - 1);
-    }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(current - 1); }
+    else if (e.key === ' ') { if (e.target && e.target.tagName === 'BUTTON') return; e.preventDefault(); goTo(current + 1); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); slides[current].scrollBy({ top: 120, behavior: 'smooth' }); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); slides[current].scrollBy({ top: -120, behavior: 'smooth' }); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
   });
 
-  var tsX = null, tsY = null;
-  document.addEventListener('touchstart', function(e) {
-    tsX = e.changedTouches[0].screenX;
-    tsY = e.changedTouches[0].screenY;
-  }, { passive: true });
-  document.addEventListener('touchend', function(e) {
-    if (tsX === null) return;
-    var dx = e.changedTouches[0].screenX - tsX;
-    var dy = e.changedTouches[0].screenY - tsY;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      if (dx < 0) goTo(current + 1);
-      else goTo(current - 1);
-    }
-    tsX = null; tsY = null;
-  }, { passive: true });
+  // ── Text-to-speech ──
+  var zhVoice = null;
+  function loadVoice() {
+    if (!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices();
+    zhVoice = vs.filter(function(v) { return /zh|cmn|chinese/i.test(v.lang + ' ' + v.name); })
+                .sort(function(a, b) { return (/zh[-_]CN|cmn/i.test(b.lang) ? 1 : 0) - (/zh[-_]CN|cmn/i.test(a.lang) ? 1 : 0); })[0] || null;
+  }
+  if (window.speechSynthesis) { loadVoice(); window.speechSynthesis.onvoiceschanged = loadVoice; }
+  function speak(text, el) {
+    if (!window.speechSynthesis || !text) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = 0.8;
+    if (zhVoice) u.voice = zhVoice;
+    if (el) { el.classList.add('speaking'); u.onend = u.onerror = function() { el.classList.remove('speaking'); }; }
+    window.speechSynthesis.speak(u);
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('.spk');
+    if (!el) return;
+    e.preventDefault();
+    var text = el.getAttribute('data-zh') || el.textContent.trim();
+    speak(text, el);
+  });
 
   goTo(0);
 });
 </script>
-
 </body>
 </html>
