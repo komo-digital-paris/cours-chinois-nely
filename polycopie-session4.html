@@ -75,6 +75,11 @@
   .keywords .kz { font-family: var(--kai); font-size: 11pt; color: var(--encre); font-weight: 600; }
   .keywords em { font-family: 'Cormorant Garamond', serif; color: var(--gris-fonce); }
 
+  /* keep a dialogue heading glued to its dialogue + keywords */
+  .dlg-block { break-inside: avoid; page-break-inside: avoid; }
+  .dlg-block h3 { margin-top: 16px; }
+  h3 { break-after: avoid; page-break-after: avoid; }
+
   /* ── LANGUAGE POINTS ── */
   .lp-table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 10.5pt; break-inside: avoid; }
   .lp-table td { padding: 8px 12px; border-bottom: 1px solid var(--bordure); vertical-align: top; }
@@ -158,6 +163,7 @@
 <!-- ══════════════ SECTION 1 — 交通出行 ══════════════ -->
 <div class="section-title"><span class="num">Section 01</span><span class="cn">交通出行</span>Se déplacer</div>
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue A</span>Commander un Didi</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc sort de l'hôtel et ouvre l'appli Didi (滴滴)</div>
@@ -169,7 +175,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">打车</span> <em>dǎchē</em> prendre un taxi · <span class="kz">在哪里</span> <em>zài nǎlǐ</em> où · <span class="kz">门口</span> <em>ménkǒu</em> entrée · <span class="kz">到</span> <em>dào</em> arriver</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue B</span>Dans le taxi</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc monte, le chauffeur démarre</div>
@@ -181,7 +189,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">师傅</span> <em>shīfu</em> « chef » (chauffeur) · <span class="kz">去</span> <em>qù</em> aller · <span class="kz">大概</span> <em>dàgài</em> environ · <span class="kz">分钟</span> <em>fēnzhōng</em> minute · <span class="kz">到了</span> <em>dào le</em> arrivé</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue C</span>Prendre le métro</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Dans la station, Marc cherche la bonne ligne</div>
@@ -193,7 +203,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">坐</span> <em>zuò</em> prendre (transport) · <span class="kz">几号线</span> <em>jǐ hào xiàn</em> quelle ligne · <span class="kz">站</span> <em>zhàn</em> station · <span class="kz">换</span> <em>huàn</em> changer · <span class="kz">不用</span> <em>búyòng</em> pas besoin</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue D</span>Montrer l'adresse</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Le chauffeur ne trouve pas la destination</div>
@@ -205,6 +217,7 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">给你看</span> <em>gěi nǐ kàn</em> te montrer · <span class="kz">地址</span> <em>dìzhǐ</em> adresse · <span class="kz">知道</span> <em>zhīdào</em> savoir · <span class="kz">停</span> <em>tíng</em> s'arrêter</div>
+</div><!-- /dlg-block -->
 
 <h3>Structures clés — substitution</h3>
 <table class="lp-table">
@@ -242,6 +255,7 @@
 <!-- ══════════════ SECTION 2 — 住酒店 ══════════════ -->
 <div class="section-title"><span class="num">Section 02</span><span class="cn">住酒店</span>À l'hôtel</div>
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue A</span>L'arrivée (check-in)</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 À la réception de l'hôtel</div>
@@ -253,7 +267,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">预订</span> <em>yùdìng</em> réserver · <span class="kz">房间</span> <em>fángjiān</em> chambre · <span class="kz">护照</span> <em>hùzhào</em> passeport · <span class="kz">房卡</span> <em>fángkǎ</em> carte de chambre</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue B</span>WiFi &amp; petit-déjeuner</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc demande deux infos essentielles</div>
@@ -265,7 +281,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">密码</span> <em>mìmǎ</em> mot de passe · <span class="kz">早饭</span> <em>zǎofàn</em> petit-déjeuner · <span class="kz">几点</span> <em>jǐ diǎn</em> à quelle heure · <span class="kz">在…上</span> <em>zài…shàng</em> sur</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue C</span>Un problème dans la chambre</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc rappelle la réception</div>
@@ -277,7 +295,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">空调</span> <em>kòngtiáo</em> climatisation · <span class="kz">坏了</span> <em>huài le</em> en panne · <span class="kz">马上</span> <em>mǎshàng</em> tout de suite · <span class="kz">热水</span> <em>rèshuǐ</em> eau chaude</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue D</span>Le départ (check-out)</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Le matin du départ</div>
@@ -289,6 +309,7 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">退房</span> <em>tuìfáng</em> check-out · <span class="kz">开发票</span> <em>kāi fāpiào</em> émettre une facture · <span class="kz">给</span> <em>gěi</em> donner · <span class="kz">稍等</span> <em>shāo děng</em> patienter</div>
+</div><!-- /dlg-block -->
 
 <h3>Structures clés — substitution</h3>
 <table class="lp-table">
@@ -326,6 +347,7 @@
 <!-- ══════════════ SECTION 3 — 点菜 ══════════════ -->
 <div class="section-title"><span class="num">Section 03</span><span class="cn">点菜</span>Commander au restaurant</div>
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue A</span>S'installer</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc entre dans un restaurant local</div>
@@ -337,7 +359,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">几位</span> <em>jǐ wèi</em> combien de personnes · <span class="kz">位</span> <em>wèi</em> classificateur poli · <span class="kz">菜单</span> <em>càidān</em> menu</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue B</span>Commander les plats</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Le serveur prend la commande</div>
@@ -349,7 +373,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">点</span> <em>diǎn</em> commander · <span class="kz">来一个</span> <em>lái yí ge</em> j'en prends un · <span class="kz">米饭</span> <em>mǐfàn</em> riz · <span class="kz">碗</span> <em>wǎn</em> bol</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue C</span>Préférences &amp; allergies</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc précise ses préférences</div>
@@ -361,7 +387,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">辣</span> <em>là</em> épicé · <span class="kz">不要太</span> <em>búyào tài</em> pas trop · <span class="kz">对…过敏</span> <em>duì…guòmǐn</em> allergique à · <span class="kz">花生</span> <em>huāshēng</em> cacahuète</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue D</span>Trinquer &amp; payer</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Fin du repas, ambiance conviviale</div>
@@ -373,6 +401,7 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">干杯</span> <em>gānbēi</em> santé / cul sec · <span class="kz">买单</span> <em>mǎidān</em> l'addition · <span class="kz">扫码</span> <em>sǎomǎ</em> scanner le QR · <span class="kz">就行</span> <em>jiù xíng</em> ça suffit</div>
+</div><!-- /dlg-block -->
 
 <h3>Structures clés — substitution</h3>
 <table class="lp-table">
@@ -410,6 +439,7 @@
 <!-- ══════════════ SECTION 4 — 看病 ══════════════ -->
 <div class="section-title"><span class="num">Section 04</span><span class="cn">看病</span>Chez le médecin</div>
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue A</span>À la pharmacie</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc a trop mangé épicé à Chengdu</div>
@@ -421,7 +451,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">不舒服</span> <em>bù shūfu</em> pas bien · <span class="kz">肚子</span> <em>dùzi</em> ventre · <span class="kz">疼</span> <em>téng</em> avoir mal · <span class="kz">药</span> <em>yào</em> médicament</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue B</span>Décrire ses symptômes</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Chez le médecin</div>
@@ -433,7 +465,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">怎么了</span> <em>zěnme le</em> qu'y a-t-il · <span class="kz">头疼</span> <em>tóu téng</em> mal de tête · <span class="kz">发烧</span> <em>fāshāo</em> fièvre · <span class="kz">几天了</span> <em>jǐ tiān le</em> depuis quand</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue C</span>Allergie &amp; pharmacie</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Une précision qui peut sauver la vie</div>
@@ -445,7 +479,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">过敏</span> <em>guòmǐn</em> allergie · <span class="kz">药店</span> <em>yàodiàn</em> pharmacie · <span class="kz">一楼</span> <em>yī lóu</em> rez-de-chaussée · <span class="kz">记一下</span> <em>jì yíxià</em> noter</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue D</span>La posologie</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Au comptoir de la pharmacie</div>
@@ -457,6 +493,7 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">几次</span> <em>jǐ cì</em> combien de fois · <span class="kz">次</span> <em>cì</em> fois · <span class="kz">饭前</span> <em>fàn qián</em> avant le repas · <span class="kz">饭后</span> <em>fàn hòu</em> après le repas</div>
+</div><!-- /dlg-block -->
 
 <h3>Structures clés — substitution</h3>
 <table class="lp-table">
@@ -494,6 +531,7 @@
 <!-- ══════════════ SECTION 5 — 日程安排 ══════════════ -->
 <div class="section-title"><span class="num">Section 05</span><span class="cn">日程安排</span>Fixer un rendez-vous</div>
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue A</span>Proposer un rendez-vous</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc appelle un client</div>
@@ -505,7 +543,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">明天</span> <em>míngtiān</em> demain · <span class="kz">见面</span> <em>jiànmiàn</em> se rencontrer · <span class="kz">几点</span> <em>jǐ diǎn</em> à quelle heure · <span class="kz">上午</span> <em>shàngwǔ</em> matin</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue B</span>Préciser le lieu</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 On se met d'accord sur l'endroit</div>
@@ -517,7 +557,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">在哪里见</span> <em>zài nǎlǐ jiàn</em> où se retrouver · <span class="kz">公司</span> <em>gōngsī</em> entreprise · <span class="kz">发</span> <em>fā</em> envoyer · <span class="kz">地址</span> <em>dìzhǐ</em> adresse</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue C</span>Reporter le rendez-vous</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Un imprévu de dernière minute</div>
@@ -529,7 +571,9 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">不行</span> <em>bùxíng</em> pas possible · <span class="kz">没关系</span> <em>méi guānxi</em> pas grave · <span class="kz">后天</span> <em>hòutiān</em> après-demain · <span class="kz">那就</span> <em>nà jiù</em> alors</div>
+</div><!-- /dlg-block -->
 
+<div class="dlg-block">
 <h3><span class="tag">Dialogue D</span>Confirmer sur WeChat</h3>
 <div class="dialogue">
   <div class="dialogue-header">📍 Marc finalise par message</div>
@@ -541,6 +585,7 @@
   </div>
 </div>
 <div class="keywords"><b>Mots clés —</b> <span class="kz">微信</span> <em>wēixìn</em> WeChat · <span class="kz">确认</span> <em>quèrèn</em> confirmer · <span class="kz">到时候见</span> <em>dào shíhou jiàn</em> à plus · <span class="kz">再见</span> <em>zàijiàn</em> au revoir</div>
+</div><!-- /dlg-block -->
 
 <h3>Structures clés — substitution</h3>
 <table class="lp-table">
